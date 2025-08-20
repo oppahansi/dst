@@ -11,6 +11,7 @@ import "package:material_symbols_icons/symbols.dart";
 import "package:oppa_app/core/utils/colors.dart";
 import "package:oppa_app/core/utils/extensions.dart";
 import "package:oppa_app/features/home/home_screen.dart";
+import "package:oppa_app/features/settings/settings_screen.dart";
 import "package:oppa_app/l10n/app_localizations.dart";
 
 final currentTabIndexProvider = StateProvider<int>((ref) => 0);
@@ -97,7 +98,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
             onPageChanged: (index) {
               ref.read(currentTabIndexProvider.notifier).state = index;
             },
-            children: [HomeScreen()],
+            children: [HomeScreen(), SettingsScreen()],
           ),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: currentIndex,
@@ -134,7 +135,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 }
 
 int getRouteIndex(String path) {
-  final bottomRoutes = [HomeScreen.path];
+  final bottomRoutes = [HomeScreen.path, SettingsScreen.path];
 
   return bottomRoutes.indexWhere((route) => route == path);
 }

@@ -1,4 +1,4 @@
-const String dbName = "whereismysht.db";
+const String dbName = "oppa_app.db";
 const String dbPath = "assets/db/$dbName";
 
 const String settingsTable = "settings";
