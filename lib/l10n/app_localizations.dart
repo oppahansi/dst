@@ -98,58 +98,16 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
-  /// No description provided for @add.
-  ///
-  /// In en, this message translates to:
-  /// **'add'**
-  String get add;
-
-  /// No description provided for @borrowed.
-  ///
-  /// In en, this message translates to:
-  /// **'borrowed'**
-  String get borrowed;
-
-  /// No description provided for @cancel.
-  ///
-  /// In en, this message translates to:
-  /// **'cancel'**
-  String get cancel;
-
-  /// No description provided for @close.
-  ///
-  /// In en, this message translates to:
-  /// **'close'**
-  String get close;
-
   /// No description provided for @dark.
   ///
   /// In en, this message translates to:
   /// **'dark'**
   String get dark;
 
-  /// No description provided for @date.
-  ///
-  /// In en, this message translates to:
-  /// **'date'**
-  String get date;
-
-  /// No description provided for @delete.
-  ///
-  /// In en, this message translates to:
-  /// **'delete'**
-  String get delete;
-
-  /// No description provided for @edit.
-  ///
-  /// In en, this message translates to:
-  /// **'edit'**
-  String get edit;
-
   /// No description provided for @english.
   ///
   /// In en, this message translates to:
-  /// **'english'**
+  /// **'englisch'**
   String get english;
 
   /// No description provided for @german.
@@ -158,29 +116,17 @@ abstract class AppLocalizations {
   /// **'german'**
   String get german;
 
-  /// No description provided for @images.
+  /// No description provided for @home.
   ///
   /// In en, this message translates to:
-  /// **'images'**
-  String get images;
-
-  /// No description provided for @item.
-  ///
-  /// In en, this message translates to:
-  /// **'item'**
-  String get item;
+  /// **'home'**
+  String get home;
 
   /// No description provided for @language.
   ///
   /// In en, this message translates to:
   /// **'language'**
   String get language;
-
-  /// No description provided for @lent.
-  ///
-  /// In en, this message translates to:
-  /// **'lent'**
-  String get lent;
 
   /// No description provided for @light.
   ///
@@ -194,35 +140,11 @@ abstract class AppLocalizations {
   /// **'loading'**
   String get loading;
 
-  /// No description provided for @lost.
+  /// No description provided for @settings.
   ///
   /// In en, this message translates to:
-  /// **'lost'**
-  String get lost;
-
-  /// No description provided for @note.
-  ///
-  /// In en, this message translates to:
-  /// **'note'**
-  String get note;
-
-  /// No description provided for @reopen.
-  ///
-  /// In en, this message translates to:
-  /// **'reopen'**
-  String get reopen;
-
-  /// No description provided for @restore.
-  ///
-  /// In en, this message translates to:
-  /// **'restore'**
-  String get restore;
-
-  /// No description provided for @returned.
-  ///
-  /// In en, this message translates to:
-  /// **'returned'**
-  String get returned;
+  /// **'settings'**
+  String get settings;
 
   /// No description provided for @system.
   ///
@@ -236,269 +158,11 @@ abstract class AppLocalizations {
   /// **'theme'**
   String get theme;
 
-  /// No description provided for @to.
-  ///
-  /// In en, this message translates to:
-  /// **'to'**
-  String get to;
-
-  /// No description provided for @update.
-  ///
-  /// In en, this message translates to:
-  /// **'update'**
-  String get update;
-
-  /// No description provided for @add_item.
-  ///
-  /// In en, this message translates to:
-  /// **'Add Item'**
-  String get add_item;
-
-  /// No description provided for @are_you_sure.
-  ///
-  /// In en, this message translates to:
-  /// **'Are you sure?'**
-  String get are_you_sure;
-
-  /// No description provided for @borrowed_from.
-  ///
-  /// In en, this message translates to:
-  /// **'Borrowed from'**
-  String get borrowed_from;
-
-  /// No description provided for @delete_from_history.
-  ///
-  /// In en, this message translates to:
-  /// **'Delete \'{itemName}\' from history?'**
-  String delete_from_history(Object itemName);
-
-  /// No description provided for @edit_item.
-  ///
-  /// In en, this message translates to:
-  /// **'Edit Item'**
-  String get edit_item;
-
-  /// No description provided for @export_db.
-  ///
-  /// In en, this message translates to:
-  /// **'Export database'**
-  String get export_db;
-
-  /// No description provided for @export_canceled.
-  ///
-  /// In en, this message translates to:
-  /// **'Export canceled'**
-  String get export_canceled;
-
-  /// No description provided for @export_failed.
-  ///
-  /// In en, this message translates to:
-  /// **'Export failed'**
-  String get export_failed;
-
-  /// No description provided for @export_import.
-  ///
-  /// In en, this message translates to:
-  /// **'Export/Import'**
-  String get export_import;
-
-  /// No description provided for @export_import_hint.
-  ///
-  /// In en, this message translates to:
-  /// **'Phone factory resets erase local backups. After exporting, move the backup off the phone (computer/cloud) so you can restore it later.'**
-  String get export_import_hint;
-
-  /// No description provided for @export_success.
-  ///
-  /// In en, this message translates to:
-  /// **'Export successful'**
-  String get export_success;
-
-  /// No description provided for @import_db.
-  ///
-  /// In en, this message translates to:
-  /// **'Import database'**
-  String get import_db;
-
-  /// No description provided for @import_canceled.
-  ///
-  /// In en, this message translates to:
-  /// **'Import canceled'**
-  String get import_canceled;
-
-  /// No description provided for @import_failed.
-  ///
-  /// In en, this message translates to:
-  /// **'Import failed'**
-  String get import_failed;
-
-  /// No description provided for @lost_on.
-  ///
-  /// In en, this message translates to:
-  /// **'Lost on'**
-  String get lost_on;
-
-  /// No description provided for @lent_to.
-  ///
-  /// In en, this message translates to:
-  /// **'Lent to'**
-  String get lent_to;
-
-  /// No description provided for @lost_to.
-  ///
-  /// In en, this message translates to:
-  /// **'Lost to'**
-  String get lost_to;
-
-  /// No description provided for @mark_as_lost.
-  ///
-  /// In en, this message translates to:
-  /// **'Mark as lost'**
-  String get mark_as_lost;
-
-  /// No description provided for @mark_as_returned.
-  ///
-  /// In en, this message translates to:
-  /// **'Mark as returned'**
-  String get mark_as_returned;
-
-  /// No description provided for @no_borrowed_items.
-  ///
-  /// In en, this message translates to:
-  /// **'No borrowed items'**
-  String get no_borrowed_items;
-
-  /// No description provided for @no_history_items.
-  ///
-  /// In en, this message translates to:
-  /// **'No history items'**
-  String get no_history_items;
-
-  /// No description provided for @no_items.
-  ///
-  /// In en, this message translates to:
-  /// **'No items'**
-  String get no_items;
-
-  /// No description provided for @no_lent_items.
-  ///
-  /// In en, this message translates to:
-  /// **'No lent items'**
-  String get no_lent_items;
-
-  /// No description provided for @no_lost_items.
-  ///
-  /// In en, this message translates to:
-  /// **'No lost items'**
-  String get no_lost_items;
-
-  /// No description provided for @no_returned_items.
-  ///
-  /// In en, this message translates to:
-  /// **'No returned items'**
-  String get no_returned_items;
-
-  /// No description provided for @ok.
-  ///
-  /// In en, this message translates to:
-  /// **'OK'**
-  String get ok;
-
-  /// No description provided for @pick_from_gallery.
-  ///
-  /// In en, this message translates to:
-  /// **'Pick from Gallery'**
-  String get pick_from_gallery;
-
-  /// No description provided for @pick_a_backup_file.
-  ///
-  /// In en, this message translates to:
-  /// **'Pick a backup file'**
-  String get pick_a_backup_file;
-
   /// No description provided for @prompt_for_exit.
   ///
   /// In en, this message translates to:
   /// **'Press again to exit the app.'**
   String get prompt_for_exit;
-
-  /// No description provided for @required_field.
-  ///
-  /// In en, this message translates to:
-  /// **'Required field'**
-  String get required_field;
-
-  /// No description provided for @restore_db.
-  ///
-  /// In en, this message translates to:
-  /// **'Restore database'**
-  String get restore_db;
-
-  /// No description provided for @restore_done_restart.
-  ///
-  /// In en, this message translates to:
-  /// **'Restored. Please restart the app.'**
-  String get restore_done_restart;
-
-  /// No description provided for @restore_warning.
-  ///
-  /// In en, this message translates to:
-  /// **'This will overwrite your current data. Continue?'**
-  String get restore_warning;
-
-  /// No description provided for @returned_on.
-  ///
-  /// In en, this message translates to:
-  /// **'Returned on'**
-  String get returned_on;
-
-  /// No description provided for @save_backup_to.
-  ///
-  /// In en, this message translates to:
-  /// **'Save backup to file/downloads'**
-  String get save_backup_to;
-
-  /// No description provided for @save_to_phone.
-  ///
-  /// In en, this message translates to:
-  /// **'Save to phone?'**
-  String get save_to_phone;
-
-  /// No description provided for @take_photo.
-  ///
-  /// In en, this message translates to:
-  /// **'Take Photo'**
-  String get take_photo;
-
-  /// No description provided for @home_screen_title.
-  ///
-  /// In en, this message translates to:
-  /// **'Home'**
-  String get home_screen_title;
-
-  /// No description provided for @borrowed_screen_title.
-  ///
-  /// In en, this message translates to:
-  /// **'Borrowed'**
-  String get borrowed_screen_title;
-
-  /// No description provided for @lent_screen_title.
-  ///
-  /// In en, this message translates to:
-  /// **'Lent'**
-  String get lent_screen_title;
-
-  /// No description provided for @history_screen_title.
-  ///
-  /// In en, this message translates to:
-  /// **'History'**
-  String get history_screen_title;
-
-  /// No description provided for @settings_screen_title.
-  ///
-  /// In en, this message translates to:
-  /// **'Settings'**
-  String get settings_screen_title;
 }
 
 class _AppLocalizationsDelegate

@@ -118,11 +118,11 @@ class _MainScreenState extends ConsumerState<MainScreen> {
             items: [
               BottomNavigationBarItem(
                 icon: const Icon(Symbols.home),
-                label: localizations.home_screen_title,
+                label: localizations.home.capitalize(),
               ),
               BottomNavigationBarItem(
                 icon: const Icon(Symbols.settings),
-                label: localizations.settings_screen_title,
+                label: localizations.settings.capitalize(),
               ),
             ],
             type: BottomNavigationBarType.fixed,

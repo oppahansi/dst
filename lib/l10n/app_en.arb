@@ -1,3 +1,16 @@
 {
-  "@@locale": "en"
+  "@@locale": "en",
+
+  "dark": "dark",
+  "english": "englisch",
+  "german": "german",
+  "home": "home",
+  "language": "language",
+  "light": "light",
+  "loading": "loading",
+  "settings": "settings",
+  "system": "system",
+  "theme": "theme",
+
+  "prompt_for_exit": "Press again to exit the app."
 }

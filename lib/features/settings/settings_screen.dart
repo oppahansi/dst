@@ -24,7 +24,7 @@ class SettingsScreen extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              localizations.settings_screen_title,
+              localizations.settings.capitalize(),
               style: titleMedium(context).withColor(primaryColor(context)),
             ),
             const LanguageSetting(),

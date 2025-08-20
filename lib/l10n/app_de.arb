@@ -1,3 +1,16 @@
 {
-  "@@locale": "de"
+  "@@locale": "de",
+
+  "dark": "dunkel",
+  "english": "english",
+  "german": "deutsch",
+  "home": "startseite",
+  "language": "sprache",
+  "light": "hell",
+  "loading": "lade",
+  "settings": "einstellungen",
+  "system": "system",
+  "theme": "design",
+
+  "prompt_for_exit": "Drücken Sie erneut, um die App zu beenden."
 }
