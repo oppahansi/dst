@@ -1,7 +1,5 @@
-// Flutter Imports
-import "package:flutter/material.dart";
-
 // Package Imports
+import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:material_symbols_icons/symbols.dart";
 
@@ -17,12 +15,12 @@ class ThemeSetting extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settingsAsync = ref.watch(settingsServiceNotifierProvider);
-    final localizations = AppLocalizations.of(context)!;
+    final loc = AppLocalizations.of(context)!;
 
     final themeNames = <String, String>{
-      settingsValueThemeModeSystem: localizations.system.capitalize(),
-      settingsValueThemeModeLight: localizations.light.capitalize(),
-      settingsValueThemeModeDark: localizations.dark.capitalize(),
+      settingsValueThemeModeSystem: loc.system.capitalize(),
+      settingsValueThemeModeLight: loc.light.capitalize(),
+      settingsValueThemeModeDark: loc.dark.capitalize(),
     };
 
     return settingsAsync.when(
@@ -41,7 +39,7 @@ class ThemeSetting extends ConsumerWidget {
 
         return ListTile(
           leading: const Icon(Symbols.brightness_6),
-          title: Text(localizations.theme.capitalize()),
+          title: Text(loc.theme.capitalize()),
           subtitle: Text(themeNames[currentThemeKey] ?? currentThemeKey),
           trailing: const Icon(Symbols.chevron_right),
           onTap: () async {
@@ -77,12 +75,12 @@ class ThemeSetting extends ConsumerWidget {
       },
       loading: () => ListTile(
         leading: const Icon(Symbols.brightness_6),
-        title: Text(localizations.theme),
-        subtitle: Text("${localizations.loading}..."),
+        title: Text(loc.theme),
+        subtitle: Text("${loc.loading}..."),
       ),
       error: (e, st) => ListTile(
         leading: const Icon(Symbols.brightness_6),
-        title: Text(localizations.theme),
+        title: Text(loc.theme),
         subtitle: Text("Error: $e"),
       ),
     );

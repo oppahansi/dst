@@ -1,8 +1,7 @@
-// Flutter Imports
+// Package Imports
+import "package:exui/exui.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-
-// Package Imports
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:flutter_riverpod/legacy.dart";
 import "package:material_symbols_icons/symbols.dart";
@@ -51,7 +50,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   @override
   Widget build(BuildContext context) {
     final currentIndex = ref.watch(currentTabIndexProvider);
-    final localizations = AppLocalizations.of(context)!;
+    final loc = AppLocalizations.of(context)!;
 
     ref.listen(currentTabIndexProvider, (previous, next) {
       if (next != pageController.page?.round()) {
@@ -76,11 +75,8 @@ class _MainScreenState extends ConsumerState<MainScreen> {
         if (lastBackPressTime == null ||
             now.difference(lastBackPressTime!) > duration) {
           lastBackPressTime = now;
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(localizations.prompt_for_exit),
-              duration: duration,
-            ),
+          context.showSnackBar(
+            SnackBar(content: loc.prompt_for_exit.text(), duration: duration),
           );
 
           return;
@@ -88,48 +84,46 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 
         SystemNavigator.pop();
       },
-      child: SafeArea(
-        child: Scaffold(
-          resizeToAvoidBottomInset: true,
-          key: scaffoldKey,
-          backgroundColor: surfaceDimColor(context),
-          body: PageView(
-            controller: pageController,
-            onPageChanged: (index) {
-              ref.read(currentTabIndexProvider.notifier).state = index;
-            },
-            children: [HomeScreen(), SettingsScreen()],
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: currentIndex,
-            selectedItemColor: primaryColor(context),
-            selectedIconTheme: IconThemeData(
-              color: secondaryColor(context),
-              size: 32,
-            ),
-            unselectedIconTheme: IconThemeData(
-              color: primaryColor(context),
-              size: 24,
-            ),
-            showSelectedLabels: true,
-            showUnselectedLabels: false,
-            onTap: (index) {
-              ref.read(currentTabIndexProvider.notifier).state = index;
-            },
-            items: [
-              BottomNavigationBarItem(
-                icon: const Icon(Symbols.home),
-                label: localizations.home.capitalize(),
-              ),
-              BottomNavigationBarItem(
-                icon: const Icon(Symbols.settings),
-                label: localizations.settings.capitalize(),
-              ),
-            ],
-            type: BottomNavigationBarType.fixed,
-          ),
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        key: scaffoldKey,
+        backgroundColor: surfaceDimColor(context),
+        body: PageView(
+          controller: pageController,
+          onPageChanged: (index) {
+            ref.read(currentTabIndexProvider.notifier).state = index;
+          },
+          children: [HomeScreen(), SettingsScreen()],
         ),
-      ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: currentIndex,
+          selectedItemColor: primaryColor(context),
+          selectedIconTheme: IconThemeData(
+            color: secondaryColor(context),
+            size: 32,
+          ),
+          unselectedIconTheme: IconThemeData(
+            color: primaryColor(context),
+            size: 24,
+          ),
+          showSelectedLabels: true,
+          showUnselectedLabels: false,
+          onTap: (index) {
+            ref.read(currentTabIndexProvider.notifier).state = index;
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: Symbols.home.icon(),
+              label: loc.home.capitalize(),
+            ),
+            BottomNavigationBarItem(
+              icon: Symbols.settings.icon(),
+              label: loc.settings.capitalize(),
+            ),
+          ],
+          type: BottomNavigationBarType.fixed,
+        ),
+      ).safeArea(),
     );
   }
 }

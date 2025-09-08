@@ -1,4 +1,4 @@
-// Flutter Imports
+// Package Imports
 import "package:flutter/material.dart";
 
 extension TextStyleFontWeightExtension on TextStyle? {
@@ -39,7 +39,23 @@ extension BuildContextPushNamedExtension on BuildContext {
     return Navigator.of(this).pushNamed<T>(routeName, arguments: arguments);
   }
 
+  Future<T?> push<T extends Object?>(Route<T> route) {
+    return Navigator.of(this).push<T>(route);
+  }
+
+  bool canPop() {
+    return Navigator.of(this).canPop();
+  }
+
   void pop<T extends Object?>([T? result]) {
     Navigator.of(this).pop(result);
+  }
+
+  void showSnackBar(SnackBar snackBar) {
+    ScaffoldMessenger.of(this).showSnackBar(snackBar);
+  }
+
+  void clearSnackBars() {
+    ScaffoldMessenger.of(this).clearSnackBars();
   }
 }

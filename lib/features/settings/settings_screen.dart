@@ -1,4 +1,4 @@
-// Flutter Imports
+// Package Imports
 import "package:flutter/material.dart";
 
 // Project Imports
@@ -16,7 +16,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = AppLocalizations.of(context)!;
+    final loc = AppLocalizations.of(context)!;
 
     return SingleChildScrollView(
       child: Padding(
@@ -24,7 +24,7 @@ class SettingsScreen extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              localizations.settings.capitalize(),
+              loc.settings.capitalize(),
               style: titleMedium(context).withColor(primaryColor(context)),
             ),
             const LanguageSetting(),

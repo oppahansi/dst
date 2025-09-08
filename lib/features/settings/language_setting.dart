@@ -1,7 +1,5 @@
-// Flutter Imports
-import "package:flutter/material.dart";
-
 // Package Imports
+import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:material_symbols_icons/symbols.dart";
 
@@ -16,11 +14,11 @@ class LanguageSetting extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settingsAsync = ref.watch(settingsServiceNotifierProvider);
-    final localizations = AppLocalizations.of(context)!;
+    final loc = AppLocalizations.of(context)!;
 
     final languageNames = <String, String>{
-      "en": localizations.english.capitalize(),
-      "de": localizations.german.capitalize(),
+      "en": loc.english.capitalize(),
+      "de": loc.german.capitalize(),
     };
 
     return settingsAsync.when(
@@ -30,7 +28,7 @@ class LanguageSetting extends ConsumerWidget {
 
         return ListTile(
           leading: const Icon(Symbols.language),
-          title: Text(localizations.language.capitalize()),
+          title: Text(loc.language.capitalize()),
           subtitle: Text(
             languageNames[currentLocale.languageCode] ??
                 currentLocale.languageCode,
@@ -68,12 +66,12 @@ class LanguageSetting extends ConsumerWidget {
       },
       loading: () => ListTile(
         leading: const Icon(Symbols.language),
-        title: Text(localizations.language),
-        subtitle: Text("${localizations.loading}..."),
+        title: Text(loc.language),
+        subtitle: Text("${loc.loading}..."),
       ),
       error: (e, st) => ListTile(
         leading: const Icon(Symbols.language),
-        title: Text(localizations.language),
+        title: Text(loc.language),
         subtitle: Text("Error: $e"),
       ),
     );
