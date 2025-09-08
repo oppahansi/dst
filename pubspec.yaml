@@ -11,37 +11,28 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.8
-
-  # localization
   flutter_localizations:
     sdk: flutter
-  intl: ^0.20.2
 
-  # state management
+  cupertino_icons: ^1.0.8
+  exui: ^1.0.7
+  flex_color_scheme: ^8.2.0
   flutter_riverpod: ^3.0.0-dev.17
-  riverpod_annotation: ^3.0.0-dev.17
-
-  # local database
-  sqflite: ^2.4.2
+  intl: ^0.20.2
+  material_symbols_icons: ^4.2858.1
   path: ^1.9.1
   path_provider: ^2.1.5
-
-  # UI
-  flex_color_scheme: ^8.2.0
-  material_symbols_icons: ^4.2858.1 
+  riverpod_annotation: ^3.0.0-dev.17
+  sqflite: ^2.4.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
 
-  # code generation
   build_runner:
-  riverpod_generator: ^3.0.0-dev.17
-
-  # linting
   custom_lint:
+  flutter_lints: ^5.0.0
+  riverpod_generator: ^3.0.0-dev.17
   riverpod_lint: ^3.0.0-dev.17
 
 flutter:
