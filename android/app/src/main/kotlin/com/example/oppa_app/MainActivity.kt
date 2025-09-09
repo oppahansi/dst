@@ -1,4 +1,4 @@
-package com.example.oppa_app
+package de.oppahansi.sdtpro
 
 import io.flutter.embedding.android.FlutterActivity
 

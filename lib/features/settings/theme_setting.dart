@@ -1,13 +1,13 @@
-// Package Imports
+// Flutter Imports
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
-import "package:material_symbols_icons/symbols.dart";
 
-// Project Imports
-import "package:oppa_app/core/provider/settings_service_provider.dart";
-import "package:oppa_app/core/utils/constants.dart";
-import "package:oppa_app/core/utils/extensions.dart";
-import "package:oppa_app/l10n/app_localizations.dart";
+// Package Imports
+import "package:material_symbols_icons/symbols.dart";
+import "package:sdtpro/core/provider/settings_service_provider.dart";
+import "package:sdtpro/core/utils/constants.dart";
+import "package:sdtpro/core/utils/extensions.dart";
+import "package:sdtpro/l10n/app_localizations.dart";
 
 class ThemeSetting extends ConsumerWidget {
   const ThemeSetting({super.key});
@@ -45,25 +45,26 @@ class ThemeSetting extends ConsumerWidget {
           onTap: () async {
             final selected = await showModalBottomSheet<String>(
               context: context,
-              builder: (context) => Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  for (final themeKey in [
-                    settingsValueThemeModeSystem,
-                    settingsValueThemeModeLight,
-                    settingsValueThemeModeDark,
-                  ])
-                    ListTile(
-                      leading: Icon(
-                        themeKey == currentThemeKey
-                            ? Symbols.radio_button_checked
-                            : Symbols.radio_button_unchecked,
-                      ),
-                      title: Text(themeNames[themeKey] ?? themeKey),
-                      onTap: () => Navigator.pop(context, themeKey),
-                    ),
-                ],
-              ),
+              builder:
+                  (context) => Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      for (final themeKey in [
+                        settingsValueThemeModeSystem,
+                        settingsValueThemeModeLight,
+                        settingsValueThemeModeDark,
+                      ])
+                        ListTile(
+                          leading: Icon(
+                            themeKey == currentThemeKey
+                                ? Symbols.radio_button_checked
+                                : Symbols.radio_button_unchecked,
+                          ),
+                          title: Text(themeNames[themeKey] ?? themeKey),
+                          onTap: () => Navigator.pop(context, themeKey),
+                        ),
+                    ],
+                  ),
             );
             if (selected != null && selected != currentThemeKey) {
               await ref
@@ -73,16 +74,18 @@ class ThemeSetting extends ConsumerWidget {
           },
         );
       },
-      loading: () => ListTile(
-        leading: const Icon(Symbols.brightness_6),
-        title: Text(loc.theme),
-        subtitle: Text("${loc.loading}..."),
-      ),
-      error: (e, st) => ListTile(
-        leading: const Icon(Symbols.brightness_6),
-        title: Text(loc.theme),
-        subtitle: Text("Error: $e"),
-      ),
+      loading:
+          () => ListTile(
+            leading: const Icon(Symbols.brightness_6),
+            title: Text(loc.theme),
+            subtitle: Text("${loc.loading}..."),
+          ),
+      error:
+          (e, st) => ListTile(
+            leading: const Icon(Symbols.brightness_6),
+            title: Text(loc.theme),
+            subtitle: Text("Error: $e"),
+          ),
     );
   }
 }

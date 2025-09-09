@@ -1,14 +1,12 @@
 // Flutter Imports
 import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
 
 // Package Imports
-import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:material_symbols_icons/symbols.dart";
-
-// Project Imports
-import "package:oppa_app/core/provider/settings_service_provider.dart";
-import "package:oppa_app/core/utils/colors.dart";
-import "package:oppa_app/core/utils/constants.dart";
+import "package:sdtpro/core/provider/settings_service_provider.dart";
+import "package:sdtpro/core/utils/colors.dart";
+import "package:sdtpro/core/utils/constants.dart";
 
 // Project Imports
 

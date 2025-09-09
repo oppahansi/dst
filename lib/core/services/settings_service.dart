@@ -1,10 +1,10 @@
 // Flutter Imports
 import "package:flutter/material.dart";
 
-// Project Imports
-import "package:oppa_app/core/models/settings.dart";
-import "package:oppa_app/core/repos/settings_repo.dart";
-import "package:oppa_app/core/utils/constants.dart";
+// Package Imports
+import "package:sdtpro/core/models/settings.dart";
+import "package:sdtpro/core/repos/settings_repo.dart";
+import "package:sdtpro/core/utils/constants.dart";
 
 class SettingsService {
   static final SettingsService _instance = SettingsService._internal();

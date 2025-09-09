@@ -1,8 +1,8 @@
 // Flutter Imports
 import "package:flutter/material.dart";
 
-// Project Imports
-import "package:oppa_app/core/utils/constants.dart";
+// Package Imports
+import "package:sdtpro/core/utils/constants.dart";
 
 class Settings {
   final ThemeMode themeMode;

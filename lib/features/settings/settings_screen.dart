@@ -1,13 +1,13 @@
-// Package Imports
+// Flutter Imports
 import "package:flutter/material.dart";
 
-// Project Imports
-import "package:oppa_app/core/utils/colors.dart";
-import "package:oppa_app/core/utils/extensions.dart";
-import "package:oppa_app/core/utils/text_styles.dart";
-import "package:oppa_app/features/settings/language_setting.dart";
-import "package:oppa_app/features/settings/theme_setting.dart";
-import "package:oppa_app/l10n/app_localizations.dart";
+// Package Imports
+import "package:sdtpro/core/utils/colors.dart";
+import "package:sdtpro/core/utils/extensions.dart";
+import "package:sdtpro/core/utils/text_styles.dart";
+import "package:sdtpro/features/settings/language_setting.dart";
+import "package:sdtpro/features/settings/theme_setting.dart";
+import "package:sdtpro/l10n/app_localizations.dart";
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});

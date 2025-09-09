@@ -1,12 +1,10 @@
 // Flutter Imports
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
-
-// Package Imports
 import "package:flutter_riverpod/flutter_riverpod.dart";
 
-// Project Imports
-import "package:oppa_app/core/widgets/debug_settings_controlls.dart";
+// Package Imports
+import "package:sdtpro/core/widgets/debug_settings_controlls.dart";
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});

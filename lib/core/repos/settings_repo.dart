@@ -1,8 +1,6 @@
 // Package Imports
 import "package:sqflite/sqflite.dart";
-
-// Project Imports
-import "package:oppa_app/core/db/db.dart";
+import "package:sdtpro/core/db/db.dart";
 
 class SettingsRepo {
   static final SettingsRepo _instance = SettingsRepo._internal();

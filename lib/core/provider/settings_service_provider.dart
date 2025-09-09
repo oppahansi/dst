@@ -1,9 +1,7 @@
 // Package Imports
 import "package:riverpod_annotation/riverpod_annotation.dart";
-
-// Project Imports
-import "package:oppa_app/core/models/settings.dart";
-import "package:oppa_app/core/services/settings_service.dart";
+import "package:sdtpro/core/models/settings.dart";
+import "package:sdtpro/core/services/settings_service.dart";
 
 part "settings_service_provider.g.dart";
 

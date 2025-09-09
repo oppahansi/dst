@@ -1,4 +1,4 @@
-name: oppa_app
+name: sdtpro
 description: "A new Flutter project."
 
 publish_to: 'none'
@@ -40,7 +40,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/db/oppa_app.db
+    - assets/db/sdtpro.db
 
 flutter_intl:
   enabled: true

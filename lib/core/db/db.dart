@@ -8,10 +8,8 @@ import "package:flutter/services.dart";
 import "package:path/path.dart";
 import "package:sqflite/sqflite.dart";
 import "package:path_provider/path_provider.dart";
-
-// Project Imports
-import "package:oppa_app/core/utils/constants.dart";
-import "package:oppa_app/core/db/migrations.dart";
+import "package:sdtpro/core/utils/constants.dart";
+import "package:sdtpro/core/db/migrations.dart";
 
 class Db {
   static const int dbVersion = 1;
