@@ -7,6 +7,8 @@ import "package:flutter_riverpod/legacy.dart";
 // Package Imports
 import "package:exui/exui.dart";
 import "package:material_symbols_icons/symbols.dart";
+
+// Project Imports
 import "package:sdtpro/core/utils/colors.dart";
 import "package:sdtpro/core/utils/extensions.dart";
 import "package:sdtpro/features/home/home_screen.dart";
@@ -26,7 +28,7 @@ class MainScreen extends ConsumerStatefulWidget {
 }
 
 class _MainScreenState extends ConsumerState<MainScreen> {
-  final scaffoldKey = GlobalKey<Scaffolsdtproate>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   DateTime? lastBackPressTime;
 

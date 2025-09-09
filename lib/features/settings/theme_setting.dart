@@ -45,26 +45,25 @@ class ThemeSetting extends ConsumerWidget {
           onTap: () async {
             final selected = await showModalBottomSheet<String>(
               context: context,
-              builder:
-                  (context) => Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      for (final themeKey in [
-                        settingsValueThemeModeSystem,
-                        settingsValueThemeModeLight,
-                        settingsValueThemeModeDark,
-                      ])
-                        ListTile(
-                          leading: Icon(
-                            themeKey == currentThemeKey
-                                ? Symbols.radio_button_checked
-                                : Symbols.radio_button_unchecked,
-                          ),
-                          title: Text(themeNames[themeKey] ?? themeKey),
-                          onTap: () => Navigator.pop(context, themeKey),
-                        ),
-                    ],
-                  ),
+              builder: (context) => Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  for (final themeKey in [
+                    settingsValueThemeModeSystem,
+                    settingsValueThemeModeLight,
+                    settingsValueThemeModeDark,
+                  ])
+                    ListTile(
+                      leading: Icon(
+                        themeKey == currentThemeKey
+                            ? Symbols.radio_button_checked
+                            : Symbols.radio_button_unchecked,
+                      ),
+                      title: Text(themeNames[themeKey] ?? themeKey),
+                      onTap: () => Navigator.pop(context, themeKey),
+                    ),
+                ],
+              ),
             );
             if (selected != null && selected != currentThemeKey) {
               await ref
@@ -74,18 +73,16 @@ class ThemeSetting extends ConsumerWidget {
           },
         );
       },
-      loading:
-          () => ListTile(
-            leading: const Icon(Symbols.brightness_6),
-            title: Text(loc.theme),
-            subtitle: Text("${loc.loading}..."),
-          ),
-      error:
-          (e, st) => ListTile(
-            leading: const Icon(Symbols.brightness_6),
-            title: Text(loc.theme),
-            subtitle: Text("Error: $e"),
-          ),
+      loading: () => ListTile(
+        leading: const Icon(Symbols.brightness_6),
+        title: Text(loc.theme),
+        subtitle: Text("${loc.loading}..."),
+      ),
+      error: (e, st) => ListTile(
+        leading: const Icon(Symbols.brightness_6),
+        title: Text(loc.theme),
+        subtitle: Text("Error: $e"),
+      ),
     );
   }
 }

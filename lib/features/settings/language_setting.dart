@@ -37,25 +37,24 @@ class LanguageSetting extends ConsumerWidget {
           onTap: () async {
             final selected = await showModalBottomSheet<Locale>(
               context: context,
-              builder:
-                  (context) => Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      for (final locale in supportedLocales)
-                        ListTile(
-                          leading: Icon(
-                            locale.languageCode == currentLocale.languageCode
-                                ? Symbols.radio_button_checked
-                                : Symbols.radio_button_unchecked,
-                          ),
-                          title: Text(
-                            languageNames[locale.languageCode] ??
-                                locale.languageCode,
-                          ),
-                          onTap: () => Navigator.pop(context, locale),
-                        ),
-                    ],
-                  ),
+              builder: (context) => Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  for (final locale in supportedLocales)
+                    ListTile(
+                      leading: Icon(
+                        locale.languageCode == currentLocale.languageCode
+                            ? Symbols.radio_button_checked
+                            : Symbols.radio_button_unchecked,
+                      ),
+                      title: Text(
+                        languageNames[locale.languageCode] ??
+                            locale.languageCode,
+                      ),
+                      onTap: () => Navigator.pop(context, locale),
+                    ),
+                ],
+              ),
             );
             if (selected != null && selected != currentLocale) {
               await ref
@@ -65,18 +64,16 @@ class LanguageSetting extends ConsumerWidget {
           },
         );
       },
-      loading:
-          () => ListTile(
-            leading: const Icon(Symbols.language),
-            title: Text(loc.language),
-            subtitle: Text("${loc.loading}..."),
-          ),
-      error:
-          (e, st) => ListTile(
-            leading: const Icon(Symbols.language),
-            title: Text(loc.language),
-            subtitle: Text("Error: $e"),
-          ),
+      loading: () => ListTile(
+        leading: const Icon(Symbols.language),
+        title: Text(loc.language),
+        subtitle: Text("${loc.loading}..."),
+      ),
+      error: (e, st) => ListTile(
+        leading: const Icon(Symbols.language),
+        title: Text(loc.language),
+        subtitle: Text("Error: $e"),
+      ),
     );
   }
 }

@@ -25,31 +25,28 @@ class MyApp extends ConsumerWidget {
     var settingsAsync = ref.watch(settingsServiceNotifierProvider);
 
     return settingsAsync.when(
-      data:
-          (settings) => MaterialApp(
-            title: "App Title",
-            themeMode: settings.themeMode,
-            theme: light,
-            darkTheme: dark,
-            locale: settings.locale,
-            supportedLocales: const [Locale("en", ""), Locale("de", "")],
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            routes: {
-              HomeScreen.path:
-                  (context) => const MainScreen(child: HomeScreen()),
-              SettingsScreen.path:
-                  (context) => const MainScreen(child: SettingsScreen()),
-            },
-            onUnknownRoute:
-                (settings) => MaterialPageRoute(
-                  builder: (context) => const MainScreen(child: HomeScreen()),
-                ),
-          ),
+      data: (settings) => MaterialApp(
+        title: "App Title",
+        themeMode: settings.themeMode,
+        theme: light,
+        darkTheme: dark,
+        locale: settings.locale,
+        supportedLocales: const [Locale("en", ""), Locale("de", "")],
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        routes: {
+          HomeScreen.path: (context) => const MainScreen(child: HomeScreen()),
+          SettingsScreen.path: (context) =>
+              const MainScreen(child: SettingsScreen()),
+        },
+        onUnknownRoute: (settings) => MaterialPageRoute(
+          builder: (context) => const MainScreen(child: HomeScreen()),
+        ),
+      ),
       loading: () => Center(child: const CircularProgressIndicator()),
       error: (e, st) => Center(child: Text("Error: $e")),
     );
