@@ -1,5 +1,7 @@
 // Package Imports
 import "package:sqflite/sqflite.dart";
+
+// Project Imports
 import "package:sdtpro/core/db/db.dart";
 
 class SettingsRepo {
@@ -10,7 +12,7 @@ class SettingsRepo {
   static const String _table = "settings";
 
   Future<void> setSetting(String key, String value) async {
-    final db = await Db.getInstance();
+    final db = await Db.getUserDbInstance();
     await db.insert(_table, {
       "key": key,
       "value": value,
@@ -18,7 +20,7 @@ class SettingsRepo {
   }
 
   Future<String?> getSetting(String key) async {
-    final db = await Db.getInstance();
+    final db = await Db.getUserDbInstance();
     final List<Map<String, dynamic>> settings = await db.query(
       _table,
       where: "key = ?",
@@ -31,7 +33,7 @@ class SettingsRepo {
   }
 
   Future<Map<String, String>> getAllSettings() async {
-    final db = await Db.getInstance();
+    final db = await Db.getUserDbInstance();
     final settings = await db.query(_table);
     final Map<String, String> settingsMap = {};
     for (final setting in settings) {

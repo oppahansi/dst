@@ -1,5 +1,8 @@
-const String dbName = "sdtpro.db";
-const String dbPath = "assets/db/$dbName";
+const String appName = "LTC";
+const String dataDbName = "sdt_data.db";
+const String dataDbPath = "assets/db/$dataDbName";
+const String userDbNane = "sdt_user.db";
+const String userDbPath = "assets/db/$userDbNane";
 
 const String settingsTable = "settings";
 const String settingsKeyLocale = "locale";

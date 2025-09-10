@@ -1,5 +1,5 @@
 // Package Imports
-import 'package:sqflite/sqflite.dart';
+import "package:sqflite/sqflite.dart";
 
 typedef Migration = Future<void> Function(Database db);
 

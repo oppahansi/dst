@@ -1,31 +1,32 @@
 // Dart Imports
 import "dart:io";
 
-// Flutter Imports
-import "package:flutter/services.dart";
-
 // Package Imports
+import "package:flutter/services.dart";
 import "package:path/path.dart";
 import "package:sqflite/sqflite.dart";
 import "package:path_provider/path_provider.dart";
-import "package:sdtpro/core/utils/constants.dart";
+
+// Project Imports
 import "package:sdtpro/core/db/migrations.dart";
+import "package:sdtpro/core/utils/constants.dart";
 
 class Db {
   static const int dbVersion = 1;
 
-  static Database? _instance;
+  static Database? _dataDbInstance;
+  static Database? _userDbInstance;
 
-  static Future<Database> getInstance() async {
-    if (_instance != null) {
-      return _instance!;
+  static Future<Database> getDataDbInstance() async {
+    if (_dataDbInstance != null) {
+      return _dataDbInstance!;
     }
 
     final documentsDirectory = await getApplicationDocumentsDirectory();
-    final path = join(documentsDirectory.path, dbName);
+    final path = join(documentsDirectory.path, dataDbName);
 
     if (!await File(path).exists()) {
-      ByteData data = await rootBundle.load(dbPath);
+      ByteData data = await rootBundle.load(dataDbPath);
       List<int> bytes = data.buffer.asUint8List(
         data.offsetInBytes,
         data.lengthInBytes,
@@ -34,7 +35,7 @@ class Db {
       await File(path).writeAsBytes(bytes, flush: true);
     }
 
-    _instance = await openDatabase(
+    _dataDbInstance = await openDatabase(
       path,
       version: dbVersion,
       onConfigure: (db) async {
@@ -51,15 +52,83 @@ class Db {
       onDowngrade: onDatabaseDowngradeDelete, // optional: wipe on downgrade
     );
 
-    return _instance!;
+    return _dataDbInstance!;
   }
 
-  static Future<Database> initializeDatabase() async {
+  static Future<Database> getUserDbInstance() async {
+    if (_userDbInstance != null) {
+      return _userDbInstance!;
+    }
+
     final documentsDirectory = await getApplicationDocumentsDirectory();
-    final path = join(documentsDirectory.path, dbName);
+    final path = join(documentsDirectory.path, userDbNane);
 
     if (!await File(path).exists()) {
-      ByteData data = await rootBundle.load(dbPath);
+      ByteData data = await rootBundle.load(userDbPath);
+      List<int> bytes = data.buffer.asUint8List(
+        data.offsetInBytes,
+        data.lengthInBytes,
+      );
+
+      await File(path).writeAsBytes(bytes, flush: true);
+    }
+
+    _userDbInstance = await openDatabase(
+      path,
+      version: dbVersion,
+      onConfigure: (db) async {
+        await db.execute('PRAGMA foreign_keys = ON');
+      },
+      // If the file is created by sqflite (not our asset), this runs.
+      onCreate: (db, version) async {
+        await DbMigrations.run(db, 0, version);
+      },
+      // For our asset (user_version=0), this runs on first open and on upgrades.
+      onUpgrade: (db, from, to) async {
+        await DbMigrations.run(db, from, to);
+      },
+      onDowngrade: onDatabaseDowngradeDelete, // optional: wipe on downgrade
+    );
+
+    return _userDbInstance!;
+  }
+
+  static Future<Database> initializeDataDb() async {
+    final documentsDirectory = await getApplicationDocumentsDirectory();
+    final path = join(documentsDirectory.path, dataDbName);
+
+    if (!await File(path).exists()) {
+      ByteData data = await rootBundle.load(dataDbPath);
+      List<int> bytes = data.buffer.asUint8List(
+        data.offsetInBytes,
+        data.lengthInBytes,
+      );
+
+      await File(path).writeAsBytes(bytes, flush: true);
+    }
+
+    return openDatabase(
+      path,
+      version: dbVersion,
+      onConfigure: (db) async {
+        await db.execute('PRAGMA foreign_keys = ON');
+      },
+      onCreate: (db, version) async {
+        await DbMigrations.run(db, 0, version);
+      },
+      onUpgrade: (db, from, to) async {
+        await DbMigrations.run(db, from, to);
+      },
+      onDowngrade: onDatabaseDowngradeDelete,
+    );
+  }
+
+  static Future<Database> initializeUserDb() async {
+    final documentsDirectory = await getApplicationDocumentsDirectory();
+    final path = join(documentsDirectory.path, userDbNane);
+
+    if (!await File(path).exists()) {
+      ByteData data = await rootBundle.load(userDbPath);
       List<int> bytes = data.buffer.asUint8List(
         data.offsetInBytes,
         data.lengthInBytes,
@@ -86,16 +155,16 @@ class Db {
 
   /// Close the open database so the file can be safely copied or replaced.
   static Future<void> close() async {
-    if (_instance != null) {
-      await _instance!.close();
-      _instance = null;
+    if (_userDbInstance != null) {
+      await _userDbInstance!.close();
+      _userDbInstance = null;
     }
   }
 
   /// Absolute path to the active database file in the app documents directory.
   static Future<String> getDbPath() async {
     final documentsDirectory = await getApplicationDocumentsDirectory();
-    return join(documentsDirectory.path, dbName);
+    return join(documentsDirectory.path, userDbNane);
   }
 
   /// Create a timestamped backup of the DB inside the app's documents/backups.
@@ -110,7 +179,7 @@ class Db {
     String two(int n) => n.toString().padLeft(2, '0');
     final now = DateTime.now();
     final name =
-        "whereismysht_${now.year}${two(now.month)}${two(now.day)}_${two(now.hour)}${two(now.minute)}${two(now.second)}.db";
+        "${appName}_${now.year}${two(now.month)}${two(now.day)}_${two(now.hour)}${two(now.minute)}${two(now.second)}.db";
     final dest = File(join(backupsDir.path, name));
     return await File(srcPath).copy(dest.path);
   }
