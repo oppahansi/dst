@@ -11,7 +11,7 @@ import 'package:sdtpro/features/home/home_screen.dart';
 import 'package:sdtpro/features/settings/view/screens/settings_screen.dart';
 import 'package:sdtpro/features/settings/view/providers/settings_provider.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
-import 'package:sdtpro/main_screen.dart';
+import 'package:sdtpro/app/main_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
