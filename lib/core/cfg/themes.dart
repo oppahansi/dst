@@ -1,43 +1,37 @@
-// Flutter Imports
-import "package:flutter/cupertino.dart";
-
 // Package Imports
-import "package:flex_color_scheme/flex_color_scheme.dart";
+import "package:flutter/material.dart";
 
-final light = FlexThemeData.light(
-  // Using FlexColorScheme built-in FlexScheme enum based colors
-  scheme: FlexScheme.deepBlue,
-  // Component theme configurations for light mode.
-  subThemesData: const FlexSubThemesData(
-    interactionEffects: true,
-    tintedDisabledControls: true,
-    useM2StyleDividerInM3: true,
-    inputDecoratorIsFilled: true,
-    inputDecoratorBorderType: FlexInputBorderType.outline,
-    alignedDropdown: true,
-    navigationRailUseIndicator: true,
+// Define the seed color for your theme
+const seedColor = Colors.deepPurple;
+
+// Light theme data
+final light = ThemeData(
+  useMaterial3: true,
+  colorScheme: ColorScheme.fromSeed(
+    seedColor: seedColor,
+    brightness: Brightness.light,
   ),
-  // Direct ThemeData properties.
-  visualDensity: FlexColorScheme.comfortablePlatformDensity,
-  cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
+  visualDensity: VisualDensity.comfortable,
+  inputDecorationTheme: const InputDecorationTheme(
+    isDense: true,
+    filled: true,
+    border: OutlineInputBorder(),
+  ),
+  navigationRailTheme: const NavigationRailThemeData(useIndicator: true),
 );
 
-// The FlexColorScheme defined dark mode ThemeData.
-final dark = FlexThemeData.dark(
-  // Using FlexColorScheme built-in FlexScheme enum based colors.
-  scheme: FlexScheme.deepBlue,
-  // Component theme configurations for dark mode.
-  subThemesData: const FlexSubThemesData(
-    interactionEffects: true,
-    tintedDisabledControls: true,
-    blendOnColors: true,
-    useM2StyleDividerInM3: true,
-    inputDecoratorIsFilled: true,
-    inputDecoratorBorderType: FlexInputBorderType.outline,
-    alignedDropdown: true,
-    navigationRailUseIndicator: true,
+// Dark theme data
+final dark = ThemeData(
+  useMaterial3: true,
+  colorScheme: ColorScheme.fromSeed(
+    seedColor: seedColor,
+    brightness: Brightness.dark,
   ),
-  // Direct ThemeData properties.
-  visualDensity: FlexColorScheme.comfortablePlatformDensity,
-  cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
+  visualDensity: VisualDensity.comfortable,
+  inputDecorationTheme: const InputDecorationTheme(
+    isDense: true,
+    filled: true,
+    border: OutlineInputBorder(),
+  ),
+  navigationRailTheme: const NavigationRailThemeData(useIndicator: true),
 );

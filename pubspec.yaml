@@ -14,9 +14,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  cached_network_image: ^3.4.1
   cupertino_icons: ^1.0.8
   exui: ^1.0.7
-  flex_color_scheme: ^8.2.0
   flutter_riverpod: ^3.0.0-dev.17
   intl: ^0.20.2
   material_symbols_icons: ^4.2858.1
