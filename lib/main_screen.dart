@@ -1,10 +1,8 @@
-// Flutter Imports
+// Package Imports
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:flutter_riverpod/legacy.dart";
-
-// Package Imports
 import "package:exui/exui.dart";
 import "package:material_symbols_icons/symbols.dart";
 
@@ -12,7 +10,7 @@ import "package:material_symbols_icons/symbols.dart";
 import "package:sdtpro/core/utils/colors.dart";
 import "package:sdtpro/core/utils/extensions.dart";
 import "package:sdtpro/features/home/home_screen.dart";
-import "package:sdtpro/features/settings/settings_screen.dart";
+import "package:sdtpro/features/settings/view/screens/settings_screen.dart";
 import "package:sdtpro/l10n/app_localizations.dart";
 
 final currentTabIndexProvider = StateProvider<int>((ref) => 0);
@@ -86,47 +84,46 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 
         SystemNavigator.pop();
       },
-      child:
-          Scaffold(
-            resizeToAvoidBottomInset: true,
-            key: scaffoldKey,
-            backgroundColor: surfaceDimColor(context),
-            body: PageView(
-              controller: pageController,
-              onPageChanged: (index) {
-                ref.read(currentTabIndexProvider.notifier).state = index;
-              },
-              children: [HomeScreen(), SettingsScreen()],
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        key: scaffoldKey,
+        backgroundColor: surfaceDimColor(context),
+        body: PageView(
+          controller: pageController,
+          onPageChanged: (index) {
+            ref.read(currentTabIndexProvider.notifier).state = index;
+          },
+          children: [HomeScreen(), SettingsScreen()],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: currentIndex,
+          selectedItemColor: primaryColor(context),
+          selectedIconTheme: IconThemeData(
+            color: secondaryColor(context),
+            size: 32,
+          ),
+          unselectedIconTheme: IconThemeData(
+            color: primaryColor(context),
+            size: 24,
+          ),
+          showSelectedLabels: true,
+          showUnselectedLabels: false,
+          onTap: (index) {
+            ref.read(currentTabIndexProvider.notifier).state = index;
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: Symbols.home.icon(),
+              label: loc.home.capitalize(),
             ),
-            bottomNavigationBar: BottomNavigationBar(
-              currentIndex: currentIndex,
-              selectedItemColor: primaryColor(context),
-              selectedIconTheme: IconThemeData(
-                color: secondaryColor(context),
-                size: 32,
-              ),
-              unselectedIconTheme: IconThemeData(
-                color: primaryColor(context),
-                size: 24,
-              ),
-              showSelectedLabels: true,
-              showUnselectedLabels: false,
-              onTap: (index) {
-                ref.read(currentTabIndexProvider.notifier).state = index;
-              },
-              items: [
-                BottomNavigationBarItem(
-                  icon: Symbols.home.icon(),
-                  label: loc.home.capitalize(),
-                ),
-                BottomNavigationBarItem(
-                  icon: Symbols.settings.icon(),
-                  label: loc.settings.capitalize(),
-                ),
-              ],
-              type: BottomNavigationBarType.fixed,
+            BottomNavigationBarItem(
+              icon: Symbols.settings.icon(),
+              label: loc.settings.capitalize(),
             ),
-          ).safeArea(),
+          ],
+          type: BottomNavigationBarType.fixed,
+        ),
+      ).safeArea(),
     );
   }
 }

@@ -1,4 +1,5 @@
-const String appName = "LTC";
+const String appName = "SDT";
+const String appTitle = "Since Days To";
 const String dataDbName = "sdt_data.db";
 const String dataDbPath = "assets/db/$dataDbName";
 const String userDbNane = "sdt_user.db";

@@ -1,8 +1,8 @@
-// Flutter Imports
+// Package Imports
 import "package:flutter/material.dart";
 
-// Package Imports
-import "package:sdtpro/core/models/settings.dart";
+// Project Imports
+import "package:sdtpro/features/settings/domain/entities/settings.dart";
 import "package:sdtpro/core/repos/settings_repo.dart";
 import "package:sdtpro/core/utils/constants.dart";
 

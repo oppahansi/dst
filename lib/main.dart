@@ -1,20 +1,33 @@
 // Flutter Imports
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Package Imports
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// Project Imports
 import 'package:sdtpro/core/cfg/themes.dart';
-import 'package:sdtpro/core/provider/settings_service_provider.dart';
+import 'package:sdtpro/core/utils/constants.dart';
 import 'package:sdtpro/features/home/home_screen.dart';
-import 'package:sdtpro/features/settings/settings_screen.dart';
+import 'package:sdtpro/features/settings/view/screens/settings_screen.dart';
+import 'package:sdtpro/features/settings/view/providers/settings_provider.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 import 'package:sdtpro/main_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const ProviderScope(child: MyApp()));
+  final initialSettings = await loadInitialSettings();
+
+  runApp(
+    ProviderScope(
+      overrides: [
+        settingsNotifierProvider.overrideWith(
+          () => SettingsNotifier(initialSettings),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends ConsumerWidget {
@@ -22,33 +35,24 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var settingsAsync = ref.watch(settingsServiceNotifierProvider);
+    final settings = ref.watch(settingsNotifierProvider);
 
-    return settingsAsync.when(
-      data: (settings) => MaterialApp(
-        title: "App Title",
-        themeMode: settings.themeMode,
-        theme: light,
-        darkTheme: dark,
-        locale: settings.locale,
-        supportedLocales: const [Locale("en", ""), Locale("de", "")],
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        routes: {
-          HomeScreen.path: (context) => const MainScreen(child: HomeScreen()),
-          SettingsScreen.path: (context) =>
-              const MainScreen(child: SettingsScreen()),
-        },
-        onUnknownRoute: (settings) => MaterialPageRoute(
-          builder: (context) => const MainScreen(child: HomeScreen()),
-        ),
+    return MaterialApp(
+      title: appTitle,
+      themeMode: settings.themeMode,
+      theme: light,
+      darkTheme: dark,
+      locale: settings.locale,
+      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      routes: {
+        HomeScreen.path: (context) => const MainScreen(child: HomeScreen()),
+        SettingsScreen.path: (context) =>
+            const MainScreen(child: SettingsScreen()),
+      },
+      onUnknownRoute: (settings) => MaterialPageRoute(
+        builder: (context) => const MainScreen(child: HomeScreen()),
       ),
-      loading: () => Center(child: const CircularProgressIndicator()),
-      error: (e, st) => Center(child: Text("Error: $e")),
     );
   }
 }

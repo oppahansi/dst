@@ -1,12 +1,12 @@
-// Flutter Imports
+// Package Imports
 import "package:flutter/material.dart";
 
-// Package Imports
+// Project Imports
 import "package:sdtpro/core/utils/colors.dart";
 import "package:sdtpro/core/utils/extensions.dart";
 import "package:sdtpro/core/utils/text_styles.dart";
-import "package:sdtpro/features/settings/language_setting.dart";
-import "package:sdtpro/features/settings/theme_setting.dart";
+import "package:sdtpro/features/settings/view/widgets/language_setting.dart";
+import "package:sdtpro/features/settings/view/widgets/theme_setting.dart";
 import "package:sdtpro/l10n/app_localizations.dart";
 
 class SettingsScreen extends StatelessWidget {
