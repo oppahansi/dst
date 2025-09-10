@@ -12,7 +12,7 @@ import "package:sdtpro/core/db/migrations.dart";
 import "package:sdtpro/core/utils/constants.dart";
 
 class Db {
-  static const int dbVersion = 1;
+  static const int dbVersion = 2;
 
   static Database? _dataDbInstance;
   static Database? _userDbInstance;

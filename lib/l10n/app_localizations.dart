@@ -98,17 +98,65 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
+  /// No description provided for @add.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
   /// No description provided for @dark.
   ///
   /// In en, this message translates to:
   /// **'dark'**
   String get dark;
 
+  /// No description provided for @date.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get date;
+
+  /// No description provided for @days.
+  ///
+  /// In en, this message translates to:
+  /// **'days'**
+  String get days;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
   /// No description provided for @english.
   ///
   /// In en, this message translates to:
   /// **'englisch'**
   String get english;
+
+  /// No description provided for @error.
+  ///
+  /// In en, this message translates to:
+  /// **'error'**
+  String get error;
 
   /// No description provided for @german.
   ///
@@ -140,11 +188,41 @@ abstract class AppLocalizations {
   /// **'loading'**
   String get loading;
 
+  /// No description provided for @preview.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview'**
+  String get preview;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @select.
+  ///
+  /// In en, this message translates to:
+  /// **'Select'**
+  String get select;
+
   /// No description provided for @settings.
   ///
   /// In en, this message translates to:
   /// **'settings'**
   String get settings;
+
+  /// No description provided for @simple.
+  ///
+  /// In en, this message translates to:
+  /// **'Simple'**
+  String get simple;
+
+  /// No description provided for @stylized.
+  ///
+  /// In en, this message translates to:
+  /// **'Stylized'**
+  String get stylized;
 
   /// No description provided for @system.
   ///
@@ -158,6 +236,12 @@ abstract class AppLocalizations {
   /// **'theme'**
   String get theme;
 
+  /// No description provided for @title.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get title;
+
   /// No description provided for @days_since.
   ///
   /// In en, this message translates to:
@@ -170,11 +254,131 @@ abstract class AppLocalizations {
   /// **'Days To'**
   String get days_to;
 
+  /// No description provided for @delete_entry_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Entry?'**
+  String get delete_entry_title;
+
+  /// No description provided for @description_optional.
+  ///
+  /// In en, this message translates to:
+  /// **'Description (Optional)'**
+  String get description_optional;
+
+  /// No description provided for @image_optional.
+  ///
+  /// In en, this message translates to:
+  /// **'Image (Optional)'**
+  String get image_optional;
+
+  /// No description provided for @load_more.
+  ///
+  /// In en, this message translates to:
+  /// **'Load More'**
+  String get load_more;
+
+  /// No description provided for @remove_image.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove Image'**
+  String get remove_image;
+
+  /// No description provided for @save_changes.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Changes'**
+  String get save_changes;
+
+  /// No description provided for @view_license.
+  ///
+  /// In en, this message translates to:
+  /// **'View license'**
+  String get view_license;
+
+  /// No description provided for @could_not_launch_url.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not launch {url}'**
+  String could_not_launch_url(Object url);
+
+  /// No description provided for @days_since_title.
+  ///
+  /// In en, this message translates to:
+  /// **'days since {title}'**
+  String days_since_title(Object title);
+
+  /// No description provided for @delete_entry_confirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this entry? This action cannot be undone.'**
+  String get delete_entry_confirmation;
+
+  /// No description provided for @failed_to_load_images.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load images.'**
+  String get failed_to_load_images;
+
+  /// No description provided for @no_images_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No images found.'**
+  String get no_images_found;
+
+  /// No description provided for @please_enter_a_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a title'**
+  String get please_enter_a_title;
+
+  /// No description provided for @please_select_a_date.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a date'**
+  String get please_select_a_date;
+
   /// No description provided for @prompt_for_exit.
   ///
   /// In en, this message translates to:
   /// **'Press again to exit the app.'**
   String get prompt_for_exit;
+
+  /// No description provided for @search_for_an_image.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for an image...'**
+  String get search_for_an_image;
+
+  /// No description provided for @select_a_date.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a date'**
+  String get select_a_date;
+
+  /// No description provided for @select_an_image.
+  ///
+  /// In en, this message translates to:
+  /// **'Select an Image'**
+  String get select_an_image;
+
+  /// No description provided for @tap_to_change_the_image.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to change the image'**
+  String get tap_to_change_the_image;
+
+  /// No description provided for @tap_to_select_an_image.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to select an image'**
+  String get tap_to_select_an_image;
+
+  /// No description provided for @view_on_source_page.
+  ///
+  /// In en, this message translates to:
+  /// **'View on source page'**
+  String get view_on_source_page;
 }
 
 class _AppLocalizationsDelegate

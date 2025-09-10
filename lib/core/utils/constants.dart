@@ -12,3 +12,6 @@ const String settingsKeyThemeMode = "theme_mode";
 const String settingsValueThemeModeSystem = "system";
 const String settingsValueThemeModeLight = "light";
 const String settingsValueThemeModeDark = "dark";
+
+const String fisApiKey = "123456789abcdef";
+const String fisApiBaseUrl = "https://sdt.oppahansi.de:8880";

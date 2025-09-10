@@ -9,6 +9,7 @@ import "package:material_symbols_icons/symbols.dart";
 // Project Imports
 import "package:sdtpro/core/utils/colors.dart";
 import "package:sdtpro/core/utils/extensions.dart";
+import "package:sdtpro/features/days_since/view/widgets/add_days_since_entry_sheet.dart";
 import "package:sdtpro/features/days_since/view/screens/days_since_screen.dart";
 import "package:sdtpro/features/days_to/view/screens/days_to_screen.dart";
 import "package:sdtpro/features/home/home_screen.dart";
@@ -58,21 +59,22 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 
     switch (index) {
       case 1: // DaysSinceScreen
-        tooltip = "Add ${loc.days_since}";
+        tooltip = "${loc.add} ${loc.days_since}";
         onPressed = () {
-          // TODO: Implement action for adding a "Days Since" event.
-          // For example, show a dialog or navigate to an "add item" screen.
-          context.showSnackBar(
-            SnackBar(content: Text("Add new '${loc.days_since}' event.")),
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true, // Allows the sheet to be taller
+            useSafeArea: true, // Avoids system intrusions
+            builder: (context) => const AddDaysSinceEntrySheet(),
           );
         };
         break;
       case 2: // DaysToScreen
-        tooltip = "Add ${loc.days_to}";
+        tooltip = "${loc.add} ${loc.days_to}";
         onPressed = () {
           // TODO: Implement action for adding a "Days To" event.
           context.showSnackBar(
-            SnackBar(content: Text("Add new '${loc.days_to}' event.")),
+            SnackBar(content: Text("${loc.add} new '${loc.days_to}' event.")),
           );
         };
         break;

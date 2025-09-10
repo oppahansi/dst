@@ -12,12 +12,18 @@ class DbMigrations {
       // No-op (asset contains v1 schema). Keep for completeness.
     },
 
-    // 2: example migration (add a column)
-    // 2: (db) async {
-    //   await db.execute(
-    //     'ALTER TABLE item_transaction ADD COLUMN example_flag INTEGER NOT NULL DEFAULT 0',
-    //   );
-    // },
+    // 2: Add days_since_entries table
+    2: (db) async {
+      await db.execute('''
+        CREATE TABLE days_since_entries (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          title TEXT NOT NULL,
+          date TEXT NOT NULL,
+          description TEXT,
+          image_url TEXT,
+          display_mode TEXT NOT NULL
+        )''');
+    },
   };
 
   static Future<void> run(Database db, int from, int to) async {

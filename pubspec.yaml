@@ -18,12 +18,16 @@ dependencies:
   cupertino_icons: ^1.0.8
   exui: ^1.0.7
   flutter_riverpod: ^3.0.0-dev.17
+  flutter_svg: ^2.0.10+1
+  flutter_staggered_grid_view: ^0.7.0
+  http: ^1.2.2
   intl: ^0.20.2
   material_symbols_icons: ^4.2858.1
   path: ^1.9.1
   path_provider: ^2.1.5
   riverpod_annotation: ^3.0.0-dev.17
   sqflite: ^2.4.2
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:
@@ -40,7 +44,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/db/
+    - assets/db/ # Existing asset
+    - assets/logos/ # Add this line for the new logos
 
 flutter_intl:
   enabled: true
