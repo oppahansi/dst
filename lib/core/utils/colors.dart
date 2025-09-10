@@ -1,8 +1,5 @@
-// Flutter Imports
-import "package:flutter/material.dart";
-
 // Package Imports
-import "package:flex_color_scheme/flex_color_scheme.dart";
+import "package:flutter/material.dart";
 
 Color primaryColor(BuildContext context) =>
     Theme.of(context).colorScheme.primary;
@@ -99,23 +96,3 @@ Color onInverseSurfaceColor(BuildContext context) =>
 
 Color inversePrimaryColor(BuildContext context) =>
     Theme.of(context).colorScheme.inversePrimary;
-
-Color getColorForRating(int quality) {
-  if (quality <= 5) {
-    return Color.lerp(Colors.red, Colors.yellow, quality / 5)!;
-  } else {
-    return Color.lerp(Colors.yellow, Colors.green, (quality - 5) / 5)!;
-  }
-}
-
-Color weightDiffColor(double weightDiff) {
-  if (weightDiff < 0) {
-    return Colors.green;
-  } else if (weightDiff == 0) {
-    return Colors.grey;
-  } else {
-    return Colors.red;
-  }
-}
-
-Color get weightIconColor => Colors.greenAccent.darken(30);
