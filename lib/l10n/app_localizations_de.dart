@@ -39,5 +39,11 @@ class AppLocalizationsDe extends AppLocalizations {
   String get theme => 'design';
 
   @override
+  String get days_since => 'Tage seit';
+
+  @override
+  String get days_to => 'Tage bis';
+
+  @override
   String get prompt_for_exit => 'Drücken Sie erneut, um die App zu beenden.';
 }

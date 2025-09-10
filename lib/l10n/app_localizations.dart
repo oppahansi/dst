@@ -158,6 +158,18 @@ abstract class AppLocalizations {
   /// **'theme'**
   String get theme;
 
+  /// No description provided for @days_since.
+  ///
+  /// In en, this message translates to:
+  /// **'Days Since'**
+  String get days_since;
+
+  /// No description provided for @days_to.
+  ///
+  /// In en, this message translates to:
+  /// **'Days To'**
+  String get days_to;
+
   /// No description provided for @prompt_for_exit.
   ///
   /// In en, this message translates to:

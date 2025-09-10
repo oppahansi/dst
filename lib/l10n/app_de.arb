@@ -12,5 +12,8 @@
   "system": "system",
   "theme": "design",
 
+  "days_since": "Tage seit",
+  "days_to": "Tage bis",
+
   "prompt_for_exit": "Drücken Sie erneut, um die App zu beenden."
 }

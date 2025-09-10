@@ -39,5 +39,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get theme => 'theme';
 
   @override
+  String get days_since => 'Days Since';
+
+  @override
+  String get days_to => 'Days To';
+
+  @override
   String get prompt_for_exit => 'Press again to exit the app.';
 }

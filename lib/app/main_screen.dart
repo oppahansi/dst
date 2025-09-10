@@ -9,6 +9,8 @@ import "package:material_symbols_icons/symbols.dart";
 // Project Imports
 import "package:sdtpro/core/utils/colors.dart";
 import "package:sdtpro/core/utils/extensions.dart";
+import "package:sdtpro/features/days_since/view/screens/days_since_screen.dart";
+import "package:sdtpro/features/days_to/view/screens/days_to_screen.dart";
 import "package:sdtpro/features/home/home_screen.dart";
 import "package:sdtpro/features/settings/view/screens/settings_screen.dart";
 import "package:sdtpro/l10n/app_localizations.dart";
@@ -93,7 +95,12 @@ class _MainScreenState extends ConsumerState<MainScreen> {
           onPageChanged: (index) {
             ref.read(currentTabIndexProvider.notifier).state = index;
           },
-          children: [HomeScreen(), SettingsScreen()],
+          children: [
+            HomeScreen(),
+            DaysSinceScreen(),
+            DaysToScreen(),
+            SettingsScreen(),
+          ],
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: currentIndex,
@@ -117,6 +124,15 @@ class _MainScreenState extends ConsumerState<MainScreen> {
               label: loc.home.capitalize(),
             ),
             BottomNavigationBarItem(
+              icon: Symbols.calendar_month.icon(),
+              label: loc.days_since.capitalize(),
+            ),
+            BottomNavigationBarItem(
+              icon: Symbols.calendar_today.icon(),
+              label: loc.days_to.capitalize(),
+            ),
+
+            BottomNavigationBarItem(
               icon: Symbols.settings.icon(),
               label: loc.settings.capitalize(),
             ),
@@ -129,7 +145,12 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 }
 
 int getRouteIndex(String path) {
-  final bottomRoutes = [HomeScreen.path, SettingsScreen.path];
+  final bottomRoutes = [
+    HomeScreen.path,
+    DaysSinceScreen.path,
+    DaysToScreen.path,
+    SettingsScreen.path,
+  ];
 
   return bottomRoutes.indexWhere((route) => route == path);
 }

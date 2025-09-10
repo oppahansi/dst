@@ -12,5 +12,8 @@
   "system": "system",
   "theme": "theme",
 
+  "days_since": "Days Since",
+  "days_to": "Days To",
+  
   "prompt_for_exit": "Press again to exit the app."
 }
