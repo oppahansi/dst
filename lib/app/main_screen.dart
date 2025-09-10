@@ -49,6 +49,45 @@ class _MainScreenState extends ConsumerState<MainScreen> {
     super.dispose();
   }
 
+  Widget? _buildFab(BuildContext context, int index) {
+    final loc = AppLocalizations.of(context)!;
+
+    // Define the onPressed callback and tooltip based on the current screen.
+    final VoidCallback? onPressed;
+    final String? tooltip;
+
+    switch (index) {
+      case 1: // DaysSinceScreen
+        tooltip = "Add ${loc.days_since}";
+        onPressed = () {
+          // TODO: Implement action for adding a "Days Since" event.
+          // For example, show a dialog or navigate to an "add item" screen.
+          context.showSnackBar(
+            SnackBar(content: Text("Add new '${loc.days_since}' event.")),
+          );
+        };
+        break;
+      case 2: // DaysToScreen
+        tooltip = "Add ${loc.days_to}";
+        onPressed = () {
+          // TODO: Implement action for adding a "Days To" event.
+          context.showSnackBar(
+            SnackBar(content: Text("Add new '${loc.days_to}' event.")),
+          );
+        };
+        break;
+      default:
+        // Return null for any other screen that should not have a FAB.
+        return null;
+    }
+
+    return FloatingActionButton(
+      onPressed: onPressed,
+      tooltip: tooltip,
+      child: Symbols.add.icon(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final currentIndex = ref.watch(currentTabIndexProvider);
@@ -89,6 +128,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         key: scaffoldKey,
+        floatingActionButton: _buildFab(context, currentIndex),
         backgroundColor: surfaceDimColor(context),
         body: PageView(
           controller: pageController,
