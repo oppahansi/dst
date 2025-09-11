@@ -1,19 +1,15 @@
 // Flutter Imports
-// Dart imports
 import 'package:flutter/material.dart';
 
 // Package Imports
-// Package imports
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 // Project Imports
-// Project imports
 import 'package:sdtpro/core/utils/extensions.dart';
-import 'package:sdtpro/features/images/view/screens/image_search_screen.dart';
 import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
+import 'package:sdtpro/features/days_since/view/widgets/simple_days_since_entry_tile.dart';
 import 'package:sdtpro/features/days_since/view/providers/days_since_provider.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
@@ -32,11 +28,19 @@ class _AddDaysSinceEntrySheetState
   final _descriptionController = TextEditingController();
 
   DateTime? _selectedDate;
-  String? _selectedImageUrl;
-  DaysSinceDisplayMode _displayMode = DaysSinceDisplayMode.simple;
+
+  @override
+  void initState() {
+    super.initState();
+    // Add listener to rebuild on title change for the live preview.
+    _titleController.addListener(_rebuild);
+  }
+
+  void _rebuild() => setState(() {});
 
   @override
   void dispose() {
+    _titleController.removeListener(_rebuild);
     _titleController.dispose();
     _descriptionController.dispose();
     super.dispose();
@@ -56,16 +60,6 @@ class _AddDaysSinceEntrySheetState
     }
   }
 
-  Future<void> _pickImage() async {
-    final imageUrl = await context.push<String>(
-      MaterialPageRoute(builder: (context) => const ImageSearchScreen()),
-    );
-
-    if (imageUrl != null) {
-      setState(() => _selectedImageUrl = imageUrl);
-    }
-  }
-
   Future<void> _saveEntry() async {
     // Manually validate date selection
     setState(() {}); // a rebuild to show the error if date is null
@@ -79,8 +73,7 @@ class _AddDaysSinceEntrySheetState
       description: _descriptionController.text.isNotEmpty
           ? _descriptionController.text
           : null,
-      imageUrl: _selectedImageUrl,
-      displayMode: _displayMode,
+      displayMode: DaysSinceDisplayMode.simple,
     );
 
     // Call the notifier to add the entry
@@ -90,6 +83,39 @@ class _AddDaysSinceEntrySheetState
     if (mounted) {
       context.pop();
     }
+  }
+
+  Widget _buildPreview(AppLocalizations loc) {
+    final canPreview =
+        _titleController.text.isNotEmpty && _selectedDate != null;
+
+    if (!canPreview) {
+      return const SizedBox.shrink();
+    }
+
+    final previewEntry = DaysSinceEntry(
+      title: _titleController.text,
+      date: _selectedDate!,
+      description: _descriptionController.text.isNotEmpty
+          ? _descriptionController.text
+          : null,
+      displayMode: DaysSinceDisplayMode.simple,
+    );
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          loc.preview.capitalize(),
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        const SizedBox(height: 8),
+        SimpleDaysSinceEntryTile(entry: previewEntry, isTappable: false),
+        const SizedBox(height: 24),
+        const Divider(),
+        const SizedBox(height: 16),
+      ],
+    );
   }
 
   @override
@@ -107,6 +133,7 @@ class _AddDaysSinceEntrySheetState
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              _buildPreview(loc),
               Text(
                 "${loc.add} ${loc.days_since}",
                 style: Theme.of(context).textTheme.titleLarge,
@@ -147,57 +174,12 @@ class _AddDaysSinceEntrySheetState
               const SizedBox(height: 16),
               TextFormField(
                 controller: _descriptionController,
+                maxLines: 999,
+                minLines: 5,
                 decoration: InputDecoration(
                   labelText: loc.description_optional,
                 ),
-              ),
-              const SizedBox(height: 16),
-              ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: const Icon(Symbols.image),
-                title: Text(loc.image_optional),
-                subtitle: _selectedImageUrl == null
-                    ? Text(loc.tap_to_select_an_image)
-                    : Text(loc.tap_to_change_the_image),
-                trailing: _selectedImageUrl != null
-                    ? ClipRRect(
-                        borderRadius: BorderRadius.circular(4),
-                        child: CachedNetworkImage(
-                          imageUrl: _selectedImageUrl!,
-                          width: 48,
-                          height: 48,
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                    : null,
-                onTap: _pickImage,
-              ),
-              if (_selectedImageUrl != null)
-                TextButton.icon(
-                  icon: const Icon(Symbols.delete, size: 16),
-                  label: Text(loc.remove_image),
-                  onPressed: () => setState(() => _selectedImageUrl = null),
-                ),
-              const SizedBox(height: 24),
-              SegmentedButton<DaysSinceDisplayMode>(
-                segments: [
-                  ButtonSegment(
-                    value: DaysSinceDisplayMode.simple,
-                    icon: Icon(Symbols.list),
-                    label: Text(loc.simple),
-                  ),
-                  ButtonSegment(
-                    value: DaysSinceDisplayMode.stylized,
-                    icon: Icon(Symbols.gallery_thumbnail),
-                    label: Text(loc.stylized),
-                  ),
-                ],
-                selected: {_displayMode},
-                onSelectionChanged: (newSelection) {
-                  setState(() {
-                    _displayMode = newSelection.first;
-                  });
-                },
+                onChanged: (value) => setState(() {}),
               ),
               const SizedBox(height: 24),
               FilledButton(onPressed: _saveEntry, child: Text(loc.save)),

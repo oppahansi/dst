@@ -9,6 +9,7 @@ import "package:material_symbols_icons/symbols.dart";
 // Project Imports
 import "package:sdtpro/core/utils/colors.dart";
 import "package:sdtpro/core/utils/extensions.dart";
+import "package:sdtpro/features/days_since/view/screens/add_stylized_days_since_entry_screen.dart";
 import "package:sdtpro/features/days_since/view/widgets/add_days_since_entry_sheet.dart";
 import "package:sdtpro/features/days_since/view/screens/days_since_screen.dart";
 import "package:sdtpro/features/days_to/view/screens/days_to_screen.dart";
@@ -61,12 +62,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
       case 1: // DaysSinceScreen
         tooltip = "${loc.add} ${loc.days_since}";
         onPressed = () {
-          showModalBottomSheet(
-            context: context,
-            isScrollControlled: true, // Allows the sheet to be taller
-            useSafeArea: true, // Avoids system intrusions
-            builder: (context) => const AddDaysSinceEntrySheet(),
-          );
+          _showAddEntryChoice(context);
         };
         break;
       case 2: // DaysToScreen
@@ -87,6 +83,41 @@ class _MainScreenState extends ConsumerState<MainScreen> {
       onPressed: onPressed,
       tooltip: tooltip,
       child: Symbols.add.icon(),
+    );
+  }
+
+  void _showAddEntryChoice(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext bc) {
+        return SafeArea(
+          child: Wrap(
+            children: <Widget>[
+              ListTile(
+                leading: const Icon(Symbols.list),
+                title: Text(loc.simple.capitalize()),
+                onTap: () {
+                  context.pop(); // Close the choice sheet
+                  showModalBottomSheet<void>(
+                    context: context,
+                    isScrollControlled: true,
+                    useSafeArea: true,
+                    builder: (context) => const AddDaysSinceEntrySheet(),
+                  );
+                },
+              ),
+              ListTile(
+                leading: const Icon(Symbols.gallery_thumbnail),
+                title: Text(loc.stylized.capitalize()),
+                onTap: () => Navigator.of(
+                  context,
+                ).popAndPushNamed(AddStylizedDaysSinceEntryScreen.path),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -167,13 +198,12 @@ class _MainScreenState extends ConsumerState<MainScreen> {
             ),
             BottomNavigationBarItem(
               icon: Symbols.calendar_month.icon(),
-              label: loc.days_since.capitalize(),
+              label: loc.days_since,
             ),
             BottomNavigationBarItem(
               icon: Symbols.calendar_today.icon(),
               label: loc.days_to.capitalize(),
             ),
-
             BottomNavigationBarItem(
               icon: Symbols.settings.icon(),
               label: loc.settings.capitalize(),

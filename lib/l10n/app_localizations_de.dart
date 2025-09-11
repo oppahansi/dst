@@ -15,6 +15,15 @@ class AppLocalizationsDe extends AppLocalizations {
   String get cancel => 'Abbrechen';
 
   @override
+  String get color => 'Farbe';
+
+  @override
+  String get content => 'Inhalt';
+
+  @override
+  String get customize => 'Anpassen';
+
+  @override
   String get dark => 'dunkel';
 
   @override
@@ -39,10 +48,16 @@ class AppLocalizationsDe extends AppLocalizations {
   String get error => 'fehler';
 
   @override
+  String get default_key => 'Standard';
+
+  @override
   String get german => 'deutsch';
 
   @override
   String get home => 'startseite';
+
+  @override
+  String get icon => 'Symbol';
 
   @override
   String get language => 'sprache';
@@ -54,10 +69,19 @@ class AppLocalizationsDe extends AppLocalizations {
   String get loading => 'lade';
 
   @override
+  String get overlay => 'Überlagerung';
+
+  @override
   String get preview => 'Vorschau';
 
   @override
+  String get print => 'Drucken';
+
+  @override
   String get save => 'Speichern';
+
+  @override
+  String get outlined => 'Umrandet';
 
   @override
   String get select => 'Auswählen';
@@ -69,6 +93,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get simple => 'Einfach';
 
   @override
+  String get share => 'Teilen';
+
+  @override
+  String get slim => 'Dünn';
+
+  @override
   String get stylized => 'Stilisiert';
 
   @override
@@ -78,7 +108,19 @@ class AppLocalizationsDe extends AppLocalizations {
   String get theme => 'design';
 
   @override
+  String get thick => 'Dick';
+
+  @override
   String get title => 'Titel';
+
+  @override
+  String get transparency => 'Transparenz';
+
+  @override
+  String get customize_style => 'Stil anpassen';
+
+  @override
+  String get days_counter_text => 'Tage-Zähler Text';
 
   @override
   String get days_since => 'Tage seit';
@@ -87,10 +129,22 @@ class AppLocalizationsDe extends AppLocalizations {
   String get days_to => 'Tage bis';
 
   @override
+  String get date_format => 'Datumsformat';
+
+  @override
   String get delete_entry_title => 'Eintrag löschen?';
 
   @override
   String get description_optional => 'Beschreibung (Optional)';
+
+  @override
+  String get divider_thickness => 'Linienstärke';
+
+  @override
+  String get font_family => 'Schriftart';
+
+  @override
+  String get font_size => 'Schriftgröße';
 
   @override
   String get image_optional => 'Bild (Optional)';
@@ -99,13 +153,37 @@ class AppLocalizationsDe extends AppLocalizations {
   String get load_more => 'Mehr laden';
 
   @override
+  String get new_event => 'Neues Ereignis';
+
+  @override
   String get remove_image => 'Bild entfernen';
+
+  @override
+  String get stylized_layout => 'Stilisiertes Layout';
 
   @override
   String get save_changes => 'Änderungen speichern';
 
   @override
+  String get screenshot_view => 'Screenshot-Ansicht';
+
+  @override
+  String get show_date => 'Datum anzeigen';
+
+  @override
+  String get subtitle_text => 'Untertitel Text';
+
+  @override
+  String get take_screenshot => 'Screenshot aufnehmen';
+
+  @override
+  String get title_text => 'Titel Text';
+
+  @override
   String get view_license => 'Lizenz ansehen';
+
+  @override
+  String get choose_from_gallery => 'Aus Galerie wählen';
 
   @override
   String could_not_launch_url(Object url) {
@@ -137,6 +215,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get prompt_for_exit => 'Drücken Sie erneut, um die App zu beenden.';
 
   @override
+  String get screenshot_saved => 'Screenshot in Galerie gespeichert';
+
+  @override
   String get search_for_an_image => 'Suche nach einem Bild...';
 
   @override
@@ -146,11 +227,26 @@ class AppLocalizationsDe extends AppLocalizations {
   String get select_an_image => 'Wähle ein Bild aus';
 
   @override
+  String get search_online => 'Online suchen';
+
+  @override
+  String since_date(Object date) {
+    return 'seit $date';
+  }
+
+  @override
   String get tap_to_change_the_image => 'Tippe, um das Bild zu ändern';
+
+  @override
+  String get take_a_picture => 'Foto aufnehmen';
 
   @override
   String get tap_to_select_an_image => 'Tippe, um ein Bild auszuwählen';
 
   @override
   String get view_on_source_page => 'Auf Quellseite ansehen';
+
+  @override
+  String get tap_edit_to_add_description =>
+      'Tippe auf Bearbeiten, um eine Beschreibung hinzuzufügen';
 }

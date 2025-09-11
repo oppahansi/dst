@@ -110,6 +110,24 @@ abstract class AppLocalizations {
   /// **'Cancel'**
   String get cancel;
 
+  /// No description provided for @color.
+  ///
+  /// In en, this message translates to:
+  /// **'Color'**
+  String get color;
+
+  /// No description provided for @content.
+  ///
+  /// In en, this message translates to:
+  /// **'Content'**
+  String get content;
+
+  /// No description provided for @customize.
+  ///
+  /// In en, this message translates to:
+  /// **'Customize'**
+  String get customize;
+
   /// No description provided for @dark.
   ///
   /// In en, this message translates to:
@@ -158,6 +176,12 @@ abstract class AppLocalizations {
   /// **'error'**
   String get error;
 
+  /// No description provided for @default_key.
+  ///
+  /// In en, this message translates to:
+  /// **'Default'**
+  String get default_key;
+
   /// No description provided for @german.
   ///
   /// In en, this message translates to:
@@ -169,6 +193,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'home'**
   String get home;
+
+  /// No description provided for @icon.
+  ///
+  /// In en, this message translates to:
+  /// **'Icon'**
+  String get icon;
 
   /// No description provided for @language.
   ///
@@ -188,17 +218,35 @@ abstract class AppLocalizations {
   /// **'loading'**
   String get loading;
 
+  /// No description provided for @overlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Overlay'**
+  String get overlay;
+
   /// No description provided for @preview.
   ///
   /// In en, this message translates to:
   /// **'Preview'**
   String get preview;
 
+  /// No description provided for @print.
+  ///
+  /// In en, this message translates to:
+  /// **'Print'**
+  String get print;
+
   /// No description provided for @save.
   ///
   /// In en, this message translates to:
   /// **'Save'**
   String get save;
+
+  /// No description provided for @outlined.
+  ///
+  /// In en, this message translates to:
+  /// **'Outlined'**
+  String get outlined;
 
   /// No description provided for @select.
   ///
@@ -218,6 +266,18 @@ abstract class AppLocalizations {
   /// **'Simple'**
   String get simple;
 
+  /// No description provided for @share.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get share;
+
+  /// No description provided for @slim.
+  ///
+  /// In en, this message translates to:
+  /// **'Slim'**
+  String get slim;
+
   /// No description provided for @stylized.
   ///
   /// In en, this message translates to:
@@ -236,11 +296,35 @@ abstract class AppLocalizations {
   /// **'theme'**
   String get theme;
 
+  /// No description provided for @thick.
+  ///
+  /// In en, this message translates to:
+  /// **'Thick'**
+  String get thick;
+
   /// No description provided for @title.
   ///
   /// In en, this message translates to:
   /// **'Title'**
   String get title;
+
+  /// No description provided for @transparency.
+  ///
+  /// In en, this message translates to:
+  /// **'Transparency'**
+  String get transparency;
+
+  /// No description provided for @customize_style.
+  ///
+  /// In en, this message translates to:
+  /// **'Customize Style'**
+  String get customize_style;
+
+  /// No description provided for @days_counter_text.
+  ///
+  /// In en, this message translates to:
+  /// **'Days Counter Text'**
+  String get days_counter_text;
 
   /// No description provided for @days_since.
   ///
@@ -254,6 +338,12 @@ abstract class AppLocalizations {
   /// **'Days To'**
   String get days_to;
 
+  /// No description provided for @date_format.
+  ///
+  /// In en, this message translates to:
+  /// **'Date Format'**
+  String get date_format;
+
   /// No description provided for @delete_entry_title.
   ///
   /// In en, this message translates to:
@@ -265,6 +355,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Description (Optional)'**
   String get description_optional;
+
+  /// No description provided for @divider_thickness.
+  ///
+  /// In en, this message translates to:
+  /// **'Divider Thickness'**
+  String get divider_thickness;
+
+  /// No description provided for @font_family.
+  ///
+  /// In en, this message translates to:
+  /// **'Font Family'**
+  String get font_family;
+
+  /// No description provided for @font_size.
+  ///
+  /// In en, this message translates to:
+  /// **'Font Size'**
+  String get font_size;
 
   /// No description provided for @image_optional.
   ///
@@ -278,11 +386,23 @@ abstract class AppLocalizations {
   /// **'Load More'**
   String get load_more;
 
+  /// No description provided for @new_event.
+  ///
+  /// In en, this message translates to:
+  /// **'New Event'**
+  String get new_event;
+
   /// No description provided for @remove_image.
   ///
   /// In en, this message translates to:
   /// **'Remove Image'**
   String get remove_image;
+
+  /// No description provided for @stylized_layout.
+  ///
+  /// In en, this message translates to:
+  /// **'Stylized Layout'**
+  String get stylized_layout;
 
   /// No description provided for @save_changes.
   ///
@@ -290,11 +410,47 @@ abstract class AppLocalizations {
   /// **'Save Changes'**
   String get save_changes;
 
+  /// No description provided for @screenshot_view.
+  ///
+  /// In en, this message translates to:
+  /// **'Screenshot View'**
+  String get screenshot_view;
+
+  /// No description provided for @show_date.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Date'**
+  String get show_date;
+
+  /// No description provided for @subtitle_text.
+  ///
+  /// In en, this message translates to:
+  /// **'Subtitle Text'**
+  String get subtitle_text;
+
+  /// No description provided for @take_screenshot.
+  ///
+  /// In en, this message translates to:
+  /// **'Take Screenshot'**
+  String get take_screenshot;
+
+  /// No description provided for @title_text.
+  ///
+  /// In en, this message translates to:
+  /// **'Title Text'**
+  String get title_text;
+
   /// No description provided for @view_license.
   ///
   /// In en, this message translates to:
   /// **'View license'**
   String get view_license;
+
+  /// No description provided for @choose_from_gallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from gallery'**
+  String get choose_from_gallery;
 
   /// No description provided for @could_not_launch_url.
   ///
@@ -344,6 +500,12 @@ abstract class AppLocalizations {
   /// **'Press again to exit the app.'**
   String get prompt_for_exit;
 
+  /// No description provided for @screenshot_saved.
+  ///
+  /// In en, this message translates to:
+  /// **'Screenshot saved to gallery'**
+  String get screenshot_saved;
+
   /// No description provided for @search_for_an_image.
   ///
   /// In en, this message translates to:
@@ -362,11 +524,29 @@ abstract class AppLocalizations {
   /// **'Select an Image'**
   String get select_an_image;
 
+  /// No description provided for @search_online.
+  ///
+  /// In en, this message translates to:
+  /// **'Search online'**
+  String get search_online;
+
+  /// No description provided for @since_date.
+  ///
+  /// In en, this message translates to:
+  /// **'since {date}'**
+  String since_date(Object date);
+
   /// No description provided for @tap_to_change_the_image.
   ///
   /// In en, this message translates to:
   /// **'Tap to change the image'**
   String get tap_to_change_the_image;
+
+  /// No description provided for @take_a_picture.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a picture'**
+  String get take_a_picture;
 
   /// No description provided for @tap_to_select_an_image.
   ///
@@ -379,6 +559,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'View on source page'**
   String get view_on_source_page;
+
+  /// No description provided for @tap_edit_to_add_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap edit to add a description'**
+  String get tap_edit_to_add_description;
 }
 
 class _AppLocalizationsDelegate

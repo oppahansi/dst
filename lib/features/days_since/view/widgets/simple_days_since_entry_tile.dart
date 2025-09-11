@@ -1,6 +1,9 @@
 // Flutter Imports
 import 'package:flutter/material.dart';
 
+// Package Imports
+import 'package:intl/intl.dart';
+
 // Project Imports
 import 'package:sdtpro/core/utils/text_styles.dart';
 import 'package:sdtpro/features/days_since/view/screens/days_since_entry_detail_screen.dart';
@@ -9,7 +12,12 @@ import 'package:sdtpro/l10n/app_localizations.dart';
 
 class SimpleDaysSinceEntryTile extends StatelessWidget {
   final DaysSinceEntry entry;
-  const SimpleDaysSinceEntryTile({super.key, required this.entry});
+  final bool isTappable;
+  const SimpleDaysSinceEntryTile({
+    super.key,
+    required this.entry,
+    this.isTappable = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,23 +27,39 @@ class SimpleDaysSinceEntryTile extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 4.0),
       child: InkWell(
-        onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DaysSinceEntryDetailScreen(entry: entry),
-            ),
-          );
-        },
+        onTap: isTappable
+            ? () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        DaysSinceEntryDetailScreen(entry: entry),
+                  ),
+                );
+              }
+            : null,
         child: ListTile(
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
           title: Text(entry.title, style: titleMedium(context)),
           subtitle: entry.description != null
               ? Text(
                   entry.description!,
-                  maxLines: 1,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 )
               : null,
-          trailing: Text('$days ${loc.days}', style: headlineSmall(context)),
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text('$days ${loc.days}', style: titleMedium(context)),
+              Text(
+                loc.since_date(
+                  DateFormat.yMMMd(loc.localeName).format(entry.date),
+                ),
+                style: bodySmall(context),
+              ),
+            ],
+          ),
         ),
       ),
     );

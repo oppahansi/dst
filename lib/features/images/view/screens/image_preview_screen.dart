@@ -2,13 +2,13 @@
 import 'package:flutter/material.dart';
 
 // Package Imports
-import 'package:material_symbols_icons/symbols.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // Project Imports
 import 'package:sdtpro/features/images/domain/entities/fis_image.dart';
+import 'package:sdtpro/features/images/view/widgets/source_logo.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
 class ImagePreviewScreen extends StatefulWidget {
@@ -41,31 +41,6 @@ class _ImagePreviewScreenState extends State<ImagePreviewScreen> {
     }
   }
 
-  Widget _getSourceIcon(String? source) {
-    if (source == null) return const SizedBox.shrink();
-
-    final String lowerCaseSource = source.toLowerCase();
-    String? assetName;
-
-    if (lowerCaseSource.contains('pexels')) {
-      assetName = 'assets/logos/pexels.svg';
-    } else if (lowerCaseSource.contains('pixabay')) {
-      assetName = 'assets/logos/pixabay.svg';
-    } else if (lowerCaseSource.contains('unsplash')) {
-      assetName = 'assets/logos/unsplash.svg';
-    }
-
-    if (assetName != null) {
-      return SvgPicture.asset(
-        assetName,
-        height: 20,
-        colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-      );
-    }
-
-    return const Icon(Symbols.public, color: Colors.white, size: 20);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,7 +57,7 @@ class _ImagePreviewScreenState extends State<ImagePreviewScreen> {
               padding: const EdgeInsets.only(right: 16.0),
               child: InkWell(
                 onTap: () => _launchUrl(widget.image.source),
-                child: _getSourceIcon(widget.image.source),
+                child: SourceLogo(source: widget.image.source),
               ),
             ),
         ],

@@ -1,6 +1,9 @@
 // Package Imports
 import "package:sqflite/sqflite.dart";
 
+// Project Imports
+import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
+
 typedef Migration = Future<void> Function(Database db);
 
 class DbMigrations {
@@ -23,6 +26,22 @@ class DbMigrations {
           image_url TEXT,
           display_mode TEXT NOT NULL
         )''');
+    },
+
+    // 3: Add stylized_layout to days_since_entries
+    3: (db) async {
+      await db.execute('''
+        ALTER TABLE days_since_entries
+        ADD COLUMN stylized_layout TEXT NOT NULL DEFAULT '${StylizedLayoutMode.defaultLayout.name}'
+      ''');
+    },
+
+    // 4: Add stylized_settings to days_since_entries
+    4: (db) async {
+      await db.execute('''
+        ALTER TABLE days_since_entries
+        ADD COLUMN stylized_settings TEXT
+      ''');
     },
   };
 
