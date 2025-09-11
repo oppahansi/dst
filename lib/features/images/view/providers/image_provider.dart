@@ -77,8 +77,9 @@ class ImageSearch extends _$ImageSearch {
 
   Future<void> loadMore() async {
     final currentState = state.asData?.value;
-    if (state.isLoading || currentState == null || !currentState.hasMore)
+    if (state.isLoading || currentState == null || !currentState.hasMore) {
       return;
+    }
 
     final repo = ref.read(imageRepositoryProvider);
     final nextPage = currentState.page + 1;

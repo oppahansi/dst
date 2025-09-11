@@ -230,7 +230,9 @@ class _StylizedDaysSinceEntryCardState
                       ),
                   ] else
                     Container(
-                      color: Theme.of(context).colorScheme.surfaceVariant,
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.surfaceContainerHighest,
                     ),
 
                   // Overlay
@@ -265,7 +267,7 @@ class _StylizedDaysSinceEntryCardState
                         tooltip: loc.share,
                         onPressed: _captureAndShareScreenshot,
                         style: IconButton.styleFrom(
-                          backgroundColor: Colors.black.withOpacity(0.2),
+                          backgroundColor: Colors.black.withAlpha(50),
                         ),
                       ),
                     ),

@@ -103,7 +103,7 @@ class StylizedSettings {
 
   Map<String, dynamic> toMap() {
     return {
-      'overlayColor': overlayColor.value,
+      'overlayColor': overlayColor.toARGB32(),
       'overlayAlpha': overlayAlpha,
       'iconCodePoint': icon.codePoint,
       'iconFontFamily': icon.fontFamily,
@@ -118,7 +118,7 @@ class StylizedSettings {
       'subtitleFontFamily': subtitleFontFamily,
       'subtitleFontSize': subtitleFontSize,
       'subtitleFontWeightIndex': subtitleFontWeight.index,
-      'subtitleColor': subtitleColor.value,
+      'subtitleColor': subtitleColor.toARGB32(),
       'showSubtitleDate': showSubtitleDate,
       'subtitleDateFormat': subtitleDateFormat,
     };
@@ -126,7 +126,7 @@ class StylizedSettings {
 
   factory StylizedSettings.fromMap(Map<String, dynamic> map) {
     return StylizedSettings(
-      overlayColor: Color(map['overlayColor'] ?? Colors.black.value),
+      overlayColor: Color(map['overlayColor'] ?? Colors.black.toARGB32()),
       overlayAlpha: map['overlayAlpha']?.toDouble() ?? 0.4,
       icon: IconData(
         map['iconCodePoint'] ?? Symbols.star.codePoint,
@@ -145,7 +145,7 @@ class StylizedSettings {
       subtitleFontWeight: _fontWeightFromIndex(
         map['subtitleFontWeightIndex'] ?? 3,
       ),
-      subtitleColor: Color(map['subtitleColor'] ?? Colors.white70.value),
+      subtitleColor: Color(map['subtitleColor'] ?? Colors.white70.toARGB32()),
       showSubtitleDate: map['showSubtitleDate'] as bool? ?? true,
       subtitleDateFormat: map['subtitleDateFormat'] as String? ?? 'yMMMd',
     );

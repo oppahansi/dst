@@ -91,7 +91,10 @@ class _DaysSinceEntryDetailScreenState
       await ref
           .read(daysSinceNotifierProvider.notifier)
           .deleteEntry(widget.entry.id!);
-      context.pop(); // Close the detail screen
+
+      if (!context.mounted) return;
+
+      context.pop();
     }
   }
 

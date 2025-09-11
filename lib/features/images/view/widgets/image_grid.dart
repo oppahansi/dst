@@ -22,7 +22,10 @@ class ImageGrid extends StatelessWidget {
     if (urlString == null) return;
     final url = Uri.parse(urlString);
     if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-      // The context is captured in a stateless widget, so no need for a mounted check.
+      if (!context.mounted) {
+        return;
+      }
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(

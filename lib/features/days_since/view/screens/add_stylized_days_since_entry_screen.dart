@@ -675,7 +675,7 @@ class __StylizedSettingsSheetState extends State<_StylizedSettingsSheet> {
         ),
         if (_localSettings.showSubtitleDate)
           DropdownButtonFormField<String>(
-            value: _localSettings.subtitleDateFormat,
+            initialValue: _localSettings.subtitleDateFormat,
             decoration: InputDecoration(labelText: loc.date_format),
             items: _dateFormats.entries
                 .map(
@@ -801,7 +801,7 @@ class __StylizedSettingsSheetState extends State<_StylizedSettingsSheet> {
         ),
         const SizedBox(height: 16),
         DropdownButtonFormField<String>(
-          value: fontFamily,
+          initialValue: fontFamily,
           decoration: InputDecoration(labelText: loc.font_family),
           items: _fontFamilies
               .map((f) => DropdownMenuItem(value: f, child: Text(f)))
