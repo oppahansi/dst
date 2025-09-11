@@ -24,7 +24,7 @@ class DaysSinceNotifier extends _$DaysSinceNotifier {
     if (entries.isEmpty) {
       await repo.addEntry(
         DaysSinceEntry(
-          title: 'Flutter Project Started',
+          title: 'Simple Style Example',
           date: DateTime.now().subtract(const Duration(days: 42)),
           description: 'The beginning of a beautiful journey.',
           displayMode: DaysSinceDisplayMode.simple,
@@ -32,7 +32,7 @@ class DaysSinceNotifier extends _$DaysSinceNotifier {
       );
       await repo.addEntry(
         DaysSinceEntry(
-          title: 'Vacation in the Alps',
+          title: 'Stylized Style Example',
           date: DateTime.now().subtract(const Duration(days: 128)),
           imageUrl:
               'https://images.unsplash.com/photo-1506905925346-21bda4d32df4',
