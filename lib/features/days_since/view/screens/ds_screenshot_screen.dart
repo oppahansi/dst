@@ -20,17 +20,16 @@ import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart
 import 'package:sdtpro/features/days_since/domain/entities/stylized_settings.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
-class DaysSinceScreenshotScreen extends StatefulWidget {
+class DsScreenshotScreen extends StatefulWidget {
   final DaysSinceEntry entry;
 
-  const DaysSinceScreenshotScreen({super.key, required this.entry});
+  const DsScreenshotScreen({super.key, required this.entry});
 
   @override
-  State<DaysSinceScreenshotScreen> createState() =>
-      _DaysSinceScreenshotScreenState();
+  State<DsScreenshotScreen> createState() => _DsScreenshotScreenState();
 }
 
-class _DaysSinceScreenshotScreenState extends State<DaysSinceScreenshotScreen> {
+class _DsScreenshotScreenState extends State<DsScreenshotScreen> {
   final _screenshotController = ScreenshotController();
 
   @override

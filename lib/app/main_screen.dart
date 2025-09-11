@@ -9,9 +9,9 @@ import "package:material_symbols_icons/symbols.dart";
 // Project Imports
 import "package:sdtpro/core/utils/colors.dart";
 import "package:sdtpro/core/utils/extensions.dart";
-import "package:sdtpro/features/days_since/view/screens/add_stylized_days_since_entry_screen.dart";
-import "package:sdtpro/features/days_since/view/widgets/add_days_since_entry_sheet.dart";
-import "package:sdtpro/features/days_since/view/screens/days_since_screen.dart";
+import "package:sdtpro/features/days_since/view/screens/add_stylized_ds_screen.dart";
+import "package:sdtpro/features/days_since/view/widgets/add_simple_ds_sheet.dart";
+import "package:sdtpro/features/days_since/view/screens/ds_screen.dart";
 import "package:sdtpro/features/days_to/view/screens/days_to_screen.dart";
 import "package:sdtpro/features/home/home_screen.dart";
 import "package:sdtpro/features/settings/view/screens/settings_screen.dart";
@@ -103,7 +103,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
                     context: context,
                     isScrollControlled: true,
                     useSafeArea: true,
-                    builder: (context) => const AddDaysSinceEntrySheet(),
+                    builder: (context) => const AddSimpleDsSheet(),
                   );
                 },
               ),
@@ -112,7 +112,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
                 title: Text(loc.stylized.capitalize()),
                 onTap: () => Navigator.of(
                   context,
-                ).popAndPushNamed(AddStylizedDaysSinceEntryScreen.path),
+                ).popAndPushNamed(AddStylizedDsScreen.path),
               ),
             ],
           ),
@@ -170,7 +170,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
           },
           children: [
             HomeScreen(),
-            DaysSinceScreen(),
+            DsScreen(),
             DaysToScreen(),
             SettingsScreen(),
           ],
@@ -219,7 +219,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 int getRouteIndex(String path) {
   final bottomRoutes = [
     HomeScreen.path,
-    DaysSinceScreen.path,
+    DsScreen.path,
     DaysToScreen.path,
     SettingsScreen.path,
   ];

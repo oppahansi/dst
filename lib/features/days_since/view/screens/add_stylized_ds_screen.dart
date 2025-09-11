@@ -23,20 +23,19 @@ import 'package:sdtpro/features/images/view/providers/image_provider.dart';
 import 'package:sdtpro/features/images/view/screens/image_search_screen.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
-class AddStylizedDaysSinceEntryScreen extends ConsumerStatefulWidget {
+class AddStylizedDsScreen extends ConsumerStatefulWidget {
   final DaysSinceEntry? entry;
 
-  const AddStylizedDaysSinceEntryScreen({super.key, this.entry});
+  const AddStylizedDsScreen({super.key, this.entry});
 
   static final String path = '/add-stylized-days-since-entry';
 
   @override
-  ConsumerState<AddStylizedDaysSinceEntryScreen> createState() =>
-      _AddStylizedDaysSinceEntryScreenState();
+  ConsumerState<AddStylizedDsScreen> createState() =>
+      _AddStylizedDsScreenState();
 }
 
-class _AddStylizedDaysSinceEntryScreenState
-    extends ConsumerState<AddStylizedDaysSinceEntryScreen> {
+class _AddStylizedDsScreenState extends ConsumerState<AddStylizedDsScreen> {
   final _titleController = TextEditingController();
   DateTime _selectedDate = DateTime.now();
   FisImage? _selectedImage;

@@ -9,20 +9,18 @@ import 'package:material_symbols_icons/symbols.dart';
 // Project Imports
 import 'package:sdtpro/core/utils/extensions.dart';
 import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
-import 'package:sdtpro/features/days_since/view/widgets/simple_days_since_entry_tile.dart';
+import 'package:sdtpro/features/days_since/view/widgets/simple_ds_tile.dart';
 import 'package:sdtpro/features/days_since/view/providers/days_since_provider.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
-class AddDaysSinceEntrySheet extends ConsumerStatefulWidget {
-  const AddDaysSinceEntrySheet({super.key});
+class AddSimpleDsSheet extends ConsumerStatefulWidget {
+  const AddSimpleDsSheet({super.key});
 
   @override
-  ConsumerState<AddDaysSinceEntrySheet> createState() =>
-      _AddDaysSinceEntrySheetState();
+  ConsumerState<AddSimpleDsSheet> createState() => _AddSimpleDsSheetState();
 }
 
-class _AddDaysSinceEntrySheetState
-    extends ConsumerState<AddDaysSinceEntrySheet> {
+class _AddSimpleDsSheetState extends ConsumerState<AddSimpleDsSheet> {
   final _formKey = GlobalKey<FormState>();
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
@@ -32,7 +30,6 @@ class _AddDaysSinceEntrySheetState
   @override
   void initState() {
     super.initState();
-    // Add listener to rebuild on title change for the live preview.
     _titleController.addListener(_rebuild);
   }
 
@@ -110,7 +107,7 @@ class _AddDaysSinceEntrySheetState
           style: Theme.of(context).textTheme.titleMedium,
         ),
         const SizedBox(height: 8),
-        SimpleDaysSinceEntryTile(entry: previewEntry, isTappable: false),
+        SimpleDsTile(entry: previewEntry, isTappable: false),
         const SizedBox(height: 24),
         const Divider(),
         const SizedBox(height: 16),

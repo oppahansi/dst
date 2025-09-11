@@ -13,27 +13,25 @@ import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
 // Project Imports
-import 'package:sdtpro/features/days_since/view/screens/days_since_entry_detail_screen.dart';
+import 'package:sdtpro/features/days_since/view/screens/ds_detail_screen.dart';
 import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
 import 'package:sdtpro/features/days_since/domain/entities/stylized_settings.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
-class StylizedDaysSinceEntryCard extends StatefulWidget {
+class StylizedDsCard extends StatefulWidget {
   final DaysSinceEntry entry;
   final bool isTappable;
-  const StylizedDaysSinceEntryCard({
+  const StylizedDsCard({
     super.key,
     required this.entry,
     this.isTappable = true,
   });
 
   @override
-  State<StylizedDaysSinceEntryCard> createState() =>
-      _StylizedDaysSinceEntryCardState();
+  State<StylizedDsCard> createState() => _StylizedDsCardState();
 }
 
-class _StylizedDaysSinceEntryCardState
-    extends State<StylizedDaysSinceEntryCard> {
+class _StylizedDsCardState extends State<StylizedDsCard> {
   final _screenshotController = ScreenshotController();
 
   Future<void> _captureAndShareScreenshot() async {
@@ -202,7 +200,7 @@ class _StylizedDaysSinceEntryCardState
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) =>
-                            DaysSinceEntryDetailScreen(entry: widget.entry),
+                            DsDetailScreen(entry: widget.entry),
                       ),
                     );
                   }

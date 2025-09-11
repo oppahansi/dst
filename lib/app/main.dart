@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // Project Imports
 import 'package:sdtpro/core/cfg/themes.dart';
 import 'package:sdtpro/core/utils/constants.dart';
-import 'package:sdtpro/features/days_since/view/screens/add_stylized_days_since_entry_screen.dart';
+import 'package:sdtpro/features/days_since/view/screens/add_stylized_ds_screen.dart';
 import 'package:sdtpro/features/home/home_screen.dart';
 import 'package:sdtpro/features/settings/view/screens/settings_screen.dart';
 import 'package:sdtpro/features/settings/view/providers/settings_provider.dart';
@@ -50,8 +50,7 @@ class MyApp extends ConsumerWidget {
         HomeScreen.path: (context) => const MainScreen(child: HomeScreen()),
         SettingsScreen.path: (context) =>
             const MainScreen(child: SettingsScreen()),
-        AddStylizedDaysSinceEntryScreen.path: (context) =>
-            AddStylizedDaysSinceEntryScreen(),
+        AddStylizedDsScreen.path: (context) => AddStylizedDsScreen(),
       },
       onUnknownRoute: (settings) => MaterialPageRoute(
         builder: (context) => const MainScreen(child: HomeScreen()),

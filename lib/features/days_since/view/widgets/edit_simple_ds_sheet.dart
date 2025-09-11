@@ -15,17 +15,15 @@ import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart
 import 'package:sdtpro/features/days_since/view/providers/days_since_provider.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
-class EditDaysSinceEntrySheet extends ConsumerStatefulWidget {
+class EditSimpleDsSheet extends ConsumerStatefulWidget {
   final DaysSinceEntry entry;
-  const EditDaysSinceEntrySheet({super.key, required this.entry});
+  const EditSimpleDsSheet({super.key, required this.entry});
 
   @override
-  ConsumerState<EditDaysSinceEntrySheet> createState() =>
-      _EditDaysSinceEntrySheetState();
+  ConsumerState<EditSimpleDsSheet> createState() => _EditSimpleDsSheetState();
 }
 
-class _EditDaysSinceEntrySheetState
-    extends ConsumerState<EditDaysSinceEntrySheet> {
+class _EditSimpleDsSheetState extends ConsumerState<EditSimpleDsSheet> {
   final _formKey = GlobalKey<FormState>();
   late final TextEditingController _titleController;
   late final TextEditingController _descriptionController;

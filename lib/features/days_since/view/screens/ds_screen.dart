@@ -6,13 +6,13 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 // Project Imports
 import "package:sdtpro/features/days_since/domain/entities/days_since_entry.dart";
 import "package:sdtpro/features/days_since/view/providers/days_since_provider.dart";
-import "package:sdtpro/features/days_since/view/widgets/simple_days_since_entry_tile.dart";
-import "package:sdtpro/features/days_since/view/widgets/stylized_days_since_entry_card.dart";
+import "package:sdtpro/features/days_since/view/widgets/simple_ds_tile.dart";
+import "package:sdtpro/features/days_since/view/widgets/stylized_ds_card.dart";
 import "package:sdtpro/core/widgets/debug_settings_controlls.dart";
 import "package:sdtpro/l10n/app_localizations.dart";
 
-class DaysSinceScreen extends ConsumerWidget {
-  const DaysSinceScreen({super.key});
+class DsScreen extends ConsumerWidget {
+  const DsScreen({super.key});
 
   static const String path = "/dayssince";
 
@@ -34,9 +34,9 @@ class DaysSinceScreen extends ConsumerWidget {
             }
             final entry = entries[index - (kDebugMode ? 1 : 0)];
             if (entry.displayMode == DaysSinceDisplayMode.stylized) {
-              return StylizedDaysSinceEntryCard(entry: entry);
+              return StylizedDsCard(entry: entry);
             }
-            return SimpleDaysSinceEntryTile(entry: entry);
+            return SimpleDsTile(entry: entry);
           },
         );
       },

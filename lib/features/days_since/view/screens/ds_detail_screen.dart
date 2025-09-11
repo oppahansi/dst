@@ -10,26 +10,24 @@ import 'package:printing/printing.dart';
 
 // Project Imports
 import 'package:sdtpro/core/utils/extensions.dart';
-import 'package:sdtpro/features/days_since/view/screens/add_stylized_days_since_entry_screen.dart';
+import 'package:sdtpro/features/days_since/view/screens/add_stylized_ds_screen.dart';
 import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
 import 'package:sdtpro/features/days_since/view/providers/days_since_provider.dart';
-import 'package:sdtpro/features/days_since/view/widgets/edit_days_since_entry_sheet.dart';
-import 'package:sdtpro/features/days_since/view/screens/days_since_screenshot_screen.dart';
-import 'package:sdtpro/features/days_since/view/widgets/stylized_days_since_entry_card.dart';
+import 'package:sdtpro/features/days_since/view/widgets/edit_simple_ds_sheet.dart';
+import 'package:sdtpro/features/days_since/view/screens/ds_screenshot_screen.dart';
+import 'package:sdtpro/features/days_since/view/widgets/stylized_ds_card.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
-class DaysSinceEntryDetailScreen extends ConsumerStatefulWidget {
+class DsDetailScreen extends ConsumerStatefulWidget {
   final DaysSinceEntry entry;
 
-  const DaysSinceEntryDetailScreen({super.key, required this.entry});
+  const DsDetailScreen({super.key, required this.entry});
 
   @override
-  ConsumerState<DaysSinceEntryDetailScreen> createState() =>
-      _DaysSinceEntryDetailScreenState();
+  ConsumerState<DsDetailScreen> createState() => _DsDetailScreenState();
 }
 
-class _DaysSinceEntryDetailScreenState
-    extends ConsumerState<DaysSinceEntryDetailScreen> {
+class _DsDetailScreenState extends ConsumerState<DsDetailScreen> {
   late final TextEditingController _descriptionController;
   bool _isEditingDescription = false;
 
@@ -51,7 +49,7 @@ class _DaysSinceEntryDetailScreenState
     if (widget.entry.displayMode == DaysSinceDisplayMode.stylized) {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (_) => AddStylizedDaysSinceEntryScreen(entry: widget.entry),
+          builder: (_) => AddStylizedDsScreen(entry: widget.entry),
         ),
       );
     } else {
@@ -59,7 +57,7 @@ class _DaysSinceEntryDetailScreenState
         context: context,
         isScrollControlled: true,
         useSafeArea: true,
-        builder: (context) => EditDaysSinceEntrySheet(entry: widget.entry),
+        builder: (context) => EditSimpleDsSheet(entry: widget.entry),
       );
     }
   }
@@ -101,7 +99,7 @@ class _DaysSinceEntryDetailScreenState
   void _showScreenshotScreen(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => DaysSinceScreenshotScreen(entry: widget.entry),
+        builder: (_) => DsScreenshotScreen(entry: widget.entry),
       ),
     );
   }
@@ -265,7 +263,7 @@ class _DaysSinceEntryDetailScreenState
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // We can reuse the stylized card for a nice visual header
-            StylizedDaysSinceEntryCard(entry: widget.entry, isTappable: false),
+            StylizedDsCard(entry: widget.entry, isTappable: false),
             _buildDescriptionSection(loc),
           ],
         ),

@@ -6,18 +6,14 @@ import 'package:intl/intl.dart';
 
 // Project Imports
 import 'package:sdtpro/core/utils/text_styles.dart';
-import 'package:sdtpro/features/days_since/view/screens/days_since_entry_detail_screen.dart';
+import 'package:sdtpro/features/days_since/view/screens/ds_detail_screen.dart';
 import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
-class SimpleDaysSinceEntryTile extends StatelessWidget {
+class SimpleDsTile extends StatelessWidget {
   final DaysSinceEntry entry;
   final bool isTappable;
-  const SimpleDaysSinceEntryTile({
-    super.key,
-    required this.entry,
-    this.isTappable = true,
-  });
+  const SimpleDsTile({super.key, required this.entry, this.isTappable = true});
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +27,7 @@ class SimpleDaysSinceEntryTile extends StatelessWidget {
             ? () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) =>
-                        DaysSinceEntryDetailScreen(entry: entry),
+                    builder: (context) => DsDetailScreen(entry: entry),
                   ),
                 );
               }
