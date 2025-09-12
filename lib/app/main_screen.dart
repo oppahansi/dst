@@ -62,7 +62,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
       case 1: // DaysSinceScreen
         tooltip = "${loc.add} ${loc.days_since}";
         onPressed = () {
-          _showAddEntryChoice(context);
+          Navigator.of(context).pushNamed(AddStylizedDsScreen.path);
         };
         break;
       case 2: // DaysToScreen

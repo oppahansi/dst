@@ -1,0 +1,149 @@
+// Flutter Imports
+import 'package:flutter/material.dart';
+
+// Package Imports
+import 'package:intl/intl.dart';
+
+// Project Imports
+import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
+import 'package:sdtpro/features/days_since/domain/entities/stylized_settings.dart';
+import 'package:sdtpro/l10n/app_localizations.dart';
+
+enum StylizedContentContext { card, fullscreen, editor }
+
+class StylizedDsContent extends StatelessWidget {
+  final DaysSinceEntry entry;
+  final StylizedSettings settings;
+  final StylizedContentContext contentContext;
+  final TextEditingController? titleController;
+
+  const StylizedDsContent({
+    super.key,
+    required this.entry,
+    required this.settings,
+    this.contentContext = StylizedContentContext.card,
+    this.titleController,
+  });
+
+  double _getFontSize(double baseSize) {
+    switch (contentContext) {
+      case StylizedContentContext.card:
+        return baseSize * 0.5;
+      case StylizedContentContext.fullscreen:
+      case StylizedContentContext.editor:
+        return baseSize;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    final days = DateTime.now().difference(entry.date).inDays;
+
+    final subtitle = settings.showSubtitleDate
+        ? '${loc.days_since} ${DateFormat(settings.subtitleDateFormat, loc.localeName).format(entry.date)}'
+        : loc.days_since;
+
+    final mainContent = Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          '$days',
+          style: TextStyle(
+            fontFamily: settings.daysFontFamily == 'System'
+                ? null
+                : settings.daysFontFamily,
+            fontSize: _getFontSize(settings.daysFontSize),
+            color: Colors.white,
+            fontWeight: settings.daysFontWeight,
+            shadows: const [Shadow(blurRadius: 8, color: Colors.black54)],
+          ),
+        ),
+        Text(
+          subtitle,
+          style: TextStyle(
+            fontFamily: settings.subtitleFontFamily == 'System'
+                ? null
+                : settings.subtitleFontFamily,
+            color: settings.subtitleColor,
+            fontSize: _getFontSize(settings.subtitleFontSize),
+            fontWeight: settings.subtitleFontWeight,
+          ),
+        ),
+        SizedBox(height: _getFontSize(24)),
+        Row(
+          children: [
+            Expanded(
+              child: Divider(
+                color: Colors.white70,
+                thickness: settings.dividerThickness,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: _getFontSize(16)),
+              child: Icon(
+                settings.icon,
+                color: Colors.white,
+                size: _getFontSize(28),
+              ),
+            ),
+            Expanded(
+              child: Divider(
+                color: Colors.white70,
+                thickness: settings.dividerThickness,
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: _getFontSize(16)),
+        if (contentContext == StylizedContentContext.editor &&
+            titleController != null)
+          TextField(
+            controller: titleController,
+            textAlign: TextAlign.center,
+            maxLines: null,
+            style: TextStyle(
+              fontFamily: settings.titleFontFamily == 'System'
+                  ? null
+                  : settings.titleFontFamily,
+              color: Colors.white,
+              fontSize: _getFontSize(settings.titleFontSize),
+              fontWeight: settings.titleFontWeight,
+              shadows: const [Shadow(blurRadius: 4, color: Colors.black45)],
+            ),
+            decoration: InputDecoration(
+              fillColor: Colors.transparent,
+              border: InputBorder.none,
+              hintText: loc.title,
+              hintStyle: TextStyle(
+                color: Colors.white.withAlpha(128),
+                fontWeight: FontWeight.normal,
+              ),
+            ),
+          )
+        else
+          Text(
+            entry.title,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: settings.titleFontFamily == 'System'
+                  ? null
+                  : settings.titleFontFamily,
+              color: Colors.white,
+              fontSize: _getFontSize(settings.titleFontSize),
+              fontWeight: settings.titleFontWeight,
+              shadows: const [Shadow(blurRadius: 4, color: Colors.black45)],
+            ),
+          ),
+      ],
+    );
+
+    if (contentContext == StylizedContentContext.card) {
+      return mainContent;
+    }
+
+    return Center(
+      child: Padding(padding: const EdgeInsets.all(16.0), child: mainContent),
+    );
+  }
+}

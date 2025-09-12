@@ -161,31 +161,6 @@ class _DsDetailScreenState extends ConsumerState<DsDetailScreen> {
   }
 
   Widget _buildDescriptionSection(AppLocalizations loc) {
-    // Only show editable description for stylized entries.
-    if (widget.entry.displayMode != DaysSinceDisplayMode.stylized) {
-      if (widget.entry.description != null &&
-          widget.entry.description!.isNotEmpty) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 24),
-            Text(
-              loc.description,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              widget.entry.description!,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-          ],
-        );
-      } else {
-        return const SizedBox.shrink(); // No description for simple entry
-      }
-    }
-
-    // For stylized entries, provide an editable field.
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -287,7 +262,7 @@ class _DsDetailScreenState extends ConsumerState<DsDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // We can reuse the stylized card for a nice visual header
-            StylizedDsCard(entry: widget.entry, isTappable: false),
+            DsCard(entry: widget.entry, isTappable: false),
             _buildDescriptionSection(loc),
           ],
         ),

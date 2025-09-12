@@ -10,8 +10,8 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:sdtpro/core/utils/extensions.dart';
 import 'package:sdtpro/features/days_since/domain/entities/stylized_settings.dart';
 import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
-import 'package:sdtpro/features/days_since/view/widgets/simple_ds_tile.dart';
 import 'package:sdtpro/features/days_since/view/providers/days_since_provider.dart';
+import 'package:sdtpro/features/days_since/view/widgets/stylized_ds_card.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
 class AddSimpleDsSheet extends ConsumerStatefulWidget {
@@ -111,7 +111,7 @@ class _AddSimpleDsSheetState extends ConsumerState<AddSimpleDsSheet> {
           style: Theme.of(context).textTheme.titleMedium,
         ),
         const SizedBox(height: 8),
-        SimpleDsTile(entry: previewEntry, isTappable: false),
+        DsCard(entry: previewEntry, isTappable: false),
         const SizedBox(height: 24),
         const Divider(),
         const SizedBox(height: 16),
