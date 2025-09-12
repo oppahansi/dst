@@ -81,6 +81,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get save => 'Speichern';
 
   @override
+  String get open => 'Öffnen';
+
+  @override
   String get outlined => 'Umrandet';
 
   @override
