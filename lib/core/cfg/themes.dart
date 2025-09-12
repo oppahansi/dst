@@ -2,7 +2,7 @@
 import "package:flutter/material.dart";
 
 // Define the seed color for your theme
-const seedColor = Colors.deepPurple;
+const seedColor = Color.fromRGBO(37, 105, 122, 1);
 
 // Light theme data
 final light = ThemeData(
