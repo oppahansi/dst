@@ -55,14 +55,12 @@ class HomeScreen extends ConsumerWidget {
           if (sinceTop.isEmpty)
             const SizedBox.shrink()
           else
-            ...sinceTop
-                .map(
-                  (e) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: SdtCard(entry: e),
-                  ),
-                )
-                .toList(),
+            ...sinceTop.map(
+              (e) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: SdtCard(entry: e),
+              ),
+            ),
           const SizedBox(height: 16),
           _SectionHeader(
             title: loc.days_to,
@@ -73,14 +71,12 @@ class HomeScreen extends ConsumerWidget {
           if (toTop.isEmpty)
             const SizedBox.shrink()
           else
-            ...toTop
-                .map(
-                  (e) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: SdtCard(entry: e),
-                  ),
-                )
-                .toList(),
+            ...toTop.map(
+              (e) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: SdtCard(entry: e),
+              ),
+            ),
         ],
       ),
     );
