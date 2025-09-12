@@ -2,16 +2,10 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // Project Imports
-import 'package:sdtpro/features/images/data/image_repo_impl.dart';
 import 'package:sdtpro/features/images/domain/entities/fis_image.dart';
-import 'package:sdtpro/features/images/domain/repos/image_repo.dart';
+import 'package:sdtpro/features/images/view/providers/image_usecase_providers.dart';
 
 part 'image_provider.g.dart';
-
-@riverpod
-ImageRepo imageRepo(Ref ref) {
-  return ImageRepoImpl();
-}
 
 class ImageSearchState {
   final List<FisImage> images;
@@ -45,7 +39,7 @@ class ImageSearchState {
 class ImageSearch extends _$ImageSearch {
   @override
   Future<ImageSearchState> build() async {
-    final result = await ref.watch(imageRepoProvider).getCuratedImages(page: 1);
+    final result = await ref.watch(getCuratedImagesProvider).call(page: 1);
     return ImageSearchState(
       images: result.images,
       hasMore: result.images.isNotEmpty && result.images.length < result.total,
@@ -61,8 +55,8 @@ class ImageSearch extends _$ImageSearch {
         return build(); // Revert to curated
       }
       final result = await ref
-          .read(imageRepoProvider)
-          .searchImages(query: query, page: 1);
+          .read(searchImagesProvider)
+          .call(query: query, page: 1);
       return ImageSearchState(
         images: result.images,
         hasMore:
@@ -79,12 +73,13 @@ class ImageSearch extends _$ImageSearch {
       return;
     }
 
-    final repo = ref.read(imageRepoProvider);
     final nextPage = currentState.page + 1;
 
     final result = currentState.query == null
-        ? await repo.getCuratedImages(page: nextPage)
-        : await repo.searchImages(query: currentState.query!, page: nextPage);
+        ? await ref.read(getCuratedImagesProvider).call(page: nextPage)
+        : await ref
+              .read(searchImagesProvider)
+              .call(query: currentState.query!, page: nextPage);
 
     final allImages = [...currentState.images, ...result.images];
 

@@ -95,7 +95,7 @@ final class GetSettingsProvider
   }
 }
 
-String _$getSettingsHash() => r'0124e14b0161bcf7dfae8bdf66a3f5fbe9575be2';
+String _$getSettingsHash() => r'89feb5126bd8e1c85e9af1f5e76e8efbf881c760';
 
 /// Provides the UpdateTheme use case.
 @ProviderFor(updateTheme)
@@ -139,7 +139,7 @@ final class UpdateThemeProvider
   }
 }
 
-String _$updateThemeHash() => r'489dfc994712a2f2709db9ab53b8f5235de8fc75';
+String _$updateThemeHash() => r'5cbb603e6a9048d4c90461fd54359e3bc43b07d0';
 
 /// Provides the UpdateLocale use case.
 @ProviderFor(updateLocale)
@@ -183,7 +183,7 @@ final class UpdateLocaleProvider
   }
 }
 
-String _$updateLocaleHash() => r'ed55089a6e6f3a6531123ffd8db98b93e20217f5';
+String _$updateLocaleHash() => r'47ff3e245e63f0d15ebef82e4cb565e33ad22cb3';
 
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

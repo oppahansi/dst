@@ -6,47 +6,6 @@ part of 'image_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-@ProviderFor(imageRepo)
-const imageRepoProvider = ImageRepoProvider._();
-
-final class ImageRepoProvider
-    extends $FunctionalProvider<ImageRepo, ImageRepo, ImageRepo>
-    with $Provider<ImageRepo> {
-  const ImageRepoProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'imageRepoProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
-
-  @override
-  String debugGetCreateSourceHash() => _$imageRepoHash();
-
-  @$internal
-  @override
-  $ProviderElement<ImageRepo> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
-
-  @override
-  ImageRepo create(Ref ref) {
-    return imageRepo(ref);
-  }
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(ImageRepo value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<ImageRepo>(value),
-    );
-  }
-}
-
-String _$imageRepoHash() => r'bc9c6189696734ad155c700159008bec967ed880';
-
 @ProviderFor(ImageSearch)
 const imageSearchProvider = ImageSearchProvider._();
 
@@ -71,7 +30,7 @@ final class ImageSearchProvider
   ImageSearch create() => ImageSearch();
 }
 
-String _$imageSearchHash() => r'bd4da7ab07efeaac91b2f746b0d5cc3fdb0d2db1';
+String _$imageSearchHash() => r'9905143485adc1fcb31a0337c25ecdb1183d811e';
 
 abstract class _$ImageSearch extends $AsyncNotifier<ImageSearchState> {
   FutureOr<ImageSearchState> build();
