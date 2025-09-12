@@ -12,30 +12,29 @@ import 'package:material_symbols_icons/symbols.dart';
 
 // Project Imports
 import 'package:sdtpro/core/utils/extensions.dart';
-import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
-import 'package:sdtpro/features/days_since/domain/entities/stylized_settings.dart';
+import 'package:sdtpro/features/days_since/domain/entities/ds_entry.dart';
+import 'package:sdtpro/features/days_since/domain/entities/ds_settings.dart';
 import 'package:sdtpro/features/days_since/view/providers/days_since_provider.dart';
-import 'package:sdtpro/features/days_since/view/screens/stylized_ds_background_image.dart';
-import 'package:sdtpro/features/days_since/view/screens/stylized_ds_content.dart';
-import 'package:sdtpro/features/days_since/view/screens/stylized_settings_sheet.dart';
+import 'package:sdtpro/features/days_since/view/widgets/ds_background_image.dart';
+import 'package:sdtpro/features/days_since/view/widgets/ds_content.dart';
+import 'package:sdtpro/features/days_since/view/widgets/ds_settings_sheet.dart';
 import 'package:sdtpro/features/images/domain/entities/fis_image.dart';
 import 'package:sdtpro/features/images/view/providers/image_provider.dart';
 import 'package:sdtpro/features/images/view/screens/image_search_screen.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
-class AddStylizedDsScreen extends ConsumerStatefulWidget {
-  final DaysSinceEntry? entry;
+class DsAddScreen extends ConsumerStatefulWidget {
+  final DsEntry? entry;
 
-  const AddStylizedDsScreen({super.key, this.entry});
+  const DsAddScreen({super.key, this.entry});
 
-  static final String path = '/add-stylized-days-since-entry';
+  static final String path = 'ds-add-screen';
 
   @override
-  ConsumerState<AddStylizedDsScreen> createState() =>
-      _AddStylizedDsScreenState();
+  ConsumerState<DsAddScreen> createState() => _DsAddScreenState();
 }
 
-class _AddStylizedDsScreenState extends ConsumerState<AddStylizedDsScreen> {
+class _DsAddScreenState extends ConsumerState<DsAddScreen> {
   final _titleController = TextEditingController();
   DateTime _selectedDate = DateTime.now();
   FisImage? _selectedImage;
@@ -43,15 +42,14 @@ class _AddStylizedDsScreenState extends ConsumerState<AddStylizedDsScreen> {
   bool get _isEditing => widget.entry != null;
 
   bool _showUiElements = true;
-  // State for all the new stylized settings
-  late StylizedSettings _settings;
+  late DsSettings _settings;
 
   @override
   void initState() {
     super.initState();
     if (_isEditing) {
       final entry = widget.entry!;
-      _settings = entry.stylizedSettings ?? StylizedSettings();
+      _settings = entry.settings ?? DsSettings();
       _selectedDate = entry.date;
       _titleController.text = entry.title;
       if (entry.imageUrl != null) {
@@ -61,7 +59,7 @@ class _AddStylizedDsScreenState extends ConsumerState<AddStylizedDsScreen> {
         );
       }
     } else {
-      _settings = StylizedSettings();
+      _settings = DsSettings();
       _loadRandomImage();
       // Use a post-frame callback to access context for localization.
       WidgetsBinding.instance.addPostFrameCallback(
@@ -180,18 +178,17 @@ class _AddStylizedDsScreenState extends ConsumerState<AddStylizedDsScreen> {
         title: _titleController.text,
         date: _selectedDate,
         imageUrl: _selectedImage?.url,
-        stylizedSettings: _settings,
+        settings: _settings,
       );
       await ref
           .read(daysSinceNotifierProvider.notifier)
           .updateEntry(updatedEntry);
     } else {
-      final newEntry = DaysSinceEntry(
+      final newEntry = DsEntry(
         title: _titleController.text,
         date: _selectedDate,
         imageUrl: _selectedImage?.url,
-        displayMode: DaysSinceDisplayMode.stylized,
-        stylizedSettings: _settings,
+        settings: _settings,
       );
       await ref.read(daysSinceNotifierProvider.notifier).addEntry(newEntry);
     }
@@ -213,7 +210,7 @@ class _AddStylizedDsScreenState extends ConsumerState<AddStylizedDsScreen> {
         expand: false,
         initialChildSize: 0.7,
         maxChildSize: 0.9,
-        builder: (_, controller) => StylizedSettingsSheet(
+        builder: (_, controller) => DsSettingsSheet(
           settings: _settings,
           onSettingsChanged: (newSettings) =>
               setState(() => _settings = newSettings),
@@ -249,7 +246,7 @@ class _AddStylizedDsScreenState extends ConsumerState<AddStylizedDsScreen> {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            StylizedDsBackgroundImage(imageUrl: _selectedImage?.url),
+            DsBackgroundImage(imageUrl: _selectedImage?.url),
 
             // Overlay
             Container(
@@ -302,14 +299,10 @@ class _AddStylizedDsScreenState extends ConsumerState<AddStylizedDsScreen> {
             ),
 
             // Main Content
-            StylizedDsContent(
-              entry: DaysSinceEntry(
-                title: _titleController.text,
-                date: _selectedDate,
-                displayMode: DaysSinceDisplayMode.stylized,
-              ),
+            DsContent(
+              entry: DsEntry(title: _titleController.text, date: _selectedDate),
               settings: _settings,
-              contentContext: StylizedContentContext.editor,
+              contentContext: DsContentContext.editor,
               titleController: _titleController,
             ),
           ],

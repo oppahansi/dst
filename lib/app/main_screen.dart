@@ -9,8 +9,7 @@ import "package:material_symbols_icons/symbols.dart";
 // Project Imports
 import "package:sdtpro/core/utils/colors.dart";
 import "package:sdtpro/core/utils/extensions.dart";
-import "package:sdtpro/features/days_since/view/screens/add_stylized_ds_screen.dart";
-import "package:sdtpro/features/days_since/view/widgets/add_simple_ds_sheet.dart";
+import "package:sdtpro/features/days_since/view/screens/ds_add_screen.dart";
 import "package:sdtpro/features/days_since/view/screens/ds_screen.dart";
 import "package:sdtpro/features/days_to/view/screens/days_to_screen.dart";
 import "package:sdtpro/features/home/home_screen.dart";
@@ -62,7 +61,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
       case 1: // DaysSinceScreen
         tooltip = "${loc.add} ${loc.days_since}";
         onPressed = () {
-          Navigator.of(context).pushNamed(AddStylizedDsScreen.path);
+          Navigator.of(context).pushNamed(DsAddScreen.path);
         };
         break;
       case 2: // DaysToScreen
@@ -83,41 +82,6 @@ class _MainScreenState extends ConsumerState<MainScreen> {
       onPressed: onPressed,
       tooltip: tooltip,
       child: Symbols.add.icon(),
-    );
-  }
-
-  void _showAddEntryChoice(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
-    showModalBottomSheet<void>(
-      context: context,
-      builder: (BuildContext bc) {
-        return SafeArea(
-          child: Wrap(
-            children: <Widget>[
-              ListTile(
-                leading: const Icon(Symbols.list),
-                title: Text(loc.simple.capitalize()),
-                onTap: () {
-                  context.pop(); // Close the choice sheet
-                  showModalBottomSheet<void>(
-                    context: context,
-                    isScrollControlled: true,
-                    useSafeArea: true,
-                    builder: (context) => const AddSimpleDsSheet(),
-                  );
-                },
-              ),
-              ListTile(
-                leading: const Icon(Symbols.gallery_thumbnail),
-                title: Text(loc.stylized.capitalize()),
-                onTap: () => Navigator.of(
-                  context,
-                ).popAndPushNamed(AddStylizedDsScreen.path),
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 

@@ -11,17 +11,16 @@ import 'package:printing/printing.dart';
 
 // Project Imports
 import 'package:sdtpro/core/utils/extensions.dart';
-import 'package:sdtpro/features/days_since/domain/entities/stylized_settings.dart';
-import 'package:sdtpro/features/days_since/view/screens/add_stylized_ds_screen.dart';
-import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
+import 'package:sdtpro/features/days_since/domain/entities/ds_settings.dart';
+import 'package:sdtpro/features/days_since/view/screens/ds_add_screen.dart';
+import 'package:sdtpro/features/days_since/domain/entities/ds_entry.dart';
 import 'package:sdtpro/features/days_since/view/providers/days_since_provider.dart';
-import 'package:sdtpro/features/days_since/view/widgets/edit_simple_ds_sheet.dart';
 import 'package:sdtpro/features/days_since/view/screens/ds_screenshot_screen.dart';
-import 'package:sdtpro/features/days_since/view/widgets/stylized_ds_card.dart';
+import 'package:sdtpro/features/days_since/view/widgets/ds_card.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
 class DsDetailScreen extends ConsumerStatefulWidget {
-  final DaysSinceEntry entry;
+  final DsEntry entry;
 
   const DsDetailScreen({super.key, required this.entry});
 
@@ -48,20 +47,9 @@ class _DsDetailScreenState extends ConsumerState<DsDetailScreen> {
   }
 
   void _showEditor(BuildContext context) {
-    if (widget.entry.displayMode == DaysSinceDisplayMode.stylized) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (_) => AddStylizedDsScreen(entry: widget.entry),
-        ),
-      );
-    } else {
-      showModalBottomSheet<void>(
-        context: context,
-        isScrollControlled: true,
-        useSafeArea: true,
-        builder: (context) => EditSimpleDsSheet(entry: widget.entry),
-      );
-    }
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => DsAddScreen(entry: widget.entry)));
   }
 
   Future<void> _confirmDelete(BuildContext context, WidgetRef ref) async {
@@ -119,7 +107,7 @@ class _DsDetailScreenState extends ConsumerState<DsDetailScreen> {
 
     final loc = AppLocalizations.of(context)!;
     final days = DateTime.now().difference(widget.entry.date).inDays;
-    final settings = widget.entry.stylizedSettings ?? StylizedSettings();
+    final settings = widget.entry.settings ?? DsSettings();
 
     final doc = pw.Document();
 
@@ -261,7 +249,6 @@ class _DsDetailScreenState extends ConsumerState<DsDetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // We can reuse the stylized card for a nice visual header
             DsCard(entry: widget.entry, isTappable: false),
             _buildDescriptionSection(loc),
           ],

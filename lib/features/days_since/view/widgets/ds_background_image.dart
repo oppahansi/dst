@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 // Package Imports
 import 'package:cached_network_image/cached_network_image.dart';
 
-class StylizedDsBackgroundImage extends StatelessWidget {
+class DsBackgroundImage extends StatelessWidget {
   final String? imageUrl;
 
-  const StylizedDsBackgroundImage({super.key, this.imageUrl});
+  const DsBackgroundImage({super.key, this.imageUrl});
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,6 @@
 // Package Imports
 import "package:sqflite/sqflite.dart";
 
-// Project Imports
-import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
-
 typedef Migration = Future<void> Function(Database db);
 
 class DbMigrations {
@@ -15,34 +12,34 @@ class DbMigrations {
       // No-op (asset contains v1 schema). Keep for completeness.
     },
 
-    // 2: Add days_since_entries table
-    2: (db) async {
-      await db.execute('''
-        CREATE TABLE days_since_entries (
-          id INTEGER PRIMARY KEY AUTOINCREMENT,
-          title TEXT NOT NULL,
-          date TEXT NOT NULL,
-          description TEXT,
-          image_url TEXT,
-          display_mode TEXT NOT NULL
-        )''');
-    },
+    // // 2: Add days_since_entries table
+    // 2: (db) async {
+    //   await db.execute('''
+    //     CREATE TABLE days_since_entries (
+    //       id INTEGER PRIMARY KEY AUTOINCREMENT,
+    //       title TEXT NOT NULL,
+    //       date TEXT NOT NULL,
+    //       description TEXT,
+    //       image_url TEXT,
+    //       display_mode TEXT NOT NULL
+    //     )''');
+    // },
 
-    // 3: Add stylized_layout to days_since_entries
-    3: (db) async {
-      await db.execute('''
-        ALTER TABLE days_since_entries
-        ADD COLUMN stylized_layout TEXT NOT NULL DEFAULT '${StylizedLayoutMode.defaultLayout.name}'
-      ''');
-    },
+    // // 3: Add stylized_layout to days_since_entries
+    // 3: (db) async {
+    //   await db.execute('''
+    //     ALTER TABLE days_since_entries
+    //     ADD COLUMN stylized_layout TEXT NOT NULL DEFAULT '${StylizedLayoutMode.defaultLayout.name}'
+    //   ''');
+    // },
 
-    // 4: Add stylized_settings to days_since_entries
-    4: (db) async {
-      await db.execute('''
-        ALTER TABLE days_since_entries
-        ADD COLUMN stylized_settings TEXT
-      ''');
-    },
+    // // 4: Add stylized_settings to days_since_entries
+    // 4: (db) async {
+    //   await db.execute('''
+    //     ALTER TABLE days_since_entries
+    //     ADD COLUMN stylized_settings TEXT
+    //   ''');
+    // },
   };
 
   static Future<void> run(Database db, int from, int to) async {

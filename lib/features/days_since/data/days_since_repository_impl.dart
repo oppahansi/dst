@@ -3,7 +3,7 @@ import 'package:sqflite/sqflite.dart';
 
 // Project Imports
 import 'package:sdtpro/core/db/db.dart';
-import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
+import 'package:sdtpro/features/days_since/domain/entities/ds_entry.dart';
 import 'package:sdtpro/features/days_since/domain/repos/days_since_repository.dart';
 
 class DaysSinceRepositoryImpl implements DaysSinceRepository {
@@ -17,7 +17,7 @@ class DaysSinceRepositoryImpl implements DaysSinceRepository {
   Future<Database> get _db async => Db.getUserDbInstance();
 
   @override
-  Future<DaysSinceEntry> addEntry(DaysSinceEntry entry) async {
+  Future<DsEntry> addEntry(DsEntry entry) async {
     final db = await _db;
     final id = await db.insert(
       _table,
@@ -34,14 +34,14 @@ class DaysSinceRepositoryImpl implements DaysSinceRepository {
   }
 
   @override
-  Future<List<DaysSinceEntry>> getEntries() async {
+  Future<List<DsEntry>> getEntries() async {
     final db = await _db;
     final maps = await db.query(_table, orderBy: 'date DESC');
-    return maps.map((map) => DaysSinceEntry.fromMap(map)).toList();
+    return maps.map((map) => DsEntry.fromMap(map)).toList();
   }
 
   @override
-  Future<void> updateEntry(DaysSinceEntry entry) async {
+  Future<void> updateEntry(DsEntry entry) async {
     final db = await _db;
     await db.update(
       _table,

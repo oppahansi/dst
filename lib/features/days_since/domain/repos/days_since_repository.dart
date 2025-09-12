@@ -1,9 +1,9 @@
 // Project Imports
-import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
+import 'package:sdtpro/features/days_since/domain/entities/ds_entry.dart';
 
 abstract class DaysSinceRepository {
-  Future<List<DaysSinceEntry>> getEntries();
-  Future<DaysSinceEntry> addEntry(DaysSinceEntry entry);
-  Future<void> updateEntry(DaysSinceEntry entry);
+  Future<List<DsEntry>> getEntries();
+  Future<DsEntry> addEntry(DsEntry entry);
+  Future<void> updateEntry(DsEntry entry);
   Future<void> deleteEntry(int id);
 }

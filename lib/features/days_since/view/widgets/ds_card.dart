@@ -15,15 +15,15 @@ import 'package:share_plus/share_plus.dart';
 // Project Imports
 import 'package:sdtpro/core/utils/text_styles.dart';
 import 'package:sdtpro/core/utils/screen_sizes.dart';
-import 'package:sdtpro/features/days_since/view/screens/stylized_ds_background_image.dart';
-import 'package:sdtpro/features/days_since/view/screens/stylized_ds_content.dart';
+import 'package:sdtpro/features/days_since/view/widgets/ds_background_image.dart';
+import 'package:sdtpro/features/days_since/view/widgets/ds_content.dart';
 import 'package:sdtpro/features/days_since/view/screens/ds_detail_screen.dart';
-import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
-import 'package:sdtpro/features/days_since/domain/entities/stylized_settings.dart';
+import 'package:sdtpro/features/days_since/domain/entities/ds_entry.dart';
+import 'package:sdtpro/features/days_since/domain/entities/ds_settings.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
 class DsCard extends StatefulWidget {
-  final DaysSinceEntry entry;
+  final DsEntry entry;
   final bool isTappable;
   const DsCard({super.key, required this.entry, this.isTappable = true});
 
@@ -62,7 +62,7 @@ class _DsCardState extends State<DsCard> {
   /// This builds the same widget tree as the `DaysSinceScreenshotScreen`
   /// to be captured as an image, without needing to navigate to the screen.
   Widget _buildScreenshotWidget(BuildContext context) {
-    final settings = widget.entry.stylizedSettings ?? StylizedSettings();
+    final settings = widget.entry.settings ?? DsSettings();
 
     return RepaintBoundary(
       child: Material(
@@ -72,16 +72,16 @@ class _DsCardState extends State<DsCard> {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              StylizedDsBackgroundImage(imageUrl: widget.entry.imageUrl),
+              DsBackgroundImage(imageUrl: widget.entry.imageUrl),
               Container(
                 color: settings.overlayColor.withAlpha(
                   (settings.overlayAlpha * 255).round(),
                 ),
               ),
-              StylizedDsContent(
+              DsContent(
                 entry: widget.entry,
                 settings: settings,
-                contentContext: StylizedContentContext.fullscreen,
+                contentContext: DsContentContext.fullscreen,
               ),
             ],
           ),
@@ -92,10 +92,10 @@ class _DsCardState extends State<DsCard> {
 
   @override
   Widget build(BuildContext context) {
-    final settings = widget.entry.stylizedSettings ?? StylizedSettings();
+    final settings = widget.entry.settings ?? DsSettings();
     final loc = AppLocalizations.of(context)!;
     final days = DateTime.now().difference(widget.entry.date).inDays;
-    final daysSince = widget.entry.stylizedSettings!.showSubtitleDate
+    final daysSince = widget.entry.settings!.showSubtitleDate
         ? '${loc.days_since} ${DateFormat(settings.subtitleDateFormat, loc.localeName).format(widget.entry.date)}'
         : loc.days_since;
 
@@ -109,7 +109,7 @@ class _DsCardState extends State<DsCard> {
         clipBehavior: Clip.antiAlias,
         children: [
           Positioned.fill(
-            child: StylizedDsBackgroundImage(imageUrl: widget.entry.imageUrl),
+            child: DsBackgroundImage(imageUrl: widget.entry.imageUrl),
           ),
           Positioned.fill(
             child: Container(

@@ -6,7 +6,7 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 
 // Project Imports
 import "package:sdtpro/features/days_since/view/providers/days_since_provider.dart";
-import "package:sdtpro/features/days_since/view/widgets/stylized_ds_card.dart";
+import "package:sdtpro/features/days_since/view/widgets/ds_card.dart";
 import "package:sdtpro/core/widgets/debug_settings_controlls.dart";
 import "package:sdtpro/l10n/app_localizations.dart";
 

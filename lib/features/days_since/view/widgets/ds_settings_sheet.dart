@@ -6,16 +6,16 @@ import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 // Project Imports
-import 'package:sdtpro/features/days_since/domain/entities/stylized_settings.dart';
+import 'package:sdtpro/features/days_since/domain/entities/ds_settings.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
 /// A bottom sheet for editing the stylized settings.
-class StylizedSettingsSheet extends StatefulWidget {
-  final StylizedSettings settings;
-  final ValueChanged<StylizedSettings> onSettingsChanged;
+class DsSettingsSheet extends StatefulWidget {
+  final DsSettings settings;
+  final ValueChanged<DsSettings> onSettingsChanged;
   final ScrollController scrollController;
 
-  const StylizedSettingsSheet({
+  const DsSettingsSheet({
     super.key,
     required this.settings,
     required this.onSettingsChanged,
@@ -23,11 +23,11 @@ class StylizedSettingsSheet extends StatefulWidget {
   });
 
   @override
-  State<StylizedSettingsSheet> createState() => _StylizedSettingsSheetState();
+  State<DsSettingsSheet> createState() => _DsSettingsSheetState();
 }
 
-class _StylizedSettingsSheetState extends State<StylizedSettingsSheet> {
-  late StylizedSettings _localSettings;
+class _DsSettingsSheetState extends State<DsSettingsSheet> {
+  late DsSettings _localSettings;
 
   @override
   void initState() {
@@ -299,7 +299,7 @@ class _StylizedSettingsSheetState extends State<StylizedSettingsSheet> {
     );
   }
 
-  void _updateSettings(StylizedSettings Function(StylizedSettings) updateFn) {
+  void _updateSettings(DsSettings Function(DsSettings) updateFn) {
     setState(() {
       _localSettings = updateFn(_localSettings);
     });

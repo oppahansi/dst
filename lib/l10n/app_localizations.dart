@@ -284,12 +284,6 @@ abstract class AppLocalizations {
   /// **'Slim'**
   String get slim;
 
-  /// No description provided for @stylized.
-  ///
-  /// In en, this message translates to:
-  /// **'Stylized'**
-  String get stylized;
-
   /// No description provided for @system.
   ///
   /// In en, this message translates to:
@@ -403,12 +397,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Remove Image'**
   String get remove_image;
-
-  /// No description provided for @stylized_layout.
-  ///
-  /// In en, this message translates to:
-  /// **'Stylized Layout'**
-  String get stylized_layout;
 
   /// No description provided for @save_changes.
   ///

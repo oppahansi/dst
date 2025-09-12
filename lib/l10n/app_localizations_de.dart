@@ -102,9 +102,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get slim => 'Dünn';
 
   @override
-  String get stylized => 'Stilisiert';
-
-  @override
   String get system => 'system';
 
   @override
@@ -160,9 +157,6 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get remove_image => 'Bild entfernen';
-
-  @override
-  String get stylized_layout => 'Stilisiertes Layout';
 
   @override
   String get save_changes => 'Änderungen speichern';

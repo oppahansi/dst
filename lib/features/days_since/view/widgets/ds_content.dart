@@ -5,32 +5,32 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 // Project Imports
-import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
-import 'package:sdtpro/features/days_since/domain/entities/stylized_settings.dart';
+import 'package:sdtpro/features/days_since/domain/entities/ds_entry.dart';
+import 'package:sdtpro/features/days_since/domain/entities/ds_settings.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
-enum StylizedContentContext { card, fullscreen, editor }
+enum DsContentContext { card, fullscreen, editor }
 
-class StylizedDsContent extends StatelessWidget {
-  final DaysSinceEntry entry;
-  final StylizedSettings settings;
-  final StylizedContentContext contentContext;
+class DsContent extends StatelessWidget {
+  final DsEntry entry;
+  final DsSettings settings;
+  final DsContentContext contentContext;
   final TextEditingController? titleController;
 
-  const StylizedDsContent({
+  const DsContent({
     super.key,
     required this.entry,
     required this.settings,
-    this.contentContext = StylizedContentContext.card,
+    this.contentContext = DsContentContext.card,
     this.titleController,
   });
 
   double _getFontSize(double baseSize) {
     switch (contentContext) {
-      case StylizedContentContext.card:
+      case DsContentContext.card:
         return baseSize * 0.5;
-      case StylizedContentContext.fullscreen:
-      case StylizedContentContext.editor:
+      case DsContentContext.fullscreen:
+      case DsContentContext.editor:
         return baseSize;
     }
   }
@@ -96,7 +96,7 @@ class StylizedDsContent extends StatelessWidget {
           ],
         ),
         SizedBox(height: _getFontSize(16)),
-        if (contentContext == StylizedContentContext.editor &&
+        if (contentContext == DsContentContext.editor &&
             titleController != null)
           TextField(
             controller: titleController,
@@ -138,7 +138,7 @@ class StylizedDsContent extends StatelessWidget {
       ],
     );
 
-    if (contentContext == StylizedContentContext.card) {
+    if (contentContext == DsContentContext.card) {
       return mainContent;
     }
 

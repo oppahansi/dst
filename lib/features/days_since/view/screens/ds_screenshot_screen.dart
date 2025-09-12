@@ -13,15 +13,15 @@ import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
 // Project Imports
-import 'package:sdtpro/features/days_since/view/screens/stylized_ds_content.dart';
-import 'package:sdtpro/features/days_since/view/screens/stylized_ds_background_image.dart';
+import 'package:sdtpro/features/days_since/view/widgets/ds_content.dart';
+import 'package:sdtpro/features/days_since/view/widgets/ds_background_image.dart';
 import 'package:sdtpro/core/utils/extensions.dart';
-import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
-import 'package:sdtpro/features/days_since/domain/entities/stylized_settings.dart';
+import 'package:sdtpro/features/days_since/domain/entities/ds_entry.dart';
+import 'package:sdtpro/features/days_since/domain/entities/ds_settings.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
 class DsScreenshotScreen extends StatefulWidget {
-  final DaysSinceEntry entry;
+  final DsEntry entry;
 
   const DsScreenshotScreen({super.key, required this.entry});
 
@@ -88,7 +88,7 @@ class _DsScreenshotScreenState extends State<DsScreenshotScreen> {
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
-    final settings = widget.entry.stylizedSettings ?? StylizedSettings();
+    final settings = widget.entry.settings ?? DsSettings();
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -117,7 +117,7 @@ class _DsScreenshotScreenState extends State<DsScreenshotScreen> {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              StylizedDsBackgroundImage(imageUrl: widget.entry.imageUrl),
+              DsBackgroundImage(imageUrl: widget.entry.imageUrl),
 
               // Overlay
               Container(
@@ -130,10 +130,10 @@ class _DsScreenshotScreenState extends State<DsScreenshotScreen> {
               SafeArea(
                 top: false,
                 bottom: false,
-                child: StylizedDsContent(
+                child: DsContent(
                   entry: widget.entry,
                   settings: settings,
-                  contentContext: StylizedContentContext.fullscreen,
+                  contentContext: DsContentContext.fullscreen,
                 ),
               ),
             ],

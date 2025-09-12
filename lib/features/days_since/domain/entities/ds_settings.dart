@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 // Package Imports
 import 'package:material_symbols_icons/symbols.dart';
 
-class StylizedSettings {
+class DsSettings {
   // Overlay
   final Color overlayColor;
   final double overlayAlpha;
@@ -36,7 +36,7 @@ class StylizedSettings {
   final bool showSubtitleDate;
   final String subtitleDateFormat;
 
-  StylizedSettings({
+  DsSettings({
     this.overlayColor = Colors.black,
     this.overlayAlpha = 0.4,
     this.icon = Symbols.star,
@@ -63,7 +63,7 @@ class StylizedSettings {
     );
   }
 
-  StylizedSettings copyWith({
+  DsSettings copyWith({
     Color? overlayColor,
     double? overlayAlpha,
     IconData? icon,
@@ -81,7 +81,7 @@ class StylizedSettings {
     bool? showSubtitleDate,
     String? subtitleDateFormat,
   }) {
-    return StylizedSettings(
+    return DsSettings(
       overlayColor: overlayColor ?? this.overlayColor,
       overlayAlpha: overlayAlpha ?? this.overlayAlpha,
       icon: icon ?? this.icon,
@@ -124,8 +124,8 @@ class StylizedSettings {
     };
   }
 
-  factory StylizedSettings.fromMap(Map<String, dynamic> map) {
-    return StylizedSettings(
+  factory DsSettings.fromMap(Map<String, dynamic> map) {
+    return DsSettings(
       overlayColor: Color(map['overlayColor'] ?? Colors.black.toARGB32()),
       overlayAlpha: map['overlayAlpha']?.toDouble() ?? 0.4,
       icon: IconData(
@@ -153,13 +153,13 @@ class StylizedSettings {
 
   String toJson() => json.encode(toMap());
 
-  factory StylizedSettings.fromJson(String source) {
-    if (source.isEmpty) return StylizedSettings();
+  factory DsSettings.fromJson(String source) {
+    if (source.isEmpty) return DsSettings();
     try {
-      return StylizedSettings.fromMap(json.decode(source));
+      return DsSettings.fromMap(json.decode(source));
     } catch (e) {
       // If decoding fails, return default settings
-      return StylizedSettings();
+      return DsSettings();
     }
   }
 }

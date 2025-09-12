@@ -58,7 +58,7 @@ String _$daysSinceRepositoryHash() =>
 const daysSinceNotifierProvider = DaysSinceNotifierProvider._();
 
 final class DaysSinceNotifierProvider
-    extends $AsyncNotifierProvider<DaysSinceNotifier, List<DaysSinceEntry>> {
+    extends $AsyncNotifierProvider<DaysSinceNotifier, List<DsEntry>> {
   const DaysSinceNotifierProvider._()
     : super(
         from: null,
@@ -80,24 +80,18 @@ final class DaysSinceNotifierProvider
 
 String _$daysSinceNotifierHash() => r'c160f93bde7a6e8c4d36ba2f5c2195ecd5e56de0';
 
-abstract class _$DaysSinceNotifier
-    extends $AsyncNotifier<List<DaysSinceEntry>> {
-  FutureOr<List<DaysSinceEntry>> build();
+abstract class _$DaysSinceNotifier extends $AsyncNotifier<List<DsEntry>> {
+  FutureOr<List<DsEntry>> build();
   @$mustCallSuper
   @override
   void runBuild() {
     final created = build();
-    final ref =
-        this.ref
-            as $Ref<AsyncValue<List<DaysSinceEntry>>, List<DaysSinceEntry>>;
+    final ref = this.ref as $Ref<AsyncValue<List<DsEntry>>, List<DsEntry>>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<
-                AsyncValue<List<DaysSinceEntry>>,
-                List<DaysSinceEntry>
-              >,
-              AsyncValue<List<DaysSinceEntry>>,
+              AnyNotifier<AsyncValue<List<DsEntry>>, List<DsEntry>>,
+              AsyncValue<List<DsEntry>>,
               Object?,
               Object?
             >;
