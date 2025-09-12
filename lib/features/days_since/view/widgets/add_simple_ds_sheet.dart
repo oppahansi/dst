@@ -8,6 +8,7 @@ import 'package:material_symbols_icons/symbols.dart';
 
 // Project Imports
 import 'package:sdtpro/core/utils/extensions.dart';
+import 'package:sdtpro/features/days_since/domain/entities/stylized_settings.dart';
 import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
 import 'package:sdtpro/features/days_since/view/widgets/simple_ds_tile.dart';
 import 'package:sdtpro/features/days_since/view/providers/days_since_provider.dart';
@@ -26,6 +27,7 @@ class _AddSimpleDsSheetState extends ConsumerState<AddSimpleDsSheet> {
   final _descriptionController = TextEditingController();
 
   DateTime? _selectedDate;
+  bool _showDate = true;
 
   @override
   void initState() {
@@ -71,6 +73,7 @@ class _AddSimpleDsSheetState extends ConsumerState<AddSimpleDsSheet> {
           ? _descriptionController.text
           : null,
       displayMode: DaysSinceDisplayMode.simple,
+      stylizedSettings: StylizedSettings(showSubtitleDate: _showDate),
     );
 
     // Call the notifier to add the entry
@@ -97,6 +100,7 @@ class _AddSimpleDsSheetState extends ConsumerState<AddSimpleDsSheet> {
           ? _descriptionController.text
           : null,
       displayMode: DaysSinceDisplayMode.simple,
+      stylizedSettings: StylizedSettings(showSubtitleDate: _showDate),
     );
 
     return Column(
@@ -168,6 +172,15 @@ class _AddSimpleDsSheetState extends ConsumerState<AddSimpleDsSheet> {
                     ),
                   ),
                 ),
+              const SizedBox(height: 16),
+              SwitchListTile(
+                contentPadding: EdgeInsets.zero,
+                title: Text(loc.show_date),
+                value: _showDate,
+                onChanged: (value) {
+                  setState(() => _showDate = value);
+                },
+              ),
               const SizedBox(height: 16),
               TextFormField(
                 controller: _descriptionController,

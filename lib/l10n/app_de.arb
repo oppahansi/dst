@@ -65,6 +65,7 @@
   "days_since_title": "Tage seit {title}",
   "delete_entry_confirmation": "Bist du sicher, dass du diesen Eintrag löschen möchtest? Diese Aktion kann nicht rückgängig gemacht werden.",
   "failed_to_load_images": "Bilder konnten nicht geladen werden.",
+  "no_description_to_print": "Keine Beschreibung zum Drucken.",
   "no_images_found": "Keine Bilder gefunden.",
   "please_enter_a_title": "Bitte gib einen Titel ein",
   "please_select_a_date": "Bitte wähle ein Datum",

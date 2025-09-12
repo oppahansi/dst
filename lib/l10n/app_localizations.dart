@@ -476,6 +476,12 @@ abstract class AppLocalizations {
   /// **'Failed to load images.'**
   String get failed_to_load_images;
 
+  /// No description provided for @no_description_to_print.
+  ///
+  /// In en, this message translates to:
+  /// **'No description to print.'**
+  String get no_description_to_print;
+
   /// No description provided for @no_images_found.
   ///
   /// In en, this message translates to:

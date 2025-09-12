@@ -295,7 +295,9 @@ class _StylizedDsCardState extends State<StylizedDsCard> {
                             ),
                             const SizedBox(width: 8),
                             Text(
-                              loc.days_since,
+                              settings.showSubtitleDate
+                                  ? '${loc.days_since} ${DateFormat(settings.subtitleDateFormat, loc.localeName).format(widget.entry.date)}'
+                                  : loc.days_since,
                               style: TextStyle(
                                 fontFamily:
                                     settings.subtitleFontFamily == 'System'

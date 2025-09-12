@@ -203,6 +203,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get failed_to_load_images => 'Bilder konnten nicht geladen werden.';
 
   @override
+  String get no_description_to_print => 'Keine Beschreibung zum Drucken.';
+
+  @override
   String get no_images_found => 'Keine Bilder gefunden.';
 
   @override

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Package Imports
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -10,6 +11,7 @@ import 'package:printing/printing.dart';
 
 // Project Imports
 import 'package:sdtpro/core/utils/extensions.dart';
+import 'package:sdtpro/features/days_since/domain/entities/stylized_settings.dart';
 import 'package:sdtpro/features/days_since/view/screens/add_stylized_ds_screen.dart';
 import 'package:sdtpro/features/days_since/domain/entities/days_since_entry.dart';
 import 'package:sdtpro/features/days_since/view/providers/days_since_provider.dart';
@@ -105,8 +107,19 @@ class _DsDetailScreenState extends ConsumerState<DsDetailScreen> {
   }
 
   Future<void> _printEntryDetails(BuildContext context) async {
+    if (widget.entry.description == null || widget.entry.description!.isEmpty) {
+      context.showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.no_description_to_print),
+        ),
+      );
+
+      return;
+    }
+
     final loc = AppLocalizations.of(context)!;
     final days = DateTime.now().difference(widget.entry.date).inDays;
+    final settings = widget.entry.stylizedSettings ?? StylizedSettings();
 
     final doc = pw.Document();
 
@@ -122,12 +135,18 @@ class _DsDetailScreenState extends ConsumerState<DsDetailScreen> {
                 child: pw.Text(
                   widget.entry.title,
                   style: pw.TextStyle(
-                    fontSize: 24,
+                    fontSize: 18,
                     fontWeight: pw.FontWeight.bold,
                   ),
                 ),
               ),
-              pw.Text('${loc.days_since}: $days'),
+              pw.Text('$days ${loc.days_since}'),
+              if (settings.showSubtitleDate) ...[
+                pw.SizedBox(height: 4),
+                pw.Text(
+                  '${loc.date}: ${DateFormat(settings.subtitleDateFormat, loc.localeName).format(widget.entry.date)}',
+                ),
+              ],
               pw.SizedBox(height: 20),
               pw.Text(_descriptionController.text),
             ],
@@ -181,13 +200,11 @@ class _DsDetailScreenState extends ConsumerState<DsDetailScreen> {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                if (widget.entry.description != null &&
-                    widget.entry.description!.isNotEmpty)
-                  IconButton(
-                    icon: const Icon(Symbols.print),
-                    tooltip: loc.print,
-                    onPressed: () => _printEntryDetails(context),
-                  ),
+                IconButton(
+                  icon: const Icon(Symbols.print),
+                  tooltip: loc.print,
+                  onPressed: () => _printEntryDetails(context),
+                ),
                 IconButton(
                   icon: Icon(
                     _isEditingDescription ? Symbols.save : Symbols.edit,
