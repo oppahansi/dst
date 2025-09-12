@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 // Package Imports
 import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // Project Imports
 import 'package:sdtpro/features/days_since/domain/entities/ds_settings.dart';
@@ -36,13 +37,94 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
     _localSettings = widget.settings;
   }
 
-  // A few font families to choose from.
-  final _fontFamilies = ['System', 'Serif', 'Monospace'];
+  // Expand this list with any Google Fonts family names you want.
+  // Keep 'System' as the default (uses platform font).
+  final _fontFamilies = [
+    'System', // default platform font
+    // Feeling sub-level categories
+    "Roboto", // Business
+    "Lobster", // Fancy
+    "Lora", // Calm
+    "Pacifico", // Playful
+    "Amatic SC", // Cute
+    "Caveat", // Artistic
+    "Vollkorn", // Vintage
+    "Bangers", // Loud
+    "Playfair Display", // Sophisticated
+    "Orbitron", // Futuristic
+    "Montserrat", // Active
+    "Merriweather", // Stiff
+    "Source Code Pro", // Innovative
+    "Open Sans", // Happy
+    "Indie Flower", // Childlike
+    "Oswald", // Rugged
+    "Architects Daughter", // Awkward
+    "Raleway", // Excited
+    // Appearance sub-level categories
+    "Fira Code", // Techno
+    "Inconsolata", // Monospaced
+    "Satisfy", // Blobby
+    "Permanent Marker", // Marker
+    "Cinzel", // Art Deco
+    "Lora", // Art Nouveau
+    "Special Elite", // Distressed
+    "Nosifer", // Stencil
+    "Fredericka the Great", // Wood type
+    "UnifrakturMaguntia", // Medieval
+    "Zilla Slab", // Blackletter
+    "Press Start 2P", // Pixel
+    "Noto Emoji", // Not text
+    "Rye", // Tuscan
+    "Creepster", // Wacky
+    "Shadows Into Light", // Shaded
+    "Bungee Inline", // Inline
+    // Calligraphy sub-level categories
+    "Great Vibes", // Handwritten
+    "Sacramento", // Formal
+    "Kalam", // Informal
+    "Tangerine", // Upright
+    // Serif sub-level categories
+    "Crimson Text", // Transitional
+    "Roboto Slab", // Slab
+    "EB Garamond", // Old Style
+    "Cardo", // Modern
+    "Arvo", // Humanist
+    "Bitter", // Scotch
+    "Playfair Display", // Fatface
+    "Libre Baskerville", // Didone
+    // Sans Serif sub-level categories
+    "Lato", // Humanist
+    "Poppins", // Geometric
+    "Roboto", // Neo Grotesque
+    "Noto Sans JP", // Rounded
+    "Work Sans", // Superellipse
+    "Inter", // Grotesque
+    "Julius Sans One", // Glyphic
+    // Technology sub-level categories
+    "Noto Sans", // Variable
+    "Noto Color Emoji", // Color
+    "Poppins", // None
+    // Seasonal sub-level categories
+    "Red Hat Display", // Lunar New Year
+    "Dancing Script", // Valentine's
+    "Hind", // Holi
+    "Nosifer", // Halloween
+    "Noto Serif Devanagari", // Diwali
+    "Mountains of Christmas", // Christmas
+    "Noto Sans Hebrew", // Hanukkah
+    "Noto Serif", // Kwanzaa
+  ];
+
   final Map<String, String> _dateFormats = {
-    'yMMMd': 'Sep 1, 2023',
-    'yMd': '9/1/2023',
-    'MMMMd': 'September 1',
-    'E, d MMM': 'Fri, 1 Sep',
+    'MM/dd/yyyy': '09/01/2023', // US numeric
+    'dd.MM.yyyy': '01.09.2023', // German/European numeric
+    'MMMM d, yyyy': 'September 1, 2023', // US long
+    'd. MMMM yyyy': '1. September 2023', // German long
+    'd MMM yyyy': '1 Sep 2023', // European short
+    'MMM d, yyyy': 'Sep 1, 2023', // US short
+    'yyyy-MM-dd': '2023-09-01', // ISO
+    'EEEE, MMMM d, yyyy': 'Friday, September 1, 2023', // Full weekday
+    'EEE, MMM d, yyyy': 'Fri, Sep 1, 2023', // Abbreviated weekday
   };
 
   // A curated list of icons for the picker.
@@ -347,7 +429,7 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
                     color: color,
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: currentColor.value == color.value
+                      color: currentColor.toARGB32() == color.toARGB32()
                           ? Theme.of(context).colorScheme.primary
                           : Colors.transparent,
                       width: 2,
@@ -361,6 +443,21 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
     );
   }
 
+  // Resolve a TextStyle for a given family. 'System' falls back to base.
+  TextStyle _styleForFamily(
+    String family, {
+    double? size,
+    FontWeight? weight,
+    TextStyle? base,
+  }) {
+    final baseStyle = (base ?? const TextStyle()).copyWith(
+      fontSize: size,
+      fontWeight: weight,
+    );
+    if (family == 'System' || family.isEmpty) return baseStyle;
+    return GoogleFonts.getFont(family, textStyle: baseStyle);
+  }
+
   Widget _buildFontControl({
     required String previewText,
     required String fontFamily,
@@ -371,6 +468,14 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
     required ValueChanged<FontWeight?> onWeightChanged,
   }) {
     final loc = AppLocalizations.of(context)!;
+
+    // De-duplicate while preserving order.
+    final families = _fontFamilies.toSet().toList();
+    // Ensure the dropdown has a valid selected value.
+    final effectiveValue = families.contains(fontFamily)
+        ? fontFamily
+        : 'System';
+
     return Column(
       children: [
         Container(
@@ -383,10 +488,10 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
           ),
           child: Text(
             previewText,
-            style: TextStyle(
-              fontFamily: fontFamily == 'System' ? null : fontFamily,
-              fontSize: fontSize,
-              fontWeight: fontWeight,
+            style: _styleForFamily(
+              fontFamily,
+              size: fontSize,
+              weight: fontWeight,
             ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
@@ -394,10 +499,35 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
         ),
         const SizedBox(height: 16),
         DropdownButtonFormField<String>(
-          value: fontFamily,
+          value: effectiveValue,
           decoration: InputDecoration(labelText: loc.font_family),
-          items: _fontFamilies
-              .map((f) => DropdownMenuItem(value: f, child: Text(f)))
+          items: families
+              .map(
+                (f) => DropdownMenuItem(
+                  value: f,
+                  child: Text(
+                    f,
+                    style: _styleForFamily(
+                      f,
+                      base: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ),
+                ),
+              )
+              .toList(),
+          selectedItemBuilder: (context) => families
+              .map(
+                (f) => Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    f,
+                    style: _styleForFamily(
+                      f,
+                      base: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ),
+                ),
+              )
               .toList(),
           onChanged: onFamilyChanged,
         ),
@@ -412,7 +542,7 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
                 child: Slider(
                   value: fontWeight.index.toDouble(),
                   min: 0,
-                  max: 8, // FontWeight.values has 9 values (w100 to w900)
+                  max: 8,
                   divisions: 8,
                   label: 'w${((fontWeight.index + 1) * 100)}',
                   onChanged: (value) {

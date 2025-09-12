@@ -54,7 +54,27 @@ class ImageGrid extends StatelessWidget {
                 imageUrl: image.preview,
                 placeholder: (context, url) =>
                     const Center(child: CircularProgressIndicator.adaptive()),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
+                errorWidget: (context, url, error) {
+                  debugPrint('Image load error: $error');
+
+                  return Center(
+                    child: Column(
+                      children: [
+                        Text(
+                          error.toString(),
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.error,
+                          ),
+                        ),
+                        Icon(
+                          Symbols.broken_image,
+                          size: 48,
+                          color: Theme.of(context).colorScheme.error,
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
               // Top overlay for attribution
               Positioned(

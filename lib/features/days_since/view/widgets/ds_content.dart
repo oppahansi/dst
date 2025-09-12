@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Package Imports
 import 'package:intl/intl.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // Project Imports
 import 'package:sdtpro/features/days_since/domain/entities/ds_entry.dart';
@@ -35,6 +36,11 @@ class DsContent extends StatelessWidget {
     }
   }
 
+  TextStyle _applyFont(String family, TextStyle base) {
+    if (family == 'System' || family.isEmpty) return base;
+    return GoogleFonts.getFont(family, textStyle: base);
+  }
+
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
@@ -49,25 +55,25 @@ class DsContent extends StatelessWidget {
       children: [
         Text(
           '$days',
-          style: TextStyle(
-            fontFamily: settings.daysFontFamily == 'System'
-                ? null
-                : settings.daysFontFamily,
-            fontSize: _getFontSize(settings.daysFontSize),
-            color: Colors.white,
-            fontWeight: settings.daysFontWeight,
-            shadows: const [Shadow(blurRadius: 8, color: Colors.black54)],
+          style: _applyFont(
+            settings.daysFontFamily,
+            TextStyle(
+              fontSize: _getFontSize(settings.daysFontSize),
+              color: Colors.white,
+              fontWeight: settings.daysFontWeight,
+              shadows: const [Shadow(blurRadius: 8, color: Colors.black54)],
+            ),
           ),
         ),
         Text(
           subtitle,
-          style: TextStyle(
-            fontFamily: settings.subtitleFontFamily == 'System'
-                ? null
-                : settings.subtitleFontFamily,
-            color: settings.subtitleColor,
-            fontSize: _getFontSize(settings.subtitleFontSize),
-            fontWeight: settings.subtitleFontWeight,
+          style: _applyFont(
+            settings.subtitleFontFamily,
+            TextStyle(
+              color: settings.subtitleColor,
+              fontSize: _getFontSize(settings.subtitleFontSize),
+              fontWeight: settings.subtitleFontWeight,
+            ),
           ),
         ),
         SizedBox(height: _getFontSize(24)),
@@ -102,14 +108,14 @@ class DsContent extends StatelessWidget {
             controller: titleController,
             textAlign: TextAlign.center,
             maxLines: null,
-            style: TextStyle(
-              fontFamily: settings.titleFontFamily == 'System'
-                  ? null
-                  : settings.titleFontFamily,
-              color: Colors.white,
-              fontSize: _getFontSize(settings.titleFontSize),
-              fontWeight: settings.titleFontWeight,
-              shadows: const [Shadow(blurRadius: 4, color: Colors.black45)],
+            style: _applyFont(
+              settings.titleFontFamily,
+              TextStyle(
+                color: Colors.white,
+                fontSize: _getFontSize(settings.titleFontSize),
+                fontWeight: settings.titleFontWeight,
+                shadows: const [Shadow(blurRadius: 4, color: Colors.black45)],
+              ),
             ),
             decoration: InputDecoration(
               fillColor: Colors.transparent,
@@ -125,14 +131,14 @@ class DsContent extends StatelessWidget {
           Text(
             entry.title,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontFamily: settings.titleFontFamily == 'System'
-                  ? null
-                  : settings.titleFontFamily,
-              color: Colors.white,
-              fontSize: _getFontSize(settings.titleFontSize),
-              fontWeight: settings.titleFontWeight,
-              shadows: const [Shadow(blurRadius: 4, color: Colors.black45)],
+            style: _applyFont(
+              settings.titleFontFamily,
+              TextStyle(
+                color: Colors.white,
+                fontSize: _getFontSize(settings.titleFontSize),
+                fontWeight: settings.titleFontWeight,
+                shadows: const [Shadow(blurRadius: 4, color: Colors.black45)],
+              ),
             ),
           ),
       ],

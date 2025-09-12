@@ -52,7 +52,7 @@ class DsSettings {
     this.subtitleFontWeight = FontWeight.normal,
     this.subtitleColor = Colors.white70,
     this.showSubtitleDate = true,
-    this.subtitleDateFormat = 'yMMMd',
+    this.subtitleDateFormat = 'dd.MM.yyyy',
   });
 
   // Helper to get font weight from an index, as it's easier to store.

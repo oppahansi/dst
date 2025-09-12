@@ -13,9 +13,10 @@ import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
 // Project Imports
+import 'package:sdtpro/features/days_since/view/screens/ds_screenshot_screen.dart';
+import 'package:sdtpro/features/days_since/view/widgets/ds_background_image.dart';
 import 'package:sdtpro/core/utils/text_styles.dart';
 import 'package:sdtpro/core/utils/screen_sizes.dart';
-import 'package:sdtpro/features/days_since/view/widgets/ds_background_image.dart';
 import 'package:sdtpro/features/days_since/view/widgets/ds_content.dart';
 import 'package:sdtpro/features/days_since/view/screens/ds_detail_screen.dart';
 import 'package:sdtpro/features/days_since/domain/entities/ds_entry.dart';
@@ -176,6 +177,20 @@ class _DsCardState extends State<DsCard> {
                     color: Colors.white,
                     tooltip: loc.share,
                     onPressed: _captureAndShareScreenshot,
+                    style: IconButton.styleFrom(
+                      backgroundColor: Colors.black.withAlpha(50),
+                    ),
+                  ),
+                  IconButton(
+                    iconSize: gapSize(context),
+                    icon: const Icon(Symbols.screenshot),
+                    tooltip: loc.screenshot_view,
+                    color: Colors.white,
+                    onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => DsScreenshotScreen(entry: widget.entry),
+                      ),
+                    ),
                     style: IconButton.styleFrom(
                       backgroundColor: Colors.black.withAlpha(50),
                     ),

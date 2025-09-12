@@ -47,6 +47,7 @@ class _DsAddScreenState extends ConsumerState<DsAddScreen> {
   @override
   void initState() {
     super.initState();
+
     if (_isEditing) {
       final entry = widget.entry!;
       _settings = entry.settings ?? DsSettings();
@@ -202,8 +203,8 @@ class _DsAddScreenState extends ConsumerState<DsAddScreen> {
     }
   }
 
-  void _showSettingsPanel() {
-    showModalBottomSheet<void>(
+  void _showSettingsPanel() async {
+    await showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
       builder: (context) => DraggableScrollableSheet(
