@@ -51,7 +51,7 @@ class _DsCardState extends State<DsCard> {
         child: InheritedTheme.captureAll(
           context,
           MediaQuery(
-            data: mq.copyWith(textScaleFactor: 1.0),
+            data: mq.copyWith(),
             child: _buildScreenshotWidget(context),
           ),
         ),
