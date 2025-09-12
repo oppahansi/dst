@@ -9,9 +9,9 @@ import "package:material_symbols_icons/symbols.dart";
 // Project Imports
 import "package:sdtpro/core/utils/colors.dart";
 import "package:sdtpro/core/utils/extensions.dart";
-import "package:sdtpro/features/days_since/view/screens/ds_add_screen.dart";
-import "package:sdtpro/features/days_since/view/screens/ds_screen.dart";
-import "package:sdtpro/features/days_to/view/screens/days_to_screen.dart";
+import "package:sdtpro/features/sdt/view/screens/sdt_add_screen.dart";
+import "package:sdtpro/features/sdt/view/screens/ds_screen.dart";
+import "package:sdtpro/features/sdt/view/screens/dt_screen.dart";
 import "package:sdtpro/features/home/home_screen.dart";
 import "package:sdtpro/features/settings/view/screens/settings_screen.dart";
 import "package:sdtpro/l10n/app_localizations.dart";
@@ -61,7 +61,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
       case 1: // DaysSinceScreen
         tooltip = "${loc.add} ${loc.days_since}";
         onPressed = () {
-          Navigator.of(context).pushNamed(DsAddScreen.path);
+          Navigator.of(context).pushNamed(SdtAddScreen.path);
         };
         break;
       case 2: // DaysToScreen
@@ -132,12 +132,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
           onPageChanged: (index) {
             ref.read(currentTabIndexProvider.notifier).state = index;
           },
-          children: [
-            HomeScreen(),
-            DsScreen(),
-            DaysToScreen(),
-            SettingsScreen(),
-          ],
+          children: [HomeScreen(), DsScreen(), DtScreen(), SettingsScreen()],
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: currentIndex,
@@ -184,7 +179,7 @@ int getRouteIndex(String path) {
   final bottomRoutes = [
     HomeScreen.path,
     DsScreen.path,
-    DaysToScreen.path,
+    DtScreen.path,
     SettingsScreen.path,
   ];
 
