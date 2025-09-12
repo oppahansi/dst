@@ -6,13 +6,12 @@ import 'package:sdtpro/core/db/db.dart';
 import 'package:sdtpro/features/days_since/domain/entities/ds_entry.dart';
 import 'package:sdtpro/features/days_since/domain/repos/days_since_repository.dart';
 
-class DaysSinceRepositoryImpl implements DaysSinceRepository {
-  static final DaysSinceRepositoryImpl _instance =
-      DaysSinceRepositoryImpl._internal();
-  factory DaysSinceRepositoryImpl() => _instance;
-  DaysSinceRepositoryImpl._internal();
+class DsRepoImpl implements DsRepo {
+  static final DsRepoImpl _instance = DsRepoImpl._internal();
+  factory DsRepoImpl() => _instance;
+  DsRepoImpl._internal();
 
-  static const String _table = 'days_since_entries';
+  static const String _table = 'entries';
 
   Future<Database> get _db async => Db.getUserDbInstance();
 

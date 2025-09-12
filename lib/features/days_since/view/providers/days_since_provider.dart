@@ -2,15 +2,15 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // Project Imports
-import 'package:sdtpro/features/days_since/data/days_since_repository_impl.dart';
+import 'package:sdtpro/features/days_since/data/ds_repo_impl.dart';
 import 'package:sdtpro/features/days_since/domain/entities/ds_entry.dart';
 import 'package:sdtpro/features/days_since/domain/repos/days_since_repository.dart';
 
 part 'days_since_provider.g.dart';
 
 @riverpod
-DaysSinceRepository daysSinceRepository(Ref ref) {
-  return DaysSinceRepositoryImpl();
+DsRepo daysSinceRepository(Ref ref) {
+  return DsRepoImpl();
 }
 
 @riverpod

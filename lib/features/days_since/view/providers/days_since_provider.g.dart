@@ -10,13 +10,8 @@ part of 'days_since_provider.dart';
 const daysSinceRepositoryProvider = DaysSinceRepositoryProvider._();
 
 final class DaysSinceRepositoryProvider
-    extends
-        $FunctionalProvider<
-          DaysSinceRepository,
-          DaysSinceRepository,
-          DaysSinceRepository
-        >
-    with $Provider<DaysSinceRepository> {
+    extends $FunctionalProvider<DsRepo, DsRepo, DsRepo>
+    with $Provider<DsRepo> {
   const DaysSinceRepositoryProvider._()
     : super(
         from: null,
@@ -33,20 +28,19 @@ final class DaysSinceRepositoryProvider
 
   @$internal
   @override
-  $ProviderElement<DaysSinceRepository> $createElement(
-    $ProviderPointer pointer,
-  ) => $ProviderElement(pointer);
+  $ProviderElement<DsRepo> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
 
   @override
-  DaysSinceRepository create(Ref ref) {
+  DsRepo create(Ref ref) {
     return daysSinceRepository(ref);
   }
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(DaysSinceRepository value) {
+  Override overrideWithValue(DsRepo value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<DaysSinceRepository>(value),
+      providerOverride: $SyncValueProvider<DsRepo>(value),
     );
   }
 }

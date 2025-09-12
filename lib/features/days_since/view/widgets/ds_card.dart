@@ -95,7 +95,7 @@ class _DsCardState extends State<DsCard> {
     final settings = widget.entry.settings ?? DsSettings();
     final loc = AppLocalizations.of(context)!;
     final days = DateTime.now().difference(widget.entry.date).inDays;
-    final daysSince = widget.entry.settings!.showSubtitleDate
+    final daysSince = settings.showSubtitleDate
         ? '${loc.days_since} ${DateFormat(settings.subtitleDateFormat, loc.localeName).format(widget.entry.date)}'
         : loc.days_since;
 

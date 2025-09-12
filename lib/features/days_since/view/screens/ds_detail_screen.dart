@@ -95,13 +95,14 @@ class _DsDetailScreenState extends ConsumerState<DsDetailScreen> {
   }
 
   Future<void> _printEntryDetails(BuildContext context) async {
-    if (widget.entry.description == null || widget.entry.description!.isEmpty) {
+    // Use controller text, not the original widget.entry.description
+    final text = _descriptionController.text.trim();
+    if (text.isEmpty) {
       context.showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.no_description_to_print),
         ),
       );
-
       return;
     }
 
@@ -136,7 +137,7 @@ class _DsDetailScreenState extends ConsumerState<DsDetailScreen> {
                 ),
               ],
               pw.SizedBox(height: 20),
-              pw.Text(_descriptionController.text),
+              pw.Text(text),
             ],
           );
         },
@@ -175,17 +176,23 @@ class _DsDetailScreenState extends ConsumerState<DsDetailScreen> {
                   tooltip: _isEditingDescription ? loc.save : loc.edit,
                   onPressed: () async {
                     if (_isEditingDescription) {
-                      // Save logic
                       final updatedEntry = widget.entry.copyWith(
                         description: _descriptionController.text,
                       );
                       await ref
                           .read(daysSinceNotifierProvider.notifier)
                           .updateEntry(updatedEntry);
+                      if (!mounted) return;
+                      FocusScope.of(context).unfocus();
+                      setState(() {
+                        _isEditingDescription = false;
+                      });
+                      context.showSnackBar(SnackBar(content: Text(loc.saved)));
+                    } else {
+                      setState(() {
+                        _isEditingDescription = true;
+                      });
                     }
-                    setState(
-                      () => _isEditingDescription = !_isEditingDescription,
-                    );
                   },
                 ),
               ],
