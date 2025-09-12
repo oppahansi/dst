@@ -29,7 +29,11 @@ class SdtRepoImpl implements SdtRepo {
   @override
   Future<void> deleteEntry(int id) async {
     final db = await _db;
-    await db.delete(_table, where: 'id = ?', whereArgs: [id]);
+    final rows = await db.delete(_table, where: 'id = ?', whereArgs: [id]);
+    if (rows == 0) {
+      // Optional: surface an error to help diagnose when no row was removed
+      throw Exception('Delete failed: entry $id not found');
+    }
   }
 
   @override

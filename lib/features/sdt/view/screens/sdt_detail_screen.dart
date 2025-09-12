@@ -14,7 +14,9 @@ import 'package:sdtpro/core/utils/extensions.dart';
 import 'package:sdtpro/features/sdt/domain/entities/sdt_settings.dart';
 import 'package:sdtpro/features/sdt/view/screens/sdt_add_screen.dart';
 import 'package:sdtpro/features/sdt/domain/entities/sdt_entry.dart';
+import 'package:sdtpro/features/sdt/view/providers/sdt_usecase_providers.dart';
 import 'package:sdtpro/features/sdt/view/providers/sdt_provider.dart';
+// for ds/dt invalidation
 import 'package:sdtpro/features/sdt/view/screens/sdt_screenshot_screen.dart';
 import 'package:sdtpro/features/sdt/view/widgets/ds_card.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
@@ -76,13 +78,20 @@ class _SdtDetailScreenState extends ConsumerState<SdtDetailScreen> {
     );
 
     if (didConfirm == true && context.mounted) {
-      await ref
-          .read(sdtNotifierProvider.notifier)
-          .deleteEntry(widget.entry.id!);
+      try {
+        // Call delete use case directly
+        await ref.read(deleteEntryProvider)(widget.entry.id!);
 
-      if (!context.mounted) return;
+        // Invalidate filtered lists so UI refreshes
+        ref.invalidate(dsNotifierProvider);
+        ref.invalidate(dtNotifierProvider);
 
-      context.pop();
+        if (!context.mounted) return;
+        context.pop();
+      } catch (e) {
+        if (!context.mounted) return;
+        context.showSnackBar(SnackBar(content: Text(e.toString())));
+      }
     }
   }
 
