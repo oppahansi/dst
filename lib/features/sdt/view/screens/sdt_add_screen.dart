@@ -95,7 +95,7 @@ class _SdtAddScreenState extends ConsumerState<SdtAddScreen> {
       context: context,
       initialDate: _selectedDate,
       firstDate: DateTime(1900),
-      lastDate: DateTime.now(),
+      lastDate: DateTime.now().add(Duration(days: 365 * 100)),
     );
     if (pickedDate != null) {
       setState(() => _selectedDate = pickedDate);
@@ -324,7 +324,7 @@ class _SdtAddScreenState extends ConsumerState<SdtAddScreen> {
             ),
 
             // Main Content
-            DsContent(
+            SdtContent(
               entry: SdtEntry(
                 title: _titleController.text,
                 date: _selectedDate,

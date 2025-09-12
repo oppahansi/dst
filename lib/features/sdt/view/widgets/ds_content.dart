@@ -11,13 +11,13 @@ import 'package:sdtpro/l10n/app_localizations.dart';
 
 enum SdtContentContext { card, fullscreen, editor }
 
-class DsContent extends StatelessWidget {
+class SdtContent extends StatelessWidget {
   final SdtEntry entry;
   final SdtSettings settings;
   final SdtContentContext contentContext;
   final TextEditingController? titleController;
 
-  const DsContent({
+  const SdtContent({
     super.key,
     required this.entry,
     required this.settings,
@@ -43,11 +43,15 @@ class DsContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
-    final days = DateTime.now().difference(entry.date).inDays;
+    final now = DateTime.now();
+    final isFuture = entry.date.isAfter(now);
+    final days = isFuture
+        ? entry.date.difference(now).inDays
+        : now.difference(entry.date).inDays;
 
     final subtitle = settings.showSubtitleDate
-        ? '${loc.days_since} ${DateFormat(settings.subtitleDateFormat, loc.localeName).format(entry.date)}'
-        : loc.days_since;
+        ? '${isFuture ? loc.days_to : loc.days_since} ${DateFormat(settings.subtitleDateFormat, loc.localeName).format(entry.date)}'
+        : (isFuture ? loc.days_to : loc.days_since);
 
     final mainContent = Column(
       mainAxisSize: MainAxisSize.min,

@@ -107,7 +107,11 @@ class _SdtDetailScreenState extends ConsumerState<SdtDetailScreen> {
     }
 
     final loc = AppLocalizations.of(context)!;
-    final days = DateTime.now().difference(widget.entry.date).inDays;
+    final now = DateTime.now();
+    final isFuture = widget.entry.date.isAfter(now);
+    final days = isFuture
+        ? widget.entry.date.difference(now).inDays
+        : now.difference(widget.entry.date).inDays;
     final settings = widget.entry.settings ?? SdtSettings();
 
     final doc = pw.Document();
@@ -129,7 +133,7 @@ class _SdtDetailScreenState extends ConsumerState<SdtDetailScreen> {
                   ),
                 ),
               ),
-              pw.Text('$days ${loc.days_since}'),
+              pw.Text('$days ${isFuture ? loc.days_to : loc.days_since}'),
               if (settings.showSubtitleDate) ...[
                 pw.SizedBox(height: 4),
                 pw.Text(

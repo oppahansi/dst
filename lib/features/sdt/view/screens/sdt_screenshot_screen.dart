@@ -130,7 +130,7 @@ class _SdtScreenshotScreenState extends State<SdtScreenshotScreen> {
               SafeArea(
                 top: false,
                 bottom: false,
-                child: DsContent(
+                child: SdtContent(
                   entry: widget.entry,
                   settings: settings,
                   contentContext: SdtContentContext.fullscreen,

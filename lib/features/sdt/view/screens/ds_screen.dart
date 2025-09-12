@@ -24,14 +24,16 @@ class DsScreen extends ConsumerWidget {
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (err, stack) => Center(child: Text('${loc.error}: $err')),
       data: (entries) {
+        final now = DateTime.now();
+        final pastOrToday = entries.where((e) => !e.date.isAfter(now)).toList();
         return ListView.builder(
           padding: const EdgeInsets.all(8.0),
-          itemCount: entries.length + (kDebugMode ? 1 : 0),
+          itemCount: pastOrToday.length + (kDebugMode ? 1 : 0),
           itemBuilder: (context, index) {
             if (kDebugMode && index == 0) {
               return const DebugSettingsControlls();
             }
-            final entry = entries[index - (kDebugMode ? 1 : 0)];
+            final entry = pastOrToday[index - (kDebugMode ? 1 : 0)];
 
             return SdtCard(entry: entry).marginVertical(8);
           },

@@ -117,7 +117,7 @@ class _SdtCardState extends State<SdtCard> {
                     (settings.overlayAlpha * 255).round(),
                   ),
                 ),
-                DsContent(
+                SdtContent(
                   entry: widget.entry,
                   settings: settings,
                   contentContext: SdtContentContext.fullscreen,
@@ -134,7 +134,11 @@ class _SdtCardState extends State<SdtCard> {
   Widget build(BuildContext context) {
     final settings = widget.entry.settings ?? SdtSettings();
     final loc = AppLocalizations.of(context)!;
-    final days = DateTime.now().difference(widget.entry.date).inDays;
+    final now = DateTime.now();
+    final isFuture = widget.entry.date.isAfter(now);
+    final days = isFuture
+        ? widget.entry.date.difference(now).inDays
+        : now.difference(widget.entry.date).inDays;
 
     return Card(
       margin: EdgeInsets.zero,
@@ -175,7 +179,7 @@ class _SdtCardState extends State<SdtCard> {
                   ),
                   SizedBox(width: gapSize(context)),
                   Text(
-                    loc.days_since,
+                    isFuture ? loc.days_to : loc.days_since,
                     style: TextStyle(
                       fontFamily: settings.subtitleFontFamily == 'System'
                           ? null

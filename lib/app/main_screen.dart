@@ -61,16 +61,13 @@ class _MainScreenState extends ConsumerState<MainScreen> {
       case 1: // DaysSinceScreen
         tooltip = "${loc.add} ${loc.days_since}";
         onPressed = () {
-          Navigator.of(context).pushNamed(SdtAddScreen.path);
+          context.pushNamed(SdtAddScreen.path);
         };
         break;
-      case 2: // DaysToScreen
+      case 2:
         tooltip = "${loc.add} ${loc.days_to}";
         onPressed = () {
-          // TODO: Implement action for adding a "Days To" event.
-          context.showSnackBar(
-            SnackBar(content: Text("${loc.add} new '${loc.days_to}' event.")),
-          );
+          context.pushNamed(SdtAddScreen.path);
         };
         break;
       default:
