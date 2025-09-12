@@ -6,25 +6,25 @@ part of 'image_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-@ProviderFor(imageRepository)
-const imageRepositoryProvider = ImageRepositoryProvider._();
+@ProviderFor(imageRepo)
+const imageRepoProvider = ImageRepoProvider._();
 
-final class ImageRepositoryProvider
+final class ImageRepoProvider
     extends $FunctionalProvider<ImageRepo, ImageRepo, ImageRepo>
     with $Provider<ImageRepo> {
-  const ImageRepositoryProvider._()
+  const ImageRepoProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'imageRepositoryProvider',
+        name: r'imageRepoProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$imageRepositoryHash();
+  String debugGetCreateSourceHash() => _$imageRepoHash();
 
   @$internal
   @override
@@ -33,7 +33,7 @@ final class ImageRepositoryProvider
 
   @override
   ImageRepo create(Ref ref) {
-    return imageRepository(ref);
+    return imageRepo(ref);
   }
 
   /// {@macro riverpod.override_with_value}
@@ -45,7 +45,7 @@ final class ImageRepositoryProvider
   }
 }
 
-String _$imageRepositoryHash() => r'8da52d30be5661d20b701fe79743143607422629';
+String _$imageRepoHash() => r'bc9c6189696734ad155c700159008bec967ed880';
 
 @ProviderFor(ImageSearch)
 const imageSearchProvider = ImageSearchProvider._();

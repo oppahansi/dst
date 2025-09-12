@@ -8,57 +8,50 @@ part of 'settings_usecase_providers.dart';
 
 /// Provides the concrete implementation of the SettingsRepository.
 /// In a real app, you might switch this out for a mock repository during tests.
-@ProviderFor(settingsRepository)
-const settingsRepositoryProvider = SettingsRepositoryProvider._();
+@ProviderFor(settingsRepo)
+const settingsRepoProvider = SettingsRepoProvider._();
 
 /// Provides the concrete implementation of the SettingsRepository.
 /// In a real app, you might switch this out for a mock repository during tests.
-final class SettingsRepositoryProvider
-    extends
-        $FunctionalProvider<
-          SettingsRepository,
-          SettingsRepository,
-          SettingsRepository
-        >
-    with $Provider<SettingsRepository> {
+final class SettingsRepoProvider
+    extends $FunctionalProvider<SettingsRepo, SettingsRepo, SettingsRepo>
+    with $Provider<SettingsRepo> {
   /// Provides the concrete implementation of the SettingsRepository.
   /// In a real app, you might switch this out for a mock repository during tests.
-  const SettingsRepositoryProvider._()
+  const SettingsRepoProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'settingsRepositoryProvider',
+        name: r'settingsRepoProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$settingsRepositoryHash();
+  String debugGetCreateSourceHash() => _$settingsRepoHash();
 
   @$internal
   @override
-  $ProviderElement<SettingsRepository> $createElement(
-    $ProviderPointer pointer,
-  ) => $ProviderElement(pointer);
+  $ProviderElement<SettingsRepo> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
 
   @override
-  SettingsRepository create(Ref ref) {
-    return settingsRepository(ref);
+  SettingsRepo create(Ref ref) {
+    return settingsRepo(ref);
   }
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(SettingsRepository value) {
+  Override overrideWithValue(SettingsRepo value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<SettingsRepository>(value),
+      providerOverride: $SyncValueProvider<SettingsRepo>(value),
     );
   }
 }
 
-String _$settingsRepositoryHash() =>
-    r'dd4f69cba0cdcf0a0fe2f1f6bd458bb30ff1e8ca';
+String _$settingsRepoHash() => r'a5f2076161640bf5f6ee3d4d2ef4288c534990d1';
 
 /// Provides the GetSettings use case, injecting the repository.
 @ProviderFor(getSettings)

@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 
 // Project Imports
-import 'package:sdtpro/features/settings/domain/repos/settings_repository.dart';
+import 'package:sdtpro/features/settings/domain/repos/settings_repo.dart';
 
 class UpdateTheme {
-  final SettingsRepository repository;
+  final SettingsRepo repository;
 
   UpdateTheme(this.repository);
 

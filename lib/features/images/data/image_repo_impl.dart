@@ -9,11 +9,10 @@ import 'package:sdtpro/core/utils/constants.dart';
 import 'package:sdtpro/features/images/domain/entities/fis_result.dart';
 import 'package:sdtpro/features/images/domain/repos/image_repo.dart';
 
-class ImageRepositoryImpl implements ImageRepo {
+class ImageRepoImpl implements ImageRepo {
   final http.Client _client;
 
-  ImageRepositoryImpl({http.Client? client})
-    : _client = client ?? http.Client();
+  ImageRepoImpl({http.Client? client}) : _client = client ?? http.Client();
 
   Uri _buildUri(String path, Map<String, String> params) {
     return Uri.parse(

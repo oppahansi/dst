@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 // Project Imports
-import "package:sdtpro/features/settings/data/settings_repository_impl.dart";
+import "package:sdtpro/features/settings/data/settings_repo_impl.dart";
 import "package:sdtpro/features/settings/domain/entities/settings.dart";
 import 'package:sdtpro/features/settings/domain/usecases/get_settings.dart';
 import 'package:sdtpro/features/settings/view/providers/settings_usecase_providers.dart';
@@ -36,7 +36,7 @@ class SettingsNotifier extends _$SettingsNotifier {
 
 Future<Settings> loadInitialSettings() async {
   // Outside the widget tree, we can compose our dependencies manually.
-  final getSettingsUseCase = GetSettings(SettingsRepositoryImpl());
+  final getSettingsUseCase = GetSettings(SettingsRepoImpl());
   final settings = await getSettingsUseCase.call();
   return settings;
 }

@@ -4,15 +4,14 @@ import "package:sqflite/sqflite.dart";
 
 // Project Imports
 import "package:sdtpro/core/db/db.dart";
-import "package:sdtpro/features/settings/domain/repos/settings_repository.dart";
-import "package:sdtpro/features/settings/domain/entities/settings.dart";
 import "package:sdtpro/core/utils/constants.dart";
+import "package:sdtpro/features/settings/domain/entities/settings.dart";
+import "package:sdtpro/features/settings/domain/repos/settings_repo.dart";
 
-class SettingsRepositoryImpl implements SettingsRepository {
-  static final SettingsRepositoryImpl _instance =
-      SettingsRepositoryImpl._internal();
-  factory SettingsRepositoryImpl() => _instance;
-  SettingsRepositoryImpl._internal();
+class SettingsRepoImpl implements SettingsRepo {
+  static final SettingsRepoImpl _instance = SettingsRepoImpl._internal();
+  factory SettingsRepoImpl() => _instance;
+  SettingsRepoImpl._internal();
 
   static const String _table = "settings";
 

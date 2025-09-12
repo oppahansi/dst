@@ -70,7 +70,7 @@ final class DsNotifierProvider
   DsNotifier create() => DsNotifier();
 }
 
-String _$dsNotifierHash() => r'd0990a9c9ff348a8f2e5bfc24df130958c6c4fad';
+String _$dsNotifierHash() => r'380f18708aabfd07dadb00c66660b4f4207011f3';
 
 abstract class _$DsNotifier extends $AsyncNotifier<List<DsEntry>> {
   FutureOr<List<DsEntry>> build();

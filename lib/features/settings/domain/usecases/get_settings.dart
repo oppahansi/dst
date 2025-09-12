@@ -1,9 +1,9 @@
 // Project Imports
 import 'package:sdtpro/features/settings/domain/entities/settings.dart';
-import 'package:sdtpro/features/settings/domain/repos/settings_repository.dart';
+import 'package:sdtpro/features/settings/domain/repos/settings_repo.dart';
 
 class GetSettings {
-  final SettingsRepository repository;
+  final SettingsRepo repository;
 
   GetSettings(this.repository);
 
