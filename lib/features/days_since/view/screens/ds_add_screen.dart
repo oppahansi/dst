@@ -152,15 +152,40 @@ class _DsAddScreenState extends ConsumerState<DsAddScreen> {
 
   Future<void> _getImageFromDevice(ImageSource source) async {
     final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: source);
+    try {
+      final pickedFile = await picker.pickImage(source: source);
 
-    if (pickedFile != null) {
-      setState(
-        () => _selectedImage = FisImage(
-          url: pickedFile.path,
-          preview: pickedFile.path,
-        ),
-      );
+      if (pickedFile != null) {
+        setState(
+          () => _selectedImage = FisImage(
+            url: pickedFile.path,
+            preview: pickedFile.path,
+          ),
+        );
+      }
+    } on PlatformException catch (e) {
+      // Handle user denying permission (camera/gallery) gracefully.
+      String message;
+      switch (e.code) {
+        case 'camera_access_denied':
+          message = 'Camera permission denied.';
+          break;
+        case 'photo_access_denied':
+        case 'photo_library_access_denied':
+          message = 'Photo library permission denied.';
+          break;
+        default:
+          message = 'Failed to pick image (${e.code}).';
+      }
+      if (mounted) {
+        context.showSnackBar(SnackBar(content: Text(message)));
+      }
+    } catch (e) {
+      if (mounted) {
+        context.showSnackBar(
+          SnackBar(content: Text('Failed to pick image: $e')),
+        );
+      }
     }
   }
 

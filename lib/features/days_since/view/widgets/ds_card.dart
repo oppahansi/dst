@@ -13,6 +13,7 @@ import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
 // Project Imports
+import 'package:sdtpro/core/utils/extensions.dart';
 import 'package:sdtpro/features/days_since/view/screens/ds_screenshot_screen.dart';
 import 'package:sdtpro/features/days_since/view/widgets/ds_background_image.dart';
 import 'package:sdtpro/core/utils/text_styles.dart';
@@ -34,30 +35,65 @@ class DsCard extends StatefulWidget {
 
 class _DsCardState extends State<DsCard> {
   final _screenshotController = ScreenshotController();
+  bool _isSharing = false; // overlay while preparing image
 
   Future<void> _captureAndShareScreenshot() async {
     final loc = AppLocalizations.of(context)!;
-    // We use `captureFromLongWidget` to render the full-screen content off-screen.
-    final imageBytes = await _screenshotController.captureFromLongWidget(
-      _buildScreenshotWidget(context),
-      pixelRatio: MediaQuery.of(context).devicePixelRatio,
-      constraints: const BoxConstraints(maxHeight: 1920, maxWidth: 1080),
-    );
 
-    if (!mounted) return;
+    if (mounted) setState(() => _isSharing = true);
+    try {
+      final mq = MediaQuery.of(context);
+      final pixelRatio = mq.devicePixelRatio;
 
-    final directory = await getTemporaryDirectory();
-    final imagePath = await File(
-      '${directory.path}/sdt_share_${DateTime.now().millisecondsSinceEpoch}.png',
-    ).create();
-    await imagePath.writeAsBytes(imageBytes);
+      // Keep theme and localizations while rendering offstage.
+      final widgetToCapture = Localizations.override(
+        context: context,
+        child: InheritedTheme.captureAll(
+          context,
+          MediaQuery(
+            data: mq.copyWith(textScaleFactor: 1.0),
+            child: _buildScreenshotWidget(context),
+          ),
+        ),
+      );
 
-    final params = ShareParams(
-      text: loc.days_since_title(widget.entry.title),
-      files: [XFile(imagePath.path)],
-    );
+      final imageBytes = await _screenshotController.captureFromLongWidget(
+        widgetToCapture,
+        pixelRatio: pixelRatio,
+        constraints: BoxConstraints.tightFor(
+          width: mq.size.width,
+          height: mq.size.height,
+        ),
+      );
 
-    await SharePlus.instance.share(params);
+      if (!mounted || imageBytes.isEmpty) {
+        if (mounted) {
+          context.showSnackBar(
+            SnackBar(content: Text(loc.failed_to_load_images)),
+          );
+        }
+        return;
+      }
+
+      final directory = await getTemporaryDirectory();
+      final imagePath = await File(
+        '${directory.path}/sdt_share_${DateTime.now().millisecondsSinceEpoch}.png',
+      ).create();
+      await imagePath.writeAsBytes(imageBytes);
+
+      final params = ShareParams(
+        text: loc.days_since_title(widget.entry.title),
+        files: [XFile(imagePath.path)],
+      );
+
+      await SharePlus.instance.share(params);
+    } catch (e) {
+      if (mounted) {
+        context.showSnackBar(SnackBar(content: Text('Share failed: $e')));
+      }
+    } finally {
+      if (mounted) setState(() => _isSharing = false);
+    }
   }
 
   /// This builds the same widget tree as the `DaysSinceScreenshotScreen`
@@ -65,26 +101,30 @@ class _DsCardState extends State<DsCard> {
   Widget _buildScreenshotWidget(BuildContext context) {
     final settings = widget.entry.settings ?? DsSettings();
 
-    return RepaintBoundary(
-      child: Material(
-        color: Colors.black,
-        child: AspectRatio(
-          aspectRatio: 9 / 16, // Common phone screen aspect ratio
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              DsBackgroundImage(imageUrl: widget.entry.imageUrl),
-              Container(
-                color: settings.overlayColor.withAlpha(
-                  (settings.overlayAlpha * 255).round(),
+    return Directionality(
+      // ensure Text has a Directionality when rendered offstage
+      textDirection: Directionality.of(context),
+      child: RepaintBoundary(
+        child: Material(
+          color: Colors.black,
+          child: AspectRatio(
+            aspectRatio: 9 / 16, // Common phone screen aspect ratio
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                DsBackgroundImage(imageUrl: widget.entry.imageUrl),
+                Container(
+                  color: settings.overlayColor.withAlpha(
+                    (settings.overlayAlpha * 255).round(),
+                  ),
                 ),
-              ),
-              DsContent(
-                entry: widget.entry,
-                settings: settings,
-                contentContext: DsContentContext.fullscreen,
-              ),
-            ],
+                DsContent(
+                  entry: widget.entry,
+                  settings: settings,
+                  contentContext: DsContentContext.fullscreen,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -217,6 +257,19 @@ class _DsCardState extends State<DsCard> {
               ),
             ],
           ),
+
+          // Loading overlay while preparing the screenshot/share
+          if (_isSharing)
+            Positioned.fill(
+              child: AbsorbPointer(
+                child: Container(
+                  color: Colors.black54,
+                  child: const Center(
+                    child: CircularProgressIndicator(color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
     );
