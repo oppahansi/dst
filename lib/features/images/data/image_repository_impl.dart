@@ -7,20 +7,18 @@ import 'package:http/http.dart' as http;
 // Project Imports
 import 'package:sdtpro/core/utils/constants.dart';
 import 'package:sdtpro/features/images/domain/entities/fis_result.dart';
-import 'package:sdtpro/features/images/domain/repos/image_repository.dart';
+import 'package:sdtpro/features/images/domain/repos/image_repo.dart';
 
-class ImageRepositoryImpl implements ImageRepository {
+class ImageRepositoryImpl implements ImageRepo {
   final http.Client _client;
 
-  ImageRepositoryImpl({http.Client? client}) : _client = client ?? http.Client();
+  ImageRepositoryImpl({http.Client? client})
+    : _client = client ?? http.Client();
 
   Uri _buildUri(String path, Map<String, String> params) {
-    return Uri.parse('$fisApiBaseUrl$path').replace(
-      queryParameters: {
-        'api_key': fisApiKey,
-        ...params,
-      },
-    );
+    return Uri.parse(
+      '$fisApiBaseUrl$path',
+    ).replace(queryParameters: {'api_key': fisApiKey, ...params});
   }
 
   Future<FisResult> _fetch(Uri uri) async {

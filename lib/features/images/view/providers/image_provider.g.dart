@@ -10,9 +10,8 @@ part of 'image_provider.dart';
 const imageRepositoryProvider = ImageRepositoryProvider._();
 
 final class ImageRepositoryProvider
-    extends
-        $FunctionalProvider<ImageRepository, ImageRepository, ImageRepository>
-    with $Provider<ImageRepository> {
+    extends $FunctionalProvider<ImageRepo, ImageRepo, ImageRepo>
+    with $Provider<ImageRepo> {
   const ImageRepositoryProvider._()
     : super(
         from: null,
@@ -29,19 +28,19 @@ final class ImageRepositoryProvider
 
   @$internal
   @override
-  $ProviderElement<ImageRepository> $createElement($ProviderPointer pointer) =>
+  $ProviderElement<ImageRepo> $createElement($ProviderPointer pointer) =>
       $ProviderElement(pointer);
 
   @override
-  ImageRepository create(Ref ref) {
+  ImageRepo create(Ref ref) {
     return imageRepository(ref);
   }
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(ImageRepository value) {
+  Override overrideWithValue(ImageRepo value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<ImageRepository>(value),
+      providerOverride: $SyncValueProvider<ImageRepo>(value),
     );
   }
 }

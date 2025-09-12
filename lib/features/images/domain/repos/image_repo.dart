@@ -1,7 +1,7 @@
 // Project Imports
 import 'package:sdtpro/features/images/domain/entities/fis_result.dart';
 
-abstract class ImageRepository {
+abstract class ImageRepo {
   Future<FisResult> getCuratedImages({int page = 1});
   Future<FisResult> searchImages({
     required String query,

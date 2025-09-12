@@ -4,12 +4,12 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 // Project Imports
 import 'package:sdtpro/features/images/data/image_repository_impl.dart';
 import 'package:sdtpro/features/images/domain/entities/fis_image.dart';
-import 'package:sdtpro/features/images/domain/repos/image_repository.dart';
+import 'package:sdtpro/features/images/domain/repos/image_repo.dart';
 
 part 'image_provider.g.dart';
 
 @riverpod
-ImageRepository imageRepository(Ref ref) {
+ImageRepo imageRepository(Ref ref) {
   return ImageRepositoryImpl();
 }
 
