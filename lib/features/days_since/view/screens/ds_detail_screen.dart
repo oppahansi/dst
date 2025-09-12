@@ -178,23 +178,37 @@ class _DsDetailScreenState extends ConsumerState<DsDetailScreen> {
               loc.description,
               style: Theme.of(context).textTheme.titleMedium,
             ),
-            IconButton(
-              icon: Icon(_isEditingDescription ? Symbols.save : Symbols.edit),
-              tooltip: _isEditingDescription ? loc.save : loc.edit,
-              onPressed: () async {
-                if (_isEditingDescription) {
-                  // Save logic
-                  final updatedEntry = widget.entry.copyWith(
-                    description: _descriptionController.text,
-                  );
-                  await ref
-                      .read(daysSinceNotifierProvider.notifier)
-                      .updateEntry(updatedEntry);
-                }
-                setState(() {
-                  _isEditingDescription = !_isEditingDescription;
-                });
-              },
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (widget.entry.description != null &&
+                    widget.entry.description!.isNotEmpty)
+                  IconButton(
+                    icon: const Icon(Symbols.print),
+                    tooltip: loc.print,
+                    onPressed: () => _printEntryDetails(context),
+                  ),
+                IconButton(
+                  icon: Icon(
+                    _isEditingDescription ? Symbols.save : Symbols.edit,
+                  ),
+                  tooltip: _isEditingDescription ? loc.save : loc.edit,
+                  onPressed: () async {
+                    if (_isEditingDescription) {
+                      // Save logic
+                      final updatedEntry = widget.entry.copyWith(
+                        description: _descriptionController.text,
+                      );
+                      await ref
+                          .read(daysSinceNotifierProvider.notifier)
+                          .updateEntry(updatedEntry);
+                    }
+                    setState(
+                      () => _isEditingDescription = !_isEditingDescription,
+                    );
+                  },
+                ),
+              ],
             ),
           ],
         ),
@@ -248,13 +262,6 @@ class _DsDetailScreenState extends ConsumerState<DsDetailScreen> {
             tooltip: loc.delete,
             onPressed: () => _confirmDelete(context, ref),
           ),
-          if (widget.entry.description != null &&
-              widget.entry.description!.isNotEmpty)
-            IconButton(
-              icon: const Icon(Symbols.print),
-              tooltip: loc.print,
-              onPressed: () => _printEntryDetails(context),
-            ),
         ],
       ),
       body: SingleChildScrollView(
