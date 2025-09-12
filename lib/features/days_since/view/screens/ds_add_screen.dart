@@ -230,6 +230,7 @@ class _DsAddScreenState extends ConsumerState<DsAddScreen> {
     await showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
+      barrierColor: Colors.transparent,
       builder: (context) => DraggableScrollableSheet(
         expand: false,
         initialChildSize: 0.7,

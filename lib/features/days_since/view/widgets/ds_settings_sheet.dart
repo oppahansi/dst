@@ -7,6 +7,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // Project Imports
+import 'package:sdtpro/core/utils/constants.dart';
 import 'package:sdtpro/features/days_since/domain/entities/ds_settings.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
@@ -37,173 +38,6 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
     _localSettings = widget.settings;
   }
 
-  // Expand this list with any Google Fonts family names you want.
-  // Keep 'System' as the default (uses platform font).
-  final _fontFamilies = [
-    'System', // default platform font
-    // Feeling sub-level categories
-    "Roboto", // Business
-    "Lobster", // Fancy
-    "Lora", // Calm
-    "Pacifico", // Playful
-    "Amatic SC", // Cute
-    "Caveat", // Artistic
-    "Vollkorn", // Vintage
-    "Bangers", // Loud
-    "Playfair Display", // Sophisticated
-    "Orbitron", // Futuristic
-    "Montserrat", // Active
-    "Merriweather", // Stiff
-    "Source Code Pro", // Innovative
-    "Open Sans", // Happy
-    "Indie Flower", // Childlike
-    "Oswald", // Rugged
-    "Architects Daughter", // Awkward
-    "Raleway", // Excited
-    // Appearance sub-level categories
-    "Fira Code", // Techno
-    "Inconsolata", // Monospaced
-    "Satisfy", // Blobby
-    "Permanent Marker", // Marker
-    "Cinzel", // Art Deco
-    "Lora", // Art Nouveau
-    "Special Elite", // Distressed
-    "Nosifer", // Stencil
-    "Fredericka the Great", // Wood type
-    "UnifrakturMaguntia", // Medieval
-    "Zilla Slab", // Blackletter
-    "Press Start 2P", // Pixel
-    "Noto Emoji", // Not text
-    "Rye", // Tuscan
-    "Creepster", // Wacky
-    "Shadows Into Light", // Shaded
-    "Bungee Inline", // Inline
-    // Calligraphy sub-level categories
-    "Great Vibes", // Handwritten
-    "Sacramento", // Formal
-    "Kalam", // Informal
-    "Tangerine", // Upright
-    // Serif sub-level categories
-    "Crimson Text", // Transitional
-    "Roboto Slab", // Slab
-    "EB Garamond", // Old Style
-    "Cardo", // Modern
-    "Arvo", // Humanist
-    "Bitter", // Scotch
-    "Playfair Display", // Fatface
-    "Libre Baskerville", // Didone
-    // Sans Serif sub-level categories
-    "Lato", // Humanist
-    "Poppins", // Geometric
-    "Roboto", // Neo Grotesque
-    "Noto Sans JP", // Rounded
-    "Work Sans", // Superellipse
-    "Inter", // Grotesque
-    "Julius Sans One", // Glyphic
-    // Technology sub-level categories
-    "Noto Sans", // Variable
-    "Noto Color Emoji", // Color
-    "Poppins", // None
-    // Seasonal sub-level categories
-    "Red Hat Display", // Lunar New Year
-    "Dancing Script", // Valentine's
-    "Hind", // Holi
-    "Nosifer", // Halloween
-    "Noto Serif Devanagari", // Diwali
-    "Mountains of Christmas", // Christmas
-    "Noto Sans Hebrew", // Hanukkah
-    "Noto Serif", // Kwanzaa
-  ];
-
-  final Map<String, String> _dateFormats = {
-    'MM/dd/yyyy': '09/01/2023', // US numeric
-    'dd.MM.yyyy': '01.09.2023', // German/European numeric
-    'MMMM d, yyyy': 'September 1, 2023', // US long
-    'd. MMMM yyyy': '1. September 2023', // German long
-    'd MMM yyyy': '1 Sep 2023', // European short
-    'MMM d, yyyy': 'Sep 1, 2023', // US short
-    'yyyy-MM-dd': '2023-09-01', // ISO
-    'EEEE, MMMM d, yyyy': 'Friday, September 1, 2023', // Full weekday
-    'EEE, MMM d, yyyy': 'Fri, Sep 1, 2023', // Abbreviated weekday
-  };
-
-  // A curated list of icons for the picker.
-  final _icons = [
-    Symbols.star,
-    Symbols.favorite,
-    Symbols.anchor,
-    Symbols.work,
-    Symbols.flag,
-    Symbols.celebration,
-    Symbols.cake,
-    Symbols.directions_run,
-    Symbols.flight_takeoff,
-    Symbols.home,
-    Symbols.school,
-    Symbols.pets,
-    Symbols.work,
-    Symbols.fitness_center,
-    Symbols.book,
-    Symbols.music_note,
-    Symbols.movie,
-    Symbols.camera_alt,
-    Symbols.brush,
-    Symbols.lightbulb,
-    Symbols.forest,
-    Symbols.beach_access,
-    Symbols.pool,
-    Symbols.sports_soccer,
-    Symbols.downhill_skiing,
-    Symbols.hiking,
-    Symbols.rowing,
-    Symbols.sailing,
-    Symbols.scuba_diving,
-    Symbols.skateboarding,
-    Symbols.snowboarding,
-    Symbols.surfing,
-    Symbols.kitesurfing,
-    Symbols.paragliding,
-    Symbols.directions_bike,
-    Symbols.directions_boat,
-    Symbols.directions_bus,
-    Symbols.directions_car,
-    Symbols.directions_railway,
-    Symbols.directions_walk,
-    Symbols.flight,
-    Symbols.train,
-    Symbols.tram,
-    Symbols.local_fire_department,
-    Symbols.local_hospital,
-    Symbols.local_police,
-    Symbols.local_post_office,
-    Symbols.local_cafe,
-    Symbols.local_bar,
-    Symbols.local_dining,
-    Symbols.local_florist,
-    Symbols.local_gas_station,
-    Symbols.local_grocery_store,
-    Symbols.local_laundry_service,
-    Symbols.local_library,
-    Symbols.local_mall,
-    Symbols.local_pharmacy,
-    Symbols.local_shipping,
-    Symbols.local_taxi,
-    Symbols.park,
-    Symbols.museum,
-    Symbols.church,
-    Symbols.mosque,
-    Symbols.synagogue,
-    Symbols.temple_buddhist,
-    Symbols.temple_hindu,
-    Symbols.factory,
-    Symbols.gavel,
-    Symbols.military_tech,
-    Symbols.science,
-    Symbols.engineering,
-    Symbols.build,
-    Symbols.construction,
-  ];
-
   // A few colors for the overlay picker.
   final _overlayColors = [
     Colors.black,
@@ -220,14 +54,14 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
       builder: (context) => SafeArea(
         child: GridView.builder(
           padding: const EdgeInsets.all(16),
-          itemCount: _icons.length,
+          itemCount: eventIcons.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 5,
             mainAxisSpacing: 8,
             crossAxisSpacing: 8,
           ),
           itemBuilder: (context, index) {
-            final icon = _icons[index];
+            final icon = eventIcons[index];
             return InkWell(
               onTap: () => Navigator.of(context).pop(icon),
               child: Icon(icon, size: 32),
@@ -352,7 +186,7 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
           DropdownButtonFormField<String>(
             initialValue: _localSettings.subtitleDateFormat,
             decoration: InputDecoration(labelText: loc.date_format),
-            items: _dateFormats.entries
+            items: eventDateFormats.entries
                 .map(
                   (e) => DropdownMenuItem(value: e.key, child: Text(e.value)),
                 )
@@ -468,11 +302,7 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
     required ValueChanged<FontWeight?> onWeightChanged,
   }) {
     final loc = AppLocalizations.of(context)!;
-
-    // De-duplicate while preserving order.
-    final families = _fontFamilies.toSet().toList();
-    // Ensure the dropdown has a valid selected value.
-    final effectiveValue = families.contains(fontFamily)
+    final effectiveValue = eventFontFamilies.contains(fontFamily)
         ? fontFamily
         : 'System';
 
@@ -501,7 +331,7 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
         DropdownButtonFormField<String>(
           initialValue: effectiveValue,
           decoration: InputDecoration(labelText: loc.font_family),
-          items: families
+          items: eventFontFamilies
               .map(
                 (f) => DropdownMenuItem(
                   value: f,
@@ -515,7 +345,7 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
                 ),
               )
               .toList(),
-          selectedItemBuilder: (context) => families
+          selectedItemBuilder: (context) => eventFontFamilies
               .map(
                 (f) => Align(
                   alignment: Alignment.centerLeft,
