@@ -134,11 +134,18 @@ class _SdtCardState extends State<SdtCard> {
   Widget build(BuildContext context) {
     final settings = widget.entry.settings ?? SdtSettings();
     final loc = AppLocalizations.of(context)!;
+
+    // Normalize to date-only to match expected day counting
     final now = DateTime.now();
-    final isFuture = widget.entry.date.isAfter(now);
-    final days = isFuture
-        ? widget.entry.date.difference(now).inDays
-        : now.difference(widget.entry.date).inDays;
+    final today = DateTime(now.year, now.month, now.day);
+    final eventDate = DateTime(
+      widget.entry.date.year,
+      widget.entry.date.month,
+      widget.entry.date.day,
+    );
+
+    final isFuture = eventDate.isAfter(today);
+    final days = (eventDate.difference(today).inDays).abs();
 
     return Card(
       margin: EdgeInsets.zero,
@@ -172,7 +179,7 @@ class _SdtCardState extends State<SdtCard> {
                       fontFamily: settings.daysFontFamily == 'System'
                           ? null
                           : settings.daysFontFamily,
-                      color: settings.daysColor, // was Colors.white
+                      color: settings.daysColor,
                       fontSize: headlineMedium(context)!.fontSize,
                       fontWeight: settings.daysFontWeight,
                     ),
@@ -184,7 +191,7 @@ class _SdtCardState extends State<SdtCard> {
                       fontFamily: settings.subtitleFontFamily == 'System'
                           ? null
                           : settings.subtitleFontFamily,
-                      color: settings.subtitleColor, // was Colors.white
+                      color: settings.subtitleColor,
                       fontSize: bodySmall(context)!.fontSize,
                       fontWeight: settings.subtitleFontWeight,
                     ),

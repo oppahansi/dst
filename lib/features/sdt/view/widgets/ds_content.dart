@@ -43,11 +43,17 @@ class SdtContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
+    // Normalize to date-only to avoid time-of-day affecting the count
     final now = DateTime.now();
-    final isFuture = entry.date.isAfter(now);
-    final days = isFuture
-        ? entry.date.difference(now).inDays
-        : now.difference(entry.date).inDays;
+    final today = DateTime(now.year, now.month, now.day);
+    final eventDate = DateTime(
+      entry.date.year,
+      entry.date.month,
+      entry.date.day,
+    );
+
+    final isFuture = eventDate.isAfter(today);
+    final days = (eventDate.difference(today).inDays).abs();
 
     final subtitle = settings.showSubtitleDate
         ? '${isFuture ? loc.days_to : loc.days_since} ${DateFormat(settings.subtitleDateFormat, loc.localeName).format(entry.date)}'

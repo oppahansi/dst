@@ -192,19 +192,25 @@ class _SdtDetailScreenState extends ConsumerState<SdtDetailScreen> {
                       final updatedEntry = widget.entry.copyWith(
                         description: _descriptionController.text,
                       );
-                      await ref
-                          .read(sdtNotifierProvider.notifier)
-                          .updateEntry(updatedEntry);
-                      if (!mounted) return;
-                      FocusScope.of(context).unfocus();
-                      setState(() {
-                        _isEditingDescription = false;
-                      });
-                      context.showSnackBar(SnackBar(content: Text(loc.saved)));
+                      try {
+                        // Use case + explicit invalidation
+                        await ref.read(updateEntryProvider).call(updatedEntry);
+                        ref.invalidate(dsNotifierProvider);
+                        ref.invalidate(dtNotifierProvider);
+                        if (!mounted) return;
+                        FocusScope.of(context).unfocus();
+                        setState(() => _isEditingDescription = false);
+                        context.showSnackBar(
+                          SnackBar(content: Text(loc.saved)),
+                        );
+                      } catch (e) {
+                        if (!mounted) return;
+                        context.showSnackBar(
+                          SnackBar(content: Text(e.toString())),
+                        );
+                      }
                     } else {
-                      setState(() {
-                        _isEditingDescription = true;
-                      });
+                      setState(() => _isEditingDescription = true);
                     }
                   },
                 ),

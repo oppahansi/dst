@@ -15,6 +15,7 @@ import 'package:sdtpro/core/utils/extensions.dart';
 import 'package:sdtpro/features/sdt/domain/entities/sdt_entry.dart';
 import 'package:sdtpro/features/sdt/domain/entities/sdt_settings.dart';
 import 'package:sdtpro/features/sdt/view/providers/sdt_provider.dart';
+import 'package:sdtpro/features/sdt/view/providers/sdt_usecase_providers.dart';
 import 'package:sdtpro/features/sdt/view/widgets/ds_background_image.dart';
 import 'package:sdtpro/features/sdt/view/widgets/ds_content.dart';
 import 'package:sdtpro/features/sdt/view/widgets/ds_settings_sheet.dart';
@@ -199,30 +200,38 @@ class _SdtAddScreenState extends ConsumerState<SdtAddScreen> {
       return;
     }
 
-    if (_isEditing) {
-      final updatedEntry = widget.entry!.copyWith(
-        title: _titleController.text,
-        date: _selectedDate,
-        imageUrl: _selectedImage?.url,
-        settings: _settings,
-      );
-      await ref.read(sdtNotifierProvider.notifier).updateEntry(updatedEntry);
-    } else {
-      final newEntry = SdtEntry(
-        title: _titleController.text,
-        date: _selectedDate,
-        imageUrl: _selectedImage?.url,
-        settings: _settings,
-      );
-      await ref.read(sdtNotifierProvider.notifier).addEntry(newEntry);
-    }
+    try {
+      if (_isEditing) {
+        final updatedEntry = widget.entry!.copyWith(
+          title: _titleController.text,
+          date: _selectedDate,
+          imageUrl: _selectedImage?.url,
+          settings: _settings,
+        );
+        // Use case + explicit invalidation
+        await ref.read(updateEntryProvider).call(updatedEntry);
+      } else {
+        final newEntry = SdtEntry(
+          title: _titleController.text,
+          date: _selectedDate,
+          imageUrl: _selectedImage?.url,
+          settings: _settings,
+        );
+        await ref.read(addEntryProvider).call(newEntry);
+      }
 
-    if (mounted) {
-      // Pop twice if editing to get back to the list screen
+      // Refresh lists explicitly so Home / Ds / Dt update
+      ref.invalidate(dsNotifierProvider);
+      ref.invalidate(dtNotifierProvider);
+
+      if (!mounted) return;
       if (_isEditing) {
         context.pop();
       }
       context.pop();
+    } catch (e) {
+      if (!mounted) return;
+      context.showSnackBar(SnackBar(content: Text(e.toString())));
     }
   }
 
