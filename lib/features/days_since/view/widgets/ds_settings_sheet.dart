@@ -4,10 +4,14 @@ import 'package:flutter/material.dart';
 // Package Imports
 import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 // Project Imports
+// NEW
+import 'package:sdtpro/core/utils/colors.dart';
 import 'package:sdtpro/core/utils/constants.dart';
+import 'package:sdtpro/core/utils/extensions.dart';
+import 'package:sdtpro/core/utils/text_styles.dart';
 import 'package:sdtpro/features/days_since/domain/entities/ds_settings.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
 
@@ -37,16 +41,6 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
     // Create a local copy to manage the state within the sheet.
     _localSettings = widget.settings;
   }
-
-  // A few colors for the overlay picker.
-  final _overlayColors = [
-    Colors.black,
-    Colors.grey[850]!,
-    Colors.blueGrey[900]!,
-    Colors.red[900]!,
-    Colors.green[900]!,
-    Colors.blue[900]!,
-  ];
 
   void _showIconPicker() {
     showModalBottomSheet<IconData>(
@@ -79,6 +73,43 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
     });
   }
 
+  // Dialog to pick any color
+  Future<void> _showAdvancedColorPicker({
+    required String title,
+    required Color initialColor,
+    required ValueChanged<Color> onColorSelected,
+  }) async {
+    var temp = initialColor;
+    await showDialog<void>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(title),
+        content: SingleChildScrollView(
+          child: ColorPicker(
+            pickerColor: temp,
+            onColorChanged: (c) => temp = c,
+            enableAlpha: true,
+            displayThumbColor: true,
+            pickerAreaHeightPercent: 0.7,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () {
+              onColorSelected(temp);
+              Navigator.pop(context);
+            },
+            child: const Text('Select'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
@@ -94,17 +125,11 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
 
         // --- Overlay Settings ---
         _buildSectionHeader(loc.overlay),
+        // REPLACED: swatches + button -> button + current color only
         _buildColorPicker(
           loc.color,
           _localSettings.overlayColor,
-          _overlayColors,
-          (color) {
-            setState(
-              () =>
-                  _localSettings = _localSettings.copyWith(overlayColor: color),
-            );
-            widget.onSettingsChanged(_localSettings);
-          },
+          (color) => _updateSettings((s) => s.copyWith(overlayColor: color)),
         ),
         _buildSlider(loc.transparency, _localSettings.overlayAlpha, 0.0, 1.0, (
           val,
@@ -147,12 +172,19 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
           fontFamily: _localSettings.daysFontFamily,
           fontSize: _localSettings.daysFontSize,
           fontWeight: _localSettings.daysFontWeight,
+          color: _localSettings.daysColor,
           onFamilyChanged: (val) =>
               _updateSettings((s) => s.copyWith(daysFontFamily: val)),
           onSizeChanged: (val) =>
               _updateSettings((s) => s.copyWith(daysFontSize: val)),
           onWeightChanged: (val) =>
               _updateSettings((s) => s.copyWith(daysFontWeight: val)),
+        ),
+        // REPLACED: swatches + button -> button + current color only
+        _buildColorPicker(
+          loc.color,
+          _localSettings.daysColor,
+          (color) => _updateSettings((s) => s.copyWith(daysColor: color)),
         ),
         const Divider(height: 32),
 
@@ -163,12 +195,19 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
           fontFamily: _localSettings.titleFontFamily,
           fontSize: _localSettings.titleFontSize,
           fontWeight: _localSettings.titleFontWeight,
+          color: _localSettings.titleColor,
           onFamilyChanged: (val) =>
               _updateSettings((s) => s.copyWith(titleFontFamily: val)),
           onSizeChanged: (val) =>
               _updateSettings((s) => s.copyWith(titleFontSize: val)),
           onWeightChanged: (val) =>
               _updateSettings((s) => s.copyWith(titleFontWeight: val)),
+        ),
+        // REPLACED: swatches + button -> button + current color only
+        _buildColorPicker(
+          loc.color,
+          _localSettings.titleColor,
+          (color) => _updateSettings((s) => s.copyWith(titleColor: color)),
         ),
         const Divider(height: 32),
 
@@ -204,12 +243,19 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
           fontFamily: _localSettings.subtitleFontFamily,
           fontSize: _localSettings.subtitleFontSize,
           fontWeight: _localSettings.subtitleFontWeight,
+          color: _localSettings.subtitleColor,
           onFamilyChanged: (val) =>
               _updateSettings((s) => s.copyWith(subtitleFontFamily: val)),
           onSizeChanged: (val) =>
               _updateSettings((s) => s.copyWith(subtitleFontSize: val)),
           onWeightChanged: (val) =>
               _updateSettings((s) => s.copyWith(subtitleFontWeight: val)),
+        ),
+        // REPLACED: swatches + button -> button + current color only
+        _buildColorPicker(
+          loc.color,
+          _localSettings.subtitleColor,
+          (color) => _updateSettings((s) => s.copyWith(subtitleColor: color)),
         ),
       ],
     );
@@ -223,7 +269,10 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
   }
 
   Widget _buildSectionHeader(String title) {
-    return Text(title, style: Theme.of(context).textTheme.titleMedium);
+    return Text(
+      title,
+      style: titleLarge(context).withColor(primaryColor(context)),
+    );
   }
 
   Widget _buildSlider(
@@ -241,38 +290,46 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
     );
   }
 
+  // Simplified color picker row: shows current color and a button to open dialog
   Widget _buildColorPicker(
     String label,
     Color currentColor,
-    List<Color> colors,
     ValueChanged<Color> onColorSelected,
   ) {
+    final onLight = currentColor.computeLuminance() > 0.5;
+
     return ListTile(
       contentPadding: EdgeInsets.zero,
       title: Text(label),
-      trailing: Wrap(
-        spacing: 8,
-        children: colors
-            .map(
-              (color) => InkWell(
-                onTap: () => onColorSelected(color),
-                child: Container(
-                  width: 24,
-                  height: 24,
-                  decoration: BoxDecoration(
-                    color: color,
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: currentColor.toARGB32() == color.toARGB32()
-                          ? Theme.of(context).colorScheme.primary
-                          : Colors.transparent,
-                      width: 2,
-                    ),
-                  ),
+      subtitle: Padding(
+        padding: const EdgeInsets.only(top: 8),
+        child: Row(
+          children: [
+            // Current color chip
+            Container(
+              width: 28,
+              height: 28,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: currentColor,
+                border: Border.all(
+                  color: onLight ? Colors.black26 : Colors.white30,
+                  width: 2,
                 ),
               ),
-            )
-            .toList(),
+            ),
+            const SizedBox(width: 12),
+            OutlinedButton.icon(
+              icon: const Icon(Icons.palette),
+              label: const Text('More'),
+              onPressed: () => _showAdvancedColorPicker(
+                title: label,
+                initialColor: currentColor,
+                onColorSelected: (c) => setState(() => onColorSelected(c)),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -283,13 +340,18 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
     double? size,
     FontWeight? weight,
     TextStyle? base,
+    // NEW
+    Color? color,
   }) {
     final baseStyle = (base ?? const TextStyle()).copyWith(
       fontSize: size,
       fontWeight: weight,
+      // NEW
+      color: color,
     );
     if (family == 'System' || family.isEmpty) return baseStyle;
-    return GoogleFonts.getFont(family, textStyle: baseStyle);
+
+    return baseStyle.copyWith(fontFamily: family);
   }
 
   Widget _buildFontControl({
@@ -297,6 +359,8 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
     required String fontFamily,
     required double fontSize,
     required FontWeight fontWeight,
+    // NEW
+    required Color color,
     required ValueChanged<String?> onFamilyChanged,
     required ValueChanged<double> onSizeChanged,
     required ValueChanged<FontWeight?> onWeightChanged,
@@ -322,6 +386,8 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
               fontFamily,
               size: fontSize,
               weight: fontWeight,
+              // NEW
+              color: color,
             ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,

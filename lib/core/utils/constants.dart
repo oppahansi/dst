@@ -24,73 +24,26 @@ const String fisApiBaseUrl = "https://sdt.oppahansi.de:8880";
 
 const Set<String> eventFontFamilies = {
   'System', // default platform font
-  // Feeling sub-level categories
-  "Roboto", // Business
-  "Lobster", // Fancy
-  "Lora", // Calm
-  "Pacifico", // Playful
-  "Amatic SC", // Cute
-  "Caveat", // Artistic
-  "Vollkorn", // Vintage
-  "Bangers", // Loud
-  "Playfair Display", // Sophisticated
-  "Orbitron", // Futuristic
-  "Montserrat", // Active
-  "Merriweather", // Stiff
-  "Source Code Pro", // Innovative
-  "Open Sans", // Happy
-  "Indie Flower", // Childlike
-  "Oswald", // Rugged
-  "Architects Daughter", // Awkward
-  "Raleway", // Excited
-  // Appearance sub-level categories
-  "Fira Code", // Techno
-  "Inconsolata", // Monospaced
-  "Satisfy", // Blobby
-  "Permanent Marker", // Marker
-  "Cinzel", // Art Deco
-  "Special Elite", // Distressed
-  "Nosifer", // Stencil
-  "Fredericka the Great", // Wood type
-  "UnifrakturMaguntia", // Medieval
-  "Zilla Slab", // Blackletter
-  "Press Start 2P", // Pixel
-  "Noto Emoji", // Not text
-  "Rye", // Tuscan
-  "Creepster", // Wacky
-  "Shadows Into Light", // Shaded
-  "Bungee Inline", // Inline
-  // Calligraphy sub-level categories
-  "Great Vibes", // Handwritten
-  "Sacramento", // Formal
-  "Kalam", // Informal
-  "Tangerine", // Upright
-  // Serif sub-level categories
-  "Crimson Text", // Transitional
-  "Roboto Slab", // Slab
-  "EB Garamond", // Old Style
-  "Cardo", // Modern
-  "Arvo", // Humanist
-  "Bitter", // Scotch
-  "Libre Baskerville", // Didone
-  // Sans Serif sub-level categories
-  "Lato", // Humanist
-  "Poppins", // Geometric
-  "Noto Sans JP", // Rounded
-  "Work Sans", // Superellipse
-  "Inter", // Grotesque
-  "Julius Sans One", // Glyphic
-  // Technology sub-level categories
-  "Noto Sans", // Variable
-  "Noto Color Emoji", // Color
-  // Seasonal sub-level categories
-  "Red Hat Display", // Lunar New Year
-  "Dancing Script", // Valentine's
-  "Hind", // Holi
-  "Noto Serif Devanagari", // Diwali
-  "Mountains of Christmas", // Christmas
-  "Noto Sans Hebrew", // Hanukkah
-  "Noto Serif", // Kwanzaa
+  'Audiowide',
+  'Barriecito',
+  'Bitcount Grid Double',
+  'Cabin Sketch',
+  'Caveat',
+  'DynaPuff',
+  'Fuzzy Bubbles',
+  'Great Vibes',
+  'Iceberg',
+  'Kablammo',
+  'Leckerli One',
+  'Limelight',
+  'Lobster',
+  'Monoton',
+  'Pirata One',
+  'Quintessential',
+  'Racing Sans One',
+  'Roboto',
+  'Rubik Glitch',
+  'Tiny5',
 };
 
 const Map<String, String> eventDateFormats = {

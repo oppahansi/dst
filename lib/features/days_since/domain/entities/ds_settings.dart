@@ -22,11 +22,15 @@ class DsSettings {
   final String daysFontFamily;
   final double daysFontSize;
   final FontWeight daysFontWeight;
+  // NEW: color for days text
+  final Color daysColor;
 
   // Title Text
   final String titleFontFamily;
   final double titleFontSize;
   final FontWeight titleFontWeight;
+  // NEW: color for title text
+  final Color titleColor;
 
   // Subtitle Text
   final String subtitleFontFamily;
@@ -44,9 +48,13 @@ class DsSettings {
     this.daysFontFamily = 'System',
     this.daysFontSize = 120.0,
     this.daysFontWeight = FontWeight.w700,
+    // NEW defaults
+    this.daysColor = Colors.white,
     this.titleFontFamily = 'System',
     this.titleFontSize = 32.0,
     this.titleFontWeight = FontWeight.w500,
+    // NEW defaults
+    this.titleColor = Colors.white,
     this.subtitleFontFamily = 'System',
     this.subtitleFontSize = 16.0,
     this.subtitleFontWeight = FontWeight.normal,
@@ -71,9 +79,13 @@ class DsSettings {
     String? daysFontFamily,
     double? daysFontSize,
     FontWeight? daysFontWeight,
+    // NEW
+    Color? daysColor,
     String? titleFontFamily,
     double? titleFontSize,
     FontWeight? titleFontWeight,
+    // NEW
+    Color? titleColor,
     String? subtitleFontFamily,
     double? subtitleFontSize,
     FontWeight? subtitleFontWeight,
@@ -89,9 +101,13 @@ class DsSettings {
       daysFontFamily: daysFontFamily ?? this.daysFontFamily,
       daysFontSize: daysFontSize ?? this.daysFontSize,
       daysFontWeight: daysFontWeight ?? this.daysFontWeight,
+      // NEW
+      daysColor: daysColor ?? this.daysColor,
       titleFontFamily: titleFontFamily ?? this.titleFontFamily,
       titleFontSize: titleFontSize ?? this.titleFontSize,
       titleFontWeight: titleFontWeight ?? this.titleFontWeight,
+      // NEW
+      titleColor: titleColor ?? this.titleColor,
       subtitleFontFamily: subtitleFontFamily ?? this.subtitleFontFamily,
       subtitleFontSize: subtitleFontSize ?? this.subtitleFontSize,
       subtitleFontWeight: subtitleFontWeight ?? this.subtitleFontWeight,
@@ -112,9 +128,13 @@ class DsSettings {
       'daysFontFamily': daysFontFamily,
       'daysFontSize': daysFontSize,
       'daysFontWeightIndex': daysFontWeight.index,
+      // NEW
+      'daysColor': daysColor.toARGB32(),
       'titleFontFamily': titleFontFamily,
       'titleFontSize': titleFontSize,
       'titleFontWeightIndex': titleFontWeight.index,
+      // NEW
+      'titleColor': titleColor.toARGB32(),
       'subtitleFontFamily': subtitleFontFamily,
       'subtitleFontSize': subtitleFontSize,
       'subtitleFontWeightIndex': subtitleFontWeight.index,
@@ -137,17 +157,21 @@ class DsSettings {
       daysFontFamily: map['daysFontFamily'] ?? 'System',
       daysFontSize: map['daysFontSize']?.toDouble() ?? 120.0,
       daysFontWeight: _fontWeightFromIndex(map['daysFontWeightIndex'] ?? 6),
+      // NEW
+      daysColor: Color(map['daysColor'] ?? Colors.white.toARGB32()),
       titleFontFamily: map['titleFontFamily'] ?? 'System',
       titleFontSize: map['titleFontSize']?.toDouble() ?? 32.0,
-      titleFontWeight: _fontWeightFromIndex(map['titleFontWeightIndex'] ?? 4),
+      titleFontWeight: _fontWeightFromIndex(map['titleFontWeightIndex'] ?? 5),
+      // NEW
+      titleColor: Color(map['titleColor'] ?? Colors.white.toARGB32()),
       subtitleFontFamily: map['subtitleFontFamily'] ?? 'System',
       subtitleFontSize: map['subtitleFontSize']?.toDouble() ?? 16.0,
       subtitleFontWeight: _fontWeightFromIndex(
         map['subtitleFontWeightIndex'] ?? 3,
       ),
       subtitleColor: Color(map['subtitleColor'] ?? Colors.white70.toARGB32()),
-      showSubtitleDate: map['showSubtitleDate'] as bool? ?? true,
-      subtitleDateFormat: map['subtitleDateFormat'] as String? ?? 'yMMMd',
+      showSubtitleDate: map['showSubtitleDate'] ?? true,
+      subtitleDateFormat: map['subtitleDateFormat'] ?? 'dd.MM.yyyy',
     );
   }
 

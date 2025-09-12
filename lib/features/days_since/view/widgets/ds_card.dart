@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 
 // Package Imports
 import 'package:exui/exui.dart';
-import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
@@ -136,9 +135,6 @@ class _DsCardState extends State<DsCard> {
     final settings = widget.entry.settings ?? DsSettings();
     final loc = AppLocalizations.of(context)!;
     final days = DateTime.now().difference(widget.entry.date).inDays;
-    final daysSince = settings.showSubtitleDate
-        ? '${loc.days_since} ${DateFormat(settings.subtitleDateFormat, loc.localeName).format(widget.entry.date)}'
-        : loc.days_since;
 
     return Card(
       margin: EdgeInsets.zero,
@@ -159,7 +155,6 @@ class _DsCardState extends State<DsCard> {
               ),
             ),
           ),
-
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -173,33 +168,35 @@ class _DsCardState extends State<DsCard> {
                       fontFamily: settings.daysFontFamily == 'System'
                           ? null
                           : settings.daysFontFamily,
-                      color: Colors.white,
+                      color: settings.daysColor, // was Colors.white
                       fontSize: headlineMedium(context)!.fontSize,
                       fontWeight: settings.daysFontWeight,
                     ),
                   ),
+                  SizedBox(width: gapSize(context)),
                   Text(
-                    daysSince,
+                    loc.days_since,
                     style: TextStyle(
                       fontFamily: settings.subtitleFontFamily == 'System'
                           ? null
                           : settings.subtitleFontFamily,
-                      color: Colors.white,
+                      color: settings.subtitleColor, // was Colors.white
                       fontSize: bodySmall(context)!.fontSize,
                       fontWeight: settings.subtitleFontWeight,
                     ),
                   ),
+                  SizedBox(width: gapSize(context)),
                   Flexible(
                     child: Text(
                       widget.entry.title,
-                      maxLines: 1,
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.right,
                       style: TextStyle(
                         fontFamily: settings.titleFontFamily == 'System'
                             ? null
                             : settings.titleFontFamily,
-                        color: Colors.white,
+                        color: settings.titleColor, // was Colors.white
                         fontSize: bodyMedium(context)!.fontSize,
                         fontWeight: settings.titleFontWeight,
                       ),
@@ -256,7 +253,7 @@ class _DsCardState extends State<DsCard> {
                 ],
               ),
             ],
-          ),
+          ).paddingAll(gapSizeSmall(context)),
 
           // Loading overlay while preparing the screenshot/share
           if (_isSharing)

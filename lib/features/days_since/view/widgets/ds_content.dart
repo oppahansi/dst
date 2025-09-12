@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 // Package Imports
 import 'package:intl/intl.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 // Project Imports
 import 'package:sdtpro/features/days_since/domain/entities/ds_entry.dart';
@@ -38,7 +37,7 @@ class DsContent extends StatelessWidget {
 
   TextStyle _applyFont(String family, TextStyle base) {
     if (family == 'System' || family.isEmpty) return base;
-    return GoogleFonts.getFont(family, textStyle: base);
+    return base.copyWith(fontFamily: family);
   }
 
   @override
@@ -59,7 +58,7 @@ class DsContent extends StatelessWidget {
             settings.daysFontFamily,
             TextStyle(
               fontSize: _getFontSize(settings.daysFontSize),
-              color: Colors.white,
+              color: settings.daysColor, // was Colors.white
               fontWeight: settings.daysFontWeight,
               shadows: const [Shadow(blurRadius: 8, color: Colors.black54)],
             ),
@@ -111,7 +110,7 @@ class DsContent extends StatelessWidget {
             style: _applyFont(
               settings.titleFontFamily,
               TextStyle(
-                color: Colors.white,
+                color: settings.titleColor, // was Colors.white
                 fontSize: _getFontSize(settings.titleFontSize),
                 fontWeight: settings.titleFontWeight,
                 shadows: const [Shadow(blurRadius: 4, color: Colors.black45)],
@@ -122,7 +121,7 @@ class DsContent extends StatelessWidget {
               border: InputBorder.none,
               hintText: loc.title,
               hintStyle: TextStyle(
-                color: Colors.white.withAlpha(128),
+                color: settings.titleColor.withAlpha(128), // was white alpha
                 fontWeight: FontWeight.normal,
               ),
             ),
@@ -134,7 +133,7 @@ class DsContent extends StatelessWidget {
             style: _applyFont(
               settings.titleFontFamily,
               TextStyle(
-                color: Colors.white,
+                color: settings.titleColor, // was Colors.white
                 fontSize: _getFontSize(settings.titleFontSize),
                 fontWeight: settings.titleFontWeight,
                 shadows: const [Shadow(blurRadius: 4, color: Colors.black45)],
