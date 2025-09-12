@@ -350,7 +350,7 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
         ),
         if (_localSettings.showSubtitleDate)
           DropdownButtonFormField<String>(
-            value: _localSettings.subtitleDateFormat,
+            initialValue: _localSettings.subtitleDateFormat,
             decoration: InputDecoration(labelText: loc.date_format),
             items: _dateFormats.entries
                 .map(
@@ -499,7 +499,7 @@ class _DsSettingsSheetState extends State<DsSettingsSheet> {
         ),
         const SizedBox(height: 16),
         DropdownButtonFormField<String>(
-          value: effectiveValue,
+          initialValue: effectiveValue,
           decoration: InputDecoration(labelText: loc.font_family),
           items: families
               .map(
