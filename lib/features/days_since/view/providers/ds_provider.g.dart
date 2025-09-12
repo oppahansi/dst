@@ -1,30 +1,29 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'days_since_provider.dart';
+part of 'ds_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-@ProviderFor(daysSinceRepository)
-const daysSinceRepositoryProvider = DaysSinceRepositoryProvider._();
+@ProviderFor(dsRepo)
+const dsRepoProvider = DsRepoProvider._();
 
-final class DaysSinceRepositoryProvider
-    extends $FunctionalProvider<DsRepo, DsRepo, DsRepo>
+final class DsRepoProvider extends $FunctionalProvider<DsRepo, DsRepo, DsRepo>
     with $Provider<DsRepo> {
-  const DaysSinceRepositoryProvider._()
+  const DsRepoProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'daysSinceRepositoryProvider',
+        name: r'dsRepoProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$daysSinceRepositoryHash();
+  String debugGetCreateSourceHash() => _$dsRepoHash();
 
   @$internal
   @override
@@ -33,7 +32,7 @@ final class DaysSinceRepositoryProvider
 
   @override
   DsRepo create(Ref ref) {
-    return daysSinceRepository(ref);
+    return dsRepo(ref);
   }
 
   /// {@macro riverpod.override_with_value}
@@ -45,36 +44,35 @@ final class DaysSinceRepositoryProvider
   }
 }
 
-String _$daysSinceRepositoryHash() =>
-    r'4112e105e79a834a3d6788d7665f28732f949e43';
+String _$dsRepoHash() => r'8f7cea907c15589f456e3a4cebf230fa26b15bbe';
 
-@ProviderFor(DaysSinceNotifier)
-const daysSinceNotifierProvider = DaysSinceNotifierProvider._();
+@ProviderFor(DsNotifier)
+const dsNotifierProvider = DsNotifierProvider._();
 
-final class DaysSinceNotifierProvider
-    extends $AsyncNotifierProvider<DaysSinceNotifier, List<DsEntry>> {
-  const DaysSinceNotifierProvider._()
+final class DsNotifierProvider
+    extends $AsyncNotifierProvider<DsNotifier, List<DsEntry>> {
+  const DsNotifierProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'daysSinceNotifierProvider',
+        name: r'dsNotifierProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$daysSinceNotifierHash();
+  String debugGetCreateSourceHash() => _$dsNotifierHash();
 
   @$internal
   @override
-  DaysSinceNotifier create() => DaysSinceNotifier();
+  DsNotifier create() => DsNotifier();
 }
 
-String _$daysSinceNotifierHash() => r'c160f93bde7a6e8c4d36ba2f5c2195ecd5e56de0';
+String _$dsNotifierHash() => r'd0990a9c9ff348a8f2e5bfc24df130958c6c4fad';
 
-abstract class _$DaysSinceNotifier extends $AsyncNotifier<List<DsEntry>> {
+abstract class _$DsNotifier extends $AsyncNotifier<List<DsEntry>> {
   FutureOr<List<DsEntry>> build();
   @$mustCallSuper
   @override

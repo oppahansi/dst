@@ -5,7 +5,7 @@ import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 
 // Project Imports
-import "package:sdtpro/features/days_since/view/providers/days_since_provider.dart";
+import "package:sdtpro/features/days_since/view/providers/ds_provider.dart";
 import "package:sdtpro/features/days_since/view/widgets/ds_card.dart";
 import "package:sdtpro/core/widgets/debug_settings_controlls.dart";
 import "package:sdtpro/l10n/app_localizations.dart";
@@ -18,7 +18,7 @@ class DsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final loc = AppLocalizations.of(context)!;
-    final daysSinceState = ref.watch(daysSinceNotifierProvider);
+    final daysSinceState = ref.watch(dsNotifierProvider);
 
     return daysSinceState.when(
       loading: () => const Center(child: CircularProgressIndicator()),

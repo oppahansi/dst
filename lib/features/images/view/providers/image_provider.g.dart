@@ -72,7 +72,7 @@ final class ImageSearchProvider
   ImageSearch create() => ImageSearch();
 }
 
-String _$imageSearchHash() => r'0a2f0f6d21efc3a9e7703580f7220d38b30b7aef';
+String _$imageSearchHash() => r'bd4da7ab07efeaac91b2f746b0d5cc3fdb0d2db1';
 
 abstract class _$ImageSearch extends $AsyncNotifier<ImageSearchState> {
   FutureOr<ImageSearchState> build();

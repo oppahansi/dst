@@ -4,22 +4,22 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 // Project Imports
 import 'package:sdtpro/features/days_since/data/ds_repo_impl.dart';
 import 'package:sdtpro/features/days_since/domain/entities/ds_entry.dart';
-import 'package:sdtpro/features/days_since/domain/repos/days_since_repository.dart';
+import 'package:sdtpro/features/days_since/domain/repos/ds_repo.dart';
 
-part 'days_since_provider.g.dart';
+part 'ds_provider.g.dart';
 
 @riverpod
-DsRepo daysSinceRepository(Ref ref) {
+DsRepo dsRepo(Ref ref) {
   return DsRepoImpl();
 }
 
 @riverpod
-class DaysSinceNotifier extends _$DaysSinceNotifier {
+class DsNotifier extends _$DsNotifier {
   @override
   Future<List<DsEntry>> build() async {
     // For demonstration, I'll add some mock data on first load if the list is empty.
     // In a real scenario, you'd likely just fetch.
-    final repo = ref.watch(daysSinceRepositoryProvider);
+    final repo = ref.watch(dsRepoProvider);
     final entries = await repo.getEntries();
     if (entries.isEmpty) {
       await repo.addEntry(
@@ -38,7 +38,7 @@ class DaysSinceNotifier extends _$DaysSinceNotifier {
   }
 
   Future<void> addEntry(DsEntry entry) async {
-    final repo = ref.read(daysSinceRepositoryProvider);
+    final repo = ref.read(dsRepoProvider);
     // Set the state to loading to show a spinner while adding
     state = const AsyncValue.loading();
     // Use a try-catch block to handle potential errors
@@ -49,7 +49,7 @@ class DaysSinceNotifier extends _$DaysSinceNotifier {
   }
 
   Future<void> updateEntry(DsEntry entry) async {
-    final repo = ref.read(daysSinceRepositoryProvider);
+    final repo = ref.read(dsRepoProvider);
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       await repo.updateEntry(entry);
@@ -58,7 +58,7 @@ class DaysSinceNotifier extends _$DaysSinceNotifier {
   }
 
   Future<void> deleteEntry(int id) async {
-    final repo = ref.read(daysSinceRepositoryProvider);
+    final repo = ref.read(dsRepoProvider);
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       await repo.deleteEntry(id);

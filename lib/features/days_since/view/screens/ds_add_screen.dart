@@ -14,7 +14,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:sdtpro/core/utils/extensions.dart';
 import 'package:sdtpro/features/days_since/domain/entities/ds_entry.dart';
 import 'package:sdtpro/features/days_since/domain/entities/ds_settings.dart';
-import 'package:sdtpro/features/days_since/view/providers/days_since_provider.dart';
+import 'package:sdtpro/features/days_since/view/providers/ds_provider.dart';
 import 'package:sdtpro/features/days_since/view/widgets/ds_background_image.dart';
 import 'package:sdtpro/features/days_since/view/widgets/ds_content.dart';
 import 'package:sdtpro/features/days_since/view/widgets/ds_settings_sheet.dart';
@@ -181,9 +181,7 @@ class _DsAddScreenState extends ConsumerState<DsAddScreen> {
         imageUrl: _selectedImage?.url,
         settings: _settings,
       );
-      await ref
-          .read(daysSinceNotifierProvider.notifier)
-          .updateEntry(updatedEntry);
+      await ref.read(dsNotifierProvider.notifier).updateEntry(updatedEntry);
     } else {
       final newEntry = DsEntry(
         title: _titleController.text,
@@ -191,7 +189,7 @@ class _DsAddScreenState extends ConsumerState<DsAddScreen> {
         imageUrl: _selectedImage?.url,
         settings: _settings,
       );
-      await ref.read(daysSinceNotifierProvider.notifier).addEntry(newEntry);
+      await ref.read(dsNotifierProvider.notifier).addEntry(newEntry);
     }
 
     if (mounted) {

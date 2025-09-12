@@ -4,7 +4,7 @@ import 'package:sqflite/sqflite.dart';
 // Project Imports
 import 'package:sdtpro/core/db/db.dart';
 import 'package:sdtpro/features/days_since/domain/entities/ds_entry.dart';
-import 'package:sdtpro/features/days_since/domain/repos/days_since_repository.dart';
+import 'package:sdtpro/features/days_since/domain/repos/ds_repo.dart';
 
 class DsRepoImpl implements DsRepo {
   static final DsRepoImpl _instance = DsRepoImpl._internal();

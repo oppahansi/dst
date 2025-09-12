@@ -14,7 +14,7 @@ import 'package:sdtpro/core/utils/extensions.dart';
 import 'package:sdtpro/features/days_since/domain/entities/ds_settings.dart';
 import 'package:sdtpro/features/days_since/view/screens/ds_add_screen.dart';
 import 'package:sdtpro/features/days_since/domain/entities/ds_entry.dart';
-import 'package:sdtpro/features/days_since/view/providers/days_since_provider.dart';
+import 'package:sdtpro/features/days_since/view/providers/ds_provider.dart';
 import 'package:sdtpro/features/days_since/view/screens/ds_screenshot_screen.dart';
 import 'package:sdtpro/features/days_since/view/widgets/ds_card.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
@@ -76,9 +76,7 @@ class _DsDetailScreenState extends ConsumerState<DsDetailScreen> {
     );
 
     if (didConfirm == true && context.mounted) {
-      await ref
-          .read(daysSinceNotifierProvider.notifier)
-          .deleteEntry(widget.entry.id!);
+      await ref.read(dsNotifierProvider.notifier).deleteEntry(widget.entry.id!);
 
       if (!context.mounted) return;
 
@@ -180,7 +178,7 @@ class _DsDetailScreenState extends ConsumerState<DsDetailScreen> {
                         description: _descriptionController.text,
                       );
                       await ref
-                          .read(daysSinceNotifierProvider.notifier)
+                          .read(dsNotifierProvider.notifier)
                           .updateEntry(updatedEntry);
                       if (!mounted) return;
                       FocusScope.of(context).unfocus();
