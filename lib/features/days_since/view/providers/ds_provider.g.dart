@@ -6,46 +6,6 @@ part of 'ds_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-@ProviderFor(dsRepo)
-const dsRepoProvider = DsRepoProvider._();
-
-final class DsRepoProvider extends $FunctionalProvider<DsRepo, DsRepo, DsRepo>
-    with $Provider<DsRepo> {
-  const DsRepoProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'dsRepoProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
-
-  @override
-  String debugGetCreateSourceHash() => _$dsRepoHash();
-
-  @$internal
-  @override
-  $ProviderElement<DsRepo> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
-
-  @override
-  DsRepo create(Ref ref) {
-    return dsRepo(ref);
-  }
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(DsRepo value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<DsRepo>(value),
-    );
-  }
-}
-
-String _$dsRepoHash() => r'8f7cea907c15589f456e3a4cebf230fa26b15bbe';
-
 @ProviderFor(DsNotifier)
 const dsNotifierProvider = DsNotifierProvider._();
 
@@ -70,7 +30,7 @@ final class DsNotifierProvider
   DsNotifier create() => DsNotifier();
 }
 
-String _$dsNotifierHash() => r'380f18708aabfd07dadb00c66660b4f4207011f3';
+String _$dsNotifierHash() => r'eea1ef1880377bd9807f8395a10e4c09e7667c5e';
 
 abstract class _$DsNotifier extends $AsyncNotifier<List<DsEntry>> {
   FutureOr<List<DsEntry>> build();
