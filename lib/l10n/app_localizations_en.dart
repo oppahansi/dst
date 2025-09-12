@@ -123,9 +123,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get customize_style => 'Customize Style';
 
   @override
-  String get days_counter_text => 'Days Counter Text';
-
-  @override
   String get days_since => 'Days Since';
 
   @override
@@ -171,6 +168,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get show_date => 'Show Date';
 
   @override
+  String get sort_order => 'Sort Order';
+
+  @override
   String get subtitle_text => 'Subtitle Text';
 
   @override
@@ -183,6 +183,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get view_license => 'View license';
 
   @override
+  String get ascending_small_to_big => 'Ascending (Small to Big)';
+
+  @override
   String get choose_from_gallery => 'Choose from gallery';
 
   @override
@@ -191,9 +194,21 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get days_counter_text => 'Days Counter Text';
+
+  @override
+  String get days_since_sort_order => 'Days Since sorting';
+
+  @override
   String days_since_title(Object title) {
     return 'days since $title';
   }
+
+  @override
+  String get days_to_sort_order => 'Days To sorting';
+
+  @override
+  String get descending_big_to_small => 'Descending (Big to Small)';
 
   @override
   String get delete_entry_confirmation =>

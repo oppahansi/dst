@@ -123,9 +123,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get customize_style => 'Stil anpassen';
 
   @override
-  String get days_counter_text => 'Tage-Zähler Text';
-
-  @override
   String get days_since => 'Tage seit';
 
   @override
@@ -171,6 +168,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get show_date => 'Datum anzeigen';
 
   @override
+  String get sort_order => 'Sortierreihenfolge';
+
+  @override
   String get subtitle_text => 'Untertitel Text';
 
   @override
@@ -183,6 +183,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get view_license => 'Lizenz ansehen';
 
   @override
+  String get ascending_small_to_big => 'Aufsteigend (Klein zu Groß)';
+
+  @override
   String get choose_from_gallery => 'Aus Galerie wählen';
 
   @override
@@ -191,9 +194,21 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
+  String get days_counter_text => 'Tage-Zähler Text';
+
+  @override
+  String get days_since_sort_order => 'Tage seit Sortierung';
+
+  @override
   String days_since_title(Object title) {
     return 'Tage seit $title';
   }
+
+  @override
+  String get days_to_sort_order => 'Tage bis Sortierung';
+
+  @override
+  String get descending_big_to_small => 'Absteigend (Groß zu Klein)';
 
   @override
   String get delete_entry_confirmation =>

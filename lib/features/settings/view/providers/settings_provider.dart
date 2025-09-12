@@ -22,9 +22,7 @@ class SettingsNotifier extends _$SettingsNotifier {
   }
 
   Future<void> updateThemeMode(ThemeMode themeMode) async {
-    // Call the use case, which handles the business logic.
     await ref.read(updateThemeProvider).call(themeMode);
-    // Update the UI state.
     state = state.copyWith(themeMode: themeMode);
   }
 
@@ -32,10 +30,19 @@ class SettingsNotifier extends _$SettingsNotifier {
     await ref.read(updateLocaleProvider).call(locale);
     state = state.copyWith(locale: locale);
   }
+
+  Future<void> updateDsSortOrder(SdtSortOrder order) async {
+    await ref.read(updateDsSortOrderProvider).call(order);
+    state = state.copyWith(dsSortOrder: order);
+  }
+
+  Future<void> updateDtSortOrder(SdtSortOrder order) async {
+    await ref.read(updateDtSortOrderProvider).call(order);
+    state = state.copyWith(dtSortOrder: order);
+  }
 }
 
 Future<Settings> loadInitialSettings() async {
-  // Outside the widget tree, we can compose our dependencies manually.
   final getSettingsUseCase = GetSettings(SettingsRepoImpl());
   final settings = await getSettingsUseCase.call();
   return settings;

@@ -42,7 +42,18 @@ class SettingsRepoImpl implements SettingsRepo {
     final locale = Locale(
       settingsMap[settingsKeyLocale] ?? settingsValueLocaleDefault,
     );
-    return Settings(themeMode: themeMode, locale: locale);
+
+    final ds =
+        await _readString(settingsKeyDsSortOrder) ?? SdtSortOrder.asc.name;
+    final dt =
+        await _readString(settingsKeyDtSortOrder) ?? SdtSortOrder.asc.name;
+
+    return Settings(
+      themeMode: themeMode,
+      locale: locale,
+      dsSortOrder: SdtSortOrder.values.byName(ds),
+      dtSortOrder: SdtSortOrder.values.byName(dt),
+    );
   }
 
   @override
@@ -66,6 +77,24 @@ class SettingsRepoImpl implements SettingsRepo {
     await _setSetting(settingsKeyThemeMode, themeValue);
   }
 
+  @override
+  Future<void> updateDsSortOrder(SdtSortOrder order) async {
+    await _setSetting(settingsKeyDsSortOrder, order.name);
+  }
+
+  @override
+  Future<void> updateDtSortOrder(SdtSortOrder order) async {
+    await _saveString(settingsKeyDtSortOrder, order.name);
+  }
+
+  Future<void> _saveString(String key, String value) async {
+    final db = await Db.getUserDbInstance();
+    await db.insert(_table, {
+      "key": key,
+      "value": value,
+    }, conflictAlgorithm: ConflictAlgorithm.replace);
+  }
+
   ThemeMode _getThemeModeFromString(String? themeStr) {
     // This logic is now correctly placed within the data layer.
     switch (themeStr) {
@@ -76,5 +105,11 @@ class SettingsRepoImpl implements SettingsRepo {
       default:
         return ThemeMode.system;
     }
+  }
+
+  Future<String?> _readString(String key) async {
+    final db = await Db.getUserDbInstance();
+    final result = await db.query(_table, where: "key = ?", whereArgs: [key]);
+    return result.isNotEmpty ? result.first["value"] as String : null;
   }
 }

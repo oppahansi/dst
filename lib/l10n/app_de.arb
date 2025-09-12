@@ -39,7 +39,6 @@
   "transparency": "Transparenz",
 
   "customize_style": "Stil anpassen",
-  "days_counter_text": "Tage-Zähler Text",
   "days_since": "Tage seit",
   "days_to": "Tage bis",
   "date_format": "Datumsformat",
@@ -62,7 +61,12 @@
   
   "choose_from_gallery": "Aus Galerie wählen",
   "could_not_launch_url": "Konnte {url} nicht öffnen",
+  "days_counter_text": "Tage-Zähler Text",
+  "ascending_small_to_big": "Aufsteigend (Klein zu Groß)",
+  "descending_big_to_small": "Absteigend (Groß zu Klein)",
+  "days_since_sort_order": "Tage seit Sortierung",
   "days_since_title": "Tage seit {title}",
+  "days_to_sort_order": "Tage bis Sortierung",
   "delete_entry_confirmation": "Bist du sicher, dass du diesen Eintrag löschen möchtest? Diese Aktion kann nicht rückgängig gemacht werden.",
   "failed_to_load_images": "Bilder konnten nicht geladen werden.",
   "no_description_to_print": "Keine Beschreibung zum Drucken.",
@@ -76,6 +80,7 @@
   "select_a_date": "Wähle ein Datum",
   "search_online": "Online suchen",
   "select_an_image": "Wähle ein Bild aus",
+  "sort_order": "Sortierreihenfolge",
   "tap_to_change_the_image": "Tippe, um das Bild zu ändern",
   "take_a_picture": "Foto aufnehmen",
   "tap_to_select_an_image": "Tippe, um ein Bild auszuwählen",

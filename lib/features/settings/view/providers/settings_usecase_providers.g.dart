@@ -185,5 +185,105 @@ final class UpdateLocaleProvider
 
 String _$updateLocaleHash() => r'47ff3e245e63f0d15ebef82e4cb565e33ad22cb3';
 
+/// Provides the UpdateDsSortOrder use case.
+@ProviderFor(updateDsSortOrder)
+const updateDsSortOrderProvider = UpdateDsSortOrderProvider._();
+
+/// Provides the UpdateDsSortOrder use case.
+final class UpdateDsSortOrderProvider
+    extends
+        $FunctionalProvider<
+          UpdateDsSortOrder,
+          UpdateDsSortOrder,
+          UpdateDsSortOrder
+        >
+    with $Provider<UpdateDsSortOrder> {
+  /// Provides the UpdateDsSortOrder use case.
+  const UpdateDsSortOrderProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'updateDsSortOrderProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$updateDsSortOrderHash();
+
+  @$internal
+  @override
+  $ProviderElement<UpdateDsSortOrder> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  UpdateDsSortOrder create(Ref ref) {
+    return updateDsSortOrder(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(UpdateDsSortOrder value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<UpdateDsSortOrder>(value),
+    );
+  }
+}
+
+String _$updateDsSortOrderHash() => r'673561a8465479aba93166631d5f0a106b024778';
+
+/// Provides the UpdateDtSortOrder use case.
+@ProviderFor(updateDtSortOrder)
+const updateDtSortOrderProvider = UpdateDtSortOrderProvider._();
+
+/// Provides the UpdateDtSortOrder use case.
+final class UpdateDtSortOrderProvider
+    extends
+        $FunctionalProvider<
+          UpdateDtSortOrder,
+          UpdateDtSortOrder,
+          UpdateDtSortOrder
+        >
+    with $Provider<UpdateDtSortOrder> {
+  /// Provides the UpdateDtSortOrder use case.
+  const UpdateDtSortOrderProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'updateDtSortOrderProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$updateDtSortOrderHash();
+
+  @$internal
+  @override
+  $ProviderElement<UpdateDtSortOrder> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  UpdateDtSortOrder create(Ref ref) {
+    return updateDtSortOrder(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(UpdateDtSortOrder value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<UpdateDtSortOrder>(value),
+    );
+  }
+}
+
+String _$updateDtSortOrderHash() => r'6305a19e289fd078faf4f07ab6121f9414846560';
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -7,6 +7,8 @@ import "package:sdtpro/core/utils/extensions.dart";
 import "package:sdtpro/core/utils/text_styles.dart";
 import "package:sdtpro/features/settings/view/widgets/language_setting.dart";
 import "package:sdtpro/features/settings/view/widgets/theme_setting.dart";
+import "package:sdtpro/features/settings/view/widgets/ds_order_setting.dart";
+import "package:sdtpro/features/settings/view/widgets/dt_order_setting.dart";
 import "package:sdtpro/l10n/app_localizations.dart";
 
 class SettingsScreen extends StatelessWidget {
@@ -29,6 +31,8 @@ class SettingsScreen extends StatelessWidget {
             ),
             const LanguageSetting(),
             const ThemeSetting(),
+            const DsOrderSetting(),
+            const DtOrderSetting(),
           ],
         ),
       ),

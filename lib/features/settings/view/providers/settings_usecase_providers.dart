@@ -5,6 +5,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:sdtpro/features/settings/data/settings_repo_impl.dart';
 import 'package:sdtpro/features/settings/domain/repos/settings_repo.dart';
 import 'package:sdtpro/features/settings/domain/usecases/get_settings.dart';
+import 'package:sdtpro/features/settings/domain/usecases/update_ds_sort_order.dart';
+import 'package:sdtpro/features/settings/domain/usecases/update_dt_sort_order.dart';
 import 'package:sdtpro/features/settings/domain/usecases/update_locale.dart';
 import 'package:sdtpro/features/settings/domain/usecases/update_theme.dart';
 
@@ -33,4 +35,16 @@ UpdateTheme updateTheme(Ref ref) {
 @riverpod
 UpdateLocale updateLocale(Ref ref) {
   return UpdateLocale(ref.watch(settingsRepoProvider));
+}
+
+/// Provides the UpdateDsSortOrder use case.
+@riverpod
+UpdateDsSortOrder updateDsSortOrder(Ref ref) {
+  return UpdateDsSortOrder(ref.watch(settingsRepoProvider));
+}
+
+/// Provides the UpdateDtSortOrder use case.
+@riverpod
+UpdateDtSortOrder updateDtSortOrder(Ref ref) {
+  return UpdateDtSortOrder(ref.watch(settingsRepoProvider));
 }

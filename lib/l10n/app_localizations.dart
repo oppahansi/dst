@@ -326,12 +326,6 @@ abstract class AppLocalizations {
   /// **'Customize Style'**
   String get customize_style;
 
-  /// No description provided for @days_counter_text.
-  ///
-  /// In en, this message translates to:
-  /// **'Days Counter Text'**
-  String get days_counter_text;
-
   /// No description provided for @days_since.
   ///
   /// In en, this message translates to:
@@ -422,6 +416,12 @@ abstract class AppLocalizations {
   /// **'Show Date'**
   String get show_date;
 
+  /// No description provided for @sort_order.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort Order'**
+  String get sort_order;
+
   /// No description provided for @subtitle_text.
   ///
   /// In en, this message translates to:
@@ -446,6 +446,12 @@ abstract class AppLocalizations {
   /// **'View license'**
   String get view_license;
 
+  /// No description provided for @ascending_small_to_big.
+  ///
+  /// In en, this message translates to:
+  /// **'Ascending (Small to Big)'**
+  String get ascending_small_to_big;
+
   /// No description provided for @choose_from_gallery.
   ///
   /// In en, this message translates to:
@@ -458,11 +464,35 @@ abstract class AppLocalizations {
   /// **'Could not launch {url}'**
   String could_not_launch_url(Object url);
 
+  /// No description provided for @days_counter_text.
+  ///
+  /// In en, this message translates to:
+  /// **'Days Counter Text'**
+  String get days_counter_text;
+
+  /// No description provided for @days_since_sort_order.
+  ///
+  /// In en, this message translates to:
+  /// **'Days Since sorting'**
+  String get days_since_sort_order;
+
   /// No description provided for @days_since_title.
   ///
   /// In en, this message translates to:
   /// **'days since {title}'**
   String days_since_title(Object title);
+
+  /// No description provided for @days_to_sort_order.
+  ///
+  /// In en, this message translates to:
+  /// **'Days To sorting'**
+  String get days_to_sort_order;
+
+  /// No description provided for @descending_big_to_small.
+  ///
+  /// In en, this message translates to:
+  /// **'Descending (Big to Small)'**
+  String get descending_big_to_small;
 
   /// No description provided for @delete_entry_confirmation.
   ///
