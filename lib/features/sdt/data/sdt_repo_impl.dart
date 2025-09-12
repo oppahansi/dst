@@ -39,6 +39,35 @@ class SdtRepoImpl implements SdtRepo {
     return maps.map((map) => SdtEntry.fromMap(map)).toList();
   }
 
+  // New: DB-side filtered fetch
+  @override
+  Future<List<SdtEntry>> getEntriesFiltered({
+    required SdtQueryType type,
+    required bool ascending,
+    int? limit,
+    int? offset,
+  }) async {
+    final db = await _db;
+    final nowIso = DateTime.now().toIso8601String();
+    final since = type == SdtQueryType.since;
+
+    final where = since ? 'date <= ?' : 'date > ?';
+    final whereArgs = [nowIso];
+
+    final orderBy = 'date ${ascending ? 'ASC' : 'DESC'}';
+
+    final maps = await db.query(
+      _table,
+      where: where,
+      whereArgs: whereArgs,
+      orderBy: orderBy,
+      limit: limit,
+      offset: offset,
+    );
+
+    return maps.map((m) => SdtEntry.fromMap(m)).toList();
+  }
+
   @override
   Future<void> updateEntry(SdtEntry entry) async {
     final db = await _db;

@@ -1,6 +1,8 @@
 // Project Imports
 import 'package:sdtpro/features/sdt/domain/entities/sdt_settings.dart';
 
+enum SdtQueryType { since, to }
+
 class SdtEntry {
   final int? id;
   final String title;

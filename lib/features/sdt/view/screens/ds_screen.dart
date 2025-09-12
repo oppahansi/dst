@@ -10,8 +10,6 @@ import "package:material_symbols_icons/symbols.dart";
 import "package:sdtpro/core/widgets/debug_settings_controlls.dart";
 import "package:sdtpro/features/sdt/view/providers/sdt_provider.dart";
 import "package:sdtpro/features/sdt/view/widgets/ds_card.dart";
-import "package:sdtpro/features/settings/view/providers/settings_provider.dart";
-import "package:sdtpro/features/settings/domain/entities/settings.dart";
 import "package:sdtpro/l10n/app_localizations.dart";
 
 // Visible count for Days Since
@@ -25,29 +23,17 @@ class DsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final loc = AppLocalizations.of(context)!;
-    final daysSinceState = ref.watch(sdtNotifierProvider);
-    final settings = ref.watch(settingsNotifierProvider);
+    // CHANGED: use since-only provider
+    final daysSinceState = ref.watch(dsNotifierProvider);
     final visibleCount = ref.watch(dsVisibleCountProvider);
 
     return daysSinceState.when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (err, stack) => Center(child: Text('${loc.error}: $err')),
       data: (entries) {
-        final now = DateTime.now();
-        // Past or today
-        final all = entries.where((e) => !e.date.isAfter(now)).toList();
-
-        // Sort by days counter (small -> big or big -> small)
-        all.sort((a, b) {
-          final da = now.difference(a.date).inDays;
-          final db = now.difference(b.date).inDays;
-          return settings.dsSortOrder == SdtSortOrder.asc
-              ? da.compareTo(db)
-              : db.compareTo(da);
-        });
-
-        final visible = all.take(visibleCount).toList();
-        final hasMore = visible.length < all.length;
+        // entries already filtered (past/today) and sorted by user settings
+        final visible = entries.take(visibleCount).toList();
+        final hasMore = visible.length < entries.length;
 
         final hasDebug = kDebugMode;
         final base = hasDebug ? 1 : 0;
@@ -62,7 +48,6 @@ class DsScreen extends ConsumerWidget {
             }
             final localIndex = index - base;
 
-            // Load more button
             if (hasMore && localIndex == visible.length) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),

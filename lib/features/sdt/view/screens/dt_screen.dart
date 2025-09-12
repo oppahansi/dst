@@ -10,8 +10,6 @@ import "package:material_symbols_icons/symbols.dart";
 import "package:sdtpro/core/widgets/debug_settings_controlls.dart";
 import "package:sdtpro/features/sdt/view/providers/sdt_provider.dart";
 import "package:sdtpro/features/sdt/view/widgets/ds_card.dart";
-import "package:sdtpro/features/settings/view/providers/settings_provider.dart";
-import "package:sdtpro/features/settings/domain/entities/settings.dart";
 import "package:sdtpro/l10n/app_localizations.dart";
 
 // Visible count for Days To
@@ -25,29 +23,17 @@ class DtScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final loc = AppLocalizations.of(context)!;
-    final state = ref.watch(sdtNotifierProvider);
-    final settings = ref.watch(settingsNotifierProvider);
+    // CHANGED: use future-only provider
+    final state = ref.watch(dtNotifierProvider);
     final visibleCount = ref.watch(dtVisibleCountProvider);
 
     return state.when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (err, stack) => Center(child: Text('${loc.error}: $err')),
       data: (entries) {
-        final now = DateTime.now();
-        // Future only; "today" stays on Days Since
-        final all = entries.where((e) => e.date.isAfter(now)).toList();
-
-        // Sort by days-to counter using its own setting
-        all.sort((a, b) {
-          final da = a.date.difference(now).inDays;
-          final db = b.date.difference(now).inDays;
-          return settings.dtSortOrder == SdtSortOrder.asc
-              ? da.compareTo(db)
-              : db.compareTo(da);
-        });
-
-        final visible = all.take(visibleCount).toList();
-        final hasMore = visible.length < all.length;
+        // entries already filtered (future) and sorted by user settings
+        final visible = entries.take(visibleCount).toList();
+        final hasMore = visible.length < entries.length;
 
         final hasDebug = kDebugMode;
         final base = hasDebug ? 1 : 0;
