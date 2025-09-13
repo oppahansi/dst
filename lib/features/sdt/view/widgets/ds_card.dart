@@ -47,14 +47,18 @@ class _SdtCardState extends State<SdtCard> {
       final mq = MediaQuery.of(context);
       final pixelRatio = mq.devicePixelRatio;
 
-      // Keep theme and localizations while rendering offstage.
-      final widgetToCapture = Localizations.override(
-        context: context,
-        child: InheritedTheme.captureAll(
-          context,
-          MediaQuery(
-            data: mq.copyWith(),
-            child: _buildScreenshotWidget(context),
+      // Keep theme, localizations AND riverpod providers while rendering offstage.
+      final container = ProviderScope.containerOf(context);
+      final widgetToCapture = UncontrolledProviderScope(
+        container: container,
+        child: Localizations.override(
+          context: context,
+          child: InheritedTheme.captureAll(
+            context,
+            MediaQuery(
+              data: mq.copyWith(),
+              child: _buildScreenshotWidget(context),
+            ),
           ),
         ),
       );
