@@ -6,9 +6,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 // Project Imports
-import 'package:sdtpro/features/settings/view/providers/settings_provider.dart';
-import 'package:sdtpro/features/settings/domain/entities/settings.dart';
-import 'package:sdtpro/l10n/app_localizations.dart';
+import 'package:sdt/features/settings/view/providers/settings_provider.dart';
+import 'package:sdt/features/settings/domain/entities/settings.dart';
+import 'package:sdt/l10n/app_localizations.dart';
 
 class DsOrderSetting extends ConsumerWidget {
   const DsOrderSetting({super.key});

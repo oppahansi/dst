@@ -2,17 +2,17 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // Project Imports
-import 'package:sdtpro/features/settings/data/settings_repo_impl.dart';
-import 'package:sdtpro/features/settings/domain/repos/settings_repo.dart';
-import 'package:sdtpro/features/settings/domain/usecases/get_settings.dart';
-import 'package:sdtpro/features/settings/domain/usecases/update_ds_sort_order.dart';
-import 'package:sdtpro/features/settings/domain/usecases/update_dt_sort_order.dart';
-import 'package:sdtpro/features/settings/domain/usecases/update_locale.dart';
-import 'package:sdtpro/features/settings/domain/usecases/update_theme.dart';
-import 'package:sdtpro/features/settings/domain/usecases/update_count_today.dart';
-import 'package:sdtpro/features/settings/domain/usecases/update_count_last_day.dart';
-import 'package:sdtpro/features/settings/domain/usecases/reset_settings.dart';
-import 'package:sdtpro/features/settings/domain/usecases/update_seeded_examples.dart';
+import 'package:sdt/features/settings/data/settings_repo_impl.dart';
+import 'package:sdt/features/settings/domain/repos/settings_repo.dart';
+import 'package:sdt/features/settings/domain/usecases/get_settings.dart';
+import 'package:sdt/features/settings/domain/usecases/update_ds_sort_order.dart';
+import 'package:sdt/features/settings/domain/usecases/update_dt_sort_order.dart';
+import 'package:sdt/features/settings/domain/usecases/update_locale.dart';
+import 'package:sdt/features/settings/domain/usecases/update_theme.dart';
+import 'package:sdt/features/settings/domain/usecases/update_count_today.dart';
+import 'package:sdt/features/settings/domain/usecases/update_count_last_day.dart';
+import 'package:sdt/features/settings/domain/usecases/reset_settings.dart';
+import 'package:sdt/features/settings/domain/usecases/update_seeded_examples.dart';
 
 part 'settings_usecase_providers.g.dart';
 

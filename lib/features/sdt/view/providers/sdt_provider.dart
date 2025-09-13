@@ -2,10 +2,10 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // Project Imports
-import 'package:sdtpro/features/sdt/domain/entities/sdt_entry.dart';
-import 'package:sdtpro/features/sdt/view/providers/sdt_usecase_providers.dart';
-import 'package:sdtpro/features/settings/view/providers/settings_provider.dart';
-import 'package:sdtpro/features/sdt/view/providers/sdt_seed_provider.dart';
+import 'package:sdt/features/sdt/domain/entities/sdt_entry.dart';
+import 'package:sdt/features/sdt/view/providers/sdt_usecase_providers.dart';
+import 'package:sdt/features/settings/view/providers/settings_provider.dart';
+import 'package:sdt/features/sdt/view/providers/sdt_seed_provider.dart';
 
 // NEW
 part 'sdt_provider.g.dart';

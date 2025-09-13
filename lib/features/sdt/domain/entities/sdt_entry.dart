@@ -1,5 +1,5 @@
 // Project Imports
-import 'package:sdtpro/features/sdt/domain/entities/sdt_settings.dart';
+import 'package:sdt/features/sdt/domain/entities/sdt_settings.dart';
 
 enum SdtQueryType { since, to }
 

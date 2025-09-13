@@ -10,18 +10,18 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
 // Project Imports
-import 'package:sdtpro/core/utils/extensions.dart';
-import 'package:sdtpro/features/sdt/domain/entities/sdt_settings.dart';
-import 'package:sdtpro/features/sdt/view/screens/sdt_add_screen.dart';
-import 'package:sdtpro/features/sdt/domain/entities/sdt_entry.dart';
-import 'package:sdtpro/features/sdt/view/providers/sdt_usecase_providers.dart';
-import 'package:sdtpro/features/sdt/view/providers/sdt_provider.dart';
+import 'package:sdt/core/utils/extensions.dart';
+import 'package:sdt/features/sdt/domain/entities/sdt_settings.dart';
+import 'package:sdt/features/sdt/view/screens/sdt_add_screen.dart';
+import 'package:sdt/features/sdt/domain/entities/sdt_entry.dart';
+import 'package:sdt/features/sdt/view/providers/sdt_usecase_providers.dart';
+import 'package:sdt/features/sdt/view/providers/sdt_provider.dart';
 // for ds/dt invalidation
-import 'package:sdtpro/features/sdt/view/screens/sdt_screenshot_screen.dart';
-import 'package:sdtpro/features/sdt/view/widgets/ds_card.dart';
-import 'package:sdtpro/l10n/app_localizations.dart';
-import 'package:sdtpro/core/utils/date_math.dart';
-import 'package:sdtpro/features/settings/view/providers/settings_provider.dart';
+import 'package:sdt/features/sdt/view/screens/sdt_screenshot_screen.dart';
+import 'package:sdt/features/sdt/view/widgets/ds_card.dart';
+import 'package:sdt/l10n/app_localizations.dart';
+import 'package:sdt/core/utils/date_math.dart';
+import 'package:sdt/features/settings/view/providers/settings_provider.dart';
 
 class SdtDetailScreen extends ConsumerStatefulWidget {
   final SdtEntry entry;

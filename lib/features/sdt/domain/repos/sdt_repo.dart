@@ -1,5 +1,5 @@
 // Project Imports
-import 'package:sdtpro/features/sdt/domain/entities/sdt_entry.dart';
+import 'package:sdt/features/sdt/domain/entities/sdt_entry.dart';
 
 abstract class SdtRepo {
   Future<List<SdtEntry>> getEntries();

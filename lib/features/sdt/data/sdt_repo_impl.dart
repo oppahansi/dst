@@ -2,9 +2,9 @@
 import 'package:sqflite/sqflite.dart';
 
 // Project Imports
-import 'package:sdtpro/core/db/db.dart';
-import 'package:sdtpro/features/sdt/domain/entities/sdt_entry.dart';
-import 'package:sdtpro/features/sdt/domain/repos/sdt_repo.dart';
+import 'package:sdt/core/db/db.dart';
+import 'package:sdt/features/sdt/domain/entities/sdt_entry.dart';
+import 'package:sdt/features/sdt/domain/repos/sdt_repo.dart';
 
 class SdtRepoImpl implements SdtRepo {
   static final SdtRepoImpl _instance = SdtRepoImpl._internal();

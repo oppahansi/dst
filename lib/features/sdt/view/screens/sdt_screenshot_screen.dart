@@ -13,12 +13,12 @@ import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
 // Project Imports
-import 'package:sdtpro/features/sdt/view/widgets/ds_background_image.dart';
-import 'package:sdtpro/features/sdt/view/widgets/ds_content.dart';
-import 'package:sdtpro/core/utils/extensions.dart';
-import 'package:sdtpro/features/sdt/domain/entities/sdt_entry.dart';
-import 'package:sdtpro/features/sdt/domain/entities/sdt_settings.dart';
-import 'package:sdtpro/l10n/app_localizations.dart';
+import 'package:sdt/features/sdt/view/widgets/ds_background_image.dart';
+import 'package:sdt/features/sdt/view/widgets/ds_content.dart';
+import 'package:sdt/core/utils/extensions.dart';
+import 'package:sdt/features/sdt/domain/entities/sdt_entry.dart';
+import 'package:sdt/features/sdt/domain/entities/sdt_settings.dart';
+import 'package:sdt/l10n/app_localizations.dart';
 
 class SdtScreenshotScreen extends StatefulWidget {
   final SdtEntry entry;

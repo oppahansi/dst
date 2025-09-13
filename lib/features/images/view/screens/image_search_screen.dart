@@ -6,9 +6,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 // Project Imports
-import 'package:sdtpro/features/images/view/providers/image_provider.dart';
-import 'package:sdtpro/features/images/view/widgets/image_grid.dart';
-import 'package:sdtpro/l10n/app_localizations.dart';
+import 'package:sdt/features/images/view/providers/image_provider.dart';
+import 'package:sdt/features/images/view/widgets/image_grid.dart';
+import 'package:sdt/l10n/app_localizations.dart';
 
 class ImageSearchScreen extends ConsumerStatefulWidget {
   const ImageSearchScreen({super.key});

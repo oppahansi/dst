@@ -2,10 +2,10 @@
 // REMOVE seeding and randomization here; keep only filtering logic
 // import 'dart:math'; // removed
 // import 'package:flutter/material.dart'; // removed
-import 'package:sdtpro/features/sdt/domain/entities/sdt_entry.dart';
-import 'package:sdtpro/features/sdt/domain/repos/sdt_repo.dart';
-import 'package:sdtpro/features/settings/domain/entities/settings.dart';
-// import 'package:sdtpro/features/sdt/domain/entities/sdt_settings.dart'; // removed
+import 'package:sdt/features/sdt/domain/entities/sdt_entry.dart';
+import 'package:sdt/features/sdt/domain/repos/sdt_repo.dart';
+import 'package:sdt/features/settings/domain/entities/settings.dart';
+// import 'package:sdt/features/sdt/domain/entities/sdt_settings.dart'; // removed
 
 class GetSdtEntries {
   final SdtRepo repository;

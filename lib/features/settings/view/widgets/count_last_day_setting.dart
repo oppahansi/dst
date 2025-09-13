@@ -8,10 +8,10 @@ import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 // Project Imports
-import 'package:sdtpro/core/utils/date_math.dart';
-import 'package:sdtpro/core/utils/text_styles.dart';
-import 'package:sdtpro/features/settings/view/providers/settings_provider.dart';
-import 'package:sdtpro/l10n/app_localizations.dart';
+import 'package:sdt/core/utils/date_math.dart';
+import 'package:sdt/core/utils/text_styles.dart';
+import 'package:sdt/features/settings/view/providers/settings_provider.dart';
+import 'package:sdt/l10n/app_localizations.dart';
 
 class CountLastDaySetting extends ConsumerWidget {
   const CountLastDaySetting({super.key});

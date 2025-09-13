@@ -8,11 +8,11 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // Project Imports
-import 'package:sdtpro/core/utils/extensions.dart';
-import 'package:sdtpro/features/images/domain/entities/fis_image.dart';
-import 'package:sdtpro/features/images/view/screens/image_preview_screen.dart';
-import 'package:sdtpro/features/images/view/widgets/source_logo.dart';
-import 'package:sdtpro/l10n/app_localizations.dart';
+import 'package:sdt/core/utils/extensions.dart';
+import 'package:sdt/features/images/domain/entities/fis_image.dart';
+import 'package:sdt/features/images/view/screens/image_preview_screen.dart';
+import 'package:sdt/features/images/view/widgets/source_logo.dart';
+import 'package:sdt/l10n/app_localizations.dart';
 
 class ImageGrid extends StatelessWidget {
   final List<FisImage> images;

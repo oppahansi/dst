@@ -8,8 +8,8 @@ import "package:sqflite/sqflite.dart";
 import "package:path_provider/path_provider.dart";
 
 // Project Imports
-import "package:sdtpro/core/db/migrations.dart";
-import "package:sdtpro/core/utils/constants.dart";
+import "package:sdt/core/db/migrations.dart";
+import "package:sdt/core/utils/constants.dart";
 
 class Db {
   static const int dbVersion = 4;

@@ -2,12 +2,12 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // Project Imports
-import 'package:sdtpro/features/sdt/data/sdt_repo_impl.dart';
-import 'package:sdtpro/features/sdt/domain/repos/sdt_repo.dart';
-import 'package:sdtpro/features/sdt/domain/usecases/get_sdt_entries.dart';
-import 'package:sdtpro/features/sdt/domain/usecases/add_sdt_entry.dart';
-import 'package:sdtpro/features/sdt/domain/usecases/update_sdt_entry.dart';
-import 'package:sdtpro/features/sdt/domain/usecases/delete_sdt_entry.dart';
+import 'package:sdt/features/sdt/data/sdt_repo_impl.dart';
+import 'package:sdt/features/sdt/domain/repos/sdt_repo.dart';
+import 'package:sdt/features/sdt/domain/usecases/get_sdt_entries.dart';
+import 'package:sdt/features/sdt/domain/usecases/add_sdt_entry.dart';
+import 'package:sdt/features/sdt/domain/usecases/update_sdt_entry.dart';
+import 'package:sdt/features/sdt/domain/usecases/delete_sdt_entry.dart';
 
 part 'sdt_usecase_providers.g.dart';
 

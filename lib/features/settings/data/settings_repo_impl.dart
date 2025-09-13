@@ -3,10 +3,10 @@ import "package:flutter/material.dart";
 import "package:sqflite/sqflite.dart";
 
 // Project Imports
-import "package:sdtpro/core/db/db.dart";
-import "package:sdtpro/core/utils/constants.dart";
-import "package:sdtpro/features/settings/domain/entities/settings.dart";
-import "package:sdtpro/features/settings/domain/repos/settings_repo.dart";
+import "package:sdt/core/db/db.dart";
+import "package:sdt/core/utils/constants.dart";
+import "package:sdt/features/settings/domain/entities/settings.dart";
+import "package:sdt/features/settings/domain/repos/settings_repo.dart";
 
 class SettingsRepoImpl implements SettingsRepo {
   static final SettingsRepoImpl _instance = SettingsRepoImpl._internal();

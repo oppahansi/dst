@@ -4,18 +4,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 // Project Imports
-import "package:sdtpro/core/utils/colors.dart";
-import "package:sdtpro/core/utils/extensions.dart";
-import "package:sdtpro/core/utils/text_styles.dart";
-import "package:sdtpro/features/settings/view/widgets/count_today_setting.dart";
-import "package:sdtpro/features/settings/view/widgets/ds_order_setting.dart";
-import "package:sdtpro/features/settings/view/widgets/dt_order_setting.dart";
-import "package:sdtpro/features/settings/view/widgets/ex_import_setting.dart";
-import "package:sdtpro/features/settings/view/widgets/language_setting.dart";
-import "package:sdtpro/features/settings/view/widgets/theme_setting.dart";
-import "package:sdtpro/l10n/app_localizations.dart";
-import 'package:sdtpro/features/settings/view/widgets/count_last_day_setting.dart';
-import 'package:sdtpro/features/settings/view/providers/settings_provider.dart';
+import "package:sdt/core/utils/colors.dart";
+import "package:sdt/core/utils/extensions.dart";
+import "package:sdt/core/utils/text_styles.dart";
+import "package:sdt/features/settings/view/widgets/count_today_setting.dart";
+import "package:sdt/features/settings/view/widgets/ds_order_setting.dart";
+import "package:sdt/features/settings/view/widgets/dt_order_setting.dart";
+import "package:sdt/features/settings/view/widgets/ex_import_setting.dart";
+import "package:sdt/features/settings/view/widgets/language_setting.dart";
+import "package:sdt/features/settings/view/widgets/theme_setting.dart";
+import "package:sdt/l10n/app_localizations.dart";
+import 'package:sdt/features/settings/view/widgets/count_last_day_setting.dart';
+import 'package:sdt/features/settings/view/providers/settings_provider.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});

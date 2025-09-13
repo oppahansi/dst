@@ -4,8 +4,8 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:material_symbols_icons/symbols.dart";
 
 // Project Imports
-import "package:sdtpro/features/settings/view/providers/settings_provider.dart";
-import "package:sdtpro/core/utils/colors.dart";
+import "package:sdt/features/settings/view/providers/settings_provider.dart";
+import "package:sdt/core/utils/colors.dart";
 
 class DebugSettingsControlls extends ConsumerWidget {
   const DebugSettingsControlls({super.key});

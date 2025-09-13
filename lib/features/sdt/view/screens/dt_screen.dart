@@ -7,10 +7,10 @@ import "package:flutter_riverpod/legacy.dart";
 import "package:material_symbols_icons/symbols.dart";
 
 // Project Imports
-import "package:sdtpro/core/widgets/debug_settings_controlls.dart";
-import "package:sdtpro/features/sdt/view/providers/sdt_provider.dart";
-import "package:sdtpro/features/sdt/view/widgets/ds_card.dart";
-import "package:sdtpro/l10n/app_localizations.dart";
+import "package:sdt/core/widgets/debug_settings_controlls.dart";
+import "package:sdt/features/sdt/view/providers/sdt_provider.dart";
+import "package:sdt/features/sdt/view/widgets/ds_card.dart";
+import "package:sdt/l10n/app_localizations.dart";
 
 // Visible count for Days To
 final dtVisibleCountProvider = StateProvider<int>((ref) => 10);

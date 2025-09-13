@@ -7,9 +7,9 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // Project Imports
-import 'package:sdtpro/features/images/domain/entities/fis_image.dart';
-import 'package:sdtpro/features/images/view/widgets/source_logo.dart';
-import 'package:sdtpro/l10n/app_localizations.dart';
+import 'package:sdt/features/images/domain/entities/fis_image.dart';
+import 'package:sdt/features/images/view/widgets/source_logo.dart';
+import 'package:sdt/l10n/app_localizations.dart';
 
 class ImagePreviewScreen extends StatefulWidget {
   final FisImage image;

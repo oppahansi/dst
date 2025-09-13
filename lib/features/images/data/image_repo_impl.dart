@@ -5,9 +5,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 // Project Imports
-import 'package:sdtpro/core/utils/constants.dart';
-import 'package:sdtpro/features/images/domain/entities/fis_result.dart';
-import 'package:sdtpro/features/images/domain/repos/image_repo.dart';
+import 'package:sdt/core/utils/constants.dart';
+import 'package:sdt/features/images/domain/entities/fis_result.dart';
+import 'package:sdt/features/images/domain/repos/image_repo.dart';
 
 class ImageRepoImpl implements ImageRepo {
   final http.Client _client;

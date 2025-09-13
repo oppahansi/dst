@@ -1,6 +1,6 @@
 // Project Imports
-import 'package:sdtpro/features/settings/domain/entities/settings.dart';
-import 'package:sdtpro/features/settings/domain/repos/settings_repo.dart';
+import 'package:sdt/features/settings/domain/entities/settings.dart';
+import 'package:sdt/features/settings/domain/repos/settings_repo.dart';
 
 class UpdateDsSortOrder {
   final SettingsRepo repo;

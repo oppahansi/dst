@@ -2,7 +2,7 @@
 import "package:flutter/material.dart";
 
 // Project Imports
-import "package:sdtpro/core/utils/constants.dart";
+import "package:sdt/core/utils/constants.dart";
 
 enum SdtSortOrder { asc, desc }
 

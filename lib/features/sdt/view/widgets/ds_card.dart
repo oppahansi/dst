@@ -14,18 +14,18 @@ import 'package:share_plus/share_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project Imports
-import 'package:sdtpro/core/utils/extensions.dart';
-import 'package:sdtpro/features/sdt/view/screens/sdt_screenshot_screen.dart';
-import 'package:sdtpro/features/sdt/view/widgets/ds_background_image.dart';
-import 'package:sdtpro/core/utils/text_styles.dart';
-import 'package:sdtpro/core/utils/screen_sizes.dart';
-import 'package:sdtpro/features/sdt/view/widgets/ds_content.dart';
-import 'package:sdtpro/features/sdt/view/screens/sdt_detail_screen.dart';
-import 'package:sdtpro/features/sdt/domain/entities/sdt_entry.dart';
-import 'package:sdtpro/features/sdt/domain/entities/sdt_settings.dart';
-import 'package:sdtpro/l10n/app_localizations.dart';
-import 'package:sdtpro/core/utils/date_math.dart';
-import 'package:sdtpro/features/settings/view/providers/settings_provider.dart';
+import 'package:sdt/core/utils/extensions.dart';
+import 'package:sdt/features/sdt/view/screens/sdt_screenshot_screen.dart';
+import 'package:sdt/features/sdt/view/widgets/ds_background_image.dart';
+import 'package:sdt/core/utils/text_styles.dart';
+import 'package:sdt/core/utils/screen_sizes.dart';
+import 'package:sdt/features/sdt/view/widgets/ds_content.dart';
+import 'package:sdt/features/sdt/view/screens/sdt_detail_screen.dart';
+import 'package:sdt/features/sdt/domain/entities/sdt_entry.dart';
+import 'package:sdt/features/sdt/domain/entities/sdt_settings.dart';
+import 'package:sdt/l10n/app_localizations.dart';
+import 'package:sdt/core/utils/date_math.dart';
+import 'package:sdt/features/settings/view/providers/settings_provider.dart';
 
 class SdtCard extends StatefulWidget {
   final SdtEntry entry;

@@ -2,7 +2,7 @@
 import "package:flutter/material.dart";
 
 // Project Imports
-import 'package:sdtpro/features/settings/domain/entities/settings.dart';
+import 'package:sdt/features/settings/domain/entities/settings.dart';
 
 abstract class SettingsRepo {
   Future<Settings> getSettings();

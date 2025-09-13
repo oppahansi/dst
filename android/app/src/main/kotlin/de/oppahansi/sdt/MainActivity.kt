@@ -1,4 +1,4 @@
-package de.oppahansi.sdtpro
+package de.oppahansi.sdt
 
 import android.app.Activity
 import android.content.Intent

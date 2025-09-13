@@ -11,20 +11,20 @@ import 'package:image_picker/image_picker.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 // Project Imports
-import 'package:sdtpro/core/utils/extensions.dart';
-import 'package:sdtpro/core/utils/date_math.dart';
-import 'package:sdtpro/features/settings/view/providers/settings_provider.dart';
-import 'package:sdtpro/features/sdt/domain/entities/sdt_entry.dart';
-import 'package:sdtpro/features/sdt/domain/entities/sdt_settings.dart';
-import 'package:sdtpro/features/sdt/view/providers/sdt_provider.dart';
-import 'package:sdtpro/features/sdt/view/providers/sdt_usecase_providers.dart';
-import 'package:sdtpro/features/sdt/view/widgets/ds_background_image.dart';
-import 'package:sdtpro/features/sdt/view/widgets/ds_content.dart';
-import 'package:sdtpro/features/sdt/view/widgets/ds_settings_sheet.dart';
-import 'package:sdtpro/features/images/domain/entities/fis_image.dart';
-import 'package:sdtpro/features/images/view/providers/image_provider.dart';
-import 'package:sdtpro/features/images/view/screens/image_search_screen.dart';
-import 'package:sdtpro/l10n/app_localizations.dart';
+import 'package:sdt/core/utils/extensions.dart';
+import 'package:sdt/core/utils/date_math.dart';
+import 'package:sdt/features/settings/view/providers/settings_provider.dart';
+import 'package:sdt/features/sdt/domain/entities/sdt_entry.dart';
+import 'package:sdt/features/sdt/domain/entities/sdt_settings.dart';
+import 'package:sdt/features/sdt/view/providers/sdt_provider.dart';
+import 'package:sdt/features/sdt/view/providers/sdt_usecase_providers.dart';
+import 'package:sdt/features/sdt/view/widgets/ds_background_image.dart';
+import 'package:sdt/features/sdt/view/widgets/ds_content.dart';
+import 'package:sdt/features/sdt/view/widgets/ds_settings_sheet.dart';
+import 'package:sdt/features/images/domain/entities/fis_image.dart';
+import 'package:sdt/features/images/view/providers/image_provider.dart';
+import 'package:sdt/features/images/view/screens/image_search_screen.dart';
+import 'package:sdt/l10n/app_localizations.dart';
 
 class SdtAddScreen extends ConsumerStatefulWidget {
   final SdtEntry? entry;

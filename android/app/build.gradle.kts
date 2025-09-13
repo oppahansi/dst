@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "de.oppahansi.sdtpro"
+    namespace = "de.oppahansi.sdt"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 

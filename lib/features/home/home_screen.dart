@@ -5,11 +5,11 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:material_symbols_icons/symbols.dart";
 
 // Project Imports
-import "package:sdtpro/app/main_screen.dart" show currentTabIndexProvider;
-import "package:sdtpro/core/widgets/debug_settings_controlls.dart";
-import "package:sdtpro/features/sdt/view/providers/sdt_provider.dart";
-import "package:sdtpro/features/sdt/view/widgets/ds_card.dart";
-import "package:sdtpro/l10n/app_localizations.dart";
+import "package:sdt/app/main_screen.dart" show currentTabIndexProvider;
+import "package:sdt/core/widgets/debug_settings_controlls.dart";
+import "package:sdt/features/sdt/view/providers/sdt_provider.dart";
+import "package:sdt/features/sdt/view/widgets/ds_card.dart";
+import "package:sdt/l10n/app_localizations.dart";
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});

@@ -4,10 +4,10 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:material_symbols_icons/symbols.dart";
 
 // Project Imports
-import "package:sdtpro/features/settings/view/providers/settings_provider.dart";
-import "package:sdtpro/core/utils/constants.dart";
-import "package:sdtpro/core/utils/extensions.dart";
-import "package:sdtpro/l10n/app_localizations.dart";
+import "package:sdt/features/settings/view/providers/settings_provider.dart";
+import "package:sdt/core/utils/constants.dart";
+import "package:sdt/core/utils/extensions.dart";
+import "package:sdt/l10n/app_localizations.dart";
 
 class ThemeSetting extends ConsumerWidget {
   const ThemeSetting({super.key});

@@ -2,8 +2,8 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // Project Imports
-import 'package:sdtpro/features/images/domain/entities/fis_image.dart';
-import 'package:sdtpro/features/images/view/providers/image_usecase_providers.dart';
+import 'package:sdt/features/images/domain/entities/fis_image.dart';
+import 'package:sdt/features/images/view/providers/image_usecase_providers.dart';
 
 part 'image_provider.g.dart';
 

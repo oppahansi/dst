@@ -3,10 +3,10 @@ import "package:flutter/material.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 // Project Imports
-import "package:sdtpro/features/settings/data/settings_repo_impl.dart";
-import "package:sdtpro/features/settings/domain/entities/settings.dart";
-import 'package:sdtpro/features/settings/domain/usecases/get_settings.dart';
-import 'package:sdtpro/features/settings/view/providers/settings_usecase_providers.dart';
+import "package:sdt/features/settings/data/settings_repo_impl.dart";
+import "package:sdt/features/settings/domain/entities/settings.dart";
+import 'package:sdt/features/settings/domain/usecases/get_settings.dart';
+import 'package:sdt/features/settings/view/providers/settings_usecase_providers.dart';
 
 part "settings_provider.g.dart";
 

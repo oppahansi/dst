@@ -6,11 +6,11 @@ import 'package:intl/intl.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project Imports
-import 'package:sdtpro/features/settings/view/providers/settings_provider.dart';
-import 'package:sdtpro/features/sdt/domain/entities/sdt_entry.dart';
-import 'package:sdtpro/features/sdt/domain/entities/sdt_settings.dart';
-import 'package:sdtpro/l10n/app_localizations.dart';
-import 'package:sdtpro/core/utils/date_math.dart';
+import 'package:sdt/features/settings/view/providers/settings_provider.dart';
+import 'package:sdt/features/sdt/domain/entities/sdt_entry.dart';
+import 'package:sdt/features/sdt/domain/entities/sdt_settings.dart';
+import 'package:sdt/l10n/app_localizations.dart';
+import 'package:sdt/core/utils/date_math.dart';
 
 enum SdtContentContext { card, fullscreen, editor }
 

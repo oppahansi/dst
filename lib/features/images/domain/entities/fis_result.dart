@@ -1,5 +1,5 @@
 // Project Imports
-import 'package:sdtpro/features/images/domain/entities/fis_image.dart';
+import 'package:sdt/features/images/domain/entities/fis_image.dart';
 
 class FisResult {
   final int total;

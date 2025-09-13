@@ -7,14 +7,14 @@ import "package:exui/exui.dart";
 import "package:material_symbols_icons/symbols.dart";
 
 // Project Imports
-import "package:sdtpro/core/utils/colors.dart";
-import "package:sdtpro/core/utils/extensions.dart";
-import "package:sdtpro/features/sdt/view/screens/sdt_add_screen.dart";
-import "package:sdtpro/features/sdt/view/screens/ds_screen.dart";
-import "package:sdtpro/features/sdt/view/screens/dt_screen.dart";
-import "package:sdtpro/features/home/home_screen.dart";
-import "package:sdtpro/features/settings/view/screens/settings_screen.dart";
-import "package:sdtpro/l10n/app_localizations.dart";
+import "package:sdt/core/utils/colors.dart";
+import "package:sdt/core/utils/extensions.dart";
+import "package:sdt/features/sdt/view/screens/sdt_add_screen.dart";
+import "package:sdt/features/sdt/view/screens/ds_screen.dart";
+import "package:sdt/features/sdt/view/screens/dt_screen.dart";
+import "package:sdt/features/home/home_screen.dart";
+import "package:sdt/features/settings/view/screens/settings_screen.dart";
+import "package:sdt/l10n/app_localizations.dart";
 
 final currentTabIndexProvider = StateProvider<int>((ref) => 0);
 final lastBackPressedProvider = StateProvider<DateTime?>((ref) => null);

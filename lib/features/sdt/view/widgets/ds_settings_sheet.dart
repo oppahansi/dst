@@ -8,12 +8,12 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 // Project Imports
 // NEW
-import 'package:sdtpro/core/utils/colors.dart';
-import 'package:sdtpro/core/utils/constants.dart';
-import 'package:sdtpro/core/utils/extensions.dart';
-import 'package:sdtpro/core/utils/text_styles.dart';
-import 'package:sdtpro/features/sdt/domain/entities/sdt_settings.dart';
-import 'package:sdtpro/l10n/app_localizations.dart';
+import 'package:sdt/core/utils/colors.dart';
+import 'package:sdt/core/utils/constants.dart';
+import 'package:sdt/core/utils/extensions.dart';
+import 'package:sdt/core/utils/text_styles.dart';
+import 'package:sdt/features/sdt/domain/entities/sdt_settings.dart';
+import 'package:sdt/l10n/app_localizations.dart';
 
 /// A bottom sheet for editing the stylized settings.
 class SdtSettingsSheet extends StatefulWidget {
