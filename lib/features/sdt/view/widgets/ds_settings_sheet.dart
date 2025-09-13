@@ -383,7 +383,6 @@ class _SdtSettingsSheetState extends State<SdtSettingsSheet> {
               fontFamily,
               size: fontSize,
               weight: fontWeight,
-              // NEW
               color: color,
             ),
             maxLines: 1,

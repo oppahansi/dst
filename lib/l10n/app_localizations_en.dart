@@ -87,6 +87,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reset => 'Reset';
 
   @override
+  String get restore => 'Restore';
+
+  @override
   String get save => 'Save';
 
   @override
@@ -156,6 +159,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get exclude_today => 'Exclude today';
 
   @override
+  String get export_db => 'Export database';
+
+  @override
+  String get export_canceled => 'Export canceled';
+
+  @override
+  String get export_failed => 'Export failed';
+
+  @override
+  String get export_import => 'Export/Import';
+
+  @override
+  String get export_success => 'Export successful';
+
+  @override
   String get font_family => 'Font Family';
 
   @override
@@ -163,6 +181,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get image_optional => 'Image (Optional)';
+
+  @override
+  String get import_db => 'Import database';
+
+  @override
+  String get import_canceled => 'Import canceled';
+
+  @override
+  String get import_failed => 'Import failed';
 
   @override
   String get include_today => 'Include today';
@@ -259,6 +286,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get exclude_last_day => 'Exclude last day';
 
   @override
+  String get export_import_hint =>
+      'Phone factory resets erase local backups. After exporting, move the backup off the phone (computer/cloud) so you can restore it later.';
+
+  @override
   String get failed_to_load_images => 'Failed to load images.';
 
   @override
@@ -283,6 +314,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get offset_in_days => 'Offset (in days)';
 
   @override
+  String get pick_a_backup_file => 'Pick a backup file';
+
+  @override
+  String get pick_from_gallery => 'Pick from Gallery';
+
+  @override
   String get please_enter_a_title => 'Please enter a title';
 
   @override
@@ -300,6 +337,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get reset_to_defaults => 'Reset to defaults';
+
+  @override
+  String get restore_db => 'Restore database';
+
+  @override
+  String get restore_done_restart => 'Restored. Please restart the app.';
+
+  @override
+  String get restore_warning =>
+      'This will overwrite your current data. Continue?';
+
+  @override
+  String get save_backup_to => 'Save backup to file/downloads';
+
+  @override
+  String get save_to_phone => 'Save to phone?';
 
   @override
   String get search_for_an_image => 'Search for an image...';

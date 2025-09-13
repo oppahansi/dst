@@ -254,6 +254,12 @@ abstract class AppLocalizations {
   /// **'Reset'**
   String get reset;
 
+  /// No description provided for @restore.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore'**
+  String get restore;
+
   /// No description provided for @save.
   ///
   /// In en, this message translates to:
@@ -392,6 +398,36 @@ abstract class AppLocalizations {
   /// **'Exclude today'**
   String get exclude_today;
 
+  /// No description provided for @export_db.
+  ///
+  /// In en, this message translates to:
+  /// **'Export database'**
+  String get export_db;
+
+  /// No description provided for @export_canceled.
+  ///
+  /// In en, this message translates to:
+  /// **'Export canceled'**
+  String get export_canceled;
+
+  /// No description provided for @export_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Export failed'**
+  String get export_failed;
+
+  /// No description provided for @export_import.
+  ///
+  /// In en, this message translates to:
+  /// **'Export/Import'**
+  String get export_import;
+
+  /// No description provided for @export_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Export successful'**
+  String get export_success;
+
   /// No description provided for @font_family.
   ///
   /// In en, this message translates to:
@@ -409,6 +445,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Image (Optional)'**
   String get image_optional;
+
+  /// No description provided for @import_db.
+  ///
+  /// In en, this message translates to:
+  /// **'Import database'**
+  String get import_db;
+
+  /// No description provided for @import_canceled.
+  ///
+  /// In en, this message translates to:
+  /// **'Import canceled'**
+  String get import_canceled;
+
+  /// No description provided for @import_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Import failed'**
+  String get import_failed;
 
   /// No description provided for @include_today.
   ///
@@ -584,6 +638,12 @@ abstract class AppLocalizations {
   /// **'Exclude last day'**
   String get exclude_last_day;
 
+  /// No description provided for @export_import_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone factory resets erase local backups. After exporting, move the backup off the phone (computer/cloud) so you can restore it later.'**
+  String get export_import_hint;
+
   /// No description provided for @failed_to_load_images.
   ///
   /// In en, this message translates to:
@@ -632,6 +692,18 @@ abstract class AppLocalizations {
   /// **'Offset (in days)'**
   String get offset_in_days;
 
+  /// No description provided for @pick_a_backup_file.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a backup file'**
+  String get pick_a_backup_file;
+
+  /// No description provided for @pick_from_gallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick from Gallery'**
+  String get pick_from_gallery;
+
   /// No description provided for @please_enter_a_title.
   ///
   /// In en, this message translates to:
@@ -667,6 +739,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Reset to defaults'**
   String get reset_to_defaults;
+
+  /// No description provided for @restore_db.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore database'**
+  String get restore_db;
+
+  /// No description provided for @restore_done_restart.
+  ///
+  /// In en, this message translates to:
+  /// **'Restored. Please restart the app.'**
+  String get restore_done_restart;
+
+  /// No description provided for @restore_warning.
+  ///
+  /// In en, this message translates to:
+  /// **'This will overwrite your current data. Continue?'**
+  String get restore_warning;
+
+  /// No description provided for @save_backup_to.
+  ///
+  /// In en, this message translates to:
+  /// **'Save backup to file/downloads'**
+  String get save_backup_to;
+
+  /// No description provided for @save_to_phone.
+  ///
+  /// In en, this message translates to:
+  /// **'Save to phone?'**
+  String get save_to_phone;
 
   /// No description provided for @search_for_an_image.
   ///

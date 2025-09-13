@@ -87,6 +87,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get reset => 'Zurücksetzen';
 
   @override
+  String get restore => 'Wiederherstellen';
+
+  @override
   String get save => 'Speichern';
 
   @override
@@ -156,6 +159,21 @@ class AppLocalizationsDe extends AppLocalizations {
   String get exclude_today => 'Heute ausschließen';
 
   @override
+  String get export_db => 'Datenbank exportieren';
+
+  @override
+  String get export_canceled => 'Export abgebrochen';
+
+  @override
+  String get export_failed => 'Export fehlgeschlagen';
+
+  @override
+  String get export_import => 'Export/Import';
+
+  @override
+  String get export_success => 'Export erfolgreich';
+
+  @override
   String get font_family => 'Schriftart';
 
   @override
@@ -163,6 +181,15 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get image_optional => 'Bild (Optional)';
+
+  @override
+  String get import_db => 'Datenbank importieren';
+
+  @override
+  String get import_canceled => 'Import abgebrochen';
+
+  @override
+  String get import_failed => 'Import fehlgeschlagen';
 
   @override
   String get include_today => 'Heute einbeziehen';
@@ -259,6 +286,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get exclude_last_day => 'Letzten Tag ausschließen';
 
   @override
+  String get export_import_hint =>
+      'Werksreset des Telefons löscht lokale Backups. Verschieben Sie das Backup nach dem Export von Ihrem Telefon (Computer/Cloud), damit Sie es später wiederherstellen können.';
+
+  @override
   String get failed_to_load_images => 'Bilder konnten nicht geladen werden.';
 
   @override
@@ -283,6 +314,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get offset_in_days => 'Versatz (in Tagen)';
 
   @override
+  String get pick_a_backup_file => 'Backup-Datei auswählen';
+
+  @override
+  String get pick_from_gallery => 'Aus Galerie auswählen';
+
+  @override
   String get please_enter_a_title => 'Bitte gib einen Titel ein';
 
   @override
@@ -300,6 +337,23 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get reset_to_defaults => 'Auf Standard zurücksetzen';
+
+  @override
+  String get restore_db => 'Datenbank wiederherstellen';
+
+  @override
+  String get restore_done_restart =>
+      'Wiederhergestellt. Bitte starten Sie die App neu.';
+
+  @override
+  String get restore_warning =>
+      'Dies wird Ihre aktuellen Daten überschreiben. Fortfahren?';
+
+  @override
+  String get save_backup_to => 'Backup in Dateien/Downloads sichern';
+
+  @override
+  String get save_to_phone => 'Auf Telefon speichern?';
 
   @override
   String get search_for_an_image => 'Suche nach einem Bild...';
