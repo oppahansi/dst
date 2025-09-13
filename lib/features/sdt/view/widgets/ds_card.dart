@@ -1,5 +1,6 @@
 // Dart Imports
 import 'dart:io';
+import 'dart:typed_data';
 
 // Flutter Imports
 import 'package:flutter/material.dart';
@@ -40,66 +41,68 @@ class _SdtCardState extends State<SdtCard> {
   bool _isSharing = false; // overlay while preparing image
 
   Future<void> _captureAndShareScreenshot() async {
-    final loc = AppLocalizations.of(context)!;
+    if (!mounted) return;
+    setState(() => _isSharing = true);
 
-    if (mounted) setState(() => _isSharing = true);
+    ProviderContainer? childContainer;
     try {
-      final mq = MediaQuery.of(context);
-      final pixelRatio = mq.devicePixelRatio;
+      final parent = ProviderScope.containerOf(context, listen: false);
+      childContainer = ProviderContainer(parent: parent); // isolate tasks
 
-      // Keep theme, localizations AND riverpod providers while rendering offstage.
-      final container = ProviderScope.containerOf(context);
       final widgetToCapture = UncontrolledProviderScope(
-        container: container,
+        container: childContainer,
         child: Localizations.override(
           context: context,
           child: InheritedTheme.captureAll(
             context,
             MediaQuery(
-              data: mq.copyWith(),
+              data: MediaQuery.of(context).copyWith(),
               child: _buildScreenshotWidget(context),
             ),
           ),
         ),
       );
 
-      final imageBytes = await _screenshotController.captureFromLongWidget(
+      final bytes = await _screenshotController.captureFromLongWidget(
         widgetToCapture,
-        pixelRatio: pixelRatio,
+        pixelRatio: MediaQuery.of(context).devicePixelRatio,
         constraints: BoxConstraints.tightFor(
-          width: mq.size.width,
-          height: mq.size.height,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
         ),
       );
 
-      if (!mounted || imageBytes.isEmpty) {
-        if (mounted) {
-          context.showSnackBar(
-            SnackBar(content: Text(loc.failed_to_load_images)),
-          );
-        }
-        return;
-      }
-
-      final directory = await getTemporaryDirectory();
-      final imagePath = await File(
-        '${directory.path}/sdt_share_${DateTime.now().millisecondsSinceEpoch}.png',
-      ).create();
-      await imagePath.writeAsBytes(imageBytes);
-
-      final params = ShareParams(
-        text: loc.days_since_title(widget.entry.title),
-        files: [XFile(imagePath.path)],
-      );
-
-      await SharePlus.instance.share(params);
-    } catch (e) {
-      if (mounted) {
-        context.showSnackBar(SnackBar(content: Text('Share failed: $e')));
-      }
+      await _shareBytes(bytes);
     } finally {
+      childContainer?.dispose(); // prevent leaks and contention
       if (mounted) setState(() => _isSharing = false);
     }
+  }
+
+  Future<void> _shareBytes(Uint8List bytes) async {
+    final loc = AppLocalizations.of(context)!;
+
+    if (!mounted || bytes.isEmpty) {
+      if (mounted) {
+        context.showSnackBar(
+          SnackBar(content: Text(loc.failed_to_load_images)),
+        );
+      }
+      return;
+    }
+
+    final directory = await getTemporaryDirectory();
+    final imagePath = await File(
+      '${directory.path}/sdt_share_${DateTime.now().millisecondsSinceEpoch}.png',
+    ).create();
+    await imagePath.writeAsBytes(bytes);
+
+    final params = ShareParams(
+      text: loc.days_since_title(widget.entry.title),
+      files: [XFile(imagePath.path)],
+    );
+
+    await SharePlus.instance.share(params);
   }
 
   /// This builds the same widget tree as the `DaysSinceScreenshotScreen`
