@@ -285,9 +285,11 @@ final class UpdateDtSortOrderProvider
 
 String _$updateDtSortOrderHash() => r'6305a19e289fd078faf4f07ab6121f9414846560';
 
+/// Provides the UpdateCountToday use case.
 @ProviderFor(updateCountToday)
 const updateCountTodayProvider = UpdateCountTodayProvider._();
 
+/// Provides the UpdateCountToday use case.
 final class UpdateCountTodayProvider
     extends
         $FunctionalProvider<
@@ -296,6 +298,7 @@ final class UpdateCountTodayProvider
           UpdateCountToday
         >
     with $Provider<UpdateCountToday> {
+  /// Provides the UpdateCountToday use case.
   const UpdateCountTodayProvider._()
     : super(
         from: null,
@@ -331,9 +334,11 @@ final class UpdateCountTodayProvider
 
 String _$updateCountTodayHash() => r'b9a7d02cfd55a6feee737606f4717cb0fb5d2aaf';
 
+/// Provides the UpdateCountLastDay use case.
 @ProviderFor(updateCountLastDay)
 const updateCountLastDayProvider = UpdateCountLastDayProvider._();
 
+/// Provides the UpdateCountLastDay use case.
 final class UpdateCountLastDayProvider
     extends
         $FunctionalProvider<
@@ -342,6 +347,7 @@ final class UpdateCountLastDayProvider
           UpdateCountLastDay
         >
     with $Provider<UpdateCountLastDay> {
+  /// Provides the UpdateCountLastDay use case.
   const UpdateCountLastDayProvider._()
     : super(
         from: null,
@@ -379,12 +385,15 @@ final class UpdateCountLastDayProvider
 String _$updateCountLastDayHash() =>
     r'c07f4d14f3b4f9c75fcd29c941d202a647816893';
 
+/// Provides the ResetSettings use case.
 @ProviderFor(resetSettings)
 const resetSettingsProvider = ResetSettingsProvider._();
 
+/// Provides the ResetSettings use case.
 final class ResetSettingsProvider
     extends $FunctionalProvider<ResetSettings, ResetSettings, ResetSettings>
     with $Provider<ResetSettings> {
+  /// Provides the ResetSettings use case.
   const ResetSettingsProvider._()
     : super(
         from: null,
@@ -419,6 +428,57 @@ final class ResetSettingsProvider
 }
 
 String _$resetSettingsHash() => r'05c12b12f217b3ad89ad3aee172055bae496f5a0';
+
+/// Provides the UpdateSeededExamples use case.
+@ProviderFor(updateSeededExamples)
+const updateSeededExamplesProvider = UpdateSeededExamplesProvider._();
+
+/// Provides the UpdateSeededExamples use case.
+final class UpdateSeededExamplesProvider
+    extends
+        $FunctionalProvider<
+          UpdateSeededExamples,
+          UpdateSeededExamples,
+          UpdateSeededExamples
+        >
+    with $Provider<UpdateSeededExamples> {
+  /// Provides the UpdateSeededExamples use case.
+  const UpdateSeededExamplesProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'updateSeededExamplesProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$updateSeededExamplesHash();
+
+  @$internal
+  @override
+  $ProviderElement<UpdateSeededExamples> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  UpdateSeededExamples create(Ref ref) {
+    return updateSeededExamples(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(UpdateSeededExamples value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<UpdateSeededExamples>(value),
+    );
+  }
+}
+
+String _$updateSeededExamplesHash() =>
+    r'08d051abc504defc152a27a21a7ed929521ffae3';
 
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

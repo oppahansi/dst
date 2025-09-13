@@ -22,6 +22,7 @@ const String settingsKeyDsSortOrder = 'ds_sort_order';
 const String settingsKeyDtSortOrder = 'dt_sort_order';
 const String settingsKeyCountToday = 'count_today';
 const String settingsKeyCountLastDay = 'count_last_day';
+const String settingsKeySeededExamples = 'seeded_examples';
 
 const String fisApiKey = "123456789abcdef";
 const String fisApiBaseUrl = "https://sdt.oppahansi.de:8880";

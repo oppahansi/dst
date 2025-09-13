@@ -1,7 +1,11 @@
 // Project Imports
+// REMOVE seeding and randomization here; keep only filtering logic
+// import 'dart:math'; // removed
+// import 'package:flutter/material.dart'; // removed
 import 'package:sdtpro/features/sdt/domain/entities/sdt_entry.dart';
 import 'package:sdtpro/features/sdt/domain/repos/sdt_repo.dart';
 import 'package:sdtpro/features/settings/domain/entities/settings.dart';
+// import 'package:sdtpro/features/sdt/domain/entities/sdt_settings.dart'; // removed
 
 class GetSdtEntries {
   final SdtRepo repository;
@@ -12,15 +16,11 @@ class GetSdtEntries {
     SdtSortOrder? order,
     int? limit,
     int? offset,
-  }) {
+  }) async {
     if (type == null || order == null) {
-      // Back-compat path
       return repository.getEntries();
     }
 
-    // Map UI sort order to SQL date order:
-    // - Since: asc (small days->big) => date DESC; desc => date ASC
-    // - To:    asc (soon->far) => date ASC;      desc => date DESC
     final bool ascendingDate = switch (type) {
       SdtQueryType.since => order == SdtSortOrder.desc,
       SdtQueryType.to => order == SdtSortOrder.asc,

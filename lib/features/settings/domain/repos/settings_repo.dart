@@ -13,4 +13,5 @@ abstract class SettingsRepo {
   Future<void> updateCountToday(bool value);
   Future<void> updateCountLastDay(bool value);
   Future<void> resetToDefaults();
+  Future<void> updateSeededExamples(bool value);
 }

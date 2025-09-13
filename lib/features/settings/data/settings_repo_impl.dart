@@ -49,8 +49,11 @@ class SettingsRepoImpl implements SettingsRepo {
         await _readString(settingsKeyDtSortOrder) ?? SdtSortOrder.asc.name;
     final ctStr = settingsMap[settingsKeyCountToday];
     final clStr = settingsMap[settingsKeyCountLastDay];
+    final seStr = settingsMap[settingsKeySeededExamples];
+
     final countToday = ctStr == 'true';
     final countLastDay = clStr == 'true';
+    final seededExamples = seStr == 'true';
 
     return Settings(
       themeMode: themeMode,
@@ -59,6 +62,7 @@ class SettingsRepoImpl implements SettingsRepo {
       dtSortOrder: SdtSortOrder.values.byName(dt),
       countToday: countToday,
       countLastDay: countLastDay,
+      seededExamples: seededExamples,
     );
   }
 
@@ -91,6 +95,11 @@ class SettingsRepoImpl implements SettingsRepo {
   @override
   Future<void> updateDtSortOrder(SdtSortOrder order) async {
     await _saveString(settingsKeyDtSortOrder, order.name);
+  }
+
+  @override
+  Future<void> updateSeededExamples(bool value) async {
+    await _saveString(settingsKeySeededExamples, value.toString());
   }
 
   @override

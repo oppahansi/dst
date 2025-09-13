@@ -6,51 +6,6 @@ part of 'sdt_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-@ProviderFor(SdtNotifier)
-const sdtNotifierProvider = SdtNotifierProvider._();
-
-final class SdtNotifierProvider
-    extends $AsyncNotifierProvider<SdtNotifier, List<SdtEntry>> {
-  const SdtNotifierProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'sdtNotifierProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
-
-  @override
-  String debugGetCreateSourceHash() => _$sdtNotifierHash();
-
-  @$internal
-  @override
-  SdtNotifier create() => SdtNotifier();
-}
-
-String _$sdtNotifierHash() => r'3c47f2ce76dad4a8b9720a2a8e4004e8dacb41bb';
-
-abstract class _$SdtNotifier extends $AsyncNotifier<List<SdtEntry>> {
-  FutureOr<List<SdtEntry>> build();
-  @$mustCallSuper
-  @override
-  void runBuild() {
-    final created = build();
-    final ref = this.ref as $Ref<AsyncValue<List<SdtEntry>>, List<SdtEntry>>;
-    final element =
-        ref.element
-            as $ClassProviderElement<
-              AnyNotifier<AsyncValue<List<SdtEntry>>, List<SdtEntry>>,
-              AsyncValue<List<SdtEntry>>,
-              Object?,
-              Object?
-            >;
-    element.handleValue(ref, created);
-  }
-}
-
 @ProviderFor(DsNotifier)
 const dsNotifierProvider = DsNotifierProvider._();
 
@@ -75,7 +30,7 @@ final class DsNotifierProvider
   DsNotifier create() => DsNotifier();
 }
 
-String _$dsNotifierHash() => r'2a3529217ec935b88137569f5c3bcbed5a08816c';
+String _$dsNotifierHash() => r'9687bb301f9efeab0dc43c017239d0d1b7a4157e';
 
 abstract class _$DsNotifier extends $AsyncNotifier<List<SdtEntry>> {
   FutureOr<List<SdtEntry>> build();
@@ -120,7 +75,7 @@ final class DtNotifierProvider
   DtNotifier create() => DtNotifier();
 }
 
-String _$dtNotifierHash() => r'98963d880e6e049cc73c33e1803087746669f3b6';
+String _$dtNotifierHash() => r'c7308e81ae576ca6e2864982ae9ba43e29b254ec';
 
 abstract class _$DtNotifier extends $AsyncNotifier<List<SdtEntry>> {
   FutureOr<List<SdtEntry>> build();

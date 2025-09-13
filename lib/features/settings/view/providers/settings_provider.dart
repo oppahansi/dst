@@ -55,6 +55,11 @@ class SettingsNotifier extends _$SettingsNotifier {
     await ref.read(resetSettingsProvider).call();
     state = Settings.defaultSettings();
   }
+
+  Future<void> setSeededExamples(bool value) async {
+    await ref.read(updateSeededExamplesProvider).call(value);
+    state = state.copyWith(seededExamples: value);
+  }
 }
 
 Future<Settings> loadInitialSettings() async {

@@ -12,6 +12,7 @@ import 'package:sdtpro/features/settings/domain/usecases/update_theme.dart';
 import 'package:sdtpro/features/settings/domain/usecases/update_count_today.dart';
 import 'package:sdtpro/features/settings/domain/usecases/update_count_last_day.dart';
 import 'package:sdtpro/features/settings/domain/usecases/reset_settings.dart';
+import 'package:sdtpro/features/settings/domain/usecases/update_seeded_examples.dart';
 
 part 'settings_usecase_providers.g.dart';
 
@@ -68,4 +69,10 @@ UpdateCountLastDay updateCountLastDay(Ref ref) {
 @riverpod
 ResetSettings resetSettings(Ref ref) {
   return ResetSettings(ref.watch(settingsRepoProvider));
+}
+
+/// Provides the UpdateSeededExamples use case.
+@riverpod
+UpdateSeededExamples updateSeededExamples(Ref ref) {
+  return UpdateSeededExamples(ref.watch(settingsRepoProvider));
 }

@@ -13,6 +13,7 @@ class Settings {
   final SdtSortOrder dtSortOrder;
   final bool countToday;
   final bool countLastDay;
+  final bool seededExamples;
 
   const Settings({
     required this.themeMode,
@@ -21,6 +22,7 @@ class Settings {
     this.dtSortOrder = SdtSortOrder.asc,
     this.countToday = false,
     this.countLastDay = true,
+    this.seededExamples = false,
   });
 
   Settings copyWith({
@@ -30,6 +32,7 @@ class Settings {
     SdtSortOrder? dtSortOrder,
     bool? countToday,
     bool? countLastDay,
+    bool? seededExamples,
   }) {
     return Settings(
       themeMode: themeMode ?? this.themeMode,
@@ -38,6 +41,7 @@ class Settings {
       dtSortOrder: dtSortOrder ?? this.dtSortOrder,
       countToday: countToday ?? this.countToday,
       countLastDay: countLastDay ?? this.countLastDay,
+      seededExamples: seededExamples ?? this.seededExamples,
     );
   }
 
@@ -48,6 +52,7 @@ class Settings {
     dtSortOrder: SdtSortOrder.asc,
     countToday: false,
     countLastDay: true,
+    seededExamples: false,
   );
 
   static String _orderToStr(SdtSortOrder o) =>
@@ -63,6 +68,7 @@ class Settings {
       'dtSortOrder': _orderToStr(dtSortOrder),
       'countToday': countToday,
       'countLastDay': countLastDay,
+      'seededExamples': seededExamples,
     };
   }
 
@@ -76,6 +82,7 @@ class Settings {
       dtSortOrder: _strToOrder(map['dtSortOrder'] as String?),
       countToday: map['countToday'] as bool? ?? false,
       countLastDay: map['countLastDay'] as bool? ?? true,
+      seededExamples: (map['seededExamples'] as bool?) ?? false,
     );
   }
 }
