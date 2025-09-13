@@ -49,6 +49,7 @@
   "default_key": "Standard",
   "description_optional": "Beschreibung (Optional)",
   "divider_thickness": "Linienstärke",
+  "e_g": "z.B.",
   "exclude_today": "Heute ausschließen",
   "font_family": "Schriftart",
   "font_size": "Schriftgröße",
@@ -84,14 +85,17 @@
   "enable_today_counting": "Inklusive Zählung",
   "exclude_last_day": "Letzten Tag ausschließen",
   "failed_to_load_images": "Bilder konnten nicht geladen werden.",
+  "in_x_days": "In X Tagen",
   "include_last_day": "Letzten Tag einbeziehen",
   "last_day_is_counted": "Letzter Tag wird mitgezählt",
   "last_day_is_not_counted": "Letzter Tag wird nicht mitgezählt",
   "no_description_to_print": "Keine Beschreibung zum Drucken.",
   "no_images_found": "Keine Bilder gefunden.",
+  "offset_in_days": "Versatz (in Tagen)",
   "please_enter_a_title": "Bitte gib einen Titel ein",
   "please_select_a_date": "Bitte wähle ein Datum",
   "prompt_for_exit": "Drücken Sie erneut, um die App zu beenden.",
+  "quick_offset_from_today": "Versatz in Tagen (von heute)",
   "reset_all_settings_question": "Bist du sicher, dass du alle Einstellungen auf die Standardwerte zurücksetzen möchtest?",
   "reset_to_defaults": "Auf Standard zurücksetzen",
   "search_for_an_image": "Suche nach einem Bild...",
@@ -108,5 +112,6 @@
   "the_target_day_is_not_counted": "Der Zieltag wird nicht einbezogen",
   "today_is_counted": "Heute wird mitgezählt",
   "today_is_not_counted": "Heute wird nicht mitgezählt",
-  "view_on_source_page": "Auf Quellseite ansehen"
+  "view_on_source_page": "Auf Quellseite ansehen",
+  "x_days_ago": "X Tage her"
 }

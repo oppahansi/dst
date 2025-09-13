@@ -179,7 +179,6 @@ class _SdtSettingsSheetState extends State<SdtSettingsSheet> {
           onWeightChanged: (val) =>
               _updateSettings((s) => s.copyWith(daysFontWeight: val)),
         ),
-        // REPLACED: swatches + button -> button + current color only
         _buildColorPicker(
           loc.color,
           _localSettings.daysColor,
@@ -375,7 +374,7 @@ class _SdtSettingsSheetState extends State<SdtSettingsSheet> {
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceContainer,
+            color: Theme.of(context).colorScheme.secondaryContainer,
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(

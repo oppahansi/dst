@@ -49,6 +49,7 @@
   "default_key": "Default",
   "description_optional": "Description (Optional)",
   "divider_thickness": "Divider Thickness",
+  "e_g": "e.g.",
   "exclude_today": "Exclude today",
   "font_family": "Font Family",
   "font_size": "Font Size",
@@ -84,14 +85,17 @@
   "enable_today_counting": "Inclusive counting",
   "exclude_last_day": "Exclude last day",
   "failed_to_load_images": "Failed to load images.",
+  "in_x_days": "In X days",
   "include_last_day": "Include last day",
   "last_day_is_counted": "Last day is counted",
   "last_day_is_not_counted": "Last day is not counted",
   "no_description_to_print": "No description to print.",
   "no_images_found": "No images found.",
+  "offset_in_days": "Offset (in days)",
   "please_enter_a_title": "Please enter a title",
   "please_select_a_date": "Please select a date",
   "prompt_for_exit": "Press again to exit the app.",
+  "quick_offset_from_today": "Offset in days (from today)",
   "reset_all_settings_question": "Are you sure you want to reset all settings to their default values?",
   "reset_to_defaults": "Reset to defaults",
   "search_for_an_image": "Search for an image...",
@@ -108,5 +112,6 @@
   "the_target_day_is_not_counted": "The target day is not counted",
   "today_is_counted": "Today is counted",
   "today_is_not_counted": "Today is not counted",
-  "view_on_source_page": "View on source page"
+  "view_on_source_page": "View on source page",
+  "x_days_ago": "X days ago"
 }

@@ -428,7 +428,6 @@ class _DatePickerWithOffsetSheetState
 
     return SafeArea(
       child: Padding(
-        // Keep the padding inside this widget so outer builder isn’t recreated on keyboard changes
         padding: EdgeInsets.only(
           left: 16,
           right: 16,
@@ -436,7 +435,6 @@ class _DatePickerWithOffsetSheetState
           bottom: MediaQuery.of(context).viewInsets.bottom + 16,
         ),
         child: SingleChildScrollView(
-          // Ensure enough space when keyboard is shown
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -445,6 +443,17 @@ class _DatePickerWithOffsetSheetState
                 children: [
                   Text(loc.date, style: Theme.of(context).textTheme.titleLarge),
                   const Spacer(),
+                  TextButton.icon(
+                    icon: const Icon(Symbols.today),
+                    label: Text(loc.today),
+                    onPressed: () => setState(() {
+                      final now = DateTime.now();
+                      final today = DateTime(now.year, now.month, now.day);
+                      tempSelected = today;
+                      calendarKey = ValueKey(tempSelected.toIso8601String());
+                    }),
+                  ),
+                  Spacer(),
                   TextButton(
                     onPressed: () => Navigator.pop(context),
                     child: Text(materialLoc.cancelButtonLabel),
@@ -479,25 +488,11 @@ class _DatePickerWithOffsetSheetState
                 onDateChanged: (d) => setState(() => tempSelected = d),
               ),
 
-              TextButton.icon(
-                icon: const Icon(Symbols.today),
-                label: const Text('Today'),
-                onPressed: () => setState(() {
-                  final now = DateTime.now();
-                  final today = DateTime(now.year, now.month, now.day);
-                  tempSelected = today;
-                  calendarKey = ValueKey(tempSelected.toIso8601String());
-                  // Keep chips and offset as-is; user can still choose to apply offset via OK
-                }),
-              ),
-
-              const SizedBox(height: 12),
-
               // Quick offset
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Quick offset (from today)',
+                  loc.quick_offset_from_today,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
               ),
@@ -511,9 +506,9 @@ class _DatePickerWithOffsetSheetState
                       keyboardType: TextInputType.number,
                       textInputAction: TextInputAction.done,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      decoration: const InputDecoration(
-                        labelText: 'Offset in days',
-                        hintText: 'e.g. 10',
+                      decoration: InputDecoration(
+                        labelText: loc.offset_in_days,
+                        hintText: '${loc.e_g} 10',
                         border: OutlineInputBorder(),
                       ),
                       onTap: () {
@@ -570,7 +565,7 @@ class _DatePickerWithOffsetSheetState
                 children: [
                   ChoiceChip(
                     avatar: const Icon(Symbols.history, size: 18),
-                    label: const Text('X days ago'),
+                    label: Text(loc.x_days_ago),
                     selected: offsetDirection == -1,
                     onSelected: (sel) {
                       setState(() {
@@ -582,7 +577,7 @@ class _DatePickerWithOffsetSheetState
                   const SizedBox(width: 12),
                   ChoiceChip(
                     avatar: const Icon(Symbols.schedule, size: 18),
-                    label: const Text('In X days'),
+                    label: Text(loc.in_x_days),
                     selected: offsetDirection == 1,
                     onSelected: (sel) {
                       setState(() {

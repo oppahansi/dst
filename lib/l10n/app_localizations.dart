@@ -380,6 +380,12 @@ abstract class AppLocalizations {
   /// **'Divider Thickness'**
   String get divider_thickness;
 
+  /// No description provided for @e_g.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g.'**
+  String get e_g;
+
   /// No description provided for @exclude_today.
   ///
   /// In en, this message translates to:
@@ -584,6 +590,12 @@ abstract class AppLocalizations {
   /// **'Failed to load images.'**
   String get failed_to_load_images;
 
+  /// No description provided for @in_x_days.
+  ///
+  /// In en, this message translates to:
+  /// **'In X days'**
+  String get in_x_days;
+
   /// No description provided for @include_last_day.
   ///
   /// In en, this message translates to:
@@ -614,6 +626,12 @@ abstract class AppLocalizations {
   /// **'No images found.'**
   String get no_images_found;
 
+  /// No description provided for @offset_in_days.
+  ///
+  /// In en, this message translates to:
+  /// **'Offset (in days)'**
+  String get offset_in_days;
+
   /// No description provided for @please_enter_a_title.
   ///
   /// In en, this message translates to:
@@ -631,6 +649,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Press again to exit the app.'**
   String get prompt_for_exit;
+
+  /// No description provided for @quick_offset_from_today.
+  ///
+  /// In en, this message translates to:
+  /// **'Offset in days (from today)'**
+  String get quick_offset_from_today;
 
   /// No description provided for @reset_all_settings_question.
   ///
@@ -733,6 +757,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'View on source page'**
   String get view_on_source_page;
+
+  /// No description provided for @x_days_ago.
+  ///
+  /// In en, this message translates to:
+  /// **'X days ago'**
+  String get x_days_ago;
 }
 
 class _AppLocalizationsDelegate

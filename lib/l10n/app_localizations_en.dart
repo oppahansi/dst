@@ -150,6 +150,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get divider_thickness => 'Divider Thickness';
 
   @override
+  String get e_g => 'e.g.';
+
+  @override
   String get exclude_today => 'Exclude today';
 
   @override
@@ -259,6 +262,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get failed_to_load_images => 'Failed to load images.';
 
   @override
+  String get in_x_days => 'In X days';
+
+  @override
   String get include_last_day => 'Include last day';
 
   @override
@@ -274,6 +280,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get no_images_found => 'No images found.';
 
   @override
+  String get offset_in_days => 'Offset (in days)';
+
+  @override
   String get please_enter_a_title => 'Please enter a title';
 
   @override
@@ -281,6 +290,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get prompt_for_exit => 'Press again to exit the app.';
+
+  @override
+  String get quick_offset_from_today => 'Offset in days (from today)';
 
   @override
   String get reset_all_settings_question =>
@@ -336,4 +348,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get view_on_source_page => 'View on source page';
+
+  @override
+  String get x_days_ago => 'X days ago';
 }

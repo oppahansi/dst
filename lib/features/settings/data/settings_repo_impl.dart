@@ -33,6 +33,13 @@ class SettingsRepoImpl implements SettingsRepo {
     return settingsMap;
   }
 
+  // NEW: robust boolean parser with defaults
+  bool _parseBool(String? s, {required bool defaultValue}) {
+    if (s == null) return defaultValue;
+    final v = s.toLowerCase();
+    return v == 'true' || v == '1';
+  }
+
   @override
   Future<Settings> getSettings() async {
     final settingsMap = await _getAllSettings();
@@ -47,13 +54,19 @@ class SettingsRepoImpl implements SettingsRepo {
         await _readString(settingsKeyDsSortOrder) ?? SdtSortOrder.asc.name;
     final dt =
         await _readString(settingsKeyDtSortOrder) ?? SdtSortOrder.asc.name;
-    final ctStr = settingsMap[settingsKeyCountToday];
-    final clStr = settingsMap[settingsKeyCountLastDay];
-    final seStr = settingsMap[settingsKeySeededExamples];
 
-    final countToday = ctStr == 'true';
-    final countLastDay = clStr == 'true';
-    final seededExamples = seStr == 'true';
+    final countToday = _parseBool(
+      settingsMap[settingsKeyCountToday],
+      defaultValue: false,
+    );
+    final countLastDay = _parseBool(
+      settingsMap[settingsKeyCountLastDay],
+      defaultValue: true,
+    );
+    final seededExamples = _parseBool(
+      settingsMap[settingsKeySeededExamples],
+      defaultValue: false,
+    );
 
     return Settings(
       themeMode: themeMode,
