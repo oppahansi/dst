@@ -48,6 +48,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get error => 'error';
 
   @override
+  String get examples => 'Examples';
+
+  @override
   String get default_key => 'Default';
 
   @override
@@ -117,6 +120,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get title => 'Title';
 
   @override
+  String get today => 'Today';
+
+  @override
   String get transparency => 'Transparency';
 
   @override
@@ -181,6 +187,56 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get view_license => 'View license';
+
+  @override
+  String get count_today => 'Count today (inclusive)';
+
+  @override
+  String get today_is_counted => 'Today is counted';
+
+  @override
+  String get today_is_not_counted => 'Today is not counted';
+
+  @override
+  String get enable_today_counting => 'Inclusive counting';
+
+  @override
+  String get the_current_day_is_counted =>
+      'The current day is counted in the total';
+
+  @override
+  String get the_current_day_is_not_counted => 'The current day is not counted';
+
+  @override
+  String get include_today => 'Include today';
+
+  @override
+  String get exclude_today => 'Exclude today';
+
+  @override
+  String get count_last_day => 'Count last day (inclusive)';
+
+  @override
+  String get last_day_is_counted => 'Last day is counted';
+
+  @override
+  String get last_day_is_not_counted => 'Last day is not counted';
+
+  @override
+  String get enable_last_day_counting => 'Inclusive counting';
+
+  @override
+  String get the_target_day_is_counted =>
+      'The target day is counted in the total';
+
+  @override
+  String get the_target_day_is_not_counted => 'The target day is not counted';
+
+  @override
+  String get include_last_day => 'Include last day';
+
+  @override
+  String get exclude_last_day => 'Exclude last day';
 
   @override
   String get ascending_small_to_big => 'Ascending (Small to Big)';

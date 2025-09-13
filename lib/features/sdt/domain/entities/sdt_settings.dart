@@ -40,6 +40,9 @@ class SdtSettings {
   final bool showSubtitleDate;
   final String subtitleDateFormat;
 
+  // Whether to count today as 1 when computing days since/to.
+  final bool countToday;
+
   SdtSettings({
     this.overlayColor = Colors.black,
     this.overlayAlpha = 0.4,
@@ -61,6 +64,8 @@ class SdtSettings {
     this.subtitleColor = Colors.white70,
     this.showSubtitleDate = true,
     this.subtitleDateFormat = 'dd.MM.yyyy',
+    // Counting mode
+    this.countToday = false,
   });
 
   // Helper to get font weight from an index, as it's easier to store.
@@ -92,6 +97,7 @@ class SdtSettings {
     Color? subtitleColor,
     bool? showSubtitleDate,
     String? subtitleDateFormat,
+    bool? countToday,
   }) {
     return SdtSettings(
       overlayColor: overlayColor ?? this.overlayColor,
@@ -114,6 +120,7 @@ class SdtSettings {
       subtitleColor: subtitleColor ?? this.subtitleColor,
       showSubtitleDate: showSubtitleDate ?? this.showSubtitleDate,
       subtitleDateFormat: subtitleDateFormat ?? this.subtitleDateFormat,
+      countToday: countToday ?? this.countToday,
     );
   }
 

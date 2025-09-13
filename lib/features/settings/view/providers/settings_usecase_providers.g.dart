@@ -285,5 +285,99 @@ final class UpdateDtSortOrderProvider
 
 String _$updateDtSortOrderHash() => r'6305a19e289fd078faf4f07ab6121f9414846560';
 
+@ProviderFor(updateCountToday)
+const updateCountTodayProvider = UpdateCountTodayProvider._();
+
+final class UpdateCountTodayProvider
+    extends
+        $FunctionalProvider<
+          UpdateCountToday,
+          UpdateCountToday,
+          UpdateCountToday
+        >
+    with $Provider<UpdateCountToday> {
+  const UpdateCountTodayProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'updateCountTodayProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$updateCountTodayHash();
+
+  @$internal
+  @override
+  $ProviderElement<UpdateCountToday> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  UpdateCountToday create(Ref ref) {
+    return updateCountToday(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(UpdateCountToday value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<UpdateCountToday>(value),
+    );
+  }
+}
+
+String _$updateCountTodayHash() => r'b9a7d02cfd55a6feee737606f4717cb0fb5d2aaf';
+
+@ProviderFor(updateCountLastDay)
+const updateCountLastDayProvider = UpdateCountLastDayProvider._();
+
+final class UpdateCountLastDayProvider
+    extends
+        $FunctionalProvider<
+          UpdateCountLastDay,
+          UpdateCountLastDay,
+          UpdateCountLastDay
+        >
+    with $Provider<UpdateCountLastDay> {
+  const UpdateCountLastDayProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'updateCountLastDayProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$updateCountLastDayHash();
+
+  @$internal
+  @override
+  $ProviderElement<UpdateCountLastDay> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  UpdateCountLastDay create(Ref ref) {
+    return updateCountLastDay(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(UpdateCountLastDay value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<UpdateCountLastDay>(value),
+    );
+  }
+}
+
+String _$updateCountLastDayHash() =>
+    r'c07f4d14f3b4f9c75fcd29c941d202a647816893';
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

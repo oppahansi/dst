@@ -5,11 +5,13 @@ import "package:flutter/material.dart";
 import "package:sdtpro/core/utils/colors.dart";
 import "package:sdtpro/core/utils/extensions.dart";
 import "package:sdtpro/core/utils/text_styles.dart";
-import "package:sdtpro/features/settings/view/widgets/language_setting.dart";
-import "package:sdtpro/features/settings/view/widgets/theme_setting.dart";
+import "package:sdtpro/features/settings/view/widgets/count_today_setting.dart";
 import "package:sdtpro/features/settings/view/widgets/ds_order_setting.dart";
 import "package:sdtpro/features/settings/view/widgets/dt_order_setting.dart";
+import "package:sdtpro/features/settings/view/widgets/language_setting.dart";
+import "package:sdtpro/features/settings/view/widgets/theme_setting.dart";
 import "package:sdtpro/l10n/app_localizations.dart";
+import 'package:sdtpro/features/settings/view/widgets/count_last_day_setting.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -33,6 +35,8 @@ class SettingsScreen extends StatelessWidget {
             const ThemeSetting(),
             const DsOrderSetting(),
             const DtOrderSetting(),
+            const CountTodaySetting(),
+            const CountLastDaySetting(),
           ],
         ),
       ),

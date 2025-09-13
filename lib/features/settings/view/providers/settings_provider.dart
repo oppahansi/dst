@@ -40,6 +40,16 @@ class SettingsNotifier extends _$SettingsNotifier {
     await ref.read(updateDtSortOrderProvider).call(order);
     state = state.copyWith(dtSortOrder: order);
   }
+
+  Future<void> updateCountToday(bool value) async {
+    await ref.read(updateCountTodayProvider).call(value);
+    state = state.copyWith(countToday: value);
+  }
+
+  Future<void> updateCountLastDay(bool value) async {
+    await ref.read(updateCountLastDayProvider).call(value);
+    state = state.copyWith(countLastDay: value);
+  }
 }
 
 Future<Settings> loadInitialSettings() async {

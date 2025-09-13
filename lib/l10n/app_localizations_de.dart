@@ -48,6 +48,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get error => 'fehler';
 
   @override
+  String get examples => 'Beispiele';
+
+  @override
   String get default_key => 'Standard';
 
   @override
@@ -117,6 +120,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get title => 'Titel';
 
   @override
+  String get today => 'Heute';
+
+  @override
   String get transparency => 'Transparenz';
 
   @override
@@ -181,6 +187,58 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get view_license => 'Lizenz ansehen';
+
+  @override
+  String get count_today => 'Heute mitzählen (inklusiv)';
+
+  @override
+  String get today_is_counted => 'Heute wird mitgezählt';
+
+  @override
+  String get today_is_not_counted => 'Heute wird nicht mitgezählt';
+
+  @override
+  String get enable_today_counting => 'Inklusive Zählung';
+
+  @override
+  String get the_current_day_is_counted =>
+      'Der aktuelle Tag wird in die Gesamtzahl einbezogen';
+
+  @override
+  String get the_current_day_is_not_counted =>
+      'Der aktuelle Tag wird nicht einbezogen';
+
+  @override
+  String get include_today => 'Heute einbeziehen';
+
+  @override
+  String get exclude_today => 'Heute ausschließen';
+
+  @override
+  String get count_last_day => 'Letzten Tag mitzählen (inklusiv)';
+
+  @override
+  String get last_day_is_counted => 'Letzter Tag wird mitgezählt';
+
+  @override
+  String get last_day_is_not_counted => 'Letzter Tag wird nicht mitgezählt';
+
+  @override
+  String get enable_last_day_counting => 'Inklusive Zählung';
+
+  @override
+  String get the_target_day_is_counted =>
+      'Der Zieltag wird in die Gesamtzahl einbezogen';
+
+  @override
+  String get the_target_day_is_not_counted =>
+      'Der Zieltag wird nicht einbezogen';
+
+  @override
+  String get include_last_day => 'Letzten Tag einbeziehen';
+
+  @override
+  String get exclude_last_day => 'Letzten Tag ausschließen';
 
   @override
   String get ascending_small_to_big => 'Aufsteigend (Klein zu Groß)';

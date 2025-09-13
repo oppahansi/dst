@@ -176,6 +176,12 @@ abstract class AppLocalizations {
   /// **'error'**
   String get error;
 
+  /// No description provided for @examples.
+  ///
+  /// In en, this message translates to:
+  /// **'Examples'**
+  String get examples;
+
   /// No description provided for @default_key.
   ///
   /// In en, this message translates to:
@@ -314,6 +320,12 @@ abstract class AppLocalizations {
   /// **'Title'**
   String get title;
 
+  /// No description provided for @today.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get today;
+
   /// No description provided for @transparency.
   ///
   /// In en, this message translates to:
@@ -445,6 +457,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'View license'**
   String get view_license;
+
+  /// No description provided for @count_today.
+  ///
+  /// In en, this message translates to:
+  /// **'Count today (inclusive)'**
+  String get count_today;
+
+  /// No description provided for @today_is_counted.
+  ///
+  /// In en, this message translates to:
+  /// **'Today is counted'**
+  String get today_is_counted;
+
+  /// No description provided for @today_is_not_counted.
+  ///
+  /// In en, this message translates to:
+  /// **'Today is not counted'**
+  String get today_is_not_counted;
+
+  /// No description provided for @enable_today_counting.
+  ///
+  /// In en, this message translates to:
+  /// **'Inclusive counting'**
+  String get enable_today_counting;
+
+  /// No description provided for @the_current_day_is_counted.
+  ///
+  /// In en, this message translates to:
+  /// **'The current day is counted in the total'**
+  String get the_current_day_is_counted;
+
+  /// No description provided for @the_current_day_is_not_counted.
+  ///
+  /// In en, this message translates to:
+  /// **'The current day is not counted'**
+  String get the_current_day_is_not_counted;
+
+  /// No description provided for @include_today.
+  ///
+  /// In en, this message translates to:
+  /// **'Include today'**
+  String get include_today;
+
+  /// No description provided for @exclude_today.
+  ///
+  /// In en, this message translates to:
+  /// **'Exclude today'**
+  String get exclude_today;
+
+  /// No description provided for @count_last_day.
+  ///
+  /// In en, this message translates to:
+  /// **'Count last day (inclusive)'**
+  String get count_last_day;
+
+  /// No description provided for @last_day_is_counted.
+  ///
+  /// In en, this message translates to:
+  /// **'Last day is counted'**
+  String get last_day_is_counted;
+
+  /// No description provided for @last_day_is_not_counted.
+  ///
+  /// In en, this message translates to:
+  /// **'Last day is not counted'**
+  String get last_day_is_not_counted;
+
+  /// No description provided for @enable_last_day_counting.
+  ///
+  /// In en, this message translates to:
+  /// **'Inclusive counting'**
+  String get enable_last_day_counting;
+
+  /// No description provided for @the_target_day_is_counted.
+  ///
+  /// In en, this message translates to:
+  /// **'The target day is counted in the total'**
+  String get the_target_day_is_counted;
+
+  /// No description provided for @the_target_day_is_not_counted.
+  ///
+  /// In en, this message translates to:
+  /// **'The target day is not counted'**
+  String get the_target_day_is_not_counted;
+
+  /// No description provided for @include_last_day.
+  ///
+  /// In en, this message translates to:
+  /// **'Include last day'**
+  String get include_last_day;
+
+  /// No description provided for @exclude_last_day.
+  ///
+  /// In en, this message translates to:
+  /// **'Exclude last day'**
+  String get exclude_last_day;
 
   /// No description provided for @ascending_small_to_big.
   ///

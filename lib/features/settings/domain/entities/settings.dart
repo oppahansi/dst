@@ -11,12 +11,16 @@ class Settings {
   final Locale locale;
   final SdtSortOrder dsSortOrder;
   final SdtSortOrder dtSortOrder;
+  final bool countToday;
+  final bool countLastDay;
 
   const Settings({
     required this.themeMode,
     required this.locale,
     this.dsSortOrder = SdtSortOrder.asc,
     this.dtSortOrder = SdtSortOrder.asc,
+    this.countToday = false,
+    this.countLastDay = true,
   });
 
   Settings copyWith({
@@ -24,12 +28,16 @@ class Settings {
     Locale? locale,
     SdtSortOrder? dsSortOrder,
     SdtSortOrder? dtSortOrder,
+    bool? countToday,
+    bool? countLastDay,
   }) {
     return Settings(
       themeMode: themeMode ?? this.themeMode,
       locale: locale ?? this.locale,
       dsSortOrder: dsSortOrder ?? this.dsSortOrder,
       dtSortOrder: dtSortOrder ?? this.dtSortOrder,
+      countToday: countToday ?? this.countToday,
+      countLastDay: countLastDay ?? this.countLastDay,
     );
   }
 
@@ -38,6 +46,8 @@ class Settings {
     locale: Locale(settingsValueLocaleDefault),
     dsSortOrder: SdtSortOrder.asc,
     dtSortOrder: SdtSortOrder.asc,
+    countToday: false,
+    countLastDay: true,
   );
 
   static String _orderToStr(SdtSortOrder o) =>
@@ -51,6 +61,8 @@ class Settings {
       'locale': locale.toString(),
       'dsSortOrder': _orderToStr(dsSortOrder),
       'dtSortOrder': _orderToStr(dtSortOrder),
+      'countToday': countToday,
+      'countLastDay': countLastDay,
     };
   }
 
@@ -62,6 +74,8 @@ class Settings {
       locale: Locale(map['locale']),
       dsSortOrder: _strToOrder(map['dsSortOrder'] as String?),
       dtSortOrder: _strToOrder(map['dtSortOrder'] as String?),
+      countToday: map['countToday'] as bool? ?? false,
+      countLastDay: map['countLastDay'] as bool? ?? true,
     );
   }
 }

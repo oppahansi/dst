@@ -13,6 +13,7 @@
   "edit": "Edit",
   "english": "englisch",
   "error": "error",
+  "examples": "Examples",
   "default_key": "Default",
   "german": "german",
   "home": "home",
@@ -36,6 +37,7 @@
   "theme": "theme",
   "thick": "Thick",
   "title": "Title",
+  "today": "Today",
   "transparency": "Transparency",
 
   "customize_style": "Customize Style",
@@ -59,6 +61,25 @@
   "take_screenshot": "Take Screenshot",
   "title_text": "Title Text",
   "view_license": "View license",
+
+  "count_today": "Count today (inclusive)",
+  "today_is_counted": "Today is counted",
+  "today_is_not_counted": "Today is not counted",
+  "enable_today_counting": "Inclusive counting",
+  "the_current_day_is_counted": "The current day is counted in the total",
+  "the_current_day_is_not_counted": "The current day is not counted",
+  "include_today": "Include today",
+  "exclude_today": "Exclude today",
+
+  "count_last_day": "Count last day (inclusive)",
+  "last_day_is_counted": "Last day is counted",
+  "last_day_is_not_counted": "Last day is not counted",
+  "enable_last_day_counting": "Inclusive counting",
+  "the_target_day_is_counted": "The target day is counted in the total",
+  "the_target_day_is_not_counted": "The target day is not counted",
+  "include_last_day": "Include last day",
+  "exclude_last_day": "Exclude last day",
+
   
   "ascending_small_to_big": "Ascending (Small to Big)",
   "choose_from_gallery": "Choose from gallery",

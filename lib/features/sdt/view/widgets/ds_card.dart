@@ -10,6 +10,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project Imports
 import 'package:sdtpro/core/utils/extensions.dart';
@@ -22,6 +23,8 @@ import 'package:sdtpro/features/sdt/view/screens/sdt_detail_screen.dart';
 import 'package:sdtpro/features/sdt/domain/entities/sdt_entry.dart';
 import 'package:sdtpro/features/sdt/domain/entities/sdt_settings.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
+import 'package:sdtpro/core/utils/date_math.dart';
+import 'package:sdtpro/features/settings/view/providers/settings_provider.dart';
 
 class SdtCard extends StatefulWidget {
   final SdtEntry entry;
@@ -134,18 +137,7 @@ class _SdtCardState extends State<SdtCard> {
   Widget build(BuildContext context) {
     final settings = widget.entry.settings ?? SdtSettings();
     final loc = AppLocalizations.of(context)!;
-
-    // Normalize to date-only to match expected day counting
-    final now = DateTime.now();
-    final today = DateTime(now.year, now.month, now.day);
-    final eventDate = DateTime(
-      widget.entry.date.year,
-      widget.entry.date.month,
-      widget.entry.date.day,
-    );
-
-    final isFuture = eventDate.isAfter(today);
-    final days = (eventDate.difference(today).inDays).abs();
+    final isFuture = SdtDateMath.isFuture(widget.entry.date);
 
     return Card(
       margin: EdgeInsets.zero,
@@ -173,16 +165,26 @@ class _SdtCardState extends State<SdtCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    "$days",
-                    style: TextStyle(
-                      fontFamily: settings.daysFontFamily == 'System'
-                          ? null
-                          : settings.daysFontFamily,
-                      color: settings.daysColor,
-                      fontSize: headlineMedium(context)!.fontSize,
-                      fontWeight: settings.daysFontWeight,
-                    ),
+                  Consumer(
+                    builder: (context, ref, _) {
+                      final app = ref.watch(settingsNotifierProvider);
+                      final days = SdtDateMath.daysBetweenToday(
+                        widget.entry.date,
+                        includeToday: app.countToday,
+                        includeLastDay: app.countLastDay,
+                      );
+                      return Text(
+                        "$days",
+                        style: TextStyle(
+                          fontFamily: settings.daysFontFamily == 'System'
+                              ? null
+                              : settings.daysFontFamily,
+                          color: settings.daysColor,
+                          fontSize: headlineMedium(context)!.fontSize,
+                          fontWeight: settings.daysFontWeight,
+                        ),
+                      );
+                    },
                   ),
                   SizedBox(width: gapSize(context)),
                   Text(

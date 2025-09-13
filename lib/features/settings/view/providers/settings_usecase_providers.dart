@@ -9,6 +9,8 @@ import 'package:sdtpro/features/settings/domain/usecases/update_ds_sort_order.da
 import 'package:sdtpro/features/settings/domain/usecases/update_dt_sort_order.dart';
 import 'package:sdtpro/features/settings/domain/usecases/update_locale.dart';
 import 'package:sdtpro/features/settings/domain/usecases/update_theme.dart';
+import 'package:sdtpro/features/settings/domain/usecases/update_count_today.dart';
+import 'package:sdtpro/features/settings/domain/usecases/update_count_last_day.dart';
 
 part 'settings_usecase_providers.g.dart';
 
@@ -47,4 +49,14 @@ UpdateDsSortOrder updateDsSortOrder(Ref ref) {
 @riverpod
 UpdateDtSortOrder updateDtSortOrder(Ref ref) {
   return UpdateDtSortOrder(ref.watch(settingsRepoProvider));
+}
+
+@riverpod
+UpdateCountToday updateCountToday(Ref ref) {
+  return UpdateCountToday(ref.watch(settingsRepoProvider));
+}
+
+@riverpod
+UpdateCountLastDay updateCountLastDay(Ref ref) {
+  return UpdateCountLastDay(ref.watch(settingsRepoProvider));
 }

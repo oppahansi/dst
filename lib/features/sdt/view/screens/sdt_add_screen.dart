@@ -12,6 +12,8 @@ import 'package:material_symbols_icons/symbols.dart';
 
 // Project Imports
 import 'package:sdtpro/core/utils/extensions.dart';
+import 'package:sdtpro/core/utils/date_math.dart';
+import 'package:sdtpro/features/settings/view/providers/settings_provider.dart';
 import 'package:sdtpro/features/sdt/domain/entities/sdt_entry.dart';
 import 'package:sdtpro/features/sdt/domain/entities/sdt_settings.dart';
 import 'package:sdtpro/features/sdt/view/providers/sdt_provider.dart';
@@ -92,11 +94,8 @@ class _SdtAddScreenState extends ConsumerState<SdtAddScreen> {
   }
 
   Future<void> _pickDate() async {
-    final pickedDate = await showDatePicker(
-      context: context,
+    final pickedDate = await _showDatePickerWithOffset(
       initialDate: _selectedDate,
-      firstDate: DateTime(1900),
-      lastDate: DateTime.now().add(Duration(days: 365 * 100)),
     );
     if (pickedDate != null) {
       setState(() => _selectedDate = pickedDate);
@@ -343,6 +342,259 @@ class _SdtAddScreenState extends ConsumerState<SdtAddScreen> {
               titleController: _titleController,
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Future<DateTime?> _showDatePickerWithOffset({required DateTime initialDate}) {
+    final app = ref.watch(settingsNotifierProvider);
+    return showModalBottomSheet<DateTime>(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => _DatePickerWithOffsetSheet(
+        initialDate: initialDate,
+        countToday: app.countToday,
+        countLastDay: app.countLastDay,
+      ),
+    );
+  }
+}
+
+// Add this private widget at the end of the file (below the SdtAddScreen state class)
+class _DatePickerWithOffsetSheet extends StatefulWidget {
+  final DateTime initialDate;
+  final bool countToday;
+  final bool countLastDay;
+  const _DatePickerWithOffsetSheet({
+    required this.initialDate,
+    required this.countToday,
+    required this.countLastDay,
+  });
+
+  @override
+  State<_DatePickerWithOffsetSheet> createState() =>
+      _DatePickerWithOffsetSheetState();
+}
+
+class _DatePickerWithOffsetSheetState
+    extends State<_DatePickerWithOffsetSheet> {
+  late DateTime tempSelected;
+  late TextEditingController offsetCtrl;
+  final FocusNode _offsetFocus = FocusNode();
+
+  // -1 = past, 0 = calendar only, 1 = future (default)
+  int offsetDirection = 1;
+  bool hasClearedOffsetField = false;
+
+  late Key calendarKey;
+
+  @override
+  void initState() {
+    super.initState();
+    tempSelected = widget.initialDate;
+    offsetCtrl = TextEditingController(text: '0');
+    calendarKey = ValueKey(tempSelected.toIso8601String());
+  }
+
+  @override
+  void dispose() {
+    offsetCtrl.dispose();
+    _offsetFocus.dispose();
+    super.dispose();
+  }
+
+  int parseOffset() => int.tryParse(offsetCtrl.text) ?? 0;
+
+  void _applyOffset() {
+    if (offsetDirection == 0) return;
+    final off = parseOffset().abs();
+    final target = SdtDateMath.addDaysFromToday(
+      off,
+      future: offsetDirection > 0,
+      includeToday: widget.countToday,
+      includeLastDay: widget.countLastDay,
+    );
+    setState(() {
+      tempSelected = target;
+      calendarKey = ValueKey(tempSelected.toIso8601String());
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    final materialLoc = MaterialLocalizations.of(context);
+
+    return SafeArea(
+      child: Padding(
+        // Keep the padding inside this widget so outer builder isn’t recreated on keyboard changes
+        padding: EdgeInsets.only(
+          left: 16,
+          right: 16,
+          top: 8,
+          bottom: MediaQuery.of(context).viewInsets.bottom + 16,
+        ),
+        child: SingleChildScrollView(
+          // Ensure enough space when keyboard is shown
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Header actions
+              Row(
+                children: [
+                  Text(loc.date, style: Theme.of(context).textTheme.titleLarge),
+                  const Spacer(),
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: Text(materialLoc.cancelButtonLabel),
+                  ),
+                  FilledButton(
+                    onPressed: () {
+                      final off = parseOffset().abs();
+                      if (offsetDirection != 0) {
+                        final d = SdtDateMath.addDaysFromToday(
+                          off,
+                          future: offsetDirection > 0,
+                          includeToday: widget.countToday,
+                          includeLastDay: widget.countLastDay,
+                        );
+                        Navigator.pop(context, d);
+                      } else {
+                        Navigator.pop(context, tempSelected);
+                      }
+                    },
+                    child: Text(materialLoc.okButtonLabel),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+
+              // Calendar picker
+              CalendarDatePicker(
+                key: calendarKey,
+                initialDate: tempSelected,
+                firstDate: DateTime(1900),
+                lastDate: DateTime.now().add(const Duration(days: 365 * 100)),
+                onDateChanged: (d) => setState(() => tempSelected = d),
+              ),
+
+              TextButton.icon(
+                icon: const Icon(Symbols.today),
+                label: const Text('Today'),
+                onPressed: () => setState(() {
+                  final now = DateTime.now();
+                  final today = DateTime(now.year, now.month, now.day);
+                  tempSelected = today;
+                  calendarKey = ValueKey(tempSelected.toIso8601String());
+                  // Keep chips and offset as-is; user can still choose to apply offset via OK
+                }),
+              ),
+
+              const SizedBox(height: 12),
+
+              // Quick offset
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Quick offset (from today)',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      focusNode: _offsetFocus,
+                      controller: offsetCtrl,
+                      keyboardType: TextInputType.number,
+                      textInputAction: TextInputAction.done,
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                      decoration: const InputDecoration(
+                        labelText: 'Offset in days',
+                        hintText: 'e.g. 10',
+                        border: OutlineInputBorder(),
+                      ),
+                      onTap: () {
+                        // Clear only once and only if current value is 0
+                        if (!hasClearedOffsetField &&
+                            (offsetCtrl.text.trim().isEmpty ||
+                                offsetCtrl.text.trim() == '0')) {
+                          offsetCtrl.clear();
+                          hasClearedOffsetField = true;
+                        }
+                      },
+                      onChanged: (_) => _applyOffset(),
+                      onSubmitted: (_) {
+                        // Keep the value and just dismiss the keyboard if desired
+                        FocusScope.of(context).unfocus();
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Column(
+                    children: [
+                      IconButton(
+                        tooltip: 'Increment',
+                        onPressed: () {
+                          final v = parseOffset().abs() + 1;
+                          offsetCtrl.text = '$v';
+                          offsetCtrl.selection = TextSelection.fromPosition(
+                            TextPosition(offset: offsetCtrl.text.length),
+                          );
+                          _applyOffset();
+                        },
+                        icon: const Icon(Symbols.add),
+                      ),
+                      IconButton(
+                        tooltip: 'Decrement',
+                        onPressed: () {
+                          final v = (parseOffset().abs() - 1).clamp(0, 1000000);
+                          offsetCtrl.text = '$v';
+                          offsetCtrl.selection = TextSelection.fromPosition(
+                            TextPosition(offset: offsetCtrl.text.length),
+                          );
+                          _applyOffset();
+                        },
+                        icon: const Icon(Symbols.remove),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+
+              // Selection chips (no close, just selection)
+              Row(
+                children: [
+                  ChoiceChip(
+                    avatar: const Icon(Symbols.history, size: 18),
+                    label: const Text('X days ago'),
+                    selected: offsetDirection == -1,
+                    onSelected: (sel) {
+                      setState(() {
+                        offsetDirection = sel ? -1 : 0;
+                      });
+                      _applyOffset();
+                    },
+                  ),
+                  const SizedBox(width: 12),
+                  ChoiceChip(
+                    avatar: const Icon(Symbols.schedule, size: 18),
+                    label: const Text('In X days'),
+                    selected: offsetDirection == 1,
+                    onSelected: (sel) {
+                      setState(() {
+                        offsetDirection = sel ? 1 : 0;
+                      });
+                      _applyOffset();
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

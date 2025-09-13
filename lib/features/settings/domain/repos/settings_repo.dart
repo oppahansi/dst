@@ -10,4 +10,6 @@ abstract class SettingsRepo {
   Future<void> updateLocale(Locale locale);
   Future<void> updateDsSortOrder(SdtSortOrder order);
   Future<void> updateDtSortOrder(SdtSortOrder order);
+  Future<void> updateCountToday(bool value);
+  Future<void> updateCountLastDay(bool value);
 }

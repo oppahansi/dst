@@ -125,7 +125,6 @@ class _SdtSettingsSheetState extends State<SdtSettingsSheet> {
 
         // --- Overlay Settings ---
         _buildSectionHeader(loc.overlay),
-        // REPLACED: swatches + button -> button + current color only
         _buildColorPicker(
           loc.color,
           _localSettings.overlayColor,
@@ -251,7 +250,6 @@ class _SdtSettingsSheetState extends State<SdtSettingsSheet> {
           onWeightChanged: (val) =>
               _updateSettings((s) => s.copyWith(subtitleFontWeight: val)),
         ),
-        // REPLACED: swatches + button -> button + current color only
         _buildColorPicker(
           loc.color,
           _localSettings.subtitleColor,

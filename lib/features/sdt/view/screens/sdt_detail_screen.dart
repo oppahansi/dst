@@ -20,6 +20,8 @@ import 'package:sdtpro/features/sdt/view/providers/sdt_provider.dart';
 import 'package:sdtpro/features/sdt/view/screens/sdt_screenshot_screen.dart';
 import 'package:sdtpro/features/sdt/view/widgets/ds_card.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
+import 'package:sdtpro/core/utils/date_math.dart';
+import 'package:sdtpro/features/settings/view/providers/settings_provider.dart';
 
 class SdtDetailScreen extends ConsumerStatefulWidget {
   final SdtEntry entry;
@@ -116,12 +118,14 @@ class _SdtDetailScreenState extends ConsumerState<SdtDetailScreen> {
     }
 
     final loc = AppLocalizations.of(context)!;
-    final now = DateTime.now();
-    final isFuture = widget.entry.date.isAfter(now);
-    final days = isFuture
-        ? widget.entry.date.difference(now).inDays
-        : now.difference(widget.entry.date).inDays;
+    final app = ref.watch(settingsNotifierProvider);
     final settings = widget.entry.settings ?? SdtSettings();
+    final isFuture = SdtDateMath.isFuture(widget.entry.date);
+    final days = SdtDateMath.daysBetweenToday(
+      widget.entry.date,
+      includeToday: app.countToday,
+      includeLastDay: app.countLastDay,
+    );
 
     final doc = pw.Document();
 

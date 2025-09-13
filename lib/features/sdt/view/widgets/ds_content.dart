@@ -3,15 +3,18 @@ import 'package:flutter/material.dart';
 
 // Package Imports
 import 'package:intl/intl.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project Imports
+import 'package:sdtpro/features/settings/view/providers/settings_provider.dart';
 import 'package:sdtpro/features/sdt/domain/entities/sdt_entry.dart';
 import 'package:sdtpro/features/sdt/domain/entities/sdt_settings.dart';
 import 'package:sdtpro/l10n/app_localizations.dart';
+import 'package:sdtpro/core/utils/date_math.dart';
 
 enum SdtContentContext { card, fullscreen, editor }
 
-class SdtContent extends StatelessWidget {
+class SdtContent extends ConsumerWidget {
   final SdtEntry entry;
   final SdtSettings settings;
   final SdtContentContext contentContext;
@@ -41,19 +44,15 @@ class SdtContent extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final loc = AppLocalizations.of(context)!;
-    // Normalize to date-only to avoid time-of-day affecting the count
-    final now = DateTime.now();
-    final today = DateTime(now.year, now.month, now.day);
-    final eventDate = DateTime(
-      entry.date.year,
-      entry.date.month,
-      entry.date.day,
+    final app = ref.watch(settingsNotifierProvider);
+    final isFuture = SdtDateMath.isFuture(entry.date);
+    final days = SdtDateMath.daysBetweenToday(
+      entry.date,
+      includeToday: app.countToday,
+      includeLastDay: app.countLastDay,
     );
-
-    final isFuture = eventDate.isAfter(today);
-    final days = (eventDate.difference(today).inDays).abs();
 
     final subtitle = settings.showSubtitleDate
         ? '${isFuture ? loc.days_to : loc.days_since} ${DateFormat(settings.subtitleDateFormat, loc.localeName).format(entry.date)}'
