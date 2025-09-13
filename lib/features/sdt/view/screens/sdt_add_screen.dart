@@ -383,8 +383,8 @@ class _DatePickerWithOffsetSheetState
   late TextEditingController offsetCtrl;
   final FocusNode _offsetFocus = FocusNode();
 
-  // -1 = past, 0 = calendar only, 1 = future (default)
-  int offsetDirection = 1;
+  // -1 = past, 0 = calendar only (default), 1 = future
+  int offsetDirection = 0;
   bool hasClearedOffsetField = false;
 
   late Key calendarKey;
@@ -461,7 +461,10 @@ class _DatePickerWithOffsetSheetState
                   FilledButton(
                     onPressed: () {
                       final off = parseOffset().abs();
-                      if (offsetDirection != 0) {
+                      // If no offset or "calendar only", return the picked calendar date
+                      if (offsetDirection == 0 || off == 0) {
+                        Navigator.pop(context, tempSelected);
+                      } else {
                         final d = SdtDateMath.addDaysFromToday(
                           off,
                           future: offsetDirection > 0,
@@ -469,8 +472,6 @@ class _DatePickerWithOffsetSheetState
                           includeLastDay: widget.countLastDay,
                         );
                         Navigator.pop(context, d);
-                      } else {
-                        Navigator.pop(context, tempSelected);
                       }
                     },
                     child: Text(materialLoc.okButtonLabel),
