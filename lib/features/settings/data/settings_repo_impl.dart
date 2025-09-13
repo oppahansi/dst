@@ -103,6 +103,12 @@ class SettingsRepoImpl implements SettingsRepo {
     await _saveString(settingsKeyCountLastDay, value.toString());
   }
 
+  @override
+  Future<void> resetToDefaults() async {
+    final db = await Db.getUserDbInstance();
+    await db.delete(_table);
+  }
+
   Future<void> _saveString(String key, String value) async {
     final db = await Db.getUserDbInstance();
     await db.insert(_table, {
@@ -112,7 +118,6 @@ class SettingsRepoImpl implements SettingsRepo {
   }
 
   ThemeMode _getThemeModeFromString(String? themeStr) {
-    // This logic is now correctly placed within the data layer.
     switch (themeStr) {
       case settingsValueThemeModeLight:
         return ThemeMode.light;

@@ -182,12 +182,6 @@ abstract class AppLocalizations {
   /// **'Examples'**
   String get examples;
 
-  /// No description provided for @default_key.
-  ///
-  /// In en, this message translates to:
-  /// **'Default'**
-  String get default_key;
-
   /// No description provided for @german.
   ///
   /// In en, this message translates to:
@@ -224,6 +218,18 @@ abstract class AppLocalizations {
   /// **'loading'**
   String get loading;
 
+  /// No description provided for @open.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get open;
+
+  /// No description provided for @outlined.
+  ///
+  /// In en, this message translates to:
+  /// **'Outlined'**
+  String get outlined;
+
   /// No description provided for @overlay.
   ///
   /// In en, this message translates to:
@@ -242,6 +248,12 @@ abstract class AppLocalizations {
   /// **'Print'**
   String get print;
 
+  /// No description provided for @reset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get reset;
+
   /// No description provided for @save.
   ///
   /// In en, this message translates to:
@@ -253,18 +265,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Saved'**
   String get saved;
-
-  /// No description provided for @open.
-  ///
-  /// In en, this message translates to:
-  /// **'Open'**
-  String get open;
-
-  /// No description provided for @outlined.
-  ///
-  /// In en, this message translates to:
-  /// **'Outlined'**
-  String get outlined;
 
   /// No description provided for @select.
   ///
@@ -278,17 +278,17 @@ abstract class AppLocalizations {
   /// **'settings'**
   String get settings;
 
-  /// No description provided for @simple.
-  ///
-  /// In en, this message translates to:
-  /// **'Simple'**
-  String get simple;
-
   /// No description provided for @share.
   ///
   /// In en, this message translates to:
   /// **'Share'**
   String get share;
+
+  /// No description provided for @simple.
+  ///
+  /// In en, this message translates to:
+  /// **'Simple'**
+  String get simple;
 
   /// No description provided for @slim.
   ///
@@ -332,11 +332,23 @@ abstract class AppLocalizations {
   /// **'Transparency'**
   String get transparency;
 
+  /// No description provided for @count_today.
+  ///
+  /// In en, this message translates to:
+  /// **'Count today'**
+  String get count_today;
+
   /// No description provided for @customize_style.
   ///
   /// In en, this message translates to:
   /// **'Customize Style'**
   String get customize_style;
+
+  /// No description provided for @date_format.
+  ///
+  /// In en, this message translates to:
+  /// **'Date Format'**
+  String get date_format;
 
   /// No description provided for @days_since.
   ///
@@ -350,17 +362,11 @@ abstract class AppLocalizations {
   /// **'Days To'**
   String get days_to;
 
-  /// No description provided for @date_format.
+  /// No description provided for @default_key.
   ///
   /// In en, this message translates to:
-  /// **'Date Format'**
-  String get date_format;
-
-  /// No description provided for @delete_entry_title.
-  ///
-  /// In en, this message translates to:
-  /// **'Delete Entry?'**
-  String get delete_entry_title;
+  /// **'Default'**
+  String get default_key;
 
   /// No description provided for @description_optional.
   ///
@@ -373,6 +379,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Divider Thickness'**
   String get divider_thickness;
+
+  /// No description provided for @exclude_today.
+  ///
+  /// In en, this message translates to:
+  /// **'Exclude today'**
+  String get exclude_today;
 
   /// No description provided for @font_family.
   ///
@@ -391,6 +403,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Image (Optional)'**
   String get image_optional;
+
+  /// No description provided for @include_today.
+  ///
+  /// In en, this message translates to:
+  /// **'Include today'**
+  String get include_today;
 
   /// No description provided for @load_more.
   ///
@@ -416,17 +434,35 @@ abstract class AppLocalizations {
   /// **'Save Changes'**
   String get save_changes;
 
+  /// No description provided for @screenshot_saved.
+  ///
+  /// In en, this message translates to:
+  /// **'Screenshot saved to gallery'**
+  String get screenshot_saved;
+
   /// No description provided for @screenshot_view.
   ///
   /// In en, this message translates to:
   /// **'Screenshot View'**
   String get screenshot_view;
 
+  /// No description provided for @search_online.
+  ///
+  /// In en, this message translates to:
+  /// **'Search online'**
+  String get search_online;
+
   /// No description provided for @show_date.
   ///
   /// In en, this message translates to:
   /// **'Show Date'**
   String get show_date;
+
+  /// No description provided for @since_date.
+  ///
+  /// In en, this message translates to:
+  /// **'since {date}'**
+  String since_date(Object date);
 
   /// No description provided for @sort_order.
   ///
@@ -458,102 +494,6 @@ abstract class AppLocalizations {
   /// **'View license'**
   String get view_license;
 
-  /// No description provided for @count_today.
-  ///
-  /// In en, this message translates to:
-  /// **'Count today (inclusive)'**
-  String get count_today;
-
-  /// No description provided for @today_is_counted.
-  ///
-  /// In en, this message translates to:
-  /// **'Today is counted'**
-  String get today_is_counted;
-
-  /// No description provided for @today_is_not_counted.
-  ///
-  /// In en, this message translates to:
-  /// **'Today is not counted'**
-  String get today_is_not_counted;
-
-  /// No description provided for @enable_today_counting.
-  ///
-  /// In en, this message translates to:
-  /// **'Inclusive counting'**
-  String get enable_today_counting;
-
-  /// No description provided for @the_current_day_is_counted.
-  ///
-  /// In en, this message translates to:
-  /// **'The current day is counted in the total'**
-  String get the_current_day_is_counted;
-
-  /// No description provided for @the_current_day_is_not_counted.
-  ///
-  /// In en, this message translates to:
-  /// **'The current day is not counted'**
-  String get the_current_day_is_not_counted;
-
-  /// No description provided for @include_today.
-  ///
-  /// In en, this message translates to:
-  /// **'Include today'**
-  String get include_today;
-
-  /// No description provided for @exclude_today.
-  ///
-  /// In en, this message translates to:
-  /// **'Exclude today'**
-  String get exclude_today;
-
-  /// No description provided for @count_last_day.
-  ///
-  /// In en, this message translates to:
-  /// **'Count last day (inclusive)'**
-  String get count_last_day;
-
-  /// No description provided for @last_day_is_counted.
-  ///
-  /// In en, this message translates to:
-  /// **'Last day is counted'**
-  String get last_day_is_counted;
-
-  /// No description provided for @last_day_is_not_counted.
-  ///
-  /// In en, this message translates to:
-  /// **'Last day is not counted'**
-  String get last_day_is_not_counted;
-
-  /// No description provided for @enable_last_day_counting.
-  ///
-  /// In en, this message translates to:
-  /// **'Inclusive counting'**
-  String get enable_last_day_counting;
-
-  /// No description provided for @the_target_day_is_counted.
-  ///
-  /// In en, this message translates to:
-  /// **'The target day is counted in the total'**
-  String get the_target_day_is_counted;
-
-  /// No description provided for @the_target_day_is_not_counted.
-  ///
-  /// In en, this message translates to:
-  /// **'The target day is not counted'**
-  String get the_target_day_is_not_counted;
-
-  /// No description provided for @include_last_day.
-  ///
-  /// In en, this message translates to:
-  /// **'Include last day'**
-  String get include_last_day;
-
-  /// No description provided for @exclude_last_day.
-  ///
-  /// In en, this message translates to:
-  /// **'Exclude last day'**
-  String get exclude_last_day;
-
   /// No description provided for @ascending_small_to_big.
   ///
   /// In en, this message translates to:
@@ -571,6 +511,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Could not launch {url}'**
   String could_not_launch_url(Object url);
+
+  /// No description provided for @count_last_day.
+  ///
+  /// In en, this message translates to:
+  /// **'Count last day'**
+  String get count_last_day;
 
   /// No description provided for @days_counter_text.
   ///
@@ -608,11 +554,53 @@ abstract class AppLocalizations {
   /// **'Are you sure you want to delete this entry? This action cannot be undone.'**
   String get delete_entry_confirmation;
 
+  /// No description provided for @delete_entry_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Entry?'**
+  String get delete_entry_title;
+
+  /// No description provided for @enable_last_day_counting.
+  ///
+  /// In en, this message translates to:
+  /// **'Inclusive counting'**
+  String get enable_last_day_counting;
+
+  /// No description provided for @enable_today_counting.
+  ///
+  /// In en, this message translates to:
+  /// **'Inclusive counting'**
+  String get enable_today_counting;
+
+  /// No description provided for @exclude_last_day.
+  ///
+  /// In en, this message translates to:
+  /// **'Exclude last day'**
+  String get exclude_last_day;
+
   /// No description provided for @failed_to_load_images.
   ///
   /// In en, this message translates to:
   /// **'Failed to load images.'**
   String get failed_to_load_images;
+
+  /// No description provided for @include_last_day.
+  ///
+  /// In en, this message translates to:
+  /// **'Include last day'**
+  String get include_last_day;
+
+  /// No description provided for @last_day_is_counted.
+  ///
+  /// In en, this message translates to:
+  /// **'Last day is counted'**
+  String get last_day_is_counted;
+
+  /// No description provided for @last_day_is_not_counted.
+  ///
+  /// In en, this message translates to:
+  /// **'Last day is not counted'**
+  String get last_day_is_not_counted;
 
   /// No description provided for @no_description_to_print.
   ///
@@ -644,11 +632,17 @@ abstract class AppLocalizations {
   /// **'Press again to exit the app.'**
   String get prompt_for_exit;
 
-  /// No description provided for @screenshot_saved.
+  /// No description provided for @reset_all_settings_question.
   ///
   /// In en, this message translates to:
-  /// **'Screenshot saved to gallery'**
-  String get screenshot_saved;
+  /// **'Are you sure you want to reset all settings to their default values?'**
+  String get reset_all_settings_question;
+
+  /// No description provided for @reset_to_defaults.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset to defaults'**
+  String get reset_to_defaults;
 
   /// No description provided for @search_for_an_image.
   ///
@@ -668,23 +662,11 @@ abstract class AppLocalizations {
   /// **'Select an Image'**
   String get select_an_image;
 
-  /// No description provided for @search_online.
+  /// No description provided for @settings_reset_success.
   ///
   /// In en, this message translates to:
-  /// **'Search online'**
-  String get search_online;
-
-  /// No description provided for @since_date.
-  ///
-  /// In en, this message translates to:
-  /// **'since {date}'**
-  String since_date(Object date);
-
-  /// No description provided for @tap_to_change_the_image.
-  ///
-  /// In en, this message translates to:
-  /// **'Tap to change the image'**
-  String get tap_to_change_the_image;
+  /// **'Settings have been reset to default values.'**
+  String get settings_reset_success;
 
   /// No description provided for @take_a_picture.
   ///
@@ -692,23 +674,65 @@ abstract class AppLocalizations {
   /// **'Take a picture'**
   String get take_a_picture;
 
+  /// No description provided for @tap_edit_to_add_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap edit to add a description'**
+  String get tap_edit_to_add_description;
+
+  /// No description provided for @tap_to_change_the_image.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to change the image'**
+  String get tap_to_change_the_image;
+
   /// No description provided for @tap_to_select_an_image.
   ///
   /// In en, this message translates to:
   /// **'Tap to select an image'**
   String get tap_to_select_an_image;
 
+  /// No description provided for @the_current_day_is_counted.
+  ///
+  /// In en, this message translates to:
+  /// **'The current day is counted in the total'**
+  String get the_current_day_is_counted;
+
+  /// No description provided for @the_current_day_is_not_counted.
+  ///
+  /// In en, this message translates to:
+  /// **'The current day is not counted'**
+  String get the_current_day_is_not_counted;
+
+  /// No description provided for @the_target_day_is_counted.
+  ///
+  /// In en, this message translates to:
+  /// **'The target day is counted in the total'**
+  String get the_target_day_is_counted;
+
+  /// No description provided for @the_target_day_is_not_counted.
+  ///
+  /// In en, this message translates to:
+  /// **'The target day is not counted'**
+  String get the_target_day_is_not_counted;
+
+  /// No description provided for @today_is_counted.
+  ///
+  /// In en, this message translates to:
+  /// **'Today is counted'**
+  String get today_is_counted;
+
+  /// No description provided for @today_is_not_counted.
+  ///
+  /// In en, this message translates to:
+  /// **'Today is not counted'**
+  String get today_is_not_counted;
+
   /// No description provided for @view_on_source_page.
   ///
   /// In en, this message translates to:
   /// **'View on source page'**
   String get view_on_source_page;
-
-  /// No description provided for @tap_edit_to_add_description.
-  ///
-  /// In en, this message translates to:
-  /// **'Tap edit to add a description'**
-  String get tap_edit_to_add_description;
 }
 
 class _AppLocalizationsDelegate

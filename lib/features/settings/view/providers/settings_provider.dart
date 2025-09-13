@@ -50,6 +50,11 @@ class SettingsNotifier extends _$SettingsNotifier {
     await ref.read(updateCountLastDayProvider).call(value);
     state = state.copyWith(countLastDay: value);
   }
+
+  Future<void> resetToDefaults() async {
+    await ref.read(resetSettingsProvider).call();
+    state = Settings.defaultSettings();
+  }
 }
 
 Future<Settings> loadInitialSettings() async {

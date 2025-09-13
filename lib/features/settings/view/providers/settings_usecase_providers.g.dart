@@ -379,5 +379,46 @@ final class UpdateCountLastDayProvider
 String _$updateCountLastDayHash() =>
     r'c07f4d14f3b4f9c75fcd29c941d202a647816893';
 
+@ProviderFor(resetSettings)
+const resetSettingsProvider = ResetSettingsProvider._();
+
+final class ResetSettingsProvider
+    extends $FunctionalProvider<ResetSettings, ResetSettings, ResetSettings>
+    with $Provider<ResetSettings> {
+  const ResetSettingsProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'resetSettingsProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$resetSettingsHash();
+
+  @$internal
+  @override
+  $ProviderElement<ResetSettings> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  ResetSettings create(Ref ref) {
+    return resetSettings(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(ResetSettings value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<ResetSettings>(value),
+    );
+  }
+}
+
+String _$resetSettingsHash() => r'05c12b12f217b3ad89ad3aee172055bae496f5a0';
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

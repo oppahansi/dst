@@ -11,6 +11,7 @@ import 'package:sdtpro/features/settings/domain/usecases/update_locale.dart';
 import 'package:sdtpro/features/settings/domain/usecases/update_theme.dart';
 import 'package:sdtpro/features/settings/domain/usecases/update_count_today.dart';
 import 'package:sdtpro/features/settings/domain/usecases/update_count_last_day.dart';
+import 'package:sdtpro/features/settings/domain/usecases/reset_settings.dart';
 
 part 'settings_usecase_providers.g.dart';
 
@@ -51,12 +52,20 @@ UpdateDtSortOrder updateDtSortOrder(Ref ref) {
   return UpdateDtSortOrder(ref.watch(settingsRepoProvider));
 }
 
+/// Provides the UpdateCountToday use case.
 @riverpod
 UpdateCountToday updateCountToday(Ref ref) {
   return UpdateCountToday(ref.watch(settingsRepoProvider));
 }
 
+/// Provides the UpdateCountLastDay use case.
 @riverpod
 UpdateCountLastDay updateCountLastDay(Ref ref) {
   return UpdateCountLastDay(ref.watch(settingsRepoProvider));
+}
+
+/// Provides the ResetSettings use case.
+@riverpod
+ResetSettings resetSettings(Ref ref) {
+  return ResetSettings(ref.watch(settingsRepoProvider));
 }

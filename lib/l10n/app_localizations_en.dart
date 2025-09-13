@@ -51,9 +51,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get examples => 'Examples';
 
   @override
-  String get default_key => 'Default';
-
-  @override
   String get german => 'german';
 
   @override
@@ -72,6 +69,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loading => 'loading';
 
   @override
+  String get open => 'Open';
+
+  @override
+  String get outlined => 'Outlined';
+
+  @override
   String get overlay => 'Overlay';
 
   @override
@@ -81,16 +84,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get print => 'Print';
 
   @override
+  String get reset => 'Reset';
+
+  @override
   String get save => 'Save';
 
   @override
   String get saved => 'Saved';
-
-  @override
-  String get open => 'Open';
-
-  @override
-  String get outlined => 'Outlined';
 
   @override
   String get select => 'Select';
@@ -99,10 +99,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settings => 'settings';
 
   @override
-  String get simple => 'Simple';
+  String get share => 'Share';
 
   @override
-  String get share => 'Share';
+  String get simple => 'Simple';
 
   @override
   String get slim => 'Slim';
@@ -126,7 +126,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get transparency => 'Transparency';
 
   @override
+  String get count_today => 'Count today';
+
+  @override
   String get customize_style => 'Customize Style';
+
+  @override
+  String get date_format => 'Date Format';
 
   @override
   String get days_since => 'Days Since';
@@ -135,16 +141,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get days_to => 'Days To';
 
   @override
-  String get date_format => 'Date Format';
-
-  @override
-  String get delete_entry_title => 'Delete Entry?';
+  String get default_key => 'Default';
 
   @override
   String get description_optional => 'Description (Optional)';
 
   @override
   String get divider_thickness => 'Divider Thickness';
+
+  @override
+  String get exclude_today => 'Exclude today';
 
   @override
   String get font_family => 'Font Family';
@@ -154,6 +160,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get image_optional => 'Image (Optional)';
+
+  @override
+  String get include_today => 'Include today';
 
   @override
   String get load_more => 'Load More';
@@ -168,10 +177,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get save_changes => 'Save Changes';
 
   @override
+  String get screenshot_saved => 'Screenshot saved to gallery';
+
+  @override
   String get screenshot_view => 'Screenshot View';
 
   @override
+  String get search_online => 'Search online';
+
+  @override
   String get show_date => 'Show Date';
+
+  @override
+  String since_date(Object date) {
+    return 'since $date';
+  }
 
   @override
   String get sort_order => 'Sort Order';
@@ -189,56 +209,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get view_license => 'View license';
 
   @override
-  String get count_today => 'Count today (inclusive)';
-
-  @override
-  String get today_is_counted => 'Today is counted';
-
-  @override
-  String get today_is_not_counted => 'Today is not counted';
-
-  @override
-  String get enable_today_counting => 'Inclusive counting';
-
-  @override
-  String get the_current_day_is_counted =>
-      'The current day is counted in the total';
-
-  @override
-  String get the_current_day_is_not_counted => 'The current day is not counted';
-
-  @override
-  String get include_today => 'Include today';
-
-  @override
-  String get exclude_today => 'Exclude today';
-
-  @override
-  String get count_last_day => 'Count last day (inclusive)';
-
-  @override
-  String get last_day_is_counted => 'Last day is counted';
-
-  @override
-  String get last_day_is_not_counted => 'Last day is not counted';
-
-  @override
-  String get enable_last_day_counting => 'Inclusive counting';
-
-  @override
-  String get the_target_day_is_counted =>
-      'The target day is counted in the total';
-
-  @override
-  String get the_target_day_is_not_counted => 'The target day is not counted';
-
-  @override
-  String get include_last_day => 'Include last day';
-
-  @override
-  String get exclude_last_day => 'Exclude last day';
-
-  @override
   String get ascending_small_to_big => 'Ascending (Small to Big)';
 
   @override
@@ -248,6 +218,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String could_not_launch_url(Object url) {
     return 'Could not launch $url';
   }
+
+  @override
+  String get count_last_day => 'Count last day';
 
   @override
   String get days_counter_text => 'Days Counter Text';
@@ -271,7 +244,28 @@ class AppLocalizationsEn extends AppLocalizations {
       'Are you sure you want to delete this entry? This action cannot be undone.';
 
   @override
+  String get delete_entry_title => 'Delete Entry?';
+
+  @override
+  String get enable_last_day_counting => 'Inclusive counting';
+
+  @override
+  String get enable_today_counting => 'Inclusive counting';
+
+  @override
+  String get exclude_last_day => 'Exclude last day';
+
+  @override
   String get failed_to_load_images => 'Failed to load images.';
+
+  @override
+  String get include_last_day => 'Include last day';
+
+  @override
+  String get last_day_is_counted => 'Last day is counted';
+
+  @override
+  String get last_day_is_not_counted => 'Last day is not counted';
 
   @override
   String get no_description_to_print => 'No description to print.';
@@ -289,7 +283,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get prompt_for_exit => 'Press again to exit the app.';
 
   @override
-  String get screenshot_saved => 'Screenshot saved to gallery';
+  String get reset_all_settings_question =>
+      'Are you sure you want to reset all settings to their default values?';
+
+  @override
+  String get reset_to_defaults => 'Reset to defaults';
 
   @override
   String get search_for_an_image => 'Search for an image...';
@@ -301,25 +299,41 @@ class AppLocalizationsEn extends AppLocalizations {
   String get select_an_image => 'Select an Image';
 
   @override
-  String get search_online => 'Search online';
-
-  @override
-  String since_date(Object date) {
-    return 'since $date';
-  }
-
-  @override
-  String get tap_to_change_the_image => 'Tap to change the image';
+  String get settings_reset_success =>
+      'Settings have been reset to default values.';
 
   @override
   String get take_a_picture => 'Take a picture';
 
   @override
+  String get tap_edit_to_add_description => 'Tap edit to add a description';
+
+  @override
+  String get tap_to_change_the_image => 'Tap to change the image';
+
+  @override
   String get tap_to_select_an_image => 'Tap to select an image';
 
   @override
-  String get view_on_source_page => 'View on source page';
+  String get the_current_day_is_counted =>
+      'The current day is counted in the total';
 
   @override
-  String get tap_edit_to_add_description => 'Tap edit to add a description';
+  String get the_current_day_is_not_counted => 'The current day is not counted';
+
+  @override
+  String get the_target_day_is_counted =>
+      'The target day is counted in the total';
+
+  @override
+  String get the_target_day_is_not_counted => 'The target day is not counted';
+
+  @override
+  String get today_is_counted => 'Today is counted';
+
+  @override
+  String get today_is_not_counted => 'Today is not counted';
+
+  @override
+  String get view_on_source_page => 'View on source page';
 }
