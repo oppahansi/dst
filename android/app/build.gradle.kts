@@ -1,8 +1,15 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+}
+
+val keystoreProps = Properties().apply {
+    val f = rootProject.file("key.properties")
+    if (f.exists()) load(f.inputStream())
 }
 
 android {
@@ -20,18 +27,36 @@ android {
     }
 
     defaultConfig {
-        applicationId = "de.oppahansi.sdtpro"
+        applicationId = "de.oppahansi.sdtfree"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        create("release") {
+            val storeFilePath = keystoreProps.getProperty("storeFile") ?: System.getenv("ANDROID_KEYSTORE")
+            val storePwd = keystoreProps.getProperty("storePassword") ?: System.getenv("ANDROID_KEYSTORE_PASSWORD")
+            val alias = keystoreProps.getProperty("keyAlias") ?: System.getenv("ANDROID_KEY_ALIAS")
+            val keyPwd = keystoreProps.getProperty("keyPassword") ?: System.getenv("ANDROID_KEY_PASSWORD")
+
+            require(!storeFilePath.isNullOrBlank()) { "Missing keystore path" }
+            require(!storePwd.isNullOrBlank()) { "Missing store password" }
+            require(!alias.isNullOrBlank()) { "Missing key alias" }
+            require(!keyPwd.isNullOrBlank()) { "Missing key password" }
+
+            storeFile = file(storeFilePath)
+            storePassword = storePwd
+            keyAlias = alias
+            keyPassword = keyPwd
+        }
+    }
     buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+        getByName("release") {
+            signingConfig = signingConfigs["release"]
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 }

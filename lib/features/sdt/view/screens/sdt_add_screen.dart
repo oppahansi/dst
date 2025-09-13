@@ -11,6 +11,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 // Project Imports
+import 'package:sdt/ads/ads_scaffold.dart';
 import 'package:sdt/core/utils/extensions.dart';
 import 'package:sdt/core/utils/date_math.dart';
 import 'package:sdt/features/settings/view/providers/settings_provider.dart';
@@ -257,7 +258,7 @@ class _SdtAddScreenState extends ConsumerState<SdtAddScreen> {
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
 
-    return Scaffold(
+    return AdsScaffold(
       extendBodyBehindAppBar: true,
       // The AppBar is now part of the body stack to allow it to be toggled.
       body: GestureDetector(

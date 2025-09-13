@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 // Project Imports
+import 'package:sdt/ads/ads_scaffold.dart';
 import 'package:sdt/features/images/view/providers/image_provider.dart';
 import 'package:sdt/features/images/view/widgets/image_grid.dart';
 import 'package:sdt/l10n/app_localizations.dart';
@@ -33,7 +34,7 @@ class _ImageSearchScreenState extends ConsumerState<ImageSearchScreen> {
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
-    return Scaffold(
+    return AdsScaffold(
       appBar: AppBar(title: Text(loc.select_an_image)),
       body: Column(
         children: [

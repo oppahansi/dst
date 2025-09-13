@@ -1,10 +1,16 @@
+// Dart Imports
+import 'dart:async';
+
 // Flutter Imports
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // Package Imports
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 // Project Imports
+import 'package:sdt/ads/ads_init.dart';
 import 'package:sdt/core/cfg/themes.dart';
 import 'package:sdt/core/utils/constants.dart';
 import 'package:sdt/features/sdt/view/screens/sdt_add_screen.dart';
@@ -15,19 +21,47 @@ import 'package:sdt/l10n/app_localizations.dart';
 import 'package:sdt/app/main_screen.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  runZonedGuarded(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
 
-  final initialSettings = await loadInitialSettings();
+      FlutterError.onError = (details) {
+        FlutterError.presentError(details);
+        if (kDebugMode) {
+          debugPrint("FlutterError: ${details.exceptionAsString()}");
+          debugPrint(details.stack?.toString());
+        }
+      };
 
-  runApp(
-    ProviderScope(
-      overrides: [
-        settingsNotifierProvider.overrideWith(
-          () => SettingsNotifier(initialSettings),
+      unawaited(
+        AdsInitializer.ensureInitialized().then((_) async {
+          // Mark physical device as test to suppress reminder log.
+          await MobileAds.instance.updateRequestConfiguration(
+            RequestConfiguration(
+              testDeviceIds: const ['95B835426DA8908869340236E7D7D8EB'],
+            ),
+          );
+        }),
+      );
+
+      final initialSettings = await loadInitialSettings();
+
+      runApp(
+        ProviderScope(
+          overrides: [
+            settingsNotifierProvider.overrideWith(
+              () => SettingsNotifier(initialSettings),
+            ),
+          ],
+          child: const MyApp(),
         ),
-      ],
-      child: const MyApp(),
-    ),
+      );
+    },
+    (error, stack) {
+      if (kDebugMode) {
+        debugPrint("Zoned error: $error\n$stack");
+      }
+    },
   );
 }
 

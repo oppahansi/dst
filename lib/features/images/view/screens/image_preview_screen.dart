@@ -7,6 +7,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // Project Imports
+import 'package:sdt/ads/ads_scaffold.dart';
 import 'package:sdt/features/images/domain/entities/fis_image.dart';
 import 'package:sdt/features/images/view/widgets/source_logo.dart';
 import 'package:sdt/l10n/app_localizations.dart';
@@ -43,7 +44,7 @@ class _ImagePreviewScreenState extends State<ImagePreviewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AdsScaffold(
       backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
       appBar: AppBar(

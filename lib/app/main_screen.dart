@@ -7,6 +7,7 @@ import "package:exui/exui.dart";
 import "package:material_symbols_icons/symbols.dart";
 
 // Project Imports
+import "package:sdt/ads/ads_scaffold.dart";
 import "package:sdt/core/utils/colors.dart";
 import "package:sdt/core/utils/extensions.dart";
 import "package:sdt/features/sdt/view/screens/sdt_add_screen.dart";
@@ -119,7 +120,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 
         SystemNavigator.pop();
       },
-      child: Scaffold(
+      child: AdsScaffold(
         resizeToAvoidBottomInset: true,
         key: scaffoldKey,
         floatingActionButton: _buildFab(context, currentIndex),

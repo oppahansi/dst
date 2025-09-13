@@ -51,5 +51,7 @@
 	<string>This app needs access to your camera to let you take a picture for your entries.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This app needs access to your photo library to save screenshots.</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-2910994499798273~5186188856</string>
 </dict>
 </plist>

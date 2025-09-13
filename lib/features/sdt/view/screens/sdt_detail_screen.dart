@@ -10,6 +10,7 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
 // Project Imports
+import 'package:sdt/ads/ads_scaffold.dart';
 import 'package:sdt/core/utils/extensions.dart';
 import 'package:sdt/features/sdt/domain/entities/sdt_settings.dart';
 import 'package:sdt/features/sdt/view/screens/sdt_add_screen.dart';
@@ -253,7 +254,7 @@ class _SdtDetailScreenState extends ConsumerState<SdtDetailScreen> {
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
 
-    return Scaffold(
+    return AdsScaffold(
       appBar: AppBar(
         title: Text(widget.entry.title),
         actions: [
